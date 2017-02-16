@@ -4,6 +4,7 @@ import java.util.Collection;
 
 import javax.transaction.Transactional;
 
+import domain.Audit;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
@@ -11,6 +12,7 @@ import org.springframework.util.Assert;
 import domain.Actor;
 import domain.Administrator;
 import repositories.ActorRepository;
+import repositories.AuditRepository;
 import security.LoginService;
 import security.UserAccount;
 
