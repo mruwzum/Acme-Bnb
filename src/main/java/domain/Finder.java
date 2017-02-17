@@ -3,6 +3,8 @@ package domain;
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
+import org.hibernate.validator.constraints.NotBlank;
+import javax.validation.constraints.Digits;
 
 @Entity
 @Access(AccessType.PROPERTY)
@@ -22,46 +24,41 @@ public class Finder extends DomainEntity {
 	}
 	
 	
-	@NotEmpty
-	@Digits(integer=9, fraction=2)
-	public getDestinationcity() {
-		return destinationcity;
+	@NotBlank	public String getDestinationCity() {
+		return destinationCity;
 	}
 
-	public void setDestinationcity(String destinationcity) {
-		this.destinationcity = destinationcity;
+	public void setDestinationCity(String destinationCity) {
+		this.destinationCity = destinationCity;
 	}
 	
 	
-	@NotEmpty
-	@Digits(integer=9, fraction=2)
-	public getMinimumpay() {
-		return minimumpay;
+	@Digits(integer=9, fraction=2)	public double getMinimumPay() {
+		return minimumPay;
 	}
 
-	public void setMinimumpay(Double minimumpay) {
-		this.minimumpay = minimumpay;
+	public void setMinimumPay(double minimumPay) {
+		this.minimumPay = minimumPay;
 	}
 	
 	
-	@NotEmpty
-	@Digits(integer=9, fraction=2)
-	public getMaximumpay() {
-		return maximumpay;
+	@Digits(integer=9, fraction=2)	public double getMaximumPay() {
+		return maximumPay;
 	}
 
-	public void setMaximumpay(Double maximumpay) {
-		this.maximumpay = maximumpay;
+	public void setMaximumPay(double maximumPay) {
+		this.maximumPay = maximumPay;
 	}
 	
 	
-	public getKeyword() {
+	public String getKeyword() {
 		return keyword;
 	}
 
 	public void setKeyword(String keyword) {
 		this.keyword = keyword;
 	}
+	
 	
 	
 }

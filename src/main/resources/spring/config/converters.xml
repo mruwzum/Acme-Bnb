@@ -73,10 +73,6 @@
 		<bean class="converters.SocialIdentityToStringConverter"/>
 		<bean class="converters.StringToSocialIdentityConverter"/>
 		
-		<!-- String -->
-		<bean class="converters.StringToStringConverter"/>
-		<bean class="converters.StringToStringConverter"/>
-		
 		<!-- Tenant -->
 		<bean class="converters.TenantToStringConverter"/>
 		<bean class="converters.StringToTenantConverter"/>

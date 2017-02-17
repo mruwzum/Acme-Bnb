@@ -1,4 +1,4 @@
-package controllers.administrator;
+package controllers;
 
 
 import java.util.Collection;
@@ -14,36 +14,36 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import services.PropertyService;
+import services.AuditService;
 import controllers.AbstractController;
-import domain.Property;
+import domain.Audit;
 
 @Controller
-@RequestMapping("/property")
-public class PropertyController extends AbstractController {
+@RequestMapping("/audit")
+public class AuditController extends AbstractController {
 	
 	//Services ----------------------------------------------------------------
 	
 	@Autowired
-	private PropertyService propertyService;
+	private AuditService auditService;
 	
 	//Constructors----------------------------------------------
 	
-	public PropertyController(){
+	public AuditController(){
 		super();
 	}
 	
 
 	@RequestMapping( value="/list", method = RequestMethod.GET)
-	public ModelAndView propertyList() {
+	public ModelAndView auditList() {
 		
 		ModelAndView result;
-		Collection<Property> propertys;
+		Collection<Audit> audits;
 		
-		propertys = propertyService.findAllPropertysGroupByCategory();
-		result = new ModelAndView("property/list");
-		result.addObject("propertys", propertys);
-		result.addObject("requestURI","property/administrator/list.do");
+		audits = auditService.findAll();
+		result = new ModelAndView("audit/list");
+		result.addObject("audits", audits);
+		result.addObject("requestURI","audit/list.do");
 		
 		return result;
 	}
@@ -56,8 +56,8 @@ public class PropertyController extends AbstractController {
 		
 		ModelAndView result;
 		
-		Property property = propertyService.create();
-		result = createEditModelAndView(property);
+		Audit audit = auditService.create();
+		result = createEditModelAndView(audit);
 		
 		return result;
 
@@ -66,42 +66,42 @@ public class PropertyController extends AbstractController {
 	 // Edition ---------------------------------------------------------
     
     @RequestMapping(value="/edit", method=RequestMethod.GET)
-    public ModelAndView edit(@RequestParam int propertyId){
+    public ModelAndView edit(@RequestParam int auditId){
         ModelAndView result;
-        Property property;
+        Audit audit;
          
-        property= propertyService.findOne(propertyId);
-        Assert.notNull(property);
-        result= createEditModelAndView(property);
+        audit= auditService.findOne(auditId);
+        Assert.notNull(audit);
+        result= createEditModelAndView(audit);
          
         return result;
     }
      
     @RequestMapping(value="/edit", method=RequestMethod.POST, params="save")
-    public ModelAndView save(@Valid Property property, BindingResult binding){
+    public ModelAndView save(@Valid Audit audit, BindingResult binding){
         ModelAndView result;
          
         if(binding.hasErrors()){
-            result= createEditModelAndView(property);
+            result= createEditModelAndView(audit);
         }else{
             try{
-                propertyService.save(property);
+                auditService.save(audit);
                 result= new ModelAndView("redirect:list.do");
             }catch(Throwable oops){
-                result= createEditModelAndView(property, "property.commit.error");
+                result= createEditModelAndView(audit, "audit.commit.error");
             }
         }
         return result;
     }
      
     @RequestMapping(value="/edit", method=RequestMethod.POST, params="delete")
-    public ModelAndView delete(Property property){
+    public ModelAndView delete(Audit audit){
         ModelAndView result;
         try{
-            propertyService.delete(property);
+            auditService.delete(audit);
             result=new ModelAndView("redirect:list.do");
         }catch(Throwable oops){
-            result= createEditModelAndView(property, "property.commit.error");
+            result= createEditModelAndView(audit, "audit.commit.error");
         }
          
         return result;   
@@ -109,19 +109,19 @@ public class PropertyController extends AbstractController {
 	
 	// Ancillary methods ------------------------------------------------
     
-    protected ModelAndView createEditModelAndView(Property property){
+    protected ModelAndView createEditModelAndView(Audit audit){
         ModelAndView result;
          
-        result= createEditModelAndView(property, null);
+        result= createEditModelAndView(audit, null);
          
         return result;
     }
      
-    protected ModelAndView createEditModelAndView(Property property, String message){
+    protected ModelAndView createEditModelAndView(Audit audit, String message){
     	ModelAndView result;
     	
-        result= new ModelAndView("property/edit");
-        result.addObject("property", property);
+        result= new ModelAndView("audit/edit");
+        result.addObject("audit", audit);
         result.addObject("message", message);
          
         return result;

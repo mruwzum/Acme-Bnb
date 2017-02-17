@@ -3,8 +3,9 @@ package domain;
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
-import import javax.validation.constraints.NotNull;
-import import javax.validation.constraints.Range;
+import org.hibernate.validator.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import org.hibernate.validator.constraints.Range;
 
 @Entity
 @Access(AccessType.PROPERTY)
@@ -24,10 +25,7 @@ public class Comment extends DomainEntity {
 	}
 	
 	
-	@Notblank
-	@NotNull
-	@Range(min=0, max=5)
-	public getTitle() {
+	@NotBlank	public String getTitle() {
 		return title;
 	}
 
@@ -36,22 +34,16 @@ public class Comment extends DomainEntity {
 	}
 	
 	
-	@Notblank
-	@NotNull
-	@Range(min=0, max=5)
-	public getPostedmoment() {
-		return postedmoment;
+	@NotNull	public Date getPostedMoment() {
+		return postedMoment;
 	}
 
-	public void setPostedmoment(Date postedmoment) {
-		this.postedmoment = postedmoment;
+	public void setPostedMoment(Date postedMoment) {
+		this.postedMoment = postedMoment;
 	}
 	
 	
-	@Notblank
-	@NotNull
-	@Range(min=0, max=5)
-	public getText() {
+	@NotBlank	public String getText() {
 		return text;
 	}
 
@@ -60,16 +52,14 @@ public class Comment extends DomainEntity {
 	}
 	
 	
-	@Notblank
-	@NotNull
-	@Range(min=0, max=5)
-	public getNumberofstars() {
-		return numberofstars;
+	@Range(min=0, max=5)	@NotNull	public int getNumberOfStars() {
+		return numberOfStars;
 	}
 
-	public void setNumberofstars(Int numberofstars) {
-		this.numberofstars = numberofstars;
+	public void setNumberOfStars(int numberOfStars) {
+		this.numberOfStars = numberOfStars;
 	}
+	
 	
 	
 }

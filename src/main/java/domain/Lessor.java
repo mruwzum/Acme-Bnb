@@ -1,9 +1,13 @@
 package domain;
 
+import java.util.Collection;
+
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
-import import javax.validation.constraints.CreditCardNumber;
+import org.hibernate.validator.constraints.CreditCardNumber;
+import javax.persistence.OneToMany;
+import javax.validation.Valid;
 
 @Entity
 @Access(AccessType.PROPERTY)
@@ -13,7 +17,7 @@ public class Lessor extends Actor {
 	private String creditCard;
 	
 	// Relationships ---------------------------------------------------------
-	private Property property;
+	private Collection<Property> propertys;
 	
 	// Constructors -----------------------------------------------------------
 	public Lessor() {
@@ -21,25 +25,25 @@ public class Lessor extends Actor {
 	}
 	
 	
-	@CreditCardNumber
-	public getCreditcard() {
-		return creditcard;
+	@CreditCardNumber	public String getCreditCard() {
+		return creditCard;
 	}
 
-	public void setCreditcard(String creditcard) {
-		this.creditcard = creditcard;
+	public void setCreditCard(String creditCard) {
+		this.creditCard = creditCard;
 	}
 	
 	
 	@OneToMany(mappedBy = "lessor")
 	@Valid
-	public Collection<Property>getProperty() {
-		return property;
+	public Collection<Property> getPropertys() {
+		return propertys;
 	}
 
-	public void setProperty(Property property) {
-		this.property = property;
+	public void setPropertys(Property property) {
+		this.propertys = propertys;
 	}
+	
 	
 	
 }

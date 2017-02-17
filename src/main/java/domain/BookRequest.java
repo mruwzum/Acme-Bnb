@@ -3,8 +3,13 @@ package domain;
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
-import import javax.validation.constraints.NotNull;
-import import javax.validation.constraints.CreditCardNumber;
+import javax.validation.constraints.NotNull;
+import org.hibernate.validator.constraints.CreditCardNumber;
+import org.hibernate.validator.constraints.NotBlank;
+import javax.persistence.ManyToOne;
+import javax.validation.Valid;
+import javax.persistence.ManyToOne;
+import javax.validation.Valid;
 
 @Entity
 @Access(AccessType.PROPERTY)
@@ -27,31 +32,25 @@ public class BookRequest extends DomainEntity {
 	}
 	
 	
-	@NotNull
-	@CreditCardNumber
-	@Notblank
-	public getCheckindate() {
-		return checkindate;
+	@NotNull	public Date getCheckInDate() {
+		return checkInDate;
 	}
 
-	public void setCheckindate(Date checkindate) {
-		this.checkindate = checkindate;
+	public void setCheckInDate(Date checkInDate) {
+		this.checkInDate = checkInDate;
 	}
 	
 	
-	@NotNull
-	@CreditCardNumber
-	@Notblank
-	public getCheckoutdate() {
-		return checkoutdate;
+	@NotNull	public Date getCheckOutDate() {
+		return checkOutDate;
 	}
 
-	public void setCheckoutdate(Date checkoutdate) {
-		this.checkoutdate = checkoutdate;
+	public void setCheckOutDate(Date checkOutDate) {
+		this.checkOutDate = checkOutDate;
 	}
 	
 	
-	public getSmoker() {
+	public boolean getSmoker() {
 		return smoker;
 	}
 
@@ -60,30 +59,26 @@ public class BookRequest extends DomainEntity {
 	}
 	
 	
-	@NotNull
-	@CreditCardNumber
-	@Notblank
-	public getCreditcard() {
-		return creditcard;
+	@CreditCardNumber	@NotBlank	public String getCreditCard() {
+		return creditCard;
 	}
 
-	public void setCreditcard(String creditcard) {
-		this.creditcard = creditcard;
+	public void setCreditCard(String creditCard) {
+		this.creditCard = creditCard;
 	}
 	
 	
-	public getStatus() {
+	public requestStatus getStatus() {
 		return status;
 	}
 
-	public void setStatus(Requeststatus status) {
+	public void setStatus(RequestStatus status) {
 		this.status = status;
 	}
 	
 	
-	@ManyToOne(mappedBy = "bookrequest")
-	@Valid
-	public TenantgetTenant() {
+	@ManyToOne	@Valid
+	public Tenant getTenant() {
 		return tenant;
 	}
 
@@ -94,13 +89,14 @@ public class BookRequest extends DomainEntity {
 	
 	@ManyToOne(optional = false)
 	@Valid
-	public PropertygetProperty() {
+	public Property getProperty() {
 		return property;
 	}
 
 	public void setProperty(Property property) {
 		this.property = property;
 	}
+	
 	
 	
 }

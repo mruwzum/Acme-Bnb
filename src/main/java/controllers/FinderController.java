@@ -1,4 +1,4 @@
-package controllers.administrator;
+package controllers;
 
 
 import java.util.Collection;
@@ -14,36 +14,36 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import services.AdministratorService;
+import services.FinderService;
 import controllers.AbstractController;
-import domain.Administrator;
+import domain.Finder;
 
 @Controller
-@RequestMapping("/administrator")
-public class AdministratorController extends AbstractController {
+@RequestMapping("/finder")
+public class FinderController extends AbstractController {
 	
 	//Services ----------------------------------------------------------------
 	
 	@Autowired
-	private AdministratorService administratorService;
+	private FinderService finderService;
 	
 	//Constructors----------------------------------------------
 	
-	public AdministratorController(){
+	public FinderController(){
 		super();
 	}
 	
 
 	@RequestMapping( value="/list", method = RequestMethod.GET)
-	public ModelAndView administratorList() {
+	public ModelAndView finderList() {
 		
 		ModelAndView result;
-		Collection<Administrator> administrators;
+		Collection<Finder> finders;
 		
-		administrators = administratorService.findAllAdministratorsGroupByCategory();
-		result = new ModelAndView("administrator/list");
-		result.addObject("administrators", administrators);
-		result.addObject("requestURI","administrator/administrator/list.do");
+		finders = finderService.findAll();
+		result = new ModelAndView("finder/list");
+		result.addObject("finders", finders);
+		result.addObject("requestURI","finder/list.do");
 		
 		return result;
 	}
@@ -56,8 +56,8 @@ public class AdministratorController extends AbstractController {
 		
 		ModelAndView result;
 		
-		Administrator administrator = administratorService.create();
-		result = createEditModelAndView(administrator);
+		Finder finder = finderService.create();
+		result = createEditModelAndView(finder);
 		
 		return result;
 
@@ -66,42 +66,42 @@ public class AdministratorController extends AbstractController {
 	 // Edition ---------------------------------------------------------
     
     @RequestMapping(value="/edit", method=RequestMethod.GET)
-    public ModelAndView edit(@RequestParam int administratorId){
+    public ModelAndView edit(@RequestParam int finderId){
         ModelAndView result;
-        Administrator administrator;
+        Finder finder;
          
-        administrator= administratorService.findOne(administratorId);
-        Assert.notNull(administrator);
-        result= createEditModelAndView(administrator);
+        finder= finderService.findOne(finderId);
+        Assert.notNull(finder);
+        result= createEditModelAndView(finder);
          
         return result;
     }
      
     @RequestMapping(value="/edit", method=RequestMethod.POST, params="save")
-    public ModelAndView save(@Valid Administrator administrator, BindingResult binding){
+    public ModelAndView save(@Valid Finder finder, BindingResult binding){
         ModelAndView result;
          
         if(binding.hasErrors()){
-            result= createEditModelAndView(administrator);
+            result= createEditModelAndView(finder);
         }else{
             try{
-                administratorService.save(administrator);
+                finderService.save(finder);
                 result= new ModelAndView("redirect:list.do");
             }catch(Throwable oops){
-                result= createEditModelAndView(administrator, "administrator.commit.error");
+                result= createEditModelAndView(finder, "finder.commit.error");
             }
         }
         return result;
     }
      
     @RequestMapping(value="/edit", method=RequestMethod.POST, params="delete")
-    public ModelAndView delete(Administrator administrator){
+    public ModelAndView delete(Finder finder){
         ModelAndView result;
         try{
-            administratorService.delete(administrator);
+            finderService.delete(finder);
             result=new ModelAndView("redirect:list.do");
         }catch(Throwable oops){
-            result= createEditModelAndView(administrator, "administrator.commit.error");
+            result= createEditModelAndView(finder, "finder.commit.error");
         }
          
         return result;   
@@ -109,19 +109,19 @@ public class AdministratorController extends AbstractController {
 	
 	// Ancillary methods ------------------------------------------------
     
-    protected ModelAndView createEditModelAndView(Administrator administrator){
+    protected ModelAndView createEditModelAndView(Finder finder){
         ModelAndView result;
          
-        result= createEditModelAndView(administrator, null);
+        result= createEditModelAndView(finder, null);
          
         return result;
     }
      
-    protected ModelAndView createEditModelAndView(Administrator administrator, String message){
+    protected ModelAndView createEditModelAndView(Finder finder, String message){
     	ModelAndView result;
     	
-        result= new ModelAndView("administrator/edit");
-        result.addObject("administrator", administrator);
+        result= new ModelAndView("finder/edit");
+        result.addObject("finder", finder);
         result.addObject("message", message);
          
         return result;

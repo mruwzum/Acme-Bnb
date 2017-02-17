@@ -8,9 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
-import domain.Actor;
-import domain.Administrator;
-import repositories.ActorRepository;
+import domain.Finder;
+import repositories.FinderRepository;
 import security.LoginService;
 import security.UserAccount;
 
@@ -54,6 +53,12 @@ public class FinderService {
 	public Finder save(Finder finder) {
 		Assert.notNull(finder);
 		return finderRepository.save(finder);
+	}
+	
+	public void delete(Finder finder) {
+		Assert.notNull(finder);
+		Assert.isTrue(finderRepository.exists(finder.getId()));
+		finderRepository.delete(finder);
 	}
 
 	// Other business methods -----------------------

@@ -8,9 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
-import domain.Actor;
-import domain.Administrator;
-import repositories.ActorRepository;
+import domain.Invoice;
+import repositories.InvoiceRepository;
 import security.LoginService;
 import security.UserAccount;
 
@@ -54,6 +53,12 @@ public class InvoiceService {
 	public Invoice save(Invoice invoice) {
 		Assert.notNull(invoice);
 		return invoiceRepository.save(invoice);
+	}
+	
+	public void delete(Invoice invoice) {
+		Assert.notNull(invoice);
+		Assert.isTrue(invoiceRepository.exists(invoice.getId()));
+		invoiceRepository.delete(invoice);
 	}
 
 	// Other business methods -----------------------

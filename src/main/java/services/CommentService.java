@@ -8,9 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
-import domain.Actor;
-import domain.Administrator;
-import repositories.ActorRepository;
+import domain.Comment;
+import repositories.CommentRepository;
 import security.LoginService;
 import security.UserAccount;
 
@@ -54,6 +53,12 @@ public class CommentService {
 	public Comment save(Comment comment) {
 		Assert.notNull(comment);
 		return commentRepository.save(comment);
+	}
+	
+	public void delete(Comment comment) {
+		Assert.notNull(comment);
+		Assert.isTrue(commentRepository.exists(comment.getId()));
+		commentRepository.delete(comment);
 	}
 
 	// Other business methods -----------------------

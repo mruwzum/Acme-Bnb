@@ -77,9 +77,6 @@
 		<!--  SOCIALIDENTITY  -->	
 		<security:intercept-url pattern="/socialidentity/list.do" access="permitAll" />
 		<security:intercept-url pattern="/socialidentity/edit.do" access="permitAll" />
-		<!--  STRING  -->	
-		<security:intercept-url pattern="/string/list.do" access="permitAll" />
-		<security:intercept-url pattern="/string/edit.do" access="permitAll" />
 		<!--  TENANT  -->	
 		<security:intercept-url pattern="/tenant/list.do" access="permitAll" />
 		<security:intercept-url pattern="/tenant/edit.do" access="permitAll" />

@@ -1,9 +1,18 @@
 package domain;
 
+import java.util.Collection;
+
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
-import import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotNull;
+import org.hibernate.validator.constraints.NotBlank;
+import javax.persistence.ManyToOne;
+import javax.validation.Valid;
+import javax.persistence.ManyToOne;
+import javax.validation.Valid;
+import javax.persistence.OneToMany;
+import javax.validation.Valid;
 
 @Entity
 @Access(AccessType.PROPERTY)
@@ -17,7 +26,7 @@ public class Audit extends DomainEntity {
 	// Relationships ---------------------------------------------------------
 	private Property property;
 	private Auditor auditor;
-	private Comment comment;
+	private Collection<Comment> comments;
 	
 	// Constructors -----------------------------------------------------------
 	public Audit() {
@@ -25,20 +34,16 @@ public class Audit extends DomainEntity {
 	}
 	
 	
-	@NotNull
-	@Notblank
-	public getWrittenmoment() {
-		return writtenmoment;
+	@NotNull	public Date getWrittenMoment() {
+		return writtenMoment;
 	}
 
-	public void setWrittenmoment(Date writtenmoment) {
-		this.writtenmoment = writtenmoment;
+	public void setWrittenMoment(Date writtenMoment) {
+		this.writtenMoment = writtenMoment;
 	}
 	
 	
-	@NotNull
-	@Notblank
-	public getText() {
+	@NotBlank	public String getText() {
 		return text;
 	}
 
@@ -47,7 +52,7 @@ public class Audit extends DomainEntity {
 	}
 	
 	
-	public getAttachments() {
+	public String getAttachments() {
 		return attachments;
 	}
 
@@ -58,7 +63,7 @@ public class Audit extends DomainEntity {
 	
 	@ManyToOne(optional = false)
 	@Valid
-	public PropertygetProperty() {
+	public Property getProperty() {
 		return property;
 	}
 
@@ -67,9 +72,8 @@ public class Audit extends DomainEntity {
 	}
 	
 	
-	@ManyToOne(mappedBy = "audit")
-	@Valid
-	public AuditorgetAuditor() {
+	@ManyToOne	@Valid
+	public Auditor getAuditor() {
 		return auditor;
 	}
 
@@ -78,15 +82,16 @@ public class Audit extends DomainEntity {
 	}
 	
 	
-	@OneToMany(mappedBy = "audit")
+	@OneToMany
 	@Valid
-	public Collection<Comment>getComment() {
-		return comment;
+	public Collection<Comment> getComments() {
+		return comments;
 	}
 
-	public void setComment(Comment comment) {
-		this.comment = comment;
+	public void setComments(Comment comment) {
+		this.comments = comments;
 	}
+	
 	
 	
 }

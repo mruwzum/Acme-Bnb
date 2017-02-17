@@ -8,9 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
-import domain.Actor;
-import domain.Administrator;
-import repositories.ActorRepository;
+import domain.Property;
+import repositories.PropertyRepository;
 import security.LoginService;
 import security.UserAccount;
 
@@ -54,6 +53,12 @@ public class PropertyService {
 	public Property save(Property property) {
 		Assert.notNull(property);
 		return propertyRepository.save(property);
+	}
+	
+	public void delete(Property property) {
+		Assert.notNull(property);
+		Assert.isTrue(propertyRepository.exists(property.getId()));
+		propertyRepository.delete(property);
 	}
 
 	// Other business methods -----------------------

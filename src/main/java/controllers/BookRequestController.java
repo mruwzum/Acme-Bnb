@@ -1,4 +1,4 @@
-package controllers.administrator;
+package controllers;
 
 
 import java.util.Collection;
@@ -14,36 +14,36 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import services.CommentService;
+import services.BookRequestService;
 import controllers.AbstractController;
-import domain.Comment;
+import domain.BookRequest;
 
 @Controller
-@RequestMapping("/comment")
-public class CommentController extends AbstractController {
+@RequestMapping("/bookRequest")
+public class BookRequestController extends AbstractController {
 	
 	//Services ----------------------------------------------------------------
 	
 	@Autowired
-	private CommentService commentService;
+	private BookRequestService bookRequestService;
 	
 	//Constructors----------------------------------------------
 	
-	public CommentController(){
+	public BookRequestController(){
 		super();
 	}
 	
 
 	@RequestMapping( value="/list", method = RequestMethod.GET)
-	public ModelAndView commentList() {
+	public ModelAndView bookRequestList() {
 		
 		ModelAndView result;
-		Collection<Comment> comments;
+		Collection<BookRequest> bookRequests;
 		
-		comments = commentService.findAllCommentsGroupByCategory();
-		result = new ModelAndView("comment/list");
-		result.addObject("comments", comments);
-		result.addObject("requestURI","comment/administrator/list.do");
+		bookRequests = bookRequestService.findAll();
+		result = new ModelAndView("bookRequest/list");
+		result.addObject("bookRequests", bookRequests);
+		result.addObject("requestURI","bookRequest/list.do");
 		
 		return result;
 	}
@@ -56,8 +56,8 @@ public class CommentController extends AbstractController {
 		
 		ModelAndView result;
 		
-		Comment comment = commentService.create();
-		result = createEditModelAndView(comment);
+		BookRequest bookRequest = bookRequestService.create();
+		result = createEditModelAndView(bookRequest);
 		
 		return result;
 
@@ -66,42 +66,42 @@ public class CommentController extends AbstractController {
 	 // Edition ---------------------------------------------------------
     
     @RequestMapping(value="/edit", method=RequestMethod.GET)
-    public ModelAndView edit(@RequestParam int commentId){
+    public ModelAndView edit(@RequestParam int bookRequestId){
         ModelAndView result;
-        Comment comment;
+        BookRequest bookRequest;
          
-        comment= commentService.findOne(commentId);
-        Assert.notNull(comment);
-        result= createEditModelAndView(comment);
+        bookRequest= bookRequestService.findOne(bookRequestId);
+        Assert.notNull(bookRequest);
+        result= createEditModelAndView(bookRequest);
          
         return result;
     }
      
     @RequestMapping(value="/edit", method=RequestMethod.POST, params="save")
-    public ModelAndView save(@Valid Comment comment, BindingResult binding){
+    public ModelAndView save(@Valid BookRequest bookRequest, BindingResult binding){
         ModelAndView result;
          
         if(binding.hasErrors()){
-            result= createEditModelAndView(comment);
+            result= createEditModelAndView(bookRequest);
         }else{
             try{
-                commentService.save(comment);
+                bookRequestService.save(bookRequest);
                 result= new ModelAndView("redirect:list.do");
             }catch(Throwable oops){
-                result= createEditModelAndView(comment, "comment.commit.error");
+                result= createEditModelAndView(bookRequest, "bookRequest.commit.error");
             }
         }
         return result;
     }
      
     @RequestMapping(value="/edit", method=RequestMethod.POST, params="delete")
-    public ModelAndView delete(Comment comment){
+    public ModelAndView delete(BookRequest bookRequest){
         ModelAndView result;
         try{
-            commentService.delete(comment);
+            bookRequestService.delete(bookRequest);
             result=new ModelAndView("redirect:list.do");
         }catch(Throwable oops){
-            result= createEditModelAndView(comment, "comment.commit.error");
+            result= createEditModelAndView(bookRequest, "bookRequest.commit.error");
         }
          
         return result;   
@@ -109,19 +109,19 @@ public class CommentController extends AbstractController {
 	
 	// Ancillary methods ------------------------------------------------
     
-    protected ModelAndView createEditModelAndView(Comment comment){
+    protected ModelAndView createEditModelAndView(BookRequest bookRequest){
         ModelAndView result;
          
-        result= createEditModelAndView(comment, null);
+        result= createEditModelAndView(bookRequest, null);
          
         return result;
     }
      
-    protected ModelAndView createEditModelAndView(Comment comment, String message){
+    protected ModelAndView createEditModelAndView(BookRequest bookRequest, String message){
     	ModelAndView result;
     	
-        result= new ModelAndView("comment/edit");
-        result.addObject("comment", comment);
+        result= new ModelAndView("bookRequest/edit");
+        result.addObject("bookRequest", bookRequest);
         result.addObject("message", message);
          
         return result;

@@ -8,9 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
-import domain.Actor;
 import domain.Administrator;
-import repositories.ActorRepository;
 import repositories.AdministratorRepository;
 import security.LoginService;
 import security.UserAccount;
@@ -55,6 +53,12 @@ public class AdministratorService {
 	public Administrator save(Administrator administrator) {
 		Assert.notNull(administrator);
 		return administratorRepository.save(administrator);
+	}
+	
+	public void delete(Administrator administrator) {
+		Assert.notNull(administrator);
+		Assert.isTrue(administratorRepository.exists(administrator.getId()));
+		administratorRepository.delete(administrator);
 	}
 
 	// Other business methods -----------------------

@@ -48,8 +48,6 @@
 		<value>/views/property/messages</value>
 		<!-- SocialIdentity -->
 		<value>/views/socialidentity/messages</value>
-		<!-- String -->
-		<value>/views/string/messages</value>
 		<!-- Tenant -->
 		<value>/views/tenant/messages</value>
 	</util:list>

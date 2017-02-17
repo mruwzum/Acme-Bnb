@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
 import domain.Actor;
-import domain.Administrator;
 import repositories.ActorRepository;
 import security.LoginService;
 import security.UserAccount;
@@ -54,6 +53,12 @@ public class ActorService {
 	public Actor save(Actor actor) {
 		Assert.notNull(actor);
 		return actorRepository.save(actor);
+	}
+	
+	public void delete(Actor actor) {
+		Assert.notNull(actor);
+		Assert.isTrue(actorRepository.exists(actor.getId()));
+		actorRepository.delete(actor);
 	}
 
 	// Other business methods -----------------------

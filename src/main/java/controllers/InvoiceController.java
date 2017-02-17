@@ -1,4 +1,4 @@
-package controllers.administrator;
+package controllers;
 
 
 import java.util.Collection;
@@ -14,36 +14,36 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import services.TenantService;
+import services.InvoiceService;
 import controllers.AbstractController;
-import domain.Tenant;
+import domain.Invoice;
 
 @Controller
-@RequestMapping("/tenant")
-public class TenantController extends AbstractController {
+@RequestMapping("/invoice")
+public class InvoiceController extends AbstractController {
 	
 	//Services ----------------------------------------------------------------
 	
 	@Autowired
-	private TenantService tenantService;
+	private InvoiceService invoiceService;
 	
 	//Constructors----------------------------------------------
 	
-	public TenantController(){
+	public InvoiceController(){
 		super();
 	}
 	
 
 	@RequestMapping( value="/list", method = RequestMethod.GET)
-	public ModelAndView tenantList() {
+	public ModelAndView invoiceList() {
 		
 		ModelAndView result;
-		Collection<Tenant> tenants;
+		Collection<Invoice> invoices;
 		
-		tenants = tenantService.findAllTenantsGroupByCategory();
-		result = new ModelAndView("tenant/list");
-		result.addObject("tenants", tenants);
-		result.addObject("requestURI","tenant/administrator/list.do");
+		invoices = invoiceService.findAll();
+		result = new ModelAndView("invoice/list");
+		result.addObject("invoices", invoices);
+		result.addObject("requestURI","invoice/list.do");
 		
 		return result;
 	}
@@ -56,8 +56,8 @@ public class TenantController extends AbstractController {
 		
 		ModelAndView result;
 		
-		Tenant tenant = tenantService.create();
-		result = createEditModelAndView(tenant);
+		Invoice invoice = invoiceService.create();
+		result = createEditModelAndView(invoice);
 		
 		return result;
 
@@ -66,42 +66,42 @@ public class TenantController extends AbstractController {
 	 // Edition ---------------------------------------------------------
     
     @RequestMapping(value="/edit", method=RequestMethod.GET)
-    public ModelAndView edit(@RequestParam int tenantId){
+    public ModelAndView edit(@RequestParam int invoiceId){
         ModelAndView result;
-        Tenant tenant;
+        Invoice invoice;
          
-        tenant= tenantService.findOne(tenantId);
-        Assert.notNull(tenant);
-        result= createEditModelAndView(tenant);
+        invoice= invoiceService.findOne(invoiceId);
+        Assert.notNull(invoice);
+        result= createEditModelAndView(invoice);
          
         return result;
     }
      
     @RequestMapping(value="/edit", method=RequestMethod.POST, params="save")
-    public ModelAndView save(@Valid Tenant tenant, BindingResult binding){
+    public ModelAndView save(@Valid Invoice invoice, BindingResult binding){
         ModelAndView result;
          
         if(binding.hasErrors()){
-            result= createEditModelAndView(tenant);
+            result= createEditModelAndView(invoice);
         }else{
             try{
-                tenantService.save(tenant);
+                invoiceService.save(invoice);
                 result= new ModelAndView("redirect:list.do");
             }catch(Throwable oops){
-                result= createEditModelAndView(tenant, "tenant.commit.error");
+                result= createEditModelAndView(invoice, "invoice.commit.error");
             }
         }
         return result;
     }
      
     @RequestMapping(value="/edit", method=RequestMethod.POST, params="delete")
-    public ModelAndView delete(Tenant tenant){
+    public ModelAndView delete(Invoice invoice){
         ModelAndView result;
         try{
-            tenantService.delete(tenant);
+            invoiceService.delete(invoice);
             result=new ModelAndView("redirect:list.do");
         }catch(Throwable oops){
-            result= createEditModelAndView(tenant, "tenant.commit.error");
+            result= createEditModelAndView(invoice, "invoice.commit.error");
         }
          
         return result;   
@@ -109,19 +109,19 @@ public class TenantController extends AbstractController {
 	
 	// Ancillary methods ------------------------------------------------
     
-    protected ModelAndView createEditModelAndView(Tenant tenant){
+    protected ModelAndView createEditModelAndView(Invoice invoice){
         ModelAndView result;
          
-        result= createEditModelAndView(tenant, null);
+        result= createEditModelAndView(invoice, null);
          
         return result;
     }
      
-    protected ModelAndView createEditModelAndView(Tenant tenant, String message){
+    protected ModelAndView createEditModelAndView(Invoice invoice, String message){
     	ModelAndView result;
     	
-        result= new ModelAndView("tenant/edit");
-        result.addObject("tenant", tenant);
+        result= new ModelAndView("invoice/edit");
+        result.addObject("invoice", invoice);
         result.addObject("message", message);
          
         return result;

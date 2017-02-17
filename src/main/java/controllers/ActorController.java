@@ -1,4 +1,4 @@
-package controllers.administrator;
+package controllers;
 
 
 import java.util.Collection;
@@ -14,36 +14,36 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import services.SocialIdentityService;
+import services.ActorService;
 import controllers.AbstractController;
-import domain.SocialIdentity;
+import domain.Actor;
 
 @Controller
-@RequestMapping("/socialIdentity")
-public class SocialIdentityController extends AbstractController {
+@RequestMapping("/actor")
+public class ActorController extends AbstractController {
 	
 	//Services ----------------------------------------------------------------
 	
 	@Autowired
-	private SocialIdentityService socialIdentityService;
+	private ActorService actorService;
 	
 	//Constructors----------------------------------------------
 	
-	public SocialIdentityController(){
+	public ActorController(){
 		super();
 	}
 	
 
 	@RequestMapping( value="/list", method = RequestMethod.GET)
-	public ModelAndView socialIdentityList() {
+	public ModelAndView actorList() {
 		
 		ModelAndView result;
-		Collection<SocialIdentity> socialIdentitys;
+		Collection<Actor> actors;
 		
-		socialIdentitys = socialIdentityService.findAllSocialIdentitysGroupByCategory();
-		result = new ModelAndView("socialIdentity/list");
-		result.addObject("socialIdentitys", socialIdentitys);
-		result.addObject("requestURI","socialIdentity/administrator/list.do");
+		actors = actorService.findAll();
+		result = new ModelAndView("actor/list");
+		result.addObject("actors", actors);
+		result.addObject("requestURI","actor/list.do");
 		
 		return result;
 	}
@@ -56,8 +56,8 @@ public class SocialIdentityController extends AbstractController {
 		
 		ModelAndView result;
 		
-		SocialIdentity socialIdentity = socialIdentityService.create();
-		result = createEditModelAndView(socialIdentity);
+		Actor actor = actorService.create();
+		result = createEditModelAndView(actor);
 		
 		return result;
 
@@ -66,42 +66,42 @@ public class SocialIdentityController extends AbstractController {
 	 // Edition ---------------------------------------------------------
     
     @RequestMapping(value="/edit", method=RequestMethod.GET)
-    public ModelAndView edit(@RequestParam int socialIdentityId){
+    public ModelAndView edit(@RequestParam int actorId){
         ModelAndView result;
-        SocialIdentity socialIdentity;
+        Actor actor;
          
-        socialIdentity= socialIdentityService.findOne(socialIdentityId);
-        Assert.notNull(socialIdentity);
-        result= createEditModelAndView(socialIdentity);
+        actor= actorService.findOne(actorId);
+        Assert.notNull(actor);
+        result= createEditModelAndView(actor);
          
         return result;
     }
      
     @RequestMapping(value="/edit", method=RequestMethod.POST, params="save")
-    public ModelAndView save(@Valid SocialIdentity socialIdentity, BindingResult binding){
+    public ModelAndView save(@Valid Actor actor, BindingResult binding){
         ModelAndView result;
          
         if(binding.hasErrors()){
-            result= createEditModelAndView(socialIdentity);
+            result= createEditModelAndView(actor);
         }else{
             try{
-                socialIdentityService.save(socialIdentity);
+                actorService.save(actor);
                 result= new ModelAndView("redirect:list.do");
             }catch(Throwable oops){
-                result= createEditModelAndView(socialIdentity, "socialIdentity.commit.error");
+                result= createEditModelAndView(actor, "actor.commit.error");
             }
         }
         return result;
     }
      
     @RequestMapping(value="/edit", method=RequestMethod.POST, params="delete")
-    public ModelAndView delete(SocialIdentity socialIdentity){
+    public ModelAndView delete(Actor actor){
         ModelAndView result;
         try{
-            socialIdentityService.delete(socialIdentity);
+            actorService.delete(actor);
             result=new ModelAndView("redirect:list.do");
         }catch(Throwable oops){
-            result= createEditModelAndView(socialIdentity, "socialIdentity.commit.error");
+            result= createEditModelAndView(actor, "actor.commit.error");
         }
          
         return result;   
@@ -109,19 +109,19 @@ public class SocialIdentityController extends AbstractController {
 	
 	// Ancillary methods ------------------------------------------------
     
-    protected ModelAndView createEditModelAndView(SocialIdentity socialIdentity){
+    protected ModelAndView createEditModelAndView(Actor actor){
         ModelAndView result;
          
-        result= createEditModelAndView(socialIdentity, null);
+        result= createEditModelAndView(actor, null);
          
         return result;
     }
      
-    protected ModelAndView createEditModelAndView(SocialIdentity socialIdentity, String message){
+    protected ModelAndView createEditModelAndView(Actor actor, String message){
     	ModelAndView result;
     	
-        result= new ModelAndView("socialIdentity/edit");
-        result.addObject("socialIdentity", socialIdentity);
+        result= new ModelAndView("actor/edit");
+        result.addObject("actor", actor);
         result.addObject("message", message);
          
         return result;

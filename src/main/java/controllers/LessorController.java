@@ -1,4 +1,4 @@
-package controllers.administrator;
+package controllers;
 
 
 import java.util.Collection;
@@ -14,36 +14,36 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import services.InvoiceService;
+import services.LessorService;
 import controllers.AbstractController;
-import domain.Invoice;
+import domain.Lessor;
 
 @Controller
-@RequestMapping("/invoice")
-public class InvoiceController extends AbstractController {
+@RequestMapping("/lessor")
+public class LessorController extends AbstractController {
 	
 	//Services ----------------------------------------------------------------
 	
 	@Autowired
-	private InvoiceService invoiceService;
+	private LessorService lessorService;
 	
 	//Constructors----------------------------------------------
 	
-	public InvoiceController(){
+	public LessorController(){
 		super();
 	}
 	
 
 	@RequestMapping( value="/list", method = RequestMethod.GET)
-	public ModelAndView invoiceList() {
+	public ModelAndView lessorList() {
 		
 		ModelAndView result;
-		Collection<Invoice> invoices;
+		Collection<Lessor> lessors;
 		
-		invoices = invoiceService.findAllInvoicesGroupByCategory();
-		result = new ModelAndView("invoice/list");
-		result.addObject("invoices", invoices);
-		result.addObject("requestURI","invoice/administrator/list.do");
+		lessors = lessorService.findAll();
+		result = new ModelAndView("lessor/list");
+		result.addObject("lessors", lessors);
+		result.addObject("requestURI","lessor/list.do");
 		
 		return result;
 	}
@@ -56,8 +56,8 @@ public class InvoiceController extends AbstractController {
 		
 		ModelAndView result;
 		
-		Invoice invoice = invoiceService.create();
-		result = createEditModelAndView(invoice);
+		Lessor lessor = lessorService.create();
+		result = createEditModelAndView(lessor);
 		
 		return result;
 
@@ -66,42 +66,42 @@ public class InvoiceController extends AbstractController {
 	 // Edition ---------------------------------------------------------
     
     @RequestMapping(value="/edit", method=RequestMethod.GET)
-    public ModelAndView edit(@RequestParam int invoiceId){
+    public ModelAndView edit(@RequestParam int lessorId){
         ModelAndView result;
-        Invoice invoice;
+        Lessor lessor;
          
-        invoice= invoiceService.findOne(invoiceId);
-        Assert.notNull(invoice);
-        result= createEditModelAndView(invoice);
+        lessor= lessorService.findOne(lessorId);
+        Assert.notNull(lessor);
+        result= createEditModelAndView(lessor);
          
         return result;
     }
      
     @RequestMapping(value="/edit", method=RequestMethod.POST, params="save")
-    public ModelAndView save(@Valid Invoice invoice, BindingResult binding){
+    public ModelAndView save(@Valid Lessor lessor, BindingResult binding){
         ModelAndView result;
          
         if(binding.hasErrors()){
-            result= createEditModelAndView(invoice);
+            result= createEditModelAndView(lessor);
         }else{
             try{
-                invoiceService.save(invoice);
+                lessorService.save(lessor);
                 result= new ModelAndView("redirect:list.do");
             }catch(Throwable oops){
-                result= createEditModelAndView(invoice, "invoice.commit.error");
+                result= createEditModelAndView(lessor, "lessor.commit.error");
             }
         }
         return result;
     }
      
     @RequestMapping(value="/edit", method=RequestMethod.POST, params="delete")
-    public ModelAndView delete(Invoice invoice){
+    public ModelAndView delete(Lessor lessor){
         ModelAndView result;
         try{
-            invoiceService.delete(invoice);
+            lessorService.delete(lessor);
             result=new ModelAndView("redirect:list.do");
         }catch(Throwable oops){
-            result= createEditModelAndView(invoice, "invoice.commit.error");
+            result= createEditModelAndView(lessor, "lessor.commit.error");
         }
          
         return result;   
@@ -109,19 +109,19 @@ public class InvoiceController extends AbstractController {
 	
 	// Ancillary methods ------------------------------------------------
     
-    protected ModelAndView createEditModelAndView(Invoice invoice){
+    protected ModelAndView createEditModelAndView(Lessor lessor){
         ModelAndView result;
          
-        result= createEditModelAndView(invoice, null);
+        result= createEditModelAndView(lessor, null);
          
         return result;
     }
      
-    protected ModelAndView createEditModelAndView(Invoice invoice, String message){
+    protected ModelAndView createEditModelAndView(Lessor lessor, String message){
     	ModelAndView result;
     	
-        result= new ModelAndView("invoice/edit");
-        result.addObject("invoice", invoice);
+        result= new ModelAndView("lessor/edit");
+        result.addObject("lessor", lessor);
         result.addObject("message", message);
          
         return result;

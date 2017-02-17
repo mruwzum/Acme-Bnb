@@ -8,9 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
-import domain.Actor;
-import domain.Administrator;
-import repositories.ActorRepository;
+import domain.BookRequest;
+import repositories.BookRequestRepository;
 import security.LoginService;
 import security.UserAccount;
 
@@ -54,6 +53,12 @@ public class BookRequestService {
 	public BookRequest save(BookRequest bookRequest) {
 		Assert.notNull(bookRequest);
 		return bookRequestRepository.save(bookRequest);
+	}
+	
+	public void delete(BookRequest bookRequest) {
+		Assert.notNull(bookRequest);
+		Assert.isTrue(bookRequestRepository.exists(bookRequest.getId()));
+		bookRequestRepository.delete(bookRequest);
 	}
 
 	// Other business methods -----------------------

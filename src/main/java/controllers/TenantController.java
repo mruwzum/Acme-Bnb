@@ -1,4 +1,4 @@
-package controllers.administrator;
+package controllers;
 
 
 import java.util.Collection;
@@ -14,36 +14,36 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import services.AuditService;
+import services.TenantService;
 import controllers.AbstractController;
-import domain.Audit;
+import domain.Tenant;
 
 @Controller
-@RequestMapping("/audit")
-public class AuditController extends AbstractController {
+@RequestMapping("/tenant")
+public class TenantController extends AbstractController {
 	
 	//Services ----------------------------------------------------------------
 	
 	@Autowired
-	private AuditService auditService;
+	private TenantService tenantService;
 	
 	//Constructors----------------------------------------------
 	
-	public AuditController(){
+	public TenantController(){
 		super();
 	}
 	
 
 	@RequestMapping( value="/list", method = RequestMethod.GET)
-	public ModelAndView auditList() {
+	public ModelAndView tenantList() {
 		
 		ModelAndView result;
-		Collection<Audit> audits;
+		Collection<Tenant> tenants;
 		
-		audits = auditService.findAllAuditsGroupByCategory();
-		result = new ModelAndView("audit/list");
-		result.addObject("audits", audits);
-		result.addObject("requestURI","audit/administrator/list.do");
+		tenants = tenantService.findAll();
+		result = new ModelAndView("tenant/list");
+		result.addObject("tenants", tenants);
+		result.addObject("requestURI","tenant/list.do");
 		
 		return result;
 	}
@@ -56,8 +56,8 @@ public class AuditController extends AbstractController {
 		
 		ModelAndView result;
 		
-		Audit audit = auditService.create();
-		result = createEditModelAndView(audit);
+		Tenant tenant = tenantService.create();
+		result = createEditModelAndView(tenant);
 		
 		return result;
 
@@ -66,42 +66,42 @@ public class AuditController extends AbstractController {
 	 // Edition ---------------------------------------------------------
     
     @RequestMapping(value="/edit", method=RequestMethod.GET)
-    public ModelAndView edit(@RequestParam int auditId){
+    public ModelAndView edit(@RequestParam int tenantId){
         ModelAndView result;
-        Audit audit;
+        Tenant tenant;
          
-        audit= auditService.findOne(auditId);
-        Assert.notNull(audit);
-        result= createEditModelAndView(audit);
+        tenant= tenantService.findOne(tenantId);
+        Assert.notNull(tenant);
+        result= createEditModelAndView(tenant);
          
         return result;
     }
      
     @RequestMapping(value="/edit", method=RequestMethod.POST, params="save")
-    public ModelAndView save(@Valid Audit audit, BindingResult binding){
+    public ModelAndView save(@Valid Tenant tenant, BindingResult binding){
         ModelAndView result;
          
         if(binding.hasErrors()){
-            result= createEditModelAndView(audit);
+            result= createEditModelAndView(tenant);
         }else{
             try{
-                auditService.save(audit);
+                tenantService.save(tenant);
                 result= new ModelAndView("redirect:list.do");
             }catch(Throwable oops){
-                result= createEditModelAndView(audit, "audit.commit.error");
+                result= createEditModelAndView(tenant, "tenant.commit.error");
             }
         }
         return result;
     }
      
     @RequestMapping(value="/edit", method=RequestMethod.POST, params="delete")
-    public ModelAndView delete(Audit audit){
+    public ModelAndView delete(Tenant tenant){
         ModelAndView result;
         try{
-            auditService.delete(audit);
+            tenantService.delete(tenant);
             result=new ModelAndView("redirect:list.do");
         }catch(Throwable oops){
-            result= createEditModelAndView(audit, "audit.commit.error");
+            result= createEditModelAndView(tenant, "tenant.commit.error");
         }
          
         return result;   
@@ -109,19 +109,19 @@ public class AuditController extends AbstractController {
 	
 	// Ancillary methods ------------------------------------------------
     
-    protected ModelAndView createEditModelAndView(Audit audit){
+    protected ModelAndView createEditModelAndView(Tenant tenant){
         ModelAndView result;
          
-        result= createEditModelAndView(audit, null);
+        result= createEditModelAndView(tenant, null);
          
         return result;
     }
      
-    protected ModelAndView createEditModelAndView(Audit audit, String message){
+    protected ModelAndView createEditModelAndView(Tenant tenant, String message){
     	ModelAndView result;
     	
-        result= new ModelAndView("audit/edit");
-        result.addObject("audit", audit);
+        result= new ModelAndView("tenant/edit");
+        result.addObject("tenant", tenant);
         result.addObject("message", message);
          
         return result;

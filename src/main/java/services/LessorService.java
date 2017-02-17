@@ -8,9 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
-import domain.Actor;
-import domain.Administrator;
-import repositories.ActorRepository;
+import domain.Lessor;
+import repositories.LessorRepository;
 import security.LoginService;
 import security.UserAccount;
 
@@ -54,6 +53,12 @@ public class LessorService {
 	public Lessor save(Lessor lessor) {
 		Assert.notNull(lessor);
 		return lessorRepository.save(lessor);
+	}
+	
+	public void delete(Lessor lessor) {
+		Assert.notNull(lessor);
+		Assert.isTrue(lessorRepository.exists(lessor.getId()));
+		lessorRepository.delete(lessor);
 	}
 
 	// Other business methods -----------------------

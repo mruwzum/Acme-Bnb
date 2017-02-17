@@ -1,4 +1,4 @@
-package controllers.administrator;
+package controllers;
 
 
 import java.util.Collection;
@@ -14,36 +14,36 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import services.ActorService;
+import services.AuditorService;
 import controllers.AbstractController;
-import domain.Actor;
+import domain.Auditor;
 
 @Controller
-@RequestMapping("/actor")
-public class ActorController extends AbstractController {
+@RequestMapping("/auditor")
+public class AuditorController extends AbstractController {
 	
 	//Services ----------------------------------------------------------------
 	
 	@Autowired
-	private ActorService actorService;
+	private AuditorService auditorService;
 	
 	//Constructors----------------------------------------------
 	
-	public ActorController(){
+	public AuditorController(){
 		super();
 	}
 	
 
 	@RequestMapping( value="/list", method = RequestMethod.GET)
-	public ModelAndView actorList() {
+	public ModelAndView auditorList() {
 		
 		ModelAndView result;
-		Collection<Actor> actors;
+		Collection<Auditor> auditors;
 		
-		actors = actorService.findAllActorsGroupByCategory();
-		result = new ModelAndView("actor/list");
-		result.addObject("actors", actors);
-		result.addObject("requestURI","actor/administrator/list.do");
+		auditors = auditorService.findAll();
+		result = new ModelAndView("auditor/list");
+		result.addObject("auditors", auditors);
+		result.addObject("requestURI","auditor/list.do");
 		
 		return result;
 	}
@@ -56,8 +56,8 @@ public class ActorController extends AbstractController {
 		
 		ModelAndView result;
 		
-		Actor actor = actorService.create();
-		result = createEditModelAndView(actor);
+		Auditor auditor = auditorService.create();
+		result = createEditModelAndView(auditor);
 		
 		return result;
 
@@ -66,42 +66,42 @@ public class ActorController extends AbstractController {
 	 // Edition ---------------------------------------------------------
     
     @RequestMapping(value="/edit", method=RequestMethod.GET)
-    public ModelAndView edit(@RequestParam int actorId){
+    public ModelAndView edit(@RequestParam int auditorId){
         ModelAndView result;
-        Actor actor;
+        Auditor auditor;
          
-        actor= actorService.findOne(actorId);
-        Assert.notNull(actor);
-        result= createEditModelAndView(actor);
+        auditor= auditorService.findOne(auditorId);
+        Assert.notNull(auditor);
+        result= createEditModelAndView(auditor);
          
         return result;
     }
      
     @RequestMapping(value="/edit", method=RequestMethod.POST, params="save")
-    public ModelAndView save(@Valid Actor actor, BindingResult binding){
+    public ModelAndView save(@Valid Auditor auditor, BindingResult binding){
         ModelAndView result;
          
         if(binding.hasErrors()){
-            result= createEditModelAndView(actor);
+            result= createEditModelAndView(auditor);
         }else{
             try{
-                actorService.save(actor);
+                auditorService.save(auditor);
                 result= new ModelAndView("redirect:list.do");
             }catch(Throwable oops){
-                result= createEditModelAndView(actor, "actor.commit.error");
+                result= createEditModelAndView(auditor, "auditor.commit.error");
             }
         }
         return result;
     }
      
     @RequestMapping(value="/edit", method=RequestMethod.POST, params="delete")
-    public ModelAndView delete(Actor actor){
+    public ModelAndView delete(Auditor auditor){
         ModelAndView result;
         try{
-            actorService.delete(actor);
+            auditorService.delete(auditor);
             result=new ModelAndView("redirect:list.do");
         }catch(Throwable oops){
-            result= createEditModelAndView(actor, "actor.commit.error");
+            result= createEditModelAndView(auditor, "auditor.commit.error");
         }
          
         return result;   
@@ -109,19 +109,19 @@ public class ActorController extends AbstractController {
 	
 	// Ancillary methods ------------------------------------------------
     
-    protected ModelAndView createEditModelAndView(Actor actor){
+    protected ModelAndView createEditModelAndView(Auditor auditor){
         ModelAndView result;
          
-        result= createEditModelAndView(actor, null);
+        result= createEditModelAndView(auditor, null);
          
         return result;
     }
      
-    protected ModelAndView createEditModelAndView(Actor actor, String message){
+    protected ModelAndView createEditModelAndView(Auditor auditor, String message){
     	ModelAndView result;
     	
-        result= new ModelAndView("actor/edit");
-        result.addObject("actor", actor);
+        result= new ModelAndView("auditor/edit");
+        result.addObject("auditor", auditor);
         result.addObject("message", message);
          
         return result;

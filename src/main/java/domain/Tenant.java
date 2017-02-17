@@ -1,8 +1,16 @@
 package domain;
 
+import java.util.Collection;
+
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import javax.validation.Valid;
+import javax.persistence.OneToMany;
+import javax.validation.Valid;
+import javax.persistence.OneToMany;
+import javax.validation.Valid;
 
 @Entity
 @Access(AccessType.PROPERTY)
@@ -11,9 +19,9 @@ public class Tenant extends Actor {
 	// Attributes ------------------------------------------------------------
 	
 	// Relationships ---------------------------------------------------------
-	private BookRequest bookRequest;
-	private Invoice invoice;
-	private Finder finder;
+	private Collection<BookRequest> bookRequests;
+	private Collection<Invoice> invoices;
+	private Collection<Finder> finders;
 	
 	// Constructors -----------------------------------------------------------
 	public Tenant() {
@@ -23,35 +31,36 @@ public class Tenant extends Actor {
 	
 	@OneToMany(mappedBy = "tenant")
 	@Valid
-	public Collection<Bookrequest>getBookrequest() {
-		return bookrequest;
+	public Collection<BookRequest> getBookRequests() {
+		return bookRequests;
 	}
 
-	public void setBookrequest(Bookrequest bookrequest) {
-		this.bookrequest = bookrequest;
+	public void setBookRequests(BookRequest bookRequest) {
+		this.bookRequests = bookRequests;
 	}
 	
 	
 	@OneToMany(mappedBy = "tenant")
 	@Valid
-	public Collection<Invoice>getInvoice() {
-		return invoice;
+	public Collection<Invoice> getInvoices() {
+		return invoices;
 	}
 
-	public void setInvoice(Invoice invoice) {
-		this.invoice = invoice;
+	public void setInvoices(Invoice invoice) {
+		this.invoices = invoices;
 	}
 	
 	
-	@OneToMany(mappedBy = "tenant")
+	@OneToMany
 	@Valid
-	public Collection<Finder>getFinder() {
-		return finder;
+	public Collection<Finder> getFinders() {
+		return finders;
 	}
 
-	public void setFinder(Finder finder) {
-		this.finder = finder;
+	public void setFinders(Finder finder) {
+		this.finders = finders;
 	}
+	
 	
 	
 }

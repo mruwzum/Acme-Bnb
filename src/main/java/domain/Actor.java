@@ -1,11 +1,16 @@
 package domain;
 
+import java.util.Collection;
+
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
-import import javax.validation.constraints.NotBlank;;
-import import javax.validation.constraints.Email;
-import import javax.validation.constraints.URL;
+import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.URL;
+import javax.persistence.OneToMany;
+import javax.validation.Valid;
+import javax.validation.constraints.Pattern;
 
 @Entity
 @Access(AccessType.PROPERTY)
@@ -19,7 +24,7 @@ public class Actor extends DomainEntity {
 	private String picture;
 	
 	// Relationships ---------------------------------------------------------
-	private SocialIdentity socialIdentity;
+	private Collection<SocialIdentity> socialIdentitys;
 	
 	// Constructors -----------------------------------------------------------
 	public Actor() {
@@ -27,12 +32,7 @@ public class Actor extends DomainEntity {
 	}
 	
 	
-	@NotBlank
-	@Notblank
-	@Email
-	@Pattern{&quot;(\
-	@URL
-	public getName() {
+	@NotBlank	public String getName() {
 		return name;
 	}
 
@@ -41,12 +41,7 @@ public class Actor extends DomainEntity {
 	}
 	
 	
-	@NotBlank
-	@Notblank
-	@Email
-	@Pattern{&quot;(\
-	@URL
-	public getSurname() {
+	@NotBlank	public String getSurname() {
 		return surname;
 	}
 
@@ -55,12 +50,7 @@ public class Actor extends DomainEntity {
 	}
 	
 	
-	@NotBlank
-	@Notblank
-	@Email
-	@Pattern{&quot;(\
-	@URL
-	public getEmail() {
+	@Email	@NotBlank	public String getEmail() {
 		return email;
 	}
 
@@ -69,12 +59,8 @@ public class Actor extends DomainEntity {
 	}
 	
 	
-	@NotBlank
-	@Notblank
-	@Email
-	@Pattern{&quot;(\
-	@URL
-	public getPhone() {
+	@Pattern(regexp = "(\\+\\d{1,3}[ -.])?(\\(?\\d+\\)?[ -.]?)+")
+	public String getPhone() {
 		return phone;
 	}
 
@@ -83,12 +69,7 @@ public class Actor extends DomainEntity {
 	}
 	
 	
-	@NotBlank
-	@Notblank
-	@Email
-	@Pattern{&quot;(\
-	@URL
-	public getPicture() {
+	@URL	public String getPicture() {
 		return picture;
 	}
 
@@ -97,15 +78,16 @@ public class Actor extends DomainEntity {
 	}
 	
 	
-	@OneToMany(mappedBy = "actor")
+	@OneToMany
 	@Valid
-	public Collection<Socialidentity>getSocialidentity() {
-		return socialidentity;
+	public Collection<SocialIdentity> getSocialIdentitys() {
+		return socialIdentitys;
 	}
 
-	public void setSocialidentity(Socialidentity socialidentity) {
-		this.socialidentity = socialidentity;
+	public void setSocialIdentitys(SocialIdentity socialIdentity) {
+		this.socialIdentitys = socialIdentitys;
 	}
+	
 	
 	
 }

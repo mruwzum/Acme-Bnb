@@ -1,4 +1,4 @@
-package controllers.administrator;
+package controllers;
 
 
 import java.util.Collection;
@@ -14,36 +14,36 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import services.LessorService;
+import services.SocialIdentityService;
 import controllers.AbstractController;
-import domain.Lessor;
+import domain.SocialIdentity;
 
 @Controller
-@RequestMapping("/lessor")
-public class LessorController extends AbstractController {
+@RequestMapping("/socialIdentity")
+public class SocialIdentityController extends AbstractController {
 	
 	//Services ----------------------------------------------------------------
 	
 	@Autowired
-	private LessorService lessorService;
+	private SocialIdentityService socialIdentityService;
 	
 	//Constructors----------------------------------------------
 	
-	public LessorController(){
+	public SocialIdentityController(){
 		super();
 	}
 	
 
 	@RequestMapping( value="/list", method = RequestMethod.GET)
-	public ModelAndView lessorList() {
+	public ModelAndView socialIdentityList() {
 		
 		ModelAndView result;
-		Collection<Lessor> lessors;
+		Collection<SocialIdentity> socialIdentitys;
 		
-		lessors = lessorService.findAllLessorsGroupByCategory();
-		result = new ModelAndView("lessor/list");
-		result.addObject("lessors", lessors);
-		result.addObject("requestURI","lessor/administrator/list.do");
+		socialIdentitys = socialIdentityService.findAll();
+		result = new ModelAndView("socialIdentity/list");
+		result.addObject("socialIdentitys", socialIdentitys);
+		result.addObject("requestURI","socialIdentity/list.do");
 		
 		return result;
 	}
@@ -56,8 +56,8 @@ public class LessorController extends AbstractController {
 		
 		ModelAndView result;
 		
-		Lessor lessor = lessorService.create();
-		result = createEditModelAndView(lessor);
+		SocialIdentity socialIdentity = socialIdentityService.create();
+		result = createEditModelAndView(socialIdentity);
 		
 		return result;
 
@@ -66,42 +66,42 @@ public class LessorController extends AbstractController {
 	 // Edition ---------------------------------------------------------
     
     @RequestMapping(value="/edit", method=RequestMethod.GET)
-    public ModelAndView edit(@RequestParam int lessorId){
+    public ModelAndView edit(@RequestParam int socialIdentityId){
         ModelAndView result;
-        Lessor lessor;
+        SocialIdentity socialIdentity;
          
-        lessor= lessorService.findOne(lessorId);
-        Assert.notNull(lessor);
-        result= createEditModelAndView(lessor);
+        socialIdentity= socialIdentityService.findOne(socialIdentityId);
+        Assert.notNull(socialIdentity);
+        result= createEditModelAndView(socialIdentity);
          
         return result;
     }
      
     @RequestMapping(value="/edit", method=RequestMethod.POST, params="save")
-    public ModelAndView save(@Valid Lessor lessor, BindingResult binding){
+    public ModelAndView save(@Valid SocialIdentity socialIdentity, BindingResult binding){
         ModelAndView result;
          
         if(binding.hasErrors()){
-            result= createEditModelAndView(lessor);
+            result= createEditModelAndView(socialIdentity);
         }else{
             try{
-                lessorService.save(lessor);
+                socialIdentityService.save(socialIdentity);
                 result= new ModelAndView("redirect:list.do");
             }catch(Throwable oops){
-                result= createEditModelAndView(lessor, "lessor.commit.error");
+                result= createEditModelAndView(socialIdentity, "socialIdentity.commit.error");
             }
         }
         return result;
     }
      
     @RequestMapping(value="/edit", method=RequestMethod.POST, params="delete")
-    public ModelAndView delete(Lessor lessor){
+    public ModelAndView delete(SocialIdentity socialIdentity){
         ModelAndView result;
         try{
-            lessorService.delete(lessor);
+            socialIdentityService.delete(socialIdentity);
             result=new ModelAndView("redirect:list.do");
         }catch(Throwable oops){
-            result= createEditModelAndView(lessor, "lessor.commit.error");
+            result= createEditModelAndView(socialIdentity, "socialIdentity.commit.error");
         }
          
         return result;   
@@ -109,19 +109,19 @@ public class LessorController extends AbstractController {
 	
 	// Ancillary methods ------------------------------------------------
     
-    protected ModelAndView createEditModelAndView(Lessor lessor){
+    protected ModelAndView createEditModelAndView(SocialIdentity socialIdentity){
         ModelAndView result;
          
-        result= createEditModelAndView(lessor, null);
+        result= createEditModelAndView(socialIdentity, null);
          
         return result;
     }
      
-    protected ModelAndView createEditModelAndView(Lessor lessor, String message){
+    protected ModelAndView createEditModelAndView(SocialIdentity socialIdentity, String message){
     	ModelAndView result;
     	
-        result= new ModelAndView("lessor/edit");
-        result.addObject("lessor", lessor);
+        result= new ModelAndView("socialIdentity/edit");
+        result.addObject("socialIdentity", socialIdentity);
         result.addObject("message", message);
          
         return result;

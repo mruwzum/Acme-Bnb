@@ -1,9 +1,19 @@
 package domain;
 
+import java.util.Collection;
+
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
-import import javax.validation.constraints.NotNull;
+import org.hibernate.validator.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Digits;
+import javax.persistence.ManyToOne;
+import javax.validation.Valid;
+import javax.persistence.OneToMany;
+import javax.validation.Valid;
+import javax.persistence.OneToMany;
+import javax.validation.Valid;
 
 @Entity
 @Access(AccessType.PROPERTY)
@@ -22,8 +32,8 @@ public class Property extends DomainEntity {
 	
 	// Relationships ---------------------------------------------------------
 	private Lessor lessor;
-	private Audit audit;
-	private BookRequest bookRequest;
+	private Collection<Audit> audits;
+	private Collection<BookRequest> bookRequests;
 	
 	// Constructors -----------------------------------------------------------
 	public Property() {
@@ -31,9 +41,7 @@ public class Property extends DomainEntity {
 	}
 	
 	
-	@Notblank
-	@NotNull
-	public  getName() {
+	@NotBlank	public String getName() {
 		return name;
 	}
 
@@ -42,18 +50,16 @@ public class Property extends DomainEntity {
 	}
 	
 	
-	@Notblank
-	@NotNull
-	public  getRate() {
+	@NotNull	@Digits(fraction=2)	public double getRate() {
 		return rate;
 	}
 
-	public void setRate(Double rate) {
+	public void setRate(double rate) {
 		this.rate = rate;
 	}
 	
 	
-	public  getDescription() {
+	public String getDescription() {
 		return description;
 	}
 
@@ -62,9 +68,7 @@ public class Property extends DomainEntity {
 	}
 	
 	
-	@Notblank
-	@NotNull
-	public  getAddress() {
+	@NotBlank	public String getAddress() {
 		return address;
 	}
 
@@ -73,9 +77,7 @@ public class Property extends DomainEntity {
 	}
 	
 	
-	@Notblank
-	@NotNull
-	public  getProvince() {
+	@NotBlank	public String getProvince() {
 		return province;
 	}
 
@@ -84,9 +86,7 @@ public class Property extends DomainEntity {
 	}
 	
 	
-	@Notblank
-	@NotNull
-	public  getCountry() {
+	@NotBlank	public String getCountry() {
 		return country;
 	}
 
@@ -95,9 +95,7 @@ public class Property extends DomainEntity {
 	}
 	
 	
-	@Notblank
-	@NotNull
-	public  getState() {
+	@NotBlank	public String getState() {
 		return state;
 	}
 
@@ -106,20 +104,16 @@ public class Property extends DomainEntity {
 	}
 	
 	
-	@Notblank
-	@NotNull
-	public  getCapacity() {
+	@NotNull	public int getCapacity() {
 		return capacity;
 	}
 
-	public void setCapacity(Int capacity) {
+	public void setCapacity(int capacity) {
 		this.capacity = capacity;
 	}
 	
 	
-	@Notblank
-	@NotNull
-	public  getCity() {
+	@NotBlank	public String getCity() {
 		return city;
 	}
 
@@ -128,8 +122,7 @@ public class Property extends DomainEntity {
 	}
 	
 	
-	@ManyToOne(mappedBy = "property")
-	@Valid
+	@ManyToOne	@Valid
 	public Lessor getLessor() {
 		return lessor;
 	}
@@ -141,24 +134,25 @@ public class Property extends DomainEntity {
 	
 	@OneToMany(mappedBy = "property", optional = false)
 	@Valid
-	public Collection<Audit> getAudit() {
-		return audit;
+	public Collection<Audit> getAudits() {
+		return audits;
 	}
 
-	public void setAudit(Audit audit) {
-		this.audit = audit;
+	public void setAudits(Audit audit) {
+		this.audits = audits;
 	}
 	
 	
-	@OneToMany(mappedBy = "property", optional = false)
+	@OneToMany(mappedBy = "property")
 	@Valid
-	public Collection<BookRequest> getBookRequest() {
-		return bookRequest;
+	public Collection<BookRequest> getBookRequests() {
+		return bookRequests;
 	}
 
-	public void setBookRequest(BookRequest bookRequest) {
-		this.bookRequest = bookRequest;
+	public void setBookRequests(BookRequest bookRequest) {
+		this.bookRequests = bookRequests;
 	}
+	
 	
 	
 }

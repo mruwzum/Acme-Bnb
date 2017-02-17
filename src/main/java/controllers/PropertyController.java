@@ -1,4 +1,4 @@
-package controllers.administrator;
+package controllers;
 
 
 import java.util.Collection;
@@ -14,35 +14,36 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import services.StringService;
+import services.PropertyService;
 import controllers.AbstractController;
+import domain.Property;
 
 @Controller
-@RequestMapping("/string")
-public class StringController extends AbstractController {
+@RequestMapping("/property")
+public class PropertyController extends AbstractController {
 	
 	//Services ----------------------------------------------------------------
 	
 	@Autowired
-	private StringService stringService;
+	private PropertyService propertyService;
 	
 	//Constructors----------------------------------------------
 	
-	public StringController(){
+	public PropertyController(){
 		super();
 	}
 	
 
 	@RequestMapping( value="/list", method = RequestMethod.GET)
-	public ModelAndView stringList() {
+	public ModelAndView propertyList() {
 		
 		ModelAndView result;
-		Collection<String> strings;
+		Collection<Property> propertys;
 		
-		strings = stringService.findAllStringsGroupByCategory();
-		result = new ModelAndView("string/list");
-		result.addObject("strings", strings);
-		result.addObject("requestURI","string/administrator/list.do");
+		propertys = propertyService.findAll();
+		result = new ModelAndView("property/list");
+		result.addObject("propertys", propertys);
+		result.addObject("requestURI","property/list.do");
 		
 		return result;
 	}
@@ -55,8 +56,8 @@ public class StringController extends AbstractController {
 		
 		ModelAndView result;
 		
-		String string = stringService.create();
-		result = createEditModelAndView(string);
+		Property property = propertyService.create();
+		result = createEditModelAndView(property);
 		
 		return result;
 
@@ -65,42 +66,42 @@ public class StringController extends AbstractController {
 	 // Edition ---------------------------------------------------------
     
     @RequestMapping(value="/edit", method=RequestMethod.GET)
-    public ModelAndView edit(@RequestParam int stringId){
+    public ModelAndView edit(@RequestParam int propertyId){
         ModelAndView result;
-        String string;
+        Property property;
          
-        string= stringService.findOne(stringId);
-        Assert.notNull(string);
-        result= createEditModelAndView(string);
+        property= propertyService.findOne(propertyId);
+        Assert.notNull(property);
+        result= createEditModelAndView(property);
          
         return result;
     }
      
     @RequestMapping(value="/edit", method=RequestMethod.POST, params="save")
-    public ModelAndView save(@Valid String string, BindingResult binding){
+    public ModelAndView save(@Valid Property property, BindingResult binding){
         ModelAndView result;
          
         if(binding.hasErrors()){
-            result= createEditModelAndView(string);
+            result= createEditModelAndView(property);
         }else{
             try{
-                stringService.save(string);
+                propertyService.save(property);
                 result= new ModelAndView("redirect:list.do");
             }catch(Throwable oops){
-                result= createEditModelAndView(string, "string.commit.error");
+                result= createEditModelAndView(property, "property.commit.error");
             }
         }
         return result;
     }
      
     @RequestMapping(value="/edit", method=RequestMethod.POST, params="delete")
-    public ModelAndView delete(String string){
+    public ModelAndView delete(Property property){
         ModelAndView result;
         try{
-            stringService.delete(string);
+            propertyService.delete(property);
             result=new ModelAndView("redirect:list.do");
         }catch(Throwable oops){
-            result= createEditModelAndView(string, "string.commit.error");
+            result= createEditModelAndView(property, "property.commit.error");
         }
          
         return result;   
@@ -108,19 +109,19 @@ public class StringController extends AbstractController {
 	
 	// Ancillary methods ------------------------------------------------
     
-    protected ModelAndView createEditModelAndView(String string){
+    protected ModelAndView createEditModelAndView(Property property){
         ModelAndView result;
          
-        result= createEditModelAndView(string, null);
+        result= createEditModelAndView(property, null);
          
         return result;
     }
      
-    protected ModelAndView createEditModelAndView(String string, String message){
+    protected ModelAndView createEditModelAndView(Property property, String message){
     	ModelAndView result;
     	
-        result= new ModelAndView("string/edit");
-        result.addObject("string", string);
+        result= new ModelAndView("property/edit");
+        result.addObject("property", property);
         result.addObject("message", message);
          
         return result;

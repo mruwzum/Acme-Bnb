@@ -1,8 +1,13 @@
 package domain;
 
+import java.util.Collection;
+
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
+import org.hibernate.validator.constraints.NotBlank;
+import javax.persistence.OneToMany;
+import javax.validation.Valid;
 
 @Entity
 @Access(AccessType.PROPERTY)
@@ -12,7 +17,7 @@ public class Auditor extends Actor {
 	private String nameOfCompany;
 	
 	// Relationships ---------------------------------------------------------
-	private Audit audit;
+	private Collection<Audit> audits;
 	
 	// Constructors -----------------------------------------------------------
 	public Auditor() {
@@ -20,25 +25,25 @@ public class Auditor extends Actor {
 	}
 	
 	
-	@Notblank
-	public getNameofcompany() {
-		return nameofcompany;
+	@NotBlank	public String getNameOfCompany() {
+		return nameOfCompany;
 	}
 
-	public void setNameofcompany(String nameofcompany) {
-		this.nameofcompany = nameofcompany;
+	public void setNameOfCompany(String nameOfCompany) {
+		this.nameOfCompany = nameOfCompany;
 	}
 	
 	
-	@OneToMany(mappedBy = "auditor")
+	@OneToMany
 	@Valid
-	public Collection<Audit>getAudit() {
-		return audit;
+	public Collection<Audit> getAudits() {
+		return audits;
 	}
 
-	public void setAudit(Audit audit) {
-		this.audit = audit;
+	public void setAudits(Audit audit) {
+		this.audits = audits;
 	}
+	
 	
 	
 }

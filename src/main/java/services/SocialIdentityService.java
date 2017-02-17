@@ -8,9 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
-import domain.Actor;
-import domain.Administrator;
-import repositories.ActorRepository;
+import domain.SocialIdentity;
+import repositories.SocialIdentityRepository;
 import security.LoginService;
 import security.UserAccount;
 
@@ -54,6 +53,12 @@ public class SocialIdentityService {
 	public SocialIdentity save(SocialIdentity socialIdentity) {
 		Assert.notNull(socialIdentity);
 		return socialIdentityRepository.save(socialIdentity);
+	}
+	
+	public void delete(SocialIdentity socialIdentity) {
+		Assert.notNull(socialIdentity);
+		Assert.isTrue(socialIdentityRepository.exists(socialIdentity.getId()));
+		socialIdentityRepository.delete(socialIdentity);
 	}
 
 	// Other business methods -----------------------

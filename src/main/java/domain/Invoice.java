@@ -3,7 +3,10 @@ package domain;
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
-import import javax.validation.constraints.CreditCardNumber;
+import javax.validation.constraints.Digits;
+import org.hibernate.validator.constraints.CreditCardNumber;
+import javax.persistence.ManyToOne;
+import javax.validation.Valid;
 
 @Entity
 @Access(AccessType.PROPERTY)
@@ -36,11 +39,11 @@ public class Invoice extends DomainEntity {
 	
 	
 	public int getVATNumber() {
-		return vATNumber;
+		return VATNumber;
 	}
 
-	public void setVATNumber(Int vATNumber) {
-		this.vATNumber = vATNumber;
+	public void setVATNumber(int VATNumber) {
+		this.VATNumber = VATNumber;
 	}
 	
 	
@@ -62,20 +65,16 @@ public class Invoice extends DomainEntity {
 	}
 	
 	
-	@Digits(integer=9, fraction=2)
-	@CreditCardNumber
-	public double getTotalAmount() {
+	@Digits(integer=9, fraction=2)	public double getTotalAmount() {
 		return totalAmount;
 	}
 
-	public void setTotalAmount(Double totalAmount) {
+	public void setTotalAmount(double totalAmount) {
 		this.totalAmount = totalAmount;
 	}
 	
 	
-	@Digits(integer=9, fraction=2)
-	@CreditCardNumber
-	public String getCreditCard() {
+	@CreditCardNumber	public String getCreditCard() {
 		return creditCard;
 	}
 
@@ -84,8 +83,7 @@ public class Invoice extends DomainEntity {
 	}
 	
 	
-	@ManyToOne(mappedBy = "Invoice")
-	@Valid
+	@ManyToOne	@Valid
 	public Tenant getTenant() {
 		return tenant;
 	}
@@ -93,6 +91,7 @@ public class Invoice extends DomainEntity {
 	public void setTenant(Tenant tenant) {
 		this.tenant = tenant;
 	}
+	
 	
 	
 }

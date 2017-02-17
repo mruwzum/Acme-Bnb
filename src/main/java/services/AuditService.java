@@ -4,14 +4,11 @@ import java.util.Collection;
 
 import javax.transaction.Transactional;
 
-import domain.Audit;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
-import domain.Actor;
-import domain.Administrator;
-import repositories.ActorRepository;
+import domain.Audit;
 import repositories.AuditRepository;
 import security.LoginService;
 import security.UserAccount;
@@ -56,6 +53,12 @@ public class AuditService {
 	public Audit save(Audit audit) {
 		Assert.notNull(audit);
 		return auditRepository.save(audit);
+	}
+	
+	public void delete(Audit audit) {
+		Assert.notNull(audit);
+		Assert.isTrue(auditRepository.exists(audit.getId()));
+		auditRepository.delete(audit);
 	}
 
 	// Other business methods -----------------------

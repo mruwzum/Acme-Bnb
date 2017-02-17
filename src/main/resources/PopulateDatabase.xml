@@ -482,16 +482,6 @@
 			
 			<!-- /SocialIdentity-->
 			
-			<!-- String -->
-				<bean id="string1" class="domain.String">
-				</bean>
-				<bean id="string2" class="domain.String">
-				</bean>
-				<bean id="string3" class="domain.String">
-				</bean>
-			
-			<!-- /String-->
-			
 	
 	
 </beans>

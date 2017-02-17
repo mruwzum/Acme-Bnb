@@ -8,9 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
-import domain.Actor;
-import domain.Administrator;
-import repositories.ActorRepository;
+import domain.Date;
+import repositories.DateRepository;
 import security.LoginService;
 import security.UserAccount;
 
@@ -54,6 +53,12 @@ public class DateService {
 	public Date save(Date date) {
 		Assert.notNull(date);
 		return dateRepository.save(date);
+	}
+	
+	public void delete(Date date) {
+		Assert.notNull(date);
+		Assert.isTrue(dateRepository.exists(date.getId()));
+		dateRepository.delete(date);
 	}
 
 	// Other business methods -----------------------

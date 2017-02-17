@@ -3,7 +3,8 @@ package domain;
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
-import import javax.validation.constraints.URL;
+import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.URL;
 
 @Entity
 @Access(AccessType.PROPERTY)
@@ -22,9 +23,7 @@ public class SocialIdentity extends DomainEntity {
 	}
 	
 	
-	@Notblank
-	@Url
-	public getNick() {
+	@NotBlank	public String getNick() {
 		return nick;
 	}
 
@@ -33,26 +32,23 @@ public class SocialIdentity extends DomainEntity {
 	}
 	
 	
-	@Notblank
-	@Url
-	public getSocialnetwork() {
-		return socialnetwork;
+	@NotBlank	public String getSocialNetwork() {
+		return socialNetwork;
 	}
 
-	public void setSocialnetwork(String socialnetwork) {
-		this.socialnetwork = socialnetwork;
+	public void setSocialNetwork(String socialNetwork) {
+		this.socialNetwork = socialNetwork;
 	}
 	
 	
-	@Notblank
-	@Url
-	public getUrl() {
-		return url;
+	@URL	@NotBlank	public String getURL() {
+		return URL;
 	}
 
-	public void setUrl(String url) {
-		this.url = url;
+	public void setURL(String URL) {
+		this.URL = URL;
 	}
+	
 	
 	
 }
