@@ -32,7 +32,6 @@ public class Invoice extends DomainEntity {
 	public Date getIssuedMoment() {
 		return issuedMoment;
 	}
-
 	public void setIssuedMoment(Date issuedMoment) {
 		this.issuedMoment = issuedMoment;
 	}
@@ -41,7 +40,6 @@ public class Invoice extends DomainEntity {
 	public int getVATNumber() {
 		return VATNumber;
 	}
-
 	public void setVATNumber(int VATNumber) {
 		this.VATNumber = VATNumber;
 	}
@@ -50,7 +48,6 @@ public class Invoice extends DomainEntity {
 	public String getTenantInfo() {
 		return tenantInfo;
 	}
-
 	public void setTenantInfo(String tenantInfo) {
 		this.tenantInfo = tenantInfo;
 	}
@@ -59,39 +56,36 @@ public class Invoice extends DomainEntity {
 	public String getDetails() {
 		return details;
 	}
-
 	public void setDetails(String details) {
 		this.details = details;
 	}
 	
 	
-	@Digits(integer=9, fraction=2)	public double getTotalAmount() {
+	@Digits(integer=9, fraction=2)	
+	public double getTotalAmount() {
 		return totalAmount;
 	}
-
 	public void setTotalAmount(double totalAmount) {
 		this.totalAmount = totalAmount;
 	}
 	
 	
-	@CreditCardNumber	public String getCreditCard() {
+	@CreditCardNumber	
+	public String getCreditCard() {
 		return creditCard;
 	}
-
 	public void setCreditCard(String creditCard) {
 		this.creditCard = creditCard;
 	}
 	
 	
-	@ManyToOne	@Valid
+	@ManyToOne	
+	@Valid
 	public Tenant getTenant() {
 		return tenant;
 	}
-
 	public void setTenant(Tenant tenant) {
 		this.tenant = tenant;
 	}
-	
-	
 	
 }

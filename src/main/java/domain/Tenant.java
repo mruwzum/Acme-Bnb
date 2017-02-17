@@ -34,7 +34,6 @@ public class Tenant extends Actor {
 	public Collection<BookRequest> getBookRequests() {
 		return bookRequests;
 	}
-
 	public void setBookRequests(BookRequest bookRequest) {
 		this.bookRequests = bookRequests;
 	}
@@ -45,7 +44,6 @@ public class Tenant extends Actor {
 	public Collection<Invoice> getInvoices() {
 		return invoices;
 	}
-
 	public void setInvoices(Invoice invoice) {
 		this.invoices = invoices;
 	}
@@ -56,11 +54,8 @@ public class Tenant extends Actor {
 	public Collection<Finder> getFinders() {
 		return finders;
 	}
-
 	public void setFinders(Finder finder) {
 		this.finders = finders;
 	}
-	
-	
 	
 }

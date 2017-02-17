@@ -23,32 +23,31 @@ public class SocialIdentity extends DomainEntity {
 	}
 	
 	
-	@NotBlank	public String getNick() {
+	@NotBlank	
+	public String getNick() {
 		return nick;
 	}
-
 	public void setNick(String nick) {
 		this.nick = nick;
 	}
 	
 	
-	@NotBlank	public String getSocialNetwork() {
+	@NotBlank	
+	public String getSocialNetwork() {
 		return socialNetwork;
 	}
-
 	public void setSocialNetwork(String socialNetwork) {
 		this.socialNetwork = socialNetwork;
 	}
 	
 	
-	@URL	@NotBlank	public String getURL() {
+	@URL	
+	@NotBlank	
+	public String getURL() {
 		return URL;
 	}
-
 	public void setURL(String URL) {
 		this.URL = URL;
 	}
-	
-	
 	
 }

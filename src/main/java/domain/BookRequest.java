@@ -32,19 +32,19 @@ public class BookRequest extends DomainEntity {
 	}
 	
 	
-	@NotNull	public Date getCheckInDate() {
+	@NotNull	
+	public Date getCheckInDate() {
 		return checkInDate;
 	}
-
 	public void setCheckInDate(Date checkInDate) {
 		this.checkInDate = checkInDate;
 	}
 	
 	
-	@NotNull	public Date getCheckOutDate() {
+	@NotNull	
+	public Date getCheckOutDate() {
 		return checkOutDate;
 	}
-
 	public void setCheckOutDate(Date checkOutDate) {
 		this.checkOutDate = checkOutDate;
 	}
@@ -53,50 +53,42 @@ public class BookRequest extends DomainEntity {
 	public boolean getSmoker() {
 		return smoker;
 	}
-
 	public void setSmoker(Boolean smoker) {
 		this.smoker = smoker;
 	}
 	
-	
-	@CreditCardNumber	@NotBlank	public String getCreditCard() {
+	@CreditCardNumber	
+	@NotBlank	
+	public String getCreditCard() {
 		return creditCard;
 	}
-
 	public void setCreditCard(String creditCard) {
 		this.creditCard = creditCard;
 	}
 	
-	
 	public requestStatus getStatus() {
 		return status;
 	}
-
 	public void setStatus(RequestStatus status) {
 		this.status = status;
 	}
 	
-	
-	@ManyToOne	@Valid
+	@ManyToOne	
+	@Valid
 	public Tenant getTenant() {
 		return tenant;
 	}
-
 	public void setTenant(Tenant tenant) {
 		this.tenant = tenant;
 	}
-	
 	
 	@ManyToOne(optional = false)
 	@Valid
 	public Property getProperty() {
 		return property;
 	}
-
 	public void setProperty(Property property) {
 		this.property = property;
 	}
-	
-	
 	
 }

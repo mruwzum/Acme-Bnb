@@ -25,10 +25,10 @@ public class Lessor extends Actor {
 	}
 	
 	
-	@CreditCardNumber	public String getCreditCard() {
+	@CreditCardNumber	
+	public String getCreditCard() {
 		return creditCard;
 	}
-
 	public void setCreditCard(String creditCard) {
 		this.creditCard = creditCard;
 	}
@@ -39,11 +39,8 @@ public class Lessor extends Actor {
 	public Collection<Property> getPropertys() {
 		return propertys;
 	}
-
 	public void setPropertys(Property property) {
 		this.propertys = propertys;
 	}
-	
-	
 	
 }

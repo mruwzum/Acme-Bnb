@@ -25,10 +25,10 @@ public class Auditor extends Actor {
 	}
 	
 	
-	@NotBlank	public String getNameOfCompany() {
+	@NotBlank	
+	public String getNameOfCompany() {
 		return nameOfCompany;
 	}
-
 	public void setNameOfCompany(String nameOfCompany) {
 		this.nameOfCompany = nameOfCompany;
 	}
@@ -39,7 +39,6 @@ public class Auditor extends Actor {
 	public Collection<Audit> getAudits() {
 		return audits;
 	}
-
 	public void setAudits(Audit audit) {
 		this.audits = audits;
 	}

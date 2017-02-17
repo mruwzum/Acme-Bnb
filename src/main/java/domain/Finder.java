@@ -24,16 +24,17 @@ public class Finder extends DomainEntity {
 	}
 	
 	
-	@NotBlank	public String getDestinationCity() {
+	@NotBlank	
+	public String getDestinationCity() {
 		return destinationCity;
 	}
-
 	public void setDestinationCity(String destinationCity) {
 		this.destinationCity = destinationCity;
 	}
 	
 	
-	@Digits(integer=9, fraction=2)	public double getMinimumPay() {
+	@Digits(integer=9, fraction=2)	
+	public double getMinimumPay() {
 		return minimumPay;
 	}
 
@@ -42,10 +43,10 @@ public class Finder extends DomainEntity {
 	}
 	
 	
-	@Digits(integer=9, fraction=2)	public double getMaximumPay() {
+	@Digits(integer=9, fraction=2)	
+	public double getMaximumPay() {
 		return maximumPay;
 	}
-
 	public void setMaximumPay(double maximumPay) {
 		this.maximumPay = maximumPay;
 	}
@@ -54,11 +55,8 @@ public class Finder extends DomainEntity {
 	public String getKeyword() {
 		return keyword;
 	}
-
 	public void setKeyword(String keyword) {
 		this.keyword = keyword;
 	}
-	
-	
 	
 }

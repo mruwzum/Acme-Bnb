@@ -34,19 +34,19 @@ public class Audit extends DomainEntity {
 	}
 	
 	
-	@NotNull	public Date getWrittenMoment() {
+	@NotNull	
+	public Date getWrittenMoment() {
 		return writtenMoment;
 	}
-
 	public void setWrittenMoment(Date writtenMoment) {
 		this.writtenMoment = writtenMoment;
 	}
 	
 	
-	@NotBlank	public String getText() {
+	@NotBlank	
+	public String getText() {
 		return text;
 	}
-
 	public void setText(String text) {
 		this.text = text;
 	}
@@ -55,7 +55,6 @@ public class Audit extends DomainEntity {
 	public String getAttachments() {
 		return attachments;
 	}
-
 	public void setAttachments(String attachments) {
 		this.attachments = attachments;
 	}
@@ -66,17 +65,16 @@ public class Audit extends DomainEntity {
 	public Property getProperty() {
 		return property;
 	}
-
 	public void setProperty(Property property) {
 		this.property = property;
 	}
 	
 	
-	@ManyToOne	@Valid
+	@ManyToOne	
+	@Valid
 	public Auditor getAuditor() {
 		return auditor;
 	}
-
 	public void setAuditor(Auditor auditor) {
 		this.auditor = auditor;
 	}
@@ -87,7 +85,6 @@ public class Audit extends DomainEntity {
 	public Collection<Comment> getComments() {
 		return comments;
 	}
-
 	public void setComments(Comment comment) {
 		this.comments = comments;
 	}

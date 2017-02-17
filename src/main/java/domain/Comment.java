@@ -25,41 +25,40 @@ public class Comment extends DomainEntity {
 	}
 	
 	
-	@NotBlank	public String getTitle() {
+	@NotBlank	
+	public String getTitle() {
 		return title;
 	}
-
 	public void setTitle(String title) {
 		this.title = title;
 	}
 	
 	
-	@NotNull	public Date getPostedMoment() {
+	@NotNull	
+	public Date getPostedMoment() {
 		return postedMoment;
 	}
-
 	public void setPostedMoment(Date postedMoment) {
 		this.postedMoment = postedMoment;
 	}
 	
 	
-	@NotBlank	public String getText() {
+	@NotBlank	
+	public String getText() {
 		return text;
 	}
-
 	public void setText(String text) {
 		this.text = text;
 	}
 	
 	
-	@Range(min=0, max=5)	@NotNull	public int getNumberOfStars() {
+	@Range(min=0, max=5)	
+	@NotNull	
+	public int getNumberOfStars() {
 		return numberOfStars;
 	}
-
 	public void setNumberOfStars(int numberOfStars) {
 		this.numberOfStars = numberOfStars;
 	}
-	
-	
 	
 }
