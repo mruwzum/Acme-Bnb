@@ -16,7 +16,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import services.StringService;
 import controllers.AbstractController;
-import domain.String;
 
 @Controller
 @RequestMapping("/string")

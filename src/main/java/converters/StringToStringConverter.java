@@ -7,7 +7,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import repositories.StringRepository;
-import domain.String;
 
 @Component
 @Transactional
