@@ -23,7 +23,8 @@ public class SocialIdentity extends DomainEntity {
 	}
 	
 	
-	@NotBlank	public String getNick() {
+	@NotBlank
+	public String getNick() {
 		return nick;
 	}
 
@@ -32,7 +33,8 @@ public class SocialIdentity extends DomainEntity {
 	}
 	
 	
-	@NotBlank	public String getSocialNetwork() {
+	@NotBlank
+	public String getSocialNetwork() {
 		return socialNetwork;
 	}
 
@@ -41,7 +43,9 @@ public class SocialIdentity extends DomainEntity {
 	}
 	
 	
-	@URL	@NotBlank	public String getURL() {
+	@URL
+	@NotBlank
+	public String getURL() {
 		return URL;
 	}
 

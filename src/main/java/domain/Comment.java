@@ -7,6 +7,8 @@ import org.hibernate.validator.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.Range;
 
+import java.util.Date;
+
 @Entity
 @Access(AccessType.PROPERTY)
 public class Comment extends DomainEntity {
@@ -25,7 +27,8 @@ public class Comment extends DomainEntity {
 	}
 	
 	
-	@NotBlank	public String getTitle() {
+	@NotBlank
+	public String getTitle() {
 		return title;
 	}
 
@@ -34,7 +37,8 @@ public class Comment extends DomainEntity {
 	}
 	
 	
-	@NotNull	public Date getPostedMoment() {
+	@NotNull
+	public Date getPostedMoment() {
 		return postedMoment;
 	}
 
@@ -43,7 +47,8 @@ public class Comment extends DomainEntity {
 	}
 	
 	
-	@NotBlank	public String getText() {
+	@NotBlank
+	public String getText() {
 		return text;
 	}
 
@@ -52,7 +57,9 @@ public class Comment extends DomainEntity {
 	}
 	
 	
-	@Range(min=0, max=5)	@NotNull	public int getNumberOfStars() {
+	@Range(min=0, max=5)
+	@NotNull
+	public int getNumberOfStars() {
 		return numberOfStars;
 	}
 

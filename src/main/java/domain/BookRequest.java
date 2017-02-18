@@ -8,8 +8,7 @@ import org.hibernate.validator.constraints.CreditCardNumber;
 import org.hibernate.validator.constraints.NotBlank;
 import javax.persistence.ManyToOne;
 import javax.validation.Valid;
-import javax.persistence.ManyToOne;
-import javax.validation.Valid;
+import java.util.Date;
 
 @Entity
 @Access(AccessType.PROPERTY)
@@ -20,7 +19,7 @@ public class BookRequest extends DomainEntity {
 	private Date checkOutDate;
 	private boolean smoker;
 	private String creditCard;
-	private requestStatus status;
+	private RequestStatus status;
 	
 	// Relationships ---------------------------------------------------------
 	private Tenant tenant;
@@ -32,7 +31,8 @@ public class BookRequest extends DomainEntity {
 	}
 	
 	
-	@NotNull	public Date getCheckInDate() {
+	@NotNull
+	public Date getCheckInDate() {
 		return checkInDate;
 	}
 
@@ -41,25 +41,26 @@ public class BookRequest extends DomainEntity {
 	}
 	
 	
-	@NotNull	public Date getCheckOutDate() {
+	@NotNull
+	public Date getCheckOutDate() {
 		return checkOutDate;
 	}
 
 	public void setCheckOutDate(Date checkOutDate) {
 		this.checkOutDate = checkOutDate;
 	}
-	
-	
-	public boolean getSmoker() {
+
+	public boolean isSmoker() {
 		return smoker;
 	}
 
-	public void setSmoker(Boolean smoker) {
+	public void setSmoker(boolean smoker) {
 		this.smoker = smoker;
 	}
 	
-	
-	@CreditCardNumber	@NotBlank	public String getCreditCard() {
+	@CreditCardNumber
+	@NotBlank
+	public String getCreditCard() {
 		return creditCard;
 	}
 
@@ -68,7 +69,7 @@ public class BookRequest extends DomainEntity {
 	}
 	
 	
-	public requestStatus getStatus() {
+	public RequestStatus getStatus() {
 		return status;
 	}
 
@@ -96,7 +97,7 @@ public class BookRequest extends DomainEntity {
 	public void setProperty(Property property) {
 		this.property = property;
 	}
-	
-	
-	
+
+
+
 }

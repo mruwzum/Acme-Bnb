@@ -31,8 +31,10 @@ public class Actor extends DomainEntity {
 		super();		
 	}
 	
-	
-	@NotBlank	public String getName() {
+
+
+	@NotBlank
+	public String getName() {
 		return name;
 	}
 
@@ -41,7 +43,8 @@ public class Actor extends DomainEntity {
 	}
 	
 	
-	@NotBlank	public String getSurname() {
+	@NotBlank
+	public String getSurname() {
 		return surname;
 	}
 
@@ -50,7 +53,9 @@ public class Actor extends DomainEntity {
 	}
 	
 	
-	@Email	@NotBlank	public String getEmail() {
+	@Email
+	@NotBlank
+	public String getEmail() {
 		return email;
 	}
 
@@ -69,25 +74,23 @@ public class Actor extends DomainEntity {
 	}
 	
 	
-	@URL	public String getPicture() {
+	@URL
+	public String getPicture() {
 		return picture;
 	}
 
 	public void setPicture(String picture) {
 		this.picture = picture;
 	}
-	
-	
+
+
 	@OneToMany
 	@Valid
 	public Collection<SocialIdentity> getSocialIdentitys() {
 		return socialIdentitys;
 	}
 
-	public void setSocialIdentitys(SocialIdentity socialIdentity) {
+	public void setSocialIdentitys(Collection<SocialIdentity> socialIdentitys) {
 		this.socialIdentitys = socialIdentitys;
 	}
-	
-	
-	
 }

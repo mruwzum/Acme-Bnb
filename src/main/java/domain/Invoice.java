@@ -7,6 +7,7 @@ import javax.validation.constraints.Digits;
 import org.hibernate.validator.constraints.CreditCardNumber;
 import javax.persistence.ManyToOne;
 import javax.validation.Valid;
+import java.util.Date;
 
 @Entity
 @Access(AccessType.PROPERTY)
@@ -65,7 +66,8 @@ public class Invoice extends DomainEntity {
 	}
 	
 	
-	@Digits(integer=9, fraction=2)	public double getTotalAmount() {
+	@Digits(integer=9, fraction=2)
+	public double getTotalAmount() {
 		return totalAmount;
 	}
 
@@ -74,7 +76,8 @@ public class Invoice extends DomainEntity {
 	}
 	
 	
-	@CreditCardNumber	public String getCreditCard() {
+	@CreditCardNumber
+	public String getCreditCard() {
 		return creditCard;
 	}
 
@@ -83,7 +86,8 @@ public class Invoice extends DomainEntity {
 	}
 	
 	
-	@ManyToOne	@Valid
+	@ManyToOne
+	@Valid
 	public Tenant getTenant() {
 		return tenant;
 	}

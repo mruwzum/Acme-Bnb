@@ -32,18 +32,14 @@ public class Auditor extends Actor {
 	public void setNameOfCompany(String nameOfCompany) {
 		this.nameOfCompany = nameOfCompany;
 	}
-	
-	
+
 	@OneToMany
 	@Valid
 	public Collection<Audit> getAudits() {
 		return audits;
 	}
 
-	public void setAudits(Audit audit) {
+	public void setAudits(Collection<Audit> audits) {
 		this.audits = audits;
 	}
-	
-	
-	
 }

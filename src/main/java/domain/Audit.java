@@ -1,6 +1,7 @@
 package domain;
 
 import java.util.Collection;
+import java.util.Date;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
@@ -34,7 +35,9 @@ public class Audit extends DomainEntity {
 	}
 	
 	
-	@NotNull	public Date getWrittenMoment() {
+	@NotNull
+
+	public Date getWrittenMoment() {
 		return writtenMoment;
 	}
 
@@ -43,7 +46,8 @@ public class Audit extends DomainEntity {
 	}
 	
 	
-	@NotBlank	public String getText() {
+	@NotBlank
+	public String getText() {
 		return text;
 	}
 
@@ -72,7 +76,8 @@ public class Audit extends DomainEntity {
 	}
 	
 	
-	@ManyToOne	@Valid
+	@ManyToOne
+	@Valid
 	public Auditor getAuditor() {
 		return auditor;
 	}
@@ -80,18 +85,14 @@ public class Audit extends DomainEntity {
 	public void setAuditor(Auditor auditor) {
 		this.auditor = auditor;
 	}
-	
-	
+
 	@OneToMany
 	@Valid
 	public Collection<Comment> getComments() {
 		return comments;
 	}
 
-	public void setComments(Comment comment) {
+	public void setComments(Collection<Comment> comments) {
 		this.comments = comments;
 	}
-	
-	
-	
 }

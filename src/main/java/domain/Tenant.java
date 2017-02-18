@@ -27,39 +27,38 @@ public class Tenant extends Actor {
 	public Tenant() {
 		super();		
 	}
-	
-	
+
 	@OneToMany(mappedBy = "tenant")
 	@Valid
 	public Collection<BookRequest> getBookRequests() {
 		return bookRequests;
 	}
 
-	public void setBookRequests(BookRequest bookRequest) {
+	public void setBookRequests(Collection<BookRequest> bookRequests) {
 		this.bookRequests = bookRequests;
 	}
-	
-	
+
 	@OneToMany(mappedBy = "tenant")
 	@Valid
 	public Collection<Invoice> getInvoices() {
 		return invoices;
 	}
 
-	public void setInvoices(Invoice invoice) {
+	public void setInvoices(Collection<Invoice> invoices) {
 		this.invoices = invoices;
 	}
-	
-	
+
 	@OneToMany
 	@Valid
 	public Collection<Finder> getFinders() {
 		return finders;
 	}
 
-	public void setFinders(Finder finder) {
+	public void setFinders(Collection<Finder> finders) {
 		this.finders = finders;
 	}
+
+
 	
 	
 	

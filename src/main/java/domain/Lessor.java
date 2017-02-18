@@ -32,18 +32,14 @@ public class Lessor extends Actor {
 	public void setCreditCard(String creditCard) {
 		this.creditCard = creditCard;
 	}
-	
-	
+
 	@OneToMany(mappedBy = "lessor")
 	@Valid
 	public Collection<Property> getPropertys() {
 		return propertys;
 	}
 
-	public void setPropertys(Property property) {
+	public void setPropertys(Collection<Property> propertys) {
 		this.propertys = propertys;
 	}
-	
-	
-	
 }
