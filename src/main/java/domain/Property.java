@@ -41,19 +41,20 @@ public class Property extends DomainEntity {
 	}
 	
 	
-	@NotBlank	public String getName() {
+	@NotBlank	
+	public String getName() {
 		return name;
 	}
-
 	public void setName(String name) {
 		this.name = name;
 	}
 	
 	
-	@NotNull	@Digits(fraction=2)	public double getRate() {
+	@NotNull	
+	@Digits(fraction=2)	
+	public double getRate() {
 		return rate;
 	}
-
 	public void setRate(double rate) {
 		this.rate = rate;
 	}
@@ -62,71 +63,70 @@ public class Property extends DomainEntity {
 	public String getDescription() {
 		return description;
 	}
-
 	public void setDescription(String description) {
 		this.description = description;
 	}
 	
 	
-	@NotBlank	public String getAddress() {
+	@NotBlank	
+	public String getAddress() {
 		return address;
 	}
-
 	public void setAddress(String address) {
 		this.address = address;
 	}
 	
 	
-	@NotBlank	public String getProvince() {
+	@NotBlank	
+	public String getProvince() {
 		return province;
 	}
-
 	public void setProvince(String province) {
 		this.province = province;
 	}
 	
 	
-	@NotBlank	public String getCountry() {
+	@NotBlank	
+	public String getCountry() {
 		return country;
 	}
-
 	public void setCountry(String country) {
 		this.country = country;
 	}
 	
 	
-	@NotBlank	public String getState() {
+	@NotBlank	
+	public String getState() {
 		return state;
 	}
-
 	public void setState(String state) {
 		this.state = state;
 	}
 	
 	
-	@NotNull	public int getCapacity() {
+	@NotNull	
+	public int getCapacity() {
 		return capacity;
 	}
-
 	public void setCapacity(int capacity) {
 		this.capacity = capacity;
 	}
 	
 	
-	@NotBlank	public String getCity() {
+	@NotBlank	
+	public String getCity() {
 		return city;
 	}
-
 	public void setCity(String city) {
 		this.city = city;
 	}
 	
 	
-	@ManyToOne	@Valid
+	@ManyToOne	
+	@Valid
 	public Lessor getLessor() {
 		return lessor;
 	}
-
 	public void setLessor(Lessor lessor) {
 		this.lessor = lessor;
 	}
@@ -137,7 +137,6 @@ public class Property extends DomainEntity {
 	public Collection<Audit> getAudits() {
 		return audits;
 	}
-
 	public void setAudits(Audit audit) {
 		this.audits = audits;
 	}
@@ -148,7 +147,6 @@ public class Property extends DomainEntity {
 	public Collection<BookRequest> getBookRequests() {
 		return bookRequests;
 	}
-
 	public void setBookRequests(BookRequest bookRequest) {
 		this.bookRequests = bookRequests;
 	}
