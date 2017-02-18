@@ -2,14 +2,15 @@ package domain;
 
 import java.util.Collection;
 
-import javax.persistence.Access;
-import javax.persistence.AccessType;
-import javax.persistence.Entity;
+import javax.persistence.*;
+
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.URL;
-import javax.persistence.OneToMany;
+import security.UserAccount;
+
 import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
 @Entity
@@ -22,7 +23,8 @@ public class Actor extends DomainEntity {
 	private String email;
 	private String phone;
 	private String picture;
-	
+	private UserAccount userAccount;
+
 	// Relationships ---------------------------------------------------------
 	private Collection<SocialIdentity> socialIdentitys;
 	
@@ -92,5 +94,16 @@ public class Actor extends DomainEntity {
 
 	public void setSocialIdentitys(Collection<SocialIdentity> socialIdentitys) {
 		this.socialIdentitys = socialIdentitys;
+	}
+
+	@NotNull
+	@Valid
+	@OneToOne(cascade = CascadeType.ALL, optional = false)
+	public UserAccount getUserAccount() {
+		return userAccount;
+	}
+
+	public void setUserAccount(UserAccount userAccount) {
+		this.userAccount = userAccount;
 	}
 }

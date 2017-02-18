@@ -169,7 +169,7 @@
 						<property name="email" value="Administrator1Email" />
 						<property name="phone" value="Administrator1Phone" />
 						<property name="picture" value="Administrator1Picture" />
-				<property name="userAccount" ref="userAccountAdministrator1" />
+				<property name="userAccount" ref="userAccountadministrator1" />
 				</bean>
 				<bean id="administrator2" class="domain.Administrator">
 						<property name="name" value="Administrator2Name" />
@@ -177,7 +177,7 @@
 						<property name="email" value="Administrator2Email" />
 						<property name="phone" value="Administrator2Phone" />
 						<property name="picture" value="Administrator2Picture" />
-				<property name="userAccount" ref="userAccountAdministrator2" />
+				<property name="userAccount" ref="userAccountadministrator2" />
 				</bean>
 				<bean id="administrator3" class="domain.Administrator">
 						<property name="name" value="Administrator3Name" />
@@ -185,7 +185,7 @@
 						<property name="email" value="Administrator3Email" />
 						<property name="phone" value="Administrator3Phone" />
 						<property name="picture" value="Administrator3Picture" />
-				<property name="userAccount" ref="userAccountAdministrator3" />
+				<property name="userAccount" ref="userAccountadministrator3" />
 				</bean>
 			
 			<!-- /Administrator-->
@@ -198,7 +198,7 @@
 						<property name="phone" value="Auditor1Phone" />
 						<property name="picture" value="Auditor1Picture" />
 						<property name="nameOfCompany" value="Auditor1NameOfCompany" />
-				<property name="userAccount" ref="userAccountAuditor1" />
+				<property name="userAccount" ref="userAccountauditor1" />
 				</bean>
 				<bean id="auditor2" class="domain.Auditor">
 						<property name="name" value="Auditor2Name" />
@@ -207,7 +207,7 @@
 						<property name="phone" value="Auditor2Phone" />
 						<property name="picture" value="Auditor2Picture" />
 						<property name="nameOfCompany" value="Auditor2NameOfCompany" />
-				<property name="userAccount" ref="userAccountAuditor2" />
+				<property name="userAccount" ref="userAccountauditor2" />
 				</bean>
 				<bean id="auditor3" class="domain.Auditor">
 						<property name="name" value="Auditor3Name" />
@@ -216,7 +216,7 @@
 						<property name="phone" value="Auditor3Phone" />
 						<property name="picture" value="Auditor3Picture" />
 						<property name="nameOfCompany" value="Auditor3NameOfCompany" />
-				<property name="userAccount" ref="userAccountAuditor3" />
+				<property name="userAccount" ref="userAccountauditor3" />
 				</bean>
 			
 			<!-- /Auditor-->
@@ -229,7 +229,7 @@
 						<property name="phone" value="Lessor1Phone" />
 						<property name="picture" value="Lessor1Picture" />
 						<property name="creditCard" value="Lessor1CreditCard" />
-				<property name="userAccount" ref="userAccountLessor1" />
+				<property name="userAccount" ref="userAccountlessor1" />
 				</bean>
 				<bean id="lessor2" class="domain.Lessor">
 						<property name="name" value="Lessor2Name" />
@@ -238,7 +238,7 @@
 						<property name="phone" value="Lessor2Phone" />
 						<property name="picture" value="Lessor2Picture" />
 						<property name="creditCard" value="Lessor2CreditCard" />
-				<property name="userAccount" ref="userAccountLessor2" />
+				<property name="userAccount" ref="userAccountlessor2" />
 				</bean>
 				<bean id="lessor3" class="domain.Lessor">
 						<property name="name" value="Lessor3Name" />
@@ -247,7 +247,7 @@
 						<property name="phone" value="Lessor3Phone" />
 						<property name="picture" value="Lessor3Picture" />
 						<property name="creditCard" value="Lessor3CreditCard" />
-				<property name="userAccount" ref="userAccountLessor3" />
+				<property name="userAccount" ref="userAccountlessor3" />
 				</bean>
 			
 			<!-- /Lessor-->
@@ -259,7 +259,7 @@
 						<property name="email" value="Tenant1Email" />
 						<property name="phone" value="Tenant1Phone" />
 						<property name="picture" value="Tenant1Picture" />
-				<property name="userAccount" ref="userAccountTenant1" />
+				<property name="userAccount" ref="userAccounttenant1" />
 				</bean>
 				<bean id="tenant2" class="domain.Tenant">
 						<property name="name" value="Tenant2Name" />
@@ -267,7 +267,7 @@
 						<property name="email" value="Tenant2Email" />
 						<property name="phone" value="Tenant2Phone" />
 						<property name="picture" value="Tenant2Picture" />
-				<property name="userAccount" ref="userAccountTenant2" />
+				<property name="userAccount" ref="userAccounttenant2" />
 				</bean>
 				<bean id="tenant3" class="domain.Tenant">
 						<property name="name" value="Tenant3Name" />
@@ -275,7 +275,7 @@
 						<property name="email" value="Tenant3Email" />
 						<property name="phone" value="Tenant3Phone" />
 						<property name="picture" value="Tenant3Picture" />
-				<property name="userAccount" ref="userAccountTenant3" />
+				<property name="userAccount" ref="userAccounttenant3" />
 				</bean>
 			
 			<!-- /Tenant-->
@@ -311,7 +311,7 @@
 				<bean id="bookRequest1" class="domain.BookRequest">
 						<property name="checkInDate" value="checkindate1" />
 						<property name="checkOutDate" value="checkoutdate1" />
-						<property name="smoker" value="smoker1" />
+						<property name="smoker" value="true" />
 						<property name="creditCard" value="creditcard1" />
 						<property name="status" value="status1" />
 							<property name="tenant" ref="tenant1" />
@@ -320,7 +320,7 @@
 				<bean id="bookRequest2" class="domain.BookRequest">
 						<property name="checkInDate" value="checkindate2" />
 						<property name="checkOutDate" value="checkoutdate2" />
-						<property name="smoker" value="smoker2" />
+						<property name="smoker" value="false" />
 						<property name="creditCard" value="creditcard2" />
 						<property name="status" value="status2" />
 							<property name="tenant" ref="tenant2" />
@@ -329,7 +329,7 @@
 				<bean id="bookRequest3" class="domain.BookRequest">
 						<property name="checkInDate" value="checkindate3" />
 						<property name="checkOutDate" value="checkoutdate3" />
-						<property name="smoker" value="smoker3" />
+						<property name="smoker" value="true" />
 						<property name="creditCard" value="creditcard3" />
 						<property name="status" value="status3" />
 							<property name="tenant" ref="tenant3" />
@@ -343,50 +343,42 @@
 						<property name="title" value="title1" />
 						<property name="postedMoment" value="postedmoment1" />
 						<property name="text" value="text1" />
-						<property name="numberOfStars" value="numberofstars1" />
+						<property name="numberOfStars" value="2" />
 				</bean>
 				<bean id="comment2" class="domain.Comment">
 						<property name="title" value="title2" />
 						<property name="postedMoment" value="postedmoment2" />
 						<property name="text" value="text2" />
-						<property name="numberOfStars" value="numberofstars2" />
+						<property name="numberOfStars" value="3" />
 				</bean>
 				<bean id="comment3" class="domain.Comment">
 						<property name="title" value="title3" />
 						<property name="postedMoment" value="postedmoment3" />
 						<property name="text" value="text3" />
-						<property name="numberOfStars" value="numberofstars3" />
+						<property name="numberOfStars" value="1" />
 				</bean>
 			
 			<!-- /Comment-->
 			
-			<!-- Date -->
-				<bean id="date1" class="domain.Date">
-				</bean>
-				<bean id="date2" class="domain.Date">
-				</bean>
-				<bean id="date3" class="domain.Date">
-				</bean>
-			
-			<!-- /Date-->
+
 			
 			<!-- Finder -->
 				<bean id="finder1" class="domain.Finder">
 						<property name="destinationCity" value="destinationcity1" />
-						<property name="minimumPay" value="minimumpay1" />
-						<property name="maximumPay" value="maximumpay1" />
+						<property name="minimumPay" value="200.00" />
+						<property name="maximumPay" value="300.00" />
 						<property name="keyword" value="keyword1" />
 				</bean>
 				<bean id="finder2" class="domain.Finder">
 						<property name="destinationCity" value="destinationcity2" />
-						<property name="minimumPay" value="minimumpay2" />
-						<property name="maximumPay" value="maximumpay2" />
+						<property name="minimumPay" value="400.00" />
+						<property name="maximumPay" value="500.00" />
 						<property name="keyword" value="keyword2" />
 				</bean>
 				<bean id="finder3" class="domain.Finder">
 						<property name="destinationCity" value="destinationcity3" />
-						<property name="minimumPay" value="minimumpay3" />
-						<property name="maximumPay" value="maximumpay3" />
+						<property name="minimumPay" value="600.00" />
+						<property name="maximumPay" value="700.00" />
 						<property name="keyword" value="keyword3" />
 				</bean>
 			
@@ -395,28 +387,28 @@
 			<!-- Invoice -->
 				<bean id="invoice1" class="domain.Invoice">
 						<property name="issuedMoment" value="issuedmoment1" />
-						<property name="vATNumber" value="vatnumber1" />
+						<property name="VATNumber" value="56145" />
 						<property name="tenantInfo" value="tenantinfo1" />
 						<property name="details" value="details1" />
-						<property name="totalAmount" value="totalamount1" />
+						<property name="totalAmount" value="500.00" />
 						<property name="creditCard" value="creditcard1" />
 							<property name="tenant" ref="tenant1" />
 				</bean>
 				<bean id="invoice2" class="domain.Invoice">
 						<property name="issuedMoment" value="issuedmoment2" />
-						<property name="vATNumber" value="vatnumber2" />
+						<property name="VATNumber" value="654785" />
 						<property name="tenantInfo" value="tenantinfo2" />
 						<property name="details" value="details2" />
-						<property name="totalAmount" value="totalamount2" />
+						<property name="totalAmount" value="245.00" />
 						<property name="creditCard" value="creditcard2" />
 							<property name="tenant" ref="tenant2" />
 				</bean>
 				<bean id="invoice3" class="domain.Invoice">
 						<property name="issuedMoment" value="issuedmoment3" />
-						<property name="vATNumber" value="vatnumber3" />
+						<property name="VATNumber" value="652127" />
 						<property name="tenantInfo" value="tenantinfo3" />
 						<property name="details" value="details3" />
-						<property name="totalAmount" value="totalamount3" />
+						<property name="totalAmount" value="300.00" />
 						<property name="creditCard" value="creditcard3" />
 							<property name="tenant" ref="tenant3" />
 				</bean>
@@ -426,37 +418,37 @@
 			<!-- Property -->
 				<bean id="property1" class="domain.Property">
 						<property name="name" value="name1" />
-						<property name="rate" value="rate1" />
+						<property name="rate" value="10.0" />
 						<property name="description" value="description1" />
 						<property name="address" value="address1" />
 						<property name="province" value="province1" />
 						<property name="country" value="country1" />
 						<property name="state" value="state1" />
-						<property name="capacity" value="capacity1" />
+						<property name="capacity" value="2" />
 						<property name="city" value="city1" />
 							<property name="lessor" ref="lessor1" />
 				</bean>
 				<bean id="property2" class="domain.Property">
 						<property name="name" value="name2" />
-						<property name="rate" value="rate2" />
+						<property name="rate" value="12.0" />
 						<property name="description" value="description2" />
 						<property name="address" value="address2" />
 						<property name="province" value="province2" />
 						<property name="country" value="country2" />
 						<property name="state" value="state2" />
-						<property name="capacity" value="capacity2" />
+						<property name="capacity" value="3" />
 						<property name="city" value="city2" />
 							<property name="lessor" ref="lessor2" />
 				</bean>
 				<bean id="property3" class="domain.Property">
 						<property name="name" value="name3" />
-						<property name="rate" value="rate3" />
+						<property name="rate" value="15.0" />
 						<property name="description" value="description3" />
 						<property name="address" value="address3" />
 						<property name="province" value="province3" />
 						<property name="country" value="country3" />
 						<property name="state" value="state3" />
-						<property name="capacity" value="capacity3" />
+						<property name="capacity" value="4" />
 						<property name="city" value="city3" />
 							<property name="lessor" ref="lessor3" />
 				</bean>
@@ -467,17 +459,17 @@
 				<bean id="socialIdentity1" class="domain.SocialIdentity">
 						<property name="nick" value="nick1" />
 						<property name="socialNetwork" value="socialnetwork1" />
-						<property name="uRL" value="url1" />
+						<property name="URL" value="url1" />
 				</bean>
 				<bean id="socialIdentity2" class="domain.SocialIdentity">
 						<property name="nick" value="nick2" />
 						<property name="socialNetwork" value="socialnetwork2" />
-						<property name="uRL" value="url2" />
+						<property name="URL" value="url2" />
 				</bean>
 				<bean id="socialIdentity3" class="domain.SocialIdentity">
 						<property name="nick" value="nick3" />
 						<property name="socialNetwork" value="socialnetwork3" />
-						<property name="uRL" value="url3" />
+						<property name="URL" value="url3" />
 				</bean>
 			
 			<!-- /SocialIdentity-->
