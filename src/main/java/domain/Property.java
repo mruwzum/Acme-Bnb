@@ -51,7 +51,7 @@ public class Property extends DomainEntity {
 	
 	
 	@NotNull	
-	@Digits(fraction=2)	
+	@Digits(integer = 8,fraction=2)
 	public double getRate() {
 		return rate;
 	}
@@ -132,12 +132,12 @@ public class Property extends DomainEntity {
 	}
 	
 	
-	@OneToMany(mappedBy = "property", optional = false)
+	@OneToMany(mappedBy = "property")
 	@Valid
 	public Collection<Audit> getAudits() {
 		return audits;
 	}
-	public void setAudits(Audit audit) {
+	public void setAudits(Collection<Audit> audits) {
 		this.audits = audits;
 	}
 	
@@ -147,7 +147,7 @@ public class Property extends DomainEntity {
 	public Collection<BookRequest> getBookRequests() {
 		return bookRequests;
 	}
-	public void setBookRequests(BookRequest bookRequest) {
+	public void setBookRequests(Collection<BookRequest> bookRequest) {
 		this.bookRequests = bookRequests;
 	}
 	
