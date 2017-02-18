@@ -3,16 +3,13 @@ package domain;
 import java.util.Collection;
 import java.util.Date;
 
-import javax.persistence.Access;
-import javax.persistence.AccessType;
-import javax.persistence.Entity;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.NotBlank;
-import javax.persistence.ManyToOne;
+
 import javax.validation.Valid;
 import javax.persistence.ManyToOne;
 import javax.validation.Valid;
-import javax.persistence.OneToMany;
 import javax.validation.Valid;
 
 @Entity
@@ -36,7 +33,7 @@ public class Audit extends DomainEntity {
 	
 	
 	@NotNull
-
+	@Temporal(TemporalType.DATE)
 	public Date getWrittenMoment() {
 		return writtenMoment;
 	}
