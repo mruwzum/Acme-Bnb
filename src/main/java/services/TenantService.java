@@ -1,17 +1,14 @@
 package services;
 
-import java.util.Collection;
-
-import javax.transaction.Transactional;
-
+import domain.Tenant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
-
-import domain.Tenant;
 import repositories.TenantRepository;
-import security.LoginService;
-import security.UserAccount;
+import security.UserAccountService;
+
+import javax.transaction.Transactional;
+import java.util.Collection;
 
 @Service
 @Transactional
@@ -20,6 +17,9 @@ public class TenantService {
 	// Managed Repository ------------------------
 	@Autowired
 	private TenantRepository tenantRepository;
+    @Autowired
+    private UserAccountService userAccountService;
+
 
 	// Constructor -------------------------------
 	public TenantService() {
@@ -62,5 +62,6 @@ public class TenantService {
 	}
 
 	// Other business methods -----------------------
+
 
 }

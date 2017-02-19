@@ -1,17 +1,18 @@
 package services;
 
-import java.util.Collection;
-
-import javax.transaction.Transactional;
-
+import domain.Actor;
+import domain.Tenant;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
-
-import domain.Actor;
 import repositories.ActorRepository;
+import security.Authority;
 import security.LoginService;
 import security.UserAccount;
+
+import javax.transaction.Transactional;
+import java.util.Collection;
 
 @Service
 @Transactional
@@ -63,4 +64,44 @@ public class ActorService {
 
 	// Other business methods -----------------------
 
+
+    public Actor findByPrincipal() {
+        Actor result;
+        UserAccount userAccount;
+
+        userAccount = LoginService.getPrincipal();
+        Assert.notNull(userAccount);
+        result = findByUserAccount(userAccount);
+        Assert.notNull(result);
+
+        return result;
+    }
+
+    private Actor findByUserAccount(UserAccount userAccount) {
+        Assert.notNull(userAccount);
+
+        Actor result;
+
+        result = actorRepository.findByUserAccountId(userAccount.getId());
+
+        return result;
+    }
+
+    public Tenant registerAsTenant(Actor u) {
+        Assert.notNull(u);
+        Authority autoh = new Authority();
+        autoh.setAuthority("USER");
+        UserAccount res = new UserAccount();
+        res.addAuthority(autoh);
+        Md5PasswordEncoder encoder;
+        encoder = new Md5PasswordEncoder();
+        String hash = encoder.encodePassword(u.getUserAccount().getPassword(), null);
+        res.setUsername(u.getUserAccount().getUsername());
+        res.setPassword(hash);
+        //TODO meter las prop. de Tenant para registrarlo
+        //Tenant resu = tenantRepository.save(u);
+        //
+        // return resu;
+        return null;
+    }
 }

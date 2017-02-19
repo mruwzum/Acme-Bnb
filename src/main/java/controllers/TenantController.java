@@ -1,10 +1,8 @@
 package controllers;
 
 
-import java.util.Collection;
-
-import javax.validation.Valid;
-
+import domain.Actor;
+import domain.Tenant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
@@ -13,10 +11,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-
+import services.ActorService;
 import services.TenantService;
-import controllers.AbstractController;
-import domain.Tenant;
+
+import javax.validation.Valid;
+import java.util.Collection;
 
 @Controller
 @RequestMapping("/tenant")
@@ -26,13 +25,25 @@ public class TenantController extends AbstractController {
 	
 	@Autowired
 	private TenantService tenantService;
-	
-	//Constructors----------------------------------------------
-	
-	public TenantController(){
-		super();
-	}
-	
+    @Autowired
+    private ActorService actorService;
+
+    //Constructors----------------------------------------------
+
+    public TenantController() {
+        super();
+    }
+
+    @RequestMapping(value = "/registration", method = RequestMethod.POST, params = "save")
+    public ModelAndView saveRegistrationForm(@Valid Actor actor, BindingResult bindingResult) {
+        ModelAndView result;
+        actorService.registerAsTenant(actor);
+        result = new ModelAndView("tenant/list");
+        result.addObject("user", actor);
+
+        return result;
+    }
+
 
 	@RequestMapping( value="/list", method = RequestMethod.GET)
 	public ModelAndView tenantList() {
