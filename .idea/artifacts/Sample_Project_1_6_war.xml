@@ -1,5 +1,5 @@
 <component name="ArtifactManager">
-  <artifact type="war" name="Sample Project 1.6:war">
+  <artifact type="war" build-on-make="true" name="Sample Project 1.6:war">
     <output-path>$PROJECT_DIR$/target</output-path>
     <root id="archive" name="AcmeBnb-1.4.war">
       <element id="artifact" artifact-name="Sample Project 1.6:war exploded" />
