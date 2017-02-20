@@ -22,8 +22,8 @@
 			Add your own converters using entries of the following form: 
 			<bean class="converters.Class1ToClass2" /> 
 		-->
-		<bean class="converters.AuthorityToStringConverter"/>
-		<bean class="converters.StringToAuthorityConverter"/>
+	<!--	<bean class="converters.AuthorityToStringConverter"/>
+		<bean class="converters.StringToAuthorityConverter"/>-->
 		
 			<!-- Actor -->
 		<bean class="converters.ActorToStringConverter"/>
@@ -49,9 +49,9 @@
 		<bean class="converters.CommentToStringConverter"/>
 		<bean class="converters.StringToCommentConverter"/>
 		
-		<!-- Date -->
+		<!--&lt;!&ndash; Date &ndash;&gt;
 		<bean class="converters.DateToStringConverter"/>
-		<bean class="converters.StringToDateConverter"/>
+		<bean class="converters.StringToDateConverter"/>-->
 		
 		<!-- Finder -->
 		<bean class="converters.FinderToStringConverter"/>
