@@ -10,16 +10,15 @@
 
 package security;
 
-import java.util.ArrayList;
-import java.util.Collection;
+import org.hibernate.validator.constraints.NotBlank;
+import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Embeddable;
 import javax.validation.constraints.Pattern;
-
-import org.hibernate.validator.constraints.NotBlank;
-import org.springframework.security.core.GrantedAuthority;
+import java.util.ArrayList;
+import java.util.Collection;
 
 @Embeddable
 @Access(AccessType.PROPERTY)
@@ -27,31 +26,21 @@ public class Authority implements GrantedAuthority {
 
 	// Constructors -----------------------------------------------------------
 
-	private static final long serialVersionUID = 1L;
-
-	public Authority() {
-		super();
-	}
-
-	// Values -----------------------------------------------------------------
-
 	public static final String ADMIN = "ADMIN";
 	public static final String CUSTOMER = "CUSTOMER";
 
-	// Attributes -------------------------------------------------------------
+    // Values -----------------------------------------------------------------
+    public static final String AUDITOR = "AUDITOR";
+    public static final String LESSOR = "LESSOR";
+    public static final String TENANT = "TENANT";
+    private static final long serialVersionUID = 1L;
+    private String authority;
 
-	private String authority;
+    // Attributes -------------------------------------------------------------
 
-	@NotBlank
-	@Pattern(regexp = "^" + ADMIN + "|" + CUSTOMER + "$")
-	@Override
-	public String getAuthority() {
-		return authority;
-	}
-
-	public void setAuthority(String authority) {
-		this.authority = authority;
-	}
+    public Authority() {
+        super();
+    }
 
 	public static Collection<Authority> listAuthorities() {
 		Collection<Authority> result;
@@ -67,8 +56,31 @@ public class Authority implements GrantedAuthority {
 		authority.setAuthority(CUSTOMER);
 		result.add(authority);
 
+        authority = new Authority();
+        authority.setAuthority(AUDITOR);
+        result.add(authority);
+
+        authority = new Authority();
+        authority.setAuthority(LESSOR);
+        result.add(authority);
+
+        authority = new Authority();
+        authority.setAuthority(TENANT);
+        result.add(authority);
+
 		return result;
 	}
+
+    @NotBlank
+    @Pattern(regexp = "^" + ADMIN + "|" + CUSTOMER + "|" + AUDITOR + "|" + LESSOR + "|" + TENANT + "$")
+    @Override
+    public String getAuthority() {
+        return authority;
+    }
+
+    public void setAuthority(String authority) {
+        this.authority = authority;
+    }
 
 	// Equality ---------------------------------------------------------------
 

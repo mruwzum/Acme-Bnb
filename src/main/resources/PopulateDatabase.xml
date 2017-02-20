@@ -18,7 +18,7 @@
 					<property name="authorities">
 						<list>
 							<bean class="security.Authority">
-								<property name="authority" value="ADMINISTRATOR" />
+								<property name="authority" value="ADMIN"/>
 							</bean>
 						</list>
 					</property>
@@ -30,7 +30,7 @@
 					<property name="authorities">
 						<list>
 							<bean class="security.Authority">
-								<property name="authority" value="ADMINISTRATOR" />
+								<property name="authority" value="ADMIN"/>
 							</bean>
 						</list>
 					</property>
@@ -42,7 +42,7 @@
 					<property name="authorities">
 						<list>
 							<bean class="security.Authority">
-								<property name="authority" value="ADMINISTRATOR" />
+								<property name="authority" value="ADMIN"/>
 							</bean>
 						</list>
 					</property>
@@ -166,7 +166,7 @@
 				<bean id="administrator1" class="domain.Administrator">
 						<property name="name" value="Administrator1Name" />
 						<property name="surname" value="Administrator1Surname" />
-						<property name="email" value="Administrator1Email" />
+					<property name="email" value="Administrator1Email@gmail.com"/>
 						<property name="phone" value="Administrator1Phone" />
 						<property name="picture" value="Administrator1Picture" />
 				<property name="userAccount" ref="userAccountadministrator1" />
@@ -174,7 +174,7 @@
 				<bean id="administrator2" class="domain.Administrator">
 						<property name="name" value="Administrator2Name" />
 						<property name="surname" value="Administrator2Surname" />
-						<property name="email" value="Administrator2Email" />
+					<property name="email" value="Administrator2Email@gmail.com"/>
 						<property name="phone" value="Administrator2Phone" />
 						<property name="picture" value="Administrator2Picture" />
 				<property name="userAccount" ref="userAccountadministrator2" />
@@ -182,7 +182,7 @@
 				<bean id="administrator3" class="domain.Administrator">
 						<property name="name" value="Administrator3Name" />
 						<property name="surname" value="Administrator3Surname" />
-						<property name="email" value="Administrator3Email" />
+					<property name="email" value="Administrator3Email@gmail.com"/>
 						<property name="phone" value="Administrator3Phone" />
 						<property name="picture" value="Administrator3Picture" />
 				<property name="userAccount" ref="userAccountadministrator3" />
