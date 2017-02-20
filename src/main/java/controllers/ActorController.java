@@ -32,7 +32,7 @@ public class ActorController extends AbstractController {
 	public ActorController(){
 		super();
 	}
-	
+
 
 	@RequestMapping( value="/list", method = RequestMethod.GET)
 	public ModelAndView actorList() {
