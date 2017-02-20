@@ -4,9 +4,9 @@
 	* * The use of this project is hereby constrained to the conditions of the 
 	* TDG Licence, a copy of which you may download from * http://www.tdg-seville.info/License.html -->
 
-<beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 	">
 
@@ -284,21 +284,21 @@
 	
 			<!-- Audit -->
 				<bean id="audit1" class="domain.Audit">
-						<property name="writtenMoment" value="writtenmoment1" />
+                    <property name="writtenMoment" value="2017/02/13 00:00:00"/>
 						<property name="text" value="text1" />
 						<property name="attachments" value="attachments1" />
 							<property name="property" ref="property1" />
 							<property name="auditor" ref="auditor1" />
 				</bean>
 				<bean id="audit2" class="domain.Audit">
-						<property name="writtenMoment" value="writtenmoment2" />
+                    <property name="writtenMoment" value="2017/01/23 14:00:00"/>
 						<property name="text" value="text2" />
 						<property name="attachments" value="attachments2" />
 							<property name="property" ref="property2" />
 							<property name="auditor" ref="auditor2" />
 				</bean>
 				<bean id="audit3" class="domain.Audit">
-						<property name="writtenMoment" value="writtenmoment3" />
+                    <property name="writtenMoment" value="2017/01/12 23:00:12"/>
 						<property name="text" value="text3" />
 						<property name="attachments" value="attachments3" />
 							<property name="property" ref="property3" />
@@ -309,29 +309,31 @@
 			
 			<!-- BookRequest -->
 				<bean id="bookRequest1" class="domain.BookRequest">
-						<property name="checkInDate" value="checkindate1" />
-						<property name="checkOutDate" value="checkoutdate1" />
+                    <property name="checkInDate" value="2016/04/23 23:00:12"/>
+                    <property name="checkOutDate" value="2016/04/27 23:00:12"/>
 						<property name="smoker" value="true" />
 						<property name="creditCard" value="creditcard1" />
-						<property name="status" value="status1" />
-							<property name="tenant" ref="tenant1" />
+                    <property name="status" value="ACEPTED"></property>
+
+                    <property name="tenant" ref="tenant1" />
 							<property name="property" ref="property1" />
 				</bean>
 				<bean id="bookRequest2" class="domain.BookRequest">
-						<property name="checkInDate" value="checkindate2" />
-						<property name="checkOutDate" value="checkoutdate2" />
+                    <property name="checkInDate" value="2017/01/12 23:00:12"/>
+                    <property name="checkOutDate" value="2017/01/18 23:00:12"/>
 						<property name="smoker" value="false" />
 						<property name="creditCard" value="creditcard2" />
-						<property name="status" value="status2" />
-							<property name="tenant" ref="tenant2" />
+                    <property name="status" value="ACEPTED"></property>
+
+                    <property name="tenant" ref="tenant2" />
 							<property name="property" ref="property2" />
 				</bean>
 				<bean id="bookRequest3" class="domain.BookRequest">
-						<property name="checkInDate" value="checkindate3" />
-						<property name="checkOutDate" value="checkoutdate3" />
+                    <property name="checkInDate" value="2017/02/12 23:00:12"/>
+                    <property name="checkOutDate" value="2017/01/16 23:00:12"/>
 						<property name="smoker" value="true" />
 						<property name="creditCard" value="creditcard3" />
-						<property name="status" value="status3" />
+                    <property name="status" value="PENDING"></property>
 							<property name="tenant" ref="tenant3" />
 							<property name="property" ref="property3" />
 				</bean>
@@ -341,19 +343,19 @@
 			<!-- Comment -->
 				<bean id="comment1" class="domain.Comment">
 						<property name="title" value="title1" />
-						<property name="postedMoment" value="postedmoment1" />
+                    <property name="postedMoment" value="2016/04/23 23:00:12"/>
 						<property name="text" value="text1" />
 						<property name="numberOfStars" value="2" />
 				</bean>
 				<bean id="comment2" class="domain.Comment">
 						<property name="title" value="title2" />
-						<property name="postedMoment" value="postedmoment2" />
+                    <property name="postedMoment" value="2017/04/23 23:00:12"/>
 						<property name="text" value="text2" />
 						<property name="numberOfStars" value="3" />
 				</bean>
 				<bean id="comment3" class="domain.Comment">
 						<property name="title" value="title3" />
-						<property name="postedMoment" value="postedmoment3" />
+                    <property name="postedMoment" value="2017/03/23 23:00:12"/>
 						<property name="text" value="text3" />
 						<property name="numberOfStars" value="1" />
 				</bean>
@@ -386,7 +388,7 @@
 			
 			<!-- Invoice -->
 				<bean id="invoice1" class="domain.Invoice">
-						<property name="issuedMoment" value="issuedmoment1" />
+                    <property name="issuedMoment" value="2016/04/23 23:00:12"/>
 						<property name="VATNumber" value="56145" />
 						<property name="tenantInfo" value="tenantinfo1" />
 						<property name="details" value="details1" />
@@ -395,7 +397,7 @@
 							<property name="tenant" ref="tenant1" />
 				</bean>
 				<bean id="invoice2" class="domain.Invoice">
-						<property name="issuedMoment" value="issuedmoment2" />
+                    <property name="issuedMoment" value="2017/04/23 23:00:12"/>
 						<property name="VATNumber" value="654785" />
 						<property name="tenantInfo" value="tenantinfo2" />
 						<property name="details" value="details2" />
@@ -404,7 +406,7 @@
 							<property name="tenant" ref="tenant2" />
 				</bean>
 				<bean id="invoice3" class="domain.Invoice">
-						<property name="issuedMoment" value="issuedmoment3" />
+                    <property name="issuedMoment" value="2016/04/23 23:00:12"/>
 						<property name="VATNumber" value="652127" />
 						<property name="tenantInfo" value="tenantinfo3" />
 						<property name="details" value="details3" />
