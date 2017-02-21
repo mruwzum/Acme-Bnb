@@ -5,6 +5,7 @@ import java.util.Collection;
 
 import javax.validation.Valid;
 
+import domain.Property;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
@@ -128,5 +129,18 @@ public class LessorController extends AbstractController {
  
     }
 
+    // Properties -------------------------------------------------------
+
+    @RequestMapping(value = "/property/list", method = RequestMethod.GET)
+    public ModelAndView listProperties() {
+        ModelAndView result;
+
+        result = new ModelAndView("property/list");
+        Collection<Property> properties = lessorService.getAllProperties();
+        result.addObject("propertys", properties);
+        result.addObject("requestURI", "property/list.do");
+        return result;
+
+    }
 
 }

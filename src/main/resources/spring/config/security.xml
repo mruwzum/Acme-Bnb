@@ -71,6 +71,8 @@
 		<!--  LESSOR  -->	
 		<security:intercept-url pattern="/lessor/list.do" access="permitAll" />
 		<security:intercept-url pattern="/lessor/edit.do" access="permitAll" />
+		<security:intercept-url pattern="/lessor/property/list.do" access="permitAll"/>
+
 		<!--  PROPERTY  -->	
 		<security:intercept-url pattern="/property/list.do" access="permitAll" />
 		<security:intercept-url pattern="/property/edit.do" access="permitAll" />
