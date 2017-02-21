@@ -18,14 +18,15 @@ public class Lessor extends Actor {
 	
 	// Relationships ---------------------------------------------------------
 	private Collection<Property> propertys;
-	
+
 	// Constructors -----------------------------------------------------------
 	public Lessor() {
-		super();		
+		super();
 	}
-	
-	
-	@CreditCardNumber	public String getCreditCard() {
+
+
+	@CreditCardNumber
+	public String getCreditCard() {
 		return creditCard;
 	}
 
