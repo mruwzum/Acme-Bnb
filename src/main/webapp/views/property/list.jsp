@@ -29,35 +29,76 @@
 
 	<security:authorize access="permitAll">
 		<display:column>
-			<a href="property/edit.do?propertyId=${row.id}> <spring:message
-					code="property.edit" />
+			<a href="property/edit.do?propertyId=${row.id}">
+				<spring:message code="property.edit"/>
 			</a>
 		</display:column>
+
 	</security:authorize>
 	
 			<spring:message code="property.name" var="name" />
-			<display:column property="name" title="\$\{name\}" sortable="true" />
+	<display:column property="name" title="name" sortable="true"/>
 			<spring:message code="property.rate" var="rate" />
-			<display:column property="rate" title="\$\{rate\}" sortable="true" />
+	<display:column property="rate" title="rate" sortable="true"/>
 			<spring:message code="property.description" var="description" />
-			<display:column property="description" title="\$\{description\}" sortable="true" />
+	<display:column property="description" title="description" sortable="true"/>
 			<spring:message code="property.address" var="address" />
-			<display:column property="address" title="\$\{address\}" sortable="true" />
+	<display:column property="address" title="address" sortable="true"/>
 			<spring:message code="property.province" var="province" />
-			<display:column property="province" title="\$\{province\}" sortable="true" />
+	<display:column property="province" title="province" sortable="true"/>
 			<spring:message code="property.country" var="country" />
-			<display:column property="country" title="\$\{country\}" sortable="true" />
+	<display:column property="country" title="country" sortable="true"/>
 			<spring:message code="property.state" var="state" />
-			<display:column property="state" title="\$\{state\}" sortable="true" />
+	<display:column property="state" title="state" sortable="true"/>
 			<spring:message code="property.capacity" var="capacity" />
-			<display:column property="capacity" title="\$\{capacity\}" sortable="true" />
+	<display:column property="capacity" title="capacity" sortable="true"/>
 			<spring:message code="property.city" var="city" />
-			<display:column property="city" title="\$\{city\}" sortable="true" />
+	<display:column property="city" title="city" sortable="true"/>
 			<spring:message code="property.lessor" var="lessor" />
-			<display:column property="lessor" title="\$\{lessor\}" sortable="true" />
-			<spring:message code="property.audit" var="audit" />
-			<display:column property="audit" title="\$\{audit\}" sortable="true" />
-			<spring:message code="property.bookrequest" var="bookrequest" />
-			<display:column property="bookrequest" title="\$\{bookrequest\}" sortable="true" />
+	<display:column property="lessor" title="lessor" sortable="true"/>
+</display:table>
+
+
+<!-- AUDITS -->
+
+
+<!-- Listing grid -->
+<display:table pagesize="5" class="displaytag" keepStatus="true"
+			   name="audits" requestURI="${requestURI}" id="row">
+
+
+	<!-- Attributes -->
+
+
+	<spring:message code="audit.writtenmoment" var="writtenmoment"/>
+	<display:column property="writtenmoment" title="writtenmoment" sortable="true"/>
+	<spring:message code="audit.text" var="text"/>
+	<display:column property="text" title="text" sortable="true"/>
+	<spring:message code="audit.auditor" var="auditor"/>
+	<display:column property="auditor" title="auditor" sortable="true"/>
+
+</display:table>
+
+
+<!-- BOOKREQUEST -->
+
+<!-- Listing grid -->
+<display:table pagesize="5" class="displaytag" keepStatus="true"
+			   name="bookRequests" requestURI="${requestURI}" id="row">
+
+
+	<!-- Attributes -->
+
+
+	<spring:message code="bookRequest.checkindate" var="checkindate"/>
+	<display:column property="checkindate" title="checkindate" sortable="true"/>
+	<spring:message code="bookRequest.checkoutdate" var="checkoutdate"/>
+	<display:column property="checkoutdate" title="checkoutdate" sortable="true"/>
+	<spring:message code="bookRequest.smoker" var="smoker"/>
+	<display:column property="smoker" title="smoker" sortable="true"/>
+	<spring:message code="bookRequest.status" var="status"/>
+	<display:column property="status" title="status" sortable="true"/>
+	<spring:message code="bookRequest.tenant" var="tenant"/>
+	<display:column property="tenant" title="tenant" sortable="true"/>
 
 </display:table>

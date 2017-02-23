@@ -37,7 +37,7 @@
 		<!-- Comment -->
 		<value>/views/comment/messages</value>
 		<!-- Date -->
-		<value>/views/date/messages</value>
+        <!--<value>/views/date/messages</value>-->
 		<!-- Finder -->
 		<value>/views/finder/messages</value>
 		<!-- Invoice -->
@@ -45,7 +45,7 @@
 		<!-- Lessor -->
 		<value>/views/lessor/messages</value>
 		<!-- Property -->
-		<value>/views/property/messages</value>
+        <value>/views/property/message</value>
 		<!-- SocialIdentity -->
 		<value>/views/socialidentity/messages</value>
 		<!-- Tenant -->
