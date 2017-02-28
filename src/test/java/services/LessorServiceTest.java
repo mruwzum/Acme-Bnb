@@ -1,10 +1,16 @@
 package services;
 
+import domain.Lessor;
+import domain.Property;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -17,6 +23,10 @@ import static org.junit.Assert.*;
 @Transactional
 
 public class LessorServiceTest extends AbstractTest {
+
+    @Autowired
+    private LessorService lessorService;
+
     @Test
     public void create() throws Exception {
 
@@ -80,6 +90,15 @@ public class LessorServiceTest extends AbstractTest {
     @Test
     public void getAllRequest() throws Exception {
 
+        authenticate("lessor1");
+        Lessor u = lessorService.findByPrincipal();
+        List<Property> properties = new ArrayList<>(lessorService.getAllProperties());
+        System.out.println(properties.get(0).getBookRequests());
+        System.out.println(lessorService.getAllProperties());
+
+        System.out.println(lessorService.getAllRequest());
+
+        authenticate(null);
     }
 
     @Test
