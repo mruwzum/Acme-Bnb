@@ -73,6 +73,8 @@ public class PropertyController extends AbstractController {
         property= propertyService.findOne(propertyId);
         Assert.notNull(property);
         result= createEditModelAndView(property);
+        result.addObject("audits", property.getAudits());
+        result.addObject("bookRequests", property.getBookRequests());
          
         return result;
     }

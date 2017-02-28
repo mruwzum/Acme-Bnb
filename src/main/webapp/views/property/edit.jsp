@@ -107,8 +107,8 @@
     <!-- Attributes -->
 
 
-    <spring:message code="audit.writtenmoment" var="writtenmoment"/>
-    <display:column property="writtenmoment" title="writtenmoment" sortable="true"/>
+	<spring:message code="audit.writtenMoment" var="writtenMoment"/>
+	<display:column property="writtenMoment" title="writtenMoment" sortable="true"/>
     <spring:message code="audit.text" var="text"/>
     <display:column property="text" title="text" sortable="true"/>
     <spring:message code="audit.auditor" var="auditor"/>
