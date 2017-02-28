@@ -159,4 +159,15 @@ public class LessorController extends AbstractController {
 
     }
 
+    //Other methods ------------------------------------
+
+    @RequestMapping(value = "/fee", method = RequestMethod.GET)
+    public ModelAndView totalFee() {
+        ModelAndView res;
+        Double fee = lessorService.totalFee();
+        res = new ModelAndView("property/fee");
+        res.addObject("text", fee);
+        return res;
+    }
+
 }

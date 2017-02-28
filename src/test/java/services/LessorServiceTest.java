@@ -103,6 +103,12 @@ public class LessorServiceTest extends AbstractTest {
 
     @Test
     public void totalFee() throws Exception {
+        authenticate("lessor1");
+
+        System.out.println(lessorService.totalFee());
+        authenticate(null);
+
+
 
     }
 

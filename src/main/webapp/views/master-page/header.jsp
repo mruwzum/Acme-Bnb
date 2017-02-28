@@ -50,6 +50,9 @@
 							code="master.page.lessor.request.list"/></a></li>
 				</ul>
 			</li>
+			<li><a href="lessor/fee.do"><spring:message
+					code="master.page.lessor.fee"/></a></li>
+
 		</security:authorize>
 		
 		<security:authorize access="isAnonymous()">

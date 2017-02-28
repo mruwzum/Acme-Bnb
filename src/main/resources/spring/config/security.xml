@@ -73,9 +73,10 @@
 		<security:intercept-url pattern="/lessor/edit.do" access="permitAll" />
 		<security:intercept-url pattern="/lessor/property/list.do" access="permitAll"/>
 		<security:intercept-url pattern="/lessor/request/list.do" access="permitAll"/>
+		<security:intercept-url pattern="/lessor/fee.do" access="permitAll"/>
 
 
-		<!--  PROPERTY  -->	
+		<!--  PROPERTY  -->
 		<security:intercept-url pattern="/property/list.do" access="permitAll" />
 		<security:intercept-url pattern="/property/edit.do" access="permitAll" />
 		<!--  SOCIALIDENTITY  -->	
