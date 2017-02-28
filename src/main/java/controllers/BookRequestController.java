@@ -1,10 +1,14 @@
 package controllers;
 
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import javax.validation.Valid;
 
+import domain.Property;
+import domain.Tenant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
@@ -17,6 +21,8 @@ import org.springframework.web.servlet.ModelAndView;
 import services.BookRequestService;
 import controllers.AbstractController;
 import domain.BookRequest;
+import services.PropertyService;
+import services.TenantService;
 
 @Controller
 @RequestMapping("/bookRequest")
@@ -26,6 +32,10 @@ public class BookRequestController extends AbstractController {
 	
 	@Autowired
 	private BookRequestService bookRequestService;
+	@Autowired
+    private PropertyService propertyService;
+	@Autowired
+    private TenantService tenantService;
 	
 	//Constructors----------------------------------------------
 	
@@ -39,7 +49,7 @@ public class BookRequestController extends AbstractController {
 		
 		ModelAndView result;
 		Collection<BookRequest> bookRequests;
-		
+
 		bookRequests = bookRequestService.findAll();
 		result = new ModelAndView("bookRequest/list");
 		result.addObject("bookRequests", bookRequests);
@@ -47,7 +57,35 @@ public class BookRequestController extends AbstractController {
 		
 		return result;
 	}
-	
+    @RequestMapping( value="/listMy", method = RequestMethod.GET)
+    public ModelAndView myBookRequestList() {
+
+        ModelAndView result;
+        Collection<BookRequest> bookRequests;
+        Tenant t = tenantService.findByPrincipal();
+        List<BookRequest> bookRequests1 = new ArrayList<>(t.getBookRequests());
+        bookRequests = bookRequestService.findAll();
+        result = new ModelAndView("bookRequest/list");
+        result.addObject("bookRequests", bookRequests1);
+        result.addObject("requestURI","bookRequest/list.do");
+
+        return result;
+    }
+
+    @RequestMapping(value = "/createRequest", method = RequestMethod.GET)
+    public ModelAndView create(@RequestParam int propertyId){
+
+        ModelAndView result;
+        Tenant t = tenantService.findByPrincipal();
+        BookRequest bookRequest = bookRequestService.create();
+        Property p = propertyService.findOne(propertyId);
+        bookRequest.setProperty(p);
+        bookRequest.setTenant(t);
+        result = createEditModelAndView(bookRequest);
+
+        return result;
+
+    }
 	
 	//Create Method -----------------------------------------------------------
 	

@@ -46,9 +46,26 @@
 					<li class="arrow"></li>
 					<li><a href="lessor/property/list.do"><spring:message
 							code="master.page.lessor.properties.list"/></a></li>
+					<li><a href="lessor/request/list.do"><spring:message
+							code="master.page.lessor.request.list"/></a></li>
 				</ul>
 			</li>
+			<li><a href="lessor/fee.do"><spring:message
+					code="master.page.lessor.fee"/></a></li>
+
 		</security:authorize>
+		<security:authorize access="hasRole('TENANT')">
+			<li><a class="fNiv"><spring:message code="master.page.tenant.properties"/></a>
+				<ul>
+					<li class="arrow"></li>
+					<li><a href="finder/create.do"><spring:message
+							code="master.page.tenant.request.finder"/></a></li>
+				</ul>
+			</li>
+            <li><a href="bookRequest/listMy.do"><spring:message
+                    code="master.page.tenant.bookRequests.list"/></a></li>
+		</security:authorize>
+
 		
 		<security:authorize access="isAnonymous()">
 			<li><a class="fNiv" href="security/login.do"><spring:message code="master.page.login" /></a></li>
@@ -68,6 +85,8 @@
 					<li><a href="j_spring_security_logout"><spring:message code="master.page.logout" /> </a></li>
 				</ul>
 			</li>
+            <li><a href="property/list.do"><spring:message
+                    code="master.page.tenant.property.list"/></a></li>
 		</security:authorize>
 	</ul>
 </div>

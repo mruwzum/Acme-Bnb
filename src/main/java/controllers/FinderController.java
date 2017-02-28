@@ -1,10 +1,13 @@
 package controllers;
 
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import javax.validation.Valid;
 
+import domain.Property;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
@@ -28,11 +31,7 @@ public class FinderController extends AbstractController {
 	private FinderService finderService;
 	
 	//Constructors----------------------------------------------
-	
-	public FinderController(){
-		super();
-	}
-	
+
 
 	@RequestMapping( value="/list", method = RequestMethod.GET)
 	public ModelAndView finderList() {
@@ -77,7 +76,7 @@ public class FinderController extends AbstractController {
         return result;
     }
      
-    @RequestMapping(value="/edit", method=RequestMethod.POST, params="save")
+    @RequestMapping(value="/find", method=RequestMethod.POST, params="save")
     public ModelAndView save(@Valid Finder finder, BindingResult binding){
         ModelAndView result;
          
@@ -85,8 +84,9 @@ public class FinderController extends AbstractController {
             result= createEditModelAndView(finder);
         }else{
             try{
-                finderService.save(finder);
-                result= new ModelAndView("redirect:list.do");
+                List<Property> properties = finderService.finder(finder.getDestinationCity(),finder.getMaximumPay(),finder.getMinimumPay(),finder.getKeyword());
+                result= new ModelAndView("property/list");
+                result.addObject("propertys",properties);
             }catch(Throwable oops){
                 result= createEditModelAndView(finder, "finder.commit.error");
             }
@@ -123,6 +123,7 @@ public class FinderController extends AbstractController {
         result= new ModelAndView("finder/edit");
         result.addObject("finder", finder);
         result.addObject("message", message);
+
          
         return result;
  

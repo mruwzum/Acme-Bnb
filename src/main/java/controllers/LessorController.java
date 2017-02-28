@@ -5,6 +5,7 @@ import java.util.Collection;
 
 import javax.validation.Valid;
 
+import domain.BookRequest;
 import domain.Property;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -107,8 +108,23 @@ public class LessorController extends AbstractController {
          
         return result;   
     }
-	
-	// Ancillary methods ------------------------------------------------
+
+
+    //All request ---------------------------------
+
+
+    @RequestMapping(value = "/request/list", method = RequestMethod.GET)
+    public ModelAndView getAllRequest() {
+        ModelAndView res;
+
+        Collection<BookRequest> requests = lessorService.getAllRequest();
+        res = new ModelAndView("bookRequest/list");
+        res.addObject("bookRequests", requests);
+
+        return res;
+    }
+
+    // Ancillary methods ------------------------------------------------
     
     protected ModelAndView createEditModelAndView(Lessor lessor){
         ModelAndView result;
@@ -141,6 +157,17 @@ public class LessorController extends AbstractController {
         result.addObject("requestURI", "property/list.do");
         return result;
 
+    }
+
+    //Other methods ------------------------------------
+
+    @RequestMapping(value = "/fee", method = RequestMethod.GET)
+    public ModelAndView totalFee() {
+        ModelAndView res;
+        Double fee = lessorService.totalFee();
+        res = new ModelAndView("property/fee");
+        res.addObject("text", fee);
+        return res;
     }
 
 }

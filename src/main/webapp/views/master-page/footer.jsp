@@ -24,4 +24,8 @@
     </div>
 </div>
 
-<b>Copyright &copy; <fmt:formatDate value="${date}" pattern="yyyy" /> AcmeBnb Co., Inc.</b>
+<b>Copyright &copy; <fmt:formatDate value="${date}" pattern="yyyy" />AcmeBnb Co., Inc.</b>
+
+<br>
+<a href="http://ourdisclaimer.com/?i=AcmeBnb Co.,Inc."><img src="http://ourdisclaimer.com/ourdisclaimer.gif"
+                                                             width="80" height="15" alt="Privacy policy / Política de privacidad" /></a>

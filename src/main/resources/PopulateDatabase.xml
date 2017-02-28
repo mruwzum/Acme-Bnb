@@ -305,7 +305,9 @@
         <property name="capacity" value="2"/>
         <property name="city" value="city1"/>
         <property name="lessor" ref="lessor1"/>
-    </bean>
+		<property name="bookRequests" ref="bookRequest1"/>
+
+	</bean>
     <bean id="property2" class="domain.Property">
         <property name="name" value="name2"/>
         <property name="rate" value="12.0"/>
@@ -365,9 +367,8 @@
 						<property name="smoker" value="true" />
                     <property name="creditCard" value="54275498043695577"/>
                     <property name="status" value="ACEPTED"></property>
-
                     <property name="tenant" ref="tenant1" />
-							<property name="property" ref="property1" />
+					<property name="property" ref="property1"/>
 				</bean>
 				<bean id="bookRequest2" class="domain.BookRequest">
                     <property name="checkInDate" value="2017/01/12 23:00:12"/>
