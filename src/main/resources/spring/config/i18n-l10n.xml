@@ -25,31 +25,31 @@
 		<value>/views/welcome/messages</value>
 		
 				<!-- Actor -->
-		<value>/views/actor/messages</value>
+		<value>/views/actor/message</value>
 		<!-- Administrator -->
-		<value>/views/administrator/messages</value>
+		<value>/views/administrator/message</value>
 		<!-- Audit -->
-		<value>/views/audit/messages</value>
+		<value>/views/audit/message</value>
 		<!-- Auditor -->
-		<value>/views/auditor/messages</value>
+		<value>/views/auditor/message</value>
 		<!-- BookRequest -->
-		<value>/views/bookrequest/messages</value>
+		<value>/views/bookrequest/message</value>
 		<!-- Comment -->
-		<value>/views/comment/messages</value>
+		<value>/views/comment/message</value>
 		<!-- Date -->
         <!--<value>/views/date/messages</value>-->
 		<!-- Finder -->
-		<value>/views/finder/messages</value>
+		<value>/views/finder/message</value>
 		<!-- Invoice -->
-		<value>/views/invoice/messages</value>
+		<value>/views/invoice/message</value>
 		<!-- Lessor -->
-		<value>/views/lessor/messages</value>
+		<value>/views/lessor/message</value>
 		<!-- Property -->
         <value>/views/property/message</value>
 		<!-- SocialIdentity -->
-		<value>/views/socialidentity/messages</value>
+		<value>/views/socialidentity/message</value>
 		<!-- Tenant -->
-		<value>/views/tenant/messages</value>
+		<value>/views/tenant/message</value>
 	</util:list>
 
 </beans>

@@ -113,7 +113,7 @@ public class LessorController extends AbstractController {
     //All request ---------------------------------
 
 
-    @RequestMapping(value = "/request", method = RequestMethod.GET)
+    @RequestMapping(value = "/request/list", method = RequestMethod.GET)
     public ModelAndView getAllRequest() {
         ModelAndView res;
 

@@ -46,6 +46,8 @@
 					<li class="arrow"></li>
 					<li><a href="lessor/property/list.do"><spring:message
 							code="master.page.lessor.properties.list"/></a></li>
+					<li><a href="lessor/request/list.do"><spring:message
+							code="master.page.lessor.request.list"/></a></li>
 				</ul>
 			</li>
 		</security:authorize>
