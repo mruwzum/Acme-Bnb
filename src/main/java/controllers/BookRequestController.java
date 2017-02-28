@@ -6,6 +6,7 @@ import java.util.Collection;
 import javax.validation.Valid;
 
 import domain.Property;
+import domain.Tenant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
@@ -19,6 +20,7 @@ import services.BookRequestService;
 import controllers.AbstractController;
 import domain.BookRequest;
 import services.PropertyService;
+import services.TenantService;
 
 @Controller
 @RequestMapping("/bookRequest")
@@ -30,6 +32,8 @@ public class BookRequestController extends AbstractController {
 	private BookRequestService bookRequestService;
 	@Autowired
     private PropertyService propertyService;
+	@Autowired
+    private TenantService tenantService;
 	
 	//Constructors----------------------------------------------
 	
@@ -57,10 +61,11 @@ public class BookRequestController extends AbstractController {
     public ModelAndView create(@RequestParam int propertyId){
 
         ModelAndView result;
-
+        Tenant t = tenantService.findByPrincipal();
         BookRequest bookRequest = bookRequestService.create();
         Property p = propertyService.findOne(propertyId);
         bookRequest.setProperty(p);
+        bookRequest.setTenant(t);
         result = createEditModelAndView(bookRequest);
 
         return result;

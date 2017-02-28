@@ -1,10 +1,13 @@
 package services;
 
+import domain.Lessor;
 import domain.Tenant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 import repositories.TenantRepository;
+import security.LoginService;
+import security.UserAccount;
 import security.UserAccountService;
 
 import javax.transaction.Transactional;
@@ -63,5 +66,25 @@ public class TenantService {
 
 	// Other business methods -----------------------
 
+	public Tenant findByPrincipal() {
+		Tenant result;
+		UserAccount userAccount;
+
+		userAccount = LoginService.getPrincipal();
+		Assert.notNull(userAccount);
+		result = findByUserAccount(userAccount);
+		Assert.notNull(result);
+
+		return result;
+	}
+	private Tenant findByUserAccount(UserAccount userAccount) {
+		Assert.notNull(userAccount);
+
+		Tenant result;
+
+		result = tenantRepository.findByUserAccountId(userAccount.getId());
+
+		return result;
+	}
 
 }

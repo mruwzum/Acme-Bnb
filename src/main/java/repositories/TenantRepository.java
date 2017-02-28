@@ -7,5 +7,6 @@ import domain.Tenant;
 
 @Repository
 public interface TenantRepository extends JpaRepository<Tenant, Integer> {
-
+    @Query("select c from Tenant c where c.userAccount.id = ?1")
+    Tenant findByUserAccountId(int userAccountId);
 }
