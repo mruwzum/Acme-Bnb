@@ -34,16 +34,6 @@ public class TenantController extends AbstractController {
         super();
     }
 
-    @RequestMapping(value = "/registration", method = RequestMethod.POST, params = "save")
-    public ModelAndView saveRegistrationForm(@Valid Actor actor, BindingResult bindingResult) {
-        ModelAndView result;
-        actorService.registerAsTenant(actor);
-        result = new ModelAndView("tenant/list");
-        result.addObject("user", actor);
-
-        return result;
-    }
-
 
 	@RequestMapping( value="/list", method = RequestMethod.GET)
 	public ModelAndView tenantList() {
