@@ -7,6 +7,7 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import domain.Property;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
@@ -31,34 +32,6 @@ public class FinderController extends AbstractController {
 	
 	//Constructors----------------------------------------------
 
-
-
-    @RequestMapping(value = "/searchFinder", method = RequestMethod.GET)
-    public ModelAndView findRecipe(@RequestParam String destination, Double  minimumPay, Double  maximumPay, String keywor) {
-        ModelAndView res;
-        List<Finder> finder = new ArrayList<>(finderService.findAll());
-
-        Finder aux = null;
-        for (Finder u : finder) {
-            if (!u.getKeyword().equals(destination) || !(u.getMinimumPay() == minimumPay) ||!(u.getMaximumPay() == maximumPay) || u.getKeyword().equals(keywor)) {
-                aux = u;
-                break;
-            }
-        }
-        Assert.notNull(aux, "Property not found / No se ha encontrado la propiedad");
-        res = new ModelAndView("finder/list");
-        res.addObject("finder", aux);
-        return res;
-    }
-
-    @RequestMapping(value = "/search", method = RequestMethod.GET)
-    public ModelAndView searchRecipe() {
-        ModelAndView res;
-        Finder finder = finderService.create();
-        res = new ModelAndView("finder/search");
-        res.addObject("finder", finder);
-        return res;
-    }
 
 	@RequestMapping( value="/list", method = RequestMethod.GET)
 	public ModelAndView finderList() {
@@ -111,8 +84,9 @@ public class FinderController extends AbstractController {
             result= createEditModelAndView(finder);
         }else{
             try{
-                finderService.save(finder);
-                result= new ModelAndView("redirect:list.do");
+                List<Property> properties = finderService.finder(finder.getDestinationCity(),finder.getMaximumPay(),finder.getMinimumPay(),finder.getKeyword());
+                result= new ModelAndView("property/list");
+                result.addObject("property",properties);
             }catch(Throwable oops){
                 result= createEditModelAndView(finder, "finder.commit.error");
             }

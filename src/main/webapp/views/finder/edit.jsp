@@ -9,6 +9,7 @@
 <%@taglib prefix="security"
 	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
+<%@ taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
 
 <form:form action="finder/edit.do" modelAttribute="finder">
@@ -16,44 +17,27 @@
 	<form:hidden path="id" />
 	<form:hidden path="version" />
 	
-			<form:label path="destinationcity">
-			<spring:message code="finder.destinationcity" />:
-			</form:label>
-			<form:input path="destinationcity" />
-			<form:errors cssClass="error" path="destinationcity" />
-			<br />
-			<form:label path="minimumpay">
-			<spring:message code="finder.minimumpay" />:
-			</form:label>
-			<form:input path="minimumpay" />
-			<form:errors cssClass="error" path="minimumpay" />
-			<br />
-			<form:label path="maximumpay">
-			<spring:message code="finder.maximumpay" />:
-			</form:label>
-			<form:input path="maximumpay" />
-			<form:errors cssClass="error" path="maximumpay" />
-			<br />
-			<form:label path="keyword">
-			<spring:message code="finder.keyword" />:
-			</form:label>
-			<form:input path="keyword" />
-			<form:errors cssClass="error" path="keyword" />
-			<br />
+	<acme:textbox path="destinationCity" code="finder.destinationcity"/>
+	<br />
+	<acme:textbox path="minimumPay" code="finder.minimumpay"/>
+	<br />
+	<acme:textbox path="maximumPay" code="finder.maximumpay"/>
+	<br />
+	<acme:textbox path="keyword" code="finder.keyword"/>
+	<br />
+
+
 
 	<!---------------------------- BOTONES -------------------------->
 
-	<input type="submit" name="save"
-		value="<spring:message code="finder.save" />" />
+    <acme:submit name="save" code="finder.save"/>
 
 	<jstl:if test="\$\{finder.id != 0}">
 		<input type="submit" name="delete"
 			value="<spring:message code="finder.delete" />"
 			onclick="return confirm('<spring:message code="finder.confirm.delete" />')" />&nbsp;
 	</jstl:if>
+    <acme:cancel url="finder/list.do" code="finder.cancel"/>
 
-	<input type="button" name="cancel"
-		value="<spring:message code="finder.cancel" />"
-		onclick="javascript: window.location.replace('finder/list.do')" />
 
 </form:form>

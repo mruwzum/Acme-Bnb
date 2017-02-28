@@ -54,6 +54,17 @@
 					code="master.page.lessor.fee"/></a></li>
 
 		</security:authorize>
+		<security:authorize access="hasRole('TENANT')">
+			<li><a class="fNiv"><spring:message code="master.page.tenant.properties"/></a>
+				<ul>
+					<li class="arrow"></li>
+					<li><a href="finder/create.do"><spring:message
+							code="master.page.tenant.request.finder"/></a></li>
+                    <li><a href="property/list.do"><spring:message
+                            code="master.page.tenant.property.list"/></a></li>
+				</ul>
+			</li>
+		</security:authorize>
 		
 		<security:authorize access="isAnonymous()">
 			<li><a class="fNiv" href="security/login.do"><spring:message code="master.page.login" /></a></li>

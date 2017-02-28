@@ -5,6 +5,7 @@ import java.util.Collection;
 
 import javax.validation.Valid;
 
+import domain.Property;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
@@ -17,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 import services.BookRequestService;
 import controllers.AbstractController;
 import domain.BookRequest;
+import services.PropertyService;
 
 @Controller
 @RequestMapping("/bookRequest")
@@ -26,6 +28,8 @@ public class BookRequestController extends AbstractController {
 	
 	@Autowired
 	private BookRequestService bookRequestService;
+	@Autowired
+    private PropertyService propertyService;
 	
 	//Constructors----------------------------------------------
 	
@@ -47,7 +51,21 @@ public class BookRequestController extends AbstractController {
 		
 		return result;
 	}
-	
+
+
+    @RequestMapping(value = "/createRequest", method = RequestMethod.GET)
+    public ModelAndView create(@RequestParam int propertyId){
+
+        ModelAndView result;
+
+        BookRequest bookRequest = bookRequestService.create();
+        Property p = propertyService.findOne(propertyId);
+        bookRequest.setProperty(p);
+        result = createEditModelAndView(bookRequest);
+
+        return result;
+
+    }
 	
 	//Create Method -----------------------------------------------------------
 	

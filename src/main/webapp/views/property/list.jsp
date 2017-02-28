@@ -35,6 +35,14 @@
 		</display:column>
 
 	</security:authorize>
+	<security:authorize access="permitAll">
+		<display:column>
+			<a href="bookRequest/createRequest.do?propertyId=${row.id}">
+				<spring:message code="property.request"/>
+			</a>
+		</display:column>
+
+	</security:authorize>
 	
 			<spring:message code="property.name" var="name" />
 	<display:column property="name" title="name" sortable="true"/>
