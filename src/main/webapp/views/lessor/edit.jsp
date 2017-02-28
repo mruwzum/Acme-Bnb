@@ -57,6 +57,22 @@
 			<form:errors cssClass="error" path="creditCard" />
 			<br />
 
+    <h1>User Account</h1>
+    <br>
+    <form:label path="UserAccount.username">
+        <spring:message code="actor.username"/>:
+    </form:label>
+    <form:input path="UserAccount.username"/>
+    <form:errors cssClass="error" path="UserAccount.username"/>
+    <br/>
+    <br>
+    <form:label path="UserAccount.password">
+        <spring:message code="actor.password"/>:
+    </form:label>
+    <form:password path="UserAccount.password"/>
+    <form:errors cssClass="error" path="UserAccount.password"/>
+    <br/>
+
 	<!---------------------------- BOTONES -------------------------->
 
 	<input type="submit" name="save"

@@ -81,17 +81,17 @@ public class TenantController extends AbstractController {
     @RequestMapping(value="/edit", method=RequestMethod.POST, params="save")
     public ModelAndView save(@Valid Tenant tenant, BindingResult binding){
         ModelAndView result;
-         
-        if(binding.hasErrors()){
-            result= createEditModelAndView(tenant);
-        }else{
-            try{
-                tenantService.save(tenant);
+//
+//        if(binding.hasErrors()){
+//            result= createEditModelAndView(tenant);
+//        }else{
+//            try{
+                actorService.registerAsTenant(tenant);
                 result= new ModelAndView("redirect:list.do");
-            }catch(Throwable oops){
-                result= createEditModelAndView(tenant, "tenant.commit.error");
-            }
-        }
+//            }catch(Throwable oops){
+//                result= createEditModelAndView(tenant, "tenant.commit.error");
+//            }
+//        }
         return result;
     }
      

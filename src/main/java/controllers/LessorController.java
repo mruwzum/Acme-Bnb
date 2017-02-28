@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import services.ActorService;
 import services.LessorService;
 import controllers.AbstractController;
 import domain.Lessor;
@@ -28,6 +29,8 @@ public class LessorController extends AbstractController {
 	
 	@Autowired
 	private LessorService lessorService;
+	@Autowired
+    private ActorService actorService;
 	
 	//Constructors----------------------------------------------
 	
@@ -82,17 +85,17 @@ public class LessorController extends AbstractController {
     @RequestMapping(value="/edit", method=RequestMethod.POST, params="save")
     public ModelAndView save(@Valid Lessor lessor, BindingResult binding){
         ModelAndView result;
-         
-        if(binding.hasErrors()){
-            result= createEditModelAndView(lessor);
-        }else{
-            try{
-                lessorService.save(lessor);
+         //TODO esto no funciona con el bindign, sin el va flama :S
+//        if(binding.hasErrors()){
+//            result= createEditModelAndView(lessor);
+//        }else{
+//            try{
+                actorService.registerAsLessor(lessor);
                 result= new ModelAndView("redirect:list.do");
-            }catch(Throwable oops){
-                result= createEditModelAndView(lessor, "lessor.commit.error");
-            }
-        }
+//            }catch(Throwable oops){
+//                result= createEditModelAndView(lessor, "lessor.commit.error");
+//            }
+//        }
         return result;
     }
      
