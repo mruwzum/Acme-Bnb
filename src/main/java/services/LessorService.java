@@ -156,11 +156,14 @@ public class LessorService {
 		List<BookRequest> requests = new ArrayList<>();
 		Lessor u = findByPrincipal();
 		Assert.notNull(u, "user not identified");
-		for (Property p : u.getPropertys()) {
-			requests.addAll(p.getBookRequests());
+        for (Property p : getAllProperties()) {
+            if (p.getBookRequests() != null) {
+                requests.addAll(p.getBookRequests());
+            }
+
 		}
-		Assert.notEmpty(requests, "No book request found");
-		return requests;
+        Assert.isTrue(requests.isEmpty(), "No book request found");
+        return requests;
 	}
 
 	//TODO Una vez se establezca una propieda que sea fee y que solo pueda ser gestionada por el admin, se sustituye aquí

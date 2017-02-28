@@ -305,6 +305,11 @@
         <property name="capacity" value="2"/>
         <property name="city" value="city1"/>
         <property name="lessor" ref="lessor1"/>
+		<property name="bookRequests">
+			<list>
+				<ref bean="bookRequest1"></ref>
+			</list>
+		</property>
     </bean>
     <bean id="property2" class="domain.Property">
         <property name="name" value="name2"/>
