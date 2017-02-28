@@ -14,7 +14,7 @@
 	<div>
 		<H5>
 			<a href="bookRequest/create.do"> <spring:message
-					code="bookRequest.create" />
+					code="tenant.create" />
 			</a>
 		</H5>
 	</div>
@@ -30,24 +30,24 @@
 	<security:authorize access="permitAll">
 		<display:column>
 			<a href="bookRequest/edit.do?bookRequestId=${row.id}> <spring:message
-					code="bookRequest.edit" />
+					code="tenant.edit" />
 			</a>
 		</display:column>
 	</security:authorize>
 	
-			<spring:message code="bookRequest.checkindate" var="checkindate" />
-			<display:column property="checkindate" title="\$\{checkindate\}" sortable="true" />
-			<spring:message code="bookRequest.checkoutdate" var="checkoutdate" />
-			<display:column property="checkoutdate" title="\$\{checkoutdate\}" sortable="true" />
+			<spring:message code="bookRequest.checkindate" var="checkInDate" />
+			<display:column property="checkInDate" title="${checkInDate}" sortable="true" />
+			<spring:message code="bookRequest.checkoutdate" var="checkOutDate" />
+			<display:column property="checkOutDate" title="${checkOutDate}" sortable="true" />
 			<spring:message code="bookRequest.smoker" var="smoker" />
-			<display:column property="smoker" title="\$\{smoker\}" sortable="true" />
-			<spring:message code="bookRequest.creditcard" var="creditcard" />
-			<display:column property="creditcard" title="\$\{creditcard\}" sortable="true" />
+			<display:column property="smoker" title="${smoker}" sortable="true" />
+			<spring:message code="bookRequest.creditcard" var="creditCard" />
+			<display:column property="creditCard" title="${creditCard}" sortable="true" />
 			<spring:message code="bookRequest.status" var="status" />
-			<display:column property="status" title="\$\{status\}" sortable="true" />
+			<display:column property="status" title="${status}" sortable="true" />
 			<spring:message code="bookRequest.tenant" var="tenant" />
-			<display:column property="tenant" title="\$\{tenant\}" sortable="true" />
+			<display:column property="tenant" title="${tenant}" sortable="true" />
 			<spring:message code="bookRequest.property" var="property" />
-			<display:column property="property" title="\$\{property\}" sortable="true" />
+			<display:column property="property" title="${property}" sortable="true" />
 
 </display:table>

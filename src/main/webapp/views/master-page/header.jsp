@@ -62,7 +62,10 @@
 							code="master.page.tenant.request.finder"/></a></li>
 				</ul>
 			</li>
+            <li><a href="bookRequest/listMy.do"><spring:message
+                    code="master.page.tenant.bookRequests.list"/></a></li>
 		</security:authorize>
+
 		
 		<security:authorize access="isAnonymous()">
 			<li><a class="fNiv" href="security/login.do"><spring:message code="master.page.login" /></a></li>

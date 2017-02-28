@@ -1,7 +1,9 @@
 package controllers;
 
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import javax.validation.Valid;
 
@@ -47,7 +49,7 @@ public class BookRequestController extends AbstractController {
 		
 		ModelAndView result;
 		Collection<BookRequest> bookRequests;
-		
+
 		bookRequests = bookRequestService.findAll();
 		result = new ModelAndView("bookRequest/list");
 		result.addObject("bookRequests", bookRequests);
@@ -55,7 +57,20 @@ public class BookRequestController extends AbstractController {
 		
 		return result;
 	}
+    @RequestMapping( value="/listMy", method = RequestMethod.GET)
+    public ModelAndView myBookRequestList() {
 
+        ModelAndView result;
+        Collection<BookRequest> bookRequests;
+        Tenant t = tenantService.findByPrincipal();
+        List<BookRequest> bookRequests1 = new ArrayList<>(t.getBookRequests());
+        bookRequests = bookRequestService.findAll();
+        result = new ModelAndView("bookRequest/list");
+        result.addObject("bookRequests", bookRequests1);
+        result.addObject("requestURI","bookRequest/list.do");
+
+        return result;
+    }
 
     @RequestMapping(value = "/createRequest", method = RequestMethod.GET)
     public ModelAndView create(@RequestParam int propertyId){
