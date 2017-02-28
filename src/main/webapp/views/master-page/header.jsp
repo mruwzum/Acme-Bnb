@@ -60,8 +60,6 @@
 					<li class="arrow"></li>
 					<li><a href="finder/create.do"><spring:message
 							code="master.page.tenant.request.finder"/></a></li>
-                    <li><a href="property/list.do"><spring:message
-                            code="master.page.tenant.property.list"/></a></li>
 				</ul>
 			</li>
 		</security:authorize>
@@ -84,6 +82,8 @@
 					<li><a href="j_spring_security_logout"><spring:message code="master.page.logout" /> </a></li>
 				</ul>
 			</li>
+            <li><a href="property/list.do"><spring:message
+                    code="master.page.tenant.property.list"/></a></li>
 		</security:authorize>
 	</ul>
 </div>

@@ -27,7 +27,7 @@
 
 	<!-- Attributes -->
 
-	<security:authorize access="permitAll">
+	<security:authorize access="hasRole('LESSOR')">
 		<display:column>
 			<a href="property/edit.do?propertyId=${row.id}">
 				<spring:message code="property.edit"/>
@@ -35,7 +35,7 @@
 		</display:column>
 
 	</security:authorize>
-	<security:authorize access="permitAll">
+	<security:authorize access="hasRole('TENANT')">
 		<display:column>
 			<a href="bookRequest/createRequest.do?propertyId=${row.id}">
 				<spring:message code="property.request"/>
