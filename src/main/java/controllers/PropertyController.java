@@ -111,8 +111,20 @@ public class PropertyController extends AbstractController {
          
         return result;   
     }
-	
-	// Ancillary methods ------------------------------------------------
+
+    @RequestMapping(value = "/view", method = RequestMethod.GET)
+    public ModelAndView view(@RequestParam int propertyId) {
+        ModelAndView res;
+        Property p = propertyService.findOne(propertyId);
+        res = new ModelAndView("property/view");
+        res.addObject("name", p.getName());
+        res.addObject("address", p.getAddress());
+        res.addObject("audits", p.getAudits());
+
+        return res;
+    }
+
+    // Ancillary methods ------------------------------------------------
     
     protected ModelAndView createEditModelAndView(Property property){
         ModelAndView result;

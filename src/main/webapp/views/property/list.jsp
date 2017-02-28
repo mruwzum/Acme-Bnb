@@ -64,6 +64,15 @@
 	<display:column property="city" title="city" sortable="true"/>
 			<spring:message code="property.lessor" var="lessor" />
 	<display:column property="lessor" title="lessor" sortable="true"/>
+
+	<security:authorize access="permitAll">
+		<display:column>
+			<a href="property/view.do?propertyId=${row.id}">
+				<spring:message code="property.view"/>
+			</a>
+		</display:column>
+	</security:authorize>
+
 </display:table>
 
 
