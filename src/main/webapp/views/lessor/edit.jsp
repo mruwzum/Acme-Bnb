@@ -15,18 +15,46 @@
 
 	<form:hidden path="id" />
 	<form:hidden path="version" />
-	
-			<form:label path="creditcard">
+	<form:hidden path="propertys" />
+
+	<form:label path="name">
+		<spring:message code="actor.name" />:
+	</form:label>
+	<form:input path="name" />
+	<form:errors cssClass="error" path="name" />
+	<br />
+	<form:label path="surname">
+		<spring:message code="actor.surname" />:
+	</form:label>
+	<form:input path="surname" />
+	<form:errors cssClass="error" path="surname" />
+	<br />
+	<form:label path="email">
+		<spring:message code="actor.email" />:
+	</form:label>
+	<form:input path="email" />
+	<form:errors cssClass="error" path="email" />
+	<br />
+	<form:label path="phone">
+		<spring:message code="actor.phone" />:
+	</form:label>
+	<form:input path="phone" />
+	<form:errors cssClass="error" path="phone" />
+	<br />
+	<form:label path="picture">
+		<spring:message code="actor.picture" />:
+	</form:label>
+	<form:input path="picture" />
+	<form:errors cssClass="error" path="picture" />
+	<br />
+	<br>
+
+
+			<form:label path="creditCard">
 			<spring:message code="lessor.creditcard" />:
 			</form:label>
-			<form:input path="creditcard" />
-			<form:errors cssClass="error" path="creditcard" />
-			<br />
-			<form:label path="property">
-			<spring:message code="lessor.property" />:
-			</form:label>
-			<form:input path="property" />
-			<form:errors cssClass="error" path="property" />
+			<form:input path="creditCard" />
+			<form:errors cssClass="error" path="creditCard" />
 			<br />
 
 	<!---------------------------- BOTONES -------------------------->

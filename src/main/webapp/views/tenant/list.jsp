@@ -34,12 +34,16 @@
 			</a>
 		</display:column>
 	</security:authorize>
-	
-			<spring:message code="tenant.bookrequest" var="bookrequest" />
-			<display:column property="bookrequest" title="\$\{bookrequest\}" sortable="true" />
-			<spring:message code="tenant.invoice" var="invoice" />
-			<display:column property="invoice" title="\$\{invoice\}" sortable="true" />
-			<spring:message code="tenant.finder" var="finder" />
-			<display:column property="finder" title="\$\{finder\}" sortable="true" />
+
+    <spring:message code="actor.name" var="name" />
+    <display:column property="name" title="${name}" sortable="true" />
+    <spring:message code="actor.surname" var="surname" />
+    <display:column property="surname" title="${surname}" sortable="true" />
+    <spring:message code="actor.email" var="email" />
+    <display:column property="email" title="${email}" sortable="true" />
+    <spring:message code="actor.phone" var="phone" />
+    <display:column property="phone" title="${phone}" sortable="true" />
+    <spring:message code="actor.picture" var="picture" />
+    <display:column property="picture" title="${picture}" sortable="true" />
 
 </display:table>

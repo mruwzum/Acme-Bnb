@@ -15,19 +15,49 @@
 
 	<form:hidden path="id" />
 	<form:hidden path="version" />
-	
-			<form:label path="nameofcompany">
+
+
+
+	<form:label path="name">
+		<spring:message code="actor.name" />:
+	</form:label>
+	<form:input path="name" />
+	<form:errors cssClass="error" path="name" />
+	<br />
+	<form:label path="surname">
+		<spring:message code="actor.surname" />:
+	</form:label>
+	<form:input path="surname" />
+	<form:errors cssClass="error" path="surname" />
+	<br />
+	<form:label path="email">
+		<spring:message code="actor.email" />:
+	</form:label>
+	<form:input path="email" />
+	<form:errors cssClass="error" path="email" />
+	<br />
+	<form:label path="phone">
+		<spring:message code="actor.phone" />:
+	</form:label>
+	<form:input path="phone" />
+	<form:errors cssClass="error" path="phone" />
+	<br />
+	<form:label path="picture">
+		<spring:message code="actor.picture" />:
+	</form:label>
+	<form:input path="picture" />
+	<form:errors cssClass="error" path="picture" />
+	<br />
+	<br>
+
+
+			<form:label path="nameOfCompany">
 			<spring:message code="auditor.nameofcompany" />:
 			</form:label>
-			<form:input path="nameofcompany" />
-			<form:errors cssClass="error" path="nameofcompany" />
+			<form:input path="nameOfCompany" />
+			<form:errors cssClass="error" path="nameOfCompany" />
 			<br />
-			<form:label path="audit">
-			<spring:message code="auditor.audit" />:
-			</form:label>
-			<form:input path="audit" />
-			<form:errors cssClass="error" path="audit" />
-			<br />
+
 
 	<!---------------------------- BOTONES -------------------------->
 
