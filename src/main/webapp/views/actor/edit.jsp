@@ -15,6 +15,7 @@
 
 	<form:hidden path="id" />
 	<form:hidden path="version" />
+	<form:hidden path="socialIdentities" />
 	
 			<form:label path="name">
 			<spring:message code="actor.name" />:
@@ -46,26 +47,13 @@
 			<form:input path="picture" />
 			<form:errors cssClass="error" path="picture" />
 			<br />
-			<form:label path="socialidentity">
-			<spring:message code="actor.socialidentity" />:
-			</form:label>
-			<form:input path="socialidentity" />
-			<form:errors cssClass="error" path="socialidentity" />
-			<br />
-
 	<!---------------------------- BOTONES -------------------------->
 
 	<input type="submit" name="save"
 		value="<spring:message code="actor.save" />" />
 
-	<jstl:if test="\$\{actor.id != 0}">
-		<input type="submit" name="delete"
-			value="<spring:message code="actor.delete" />"
-			onclick="return confirm('<spring:message code="actor.confirm.delete" />')" />&nbsp;
-	</jstl:if>
-
 	<input type="button" name="cancel"
 		value="<spring:message code="actor.cancel" />"
-		onclick="javascript: window.location.replace('actor/list.do')" />
+		onclick="javascript: window.location.replace('/profile.do')" />
 
 </form:form>
