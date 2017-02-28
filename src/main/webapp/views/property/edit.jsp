@@ -76,18 +76,7 @@
 			<form:input path="lessor" />
 			<form:errors cssClass="error" path="lessor" />
 			<br />
-			<form:label path="audit">
-			<spring:message code="property.audit" />:
-			</form:label>
-			<form:input path="audit" />
-			<form:errors cssClass="error" path="audit" />
-			<br />
-			<form:label path="bookrequest">
-			<spring:message code="property.bookrequest" />:
-			</form:label>
-			<form:input path="bookrequest" />
-			<form:errors cssClass="error" path="bookrequest" />
-			<br />
+
 
 	<!---------------------------- BOTONES -------------------------->
 
@@ -105,3 +94,48 @@
 		onclick="javascript: window.location.replace('property/list.do')" />
 
 </form:form>
+
+
+<!-- AUDITS -->
+
+
+<!-- Listing grid -->
+<display:table pagesize="5" class="displaytag" keepStatus="true"
+               name="audits" requestURI="${requestURI}" id="row">
+
+
+    <!-- Attributes -->
+
+
+    <spring:message code="audit.writtenmoment" var="writtenmoment"/>
+    <display:column property="writtenmoment" title="writtenmoment" sortable="true"/>
+    <spring:message code="audit.text" var="text"/>
+    <display:column property="text" title="text" sortable="true"/>
+    <spring:message code="audit.auditor" var="auditor"/>
+    <display:column property="auditor" title="auditor" sortable="true"/>
+
+</display:table>
+
+
+<!-- BOOKREQUEST -->
+
+<!-- Listing grid -->
+<display:table pagesize="5" class="displaytag" keepStatus="true"
+               name="bookRequests" requestURI="${requestURI}" id="row">
+
+
+    <!-- Attributes -->
+
+
+    <spring:message code="bookRequest.checkindate" var="checkindate"/>
+    <display:column property="checkindate" title="checkindate" sortable="true"/>
+    <spring:message code="bookRequest.checkoutdate" var="checkoutdate"/>
+    <display:column property="checkoutdate" title="checkoutdate" sortable="true"/>
+    <spring:message code="bookRequest.smoker" var="smoker"/>
+    <display:column property="smoker" title="smoker" sortable="true"/>
+    <spring:message code="bookRequest.status" var="status"/>
+    <display:column property="status" title="status" sortable="true"/>
+    <spring:message code="bookRequest.tenant" var="tenant"/>
+    <display:column property="tenant" title="tenant" sortable="true"/>
+
+</display:table>
