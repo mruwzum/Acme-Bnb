@@ -18,18 +18,18 @@
 	<form:hidden path="version" />
     <form:hidden path="tenant" />
     <form:hidden path="property"/>
+    <form:hidden path="status"/>
 
 		<acme:textbox path="checkInDate" code="bookRequest.checkindate"/>
 			<br />
 		<acme:textbox path="checkOutDate" code="bookRequest.checkoutdate"/>
 			<br />
-		<acme:textbox path="smoker" code="bookRequest.smoker"/>
+        <spring:message code="bookRequest.smoker" var="smoker"/>
+        <jstl:out value="${smoker}"/>
+		<form:checkbox path="smoker" code="bookRequest.smoker"/>
 			<br />
 		<acme:textbox path="creditCard" code="bookRequest.creditcard"/>
 			<br />
-		<acme:textbox path="status" code="bookRequest.status"/>
-			<br />
-
 
 	<!---------------------------- BOTONES -------------------------->
 

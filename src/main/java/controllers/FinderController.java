@@ -76,7 +76,7 @@ public class FinderController extends AbstractController {
         return result;
     }
      
-    @RequestMapping(value="/edit", method=RequestMethod.POST, params="save")
+    @RequestMapping(value="/find", method=RequestMethod.POST, params="save")
     public ModelAndView save(@Valid Finder finder, BindingResult binding){
         ModelAndView result;
          
@@ -86,7 +86,7 @@ public class FinderController extends AbstractController {
             try{
                 List<Property> properties = finderService.finder(finder.getDestinationCity(),finder.getMaximumPay(),finder.getMinimumPay(),finder.getKeyword());
                 result= new ModelAndView("property/list");
-                result.addObject("property",properties);
+                result.addObject("propertys",properties);
             }catch(Throwable oops){
                 result= createEditModelAndView(finder, "finder.commit.error");
             }

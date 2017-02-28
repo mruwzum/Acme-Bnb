@@ -12,7 +12,7 @@
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
 
-<form:form action="finder/edit.do" modelAttribute="finder">
+<form:form action="finder/find.do" modelAttribute="finder">
 
 	<form:hidden path="id" />
 	<form:hidden path="version" />

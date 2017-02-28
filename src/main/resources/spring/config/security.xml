@@ -65,7 +65,9 @@
 		<!--  FINDER  -->	
 		<security:intercept-url pattern="/finder/list.do" access="permitAll" />
 		<security:intercept-url pattern="/finder/edit.do" access="permitAll" />
-		<!--  INVOICE  -->	
+        <security:intercept-url pattern="/finder/find.do" access="permitAll" />
+
+        <!--  INVOICE  -->
 		<security:intercept-url pattern="/invoice/list.do" access="permitAll" />
 		<security:intercept-url pattern="/invoice/edit.do" access="permitAll" />
 		<!--  LESSOR  -->	
