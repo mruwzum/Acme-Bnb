@@ -69,6 +69,12 @@
 		
 		<security:authorize access="isAnonymous()">
 			<li><a class="fNiv" href="security/login.do"><spring:message code="master.page.login" /></a></li>
+            <li><a href="tenant/create.do"><spring:message
+                    code="master.page.tenant.register"/></a></li>
+            <li><a href="lessor/create.do"><spring:message
+                    code="master.page.lessor.register"/></a></li>
+            <li><a href="auditor/create.do"><spring:message
+                    code="master.page.auditor.register"/></a></li>
 		</security:authorize>
 		
 		<security:authorize access="isAuthenticated()">
@@ -87,6 +93,7 @@
 			</li>
             <li><a href="property/list.do"><spring:message
                     code="master.page.tenant.property.list"/></a></li>
+
 		</security:authorize>
 	</ul>
 </div>

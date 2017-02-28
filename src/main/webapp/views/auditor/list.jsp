@@ -34,10 +34,20 @@
 			</a>
 		</display:column>
 	</security:authorize>
-	
-			<spring:message code="auditor.nameofcompany" var="nameofcompany" />
-			<display:column property="nameofcompany" title="\$\{nameofcompany\}" sortable="true" />
-			<spring:message code="auditor.audit" var="audit" />
-			<display:column property="audit" title="\$\{audit\}" sortable="true" />
+
+	<spring:message code="actor.name" var="name" />
+	<display:column property="name" title="${name}" sortable="true" />
+	<spring:message code="actor.surname" var="surname" />
+	<display:column property="surname" title="${surname}" sortable="true" />
+	<spring:message code="actor.email" var="email" />
+	<display:column property="email" title="${email}" sortable="true" />
+	<spring:message code="actor.phone" var="phone" />
+	<display:column property="phone" title="${phone}" sortable="true" />
+	<spring:message code="actor.picture" var="picture" />
+	<display:column property="picture" title="${picture}" sortable="true" />
+
+    <spring:message code="auditor.nameofcompany" var="nameOfCompany" />
+    <display:column property="nameOfCompany" title="${nameOfCompany}" sortable="true" />
+
 
 </display:table>

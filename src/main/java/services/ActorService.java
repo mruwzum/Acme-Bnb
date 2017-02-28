@@ -1,7 +1,6 @@
 package services;
 
-import domain.Actor;
-import domain.Tenant;
+import domain.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -10,9 +9,11 @@ import repositories.ActorRepository;
 import security.Authority;
 import security.LoginService;
 import security.UserAccount;
+import security.UserAccountService;
 
 import javax.transaction.Transactional;
 import java.util.Collection;
+import java.util.HashSet;
 
 @Service
 @Transactional
@@ -21,6 +22,14 @@ public class ActorService {
 	// Managed Repository ------------------------
 	@Autowired
 	private ActorRepository actorRepository;
+	@Autowired
+    private LessorService lessorService;
+	@Autowired
+    private UserAccountService userAccountService;
+	@Autowired
+    private TenantService tenantService;
+	@Autowired
+    private AuditorService auditorService;
 
 	// Constructor -------------------------------
 	public ActorService() {
@@ -103,5 +112,68 @@ public class ActorService {
         //
         // return resu;
         return null;
+    }
+    public Actor registerAsLessor(Lessor u) {
+        Assert.notNull(u);
+        Authority autoh = new Authority();
+        autoh.setAuthority("LESSOR");
+        UserAccount res = new UserAccount();
+        res.addAuthority(autoh);
+        res.setUsername(u.getUserAccount().getUsername());
+        Md5PasswordEncoder encoder;
+        encoder = new Md5PasswordEncoder();
+        String hash = encoder.encodePassword(u.getUserAccount().getPassword(), null);
+        res.setPassword(hash);
+        UserAccount userAccount = userAccountService.save(res);
+//        SocialIdentity socialIdentity = socialIdentityService.create();
+//        socialIdentity.setNickname(u.getSocialIdentity().getNickname());
+//        socialIdentity.setSocialNet(u.getSocialIdentity().getSocialNet());
+//        socialIdentity.setLink(u.getSocialIdentity().getLink());
+//        SocialIdentity socres = socialIdentityService.save(socialIdentity);
+
+
+        u.setUserAccount(userAccount);
+
+        Lessor resu = lessorService.save(u);
+        return resu;
+    }
+
+    public Actor registerAsTenant(Tenant u) {
+        Assert.notNull(u);
+        Authority autoh = new Authority();
+        autoh.setAuthority("TENANT");
+        UserAccount res = new UserAccount();
+        res.addAuthority(autoh);
+        res.setUsername(u.getUserAccount().getUsername());
+        Md5PasswordEncoder encoder;
+        encoder = new Md5PasswordEncoder();
+        String hash = encoder.encodePassword(u.getUserAccount().getPassword(), null);
+        res.setPassword(hash);
+        UserAccount userAccount = userAccountService.save(res);
+
+
+        u.setUserAccount(userAccount);
+
+        Tenant resu = tenantService.save(u);
+        return resu;
+    }
+    public Actor registerAsAuditor(Auditor u) {
+        Assert.notNull(u);
+        Authority autoh = new Authority();
+        autoh.setAuthority("AUDITOR");
+        UserAccount res = new UserAccount();
+        res.addAuthority(autoh);
+        res.setUsername(u.getUserAccount().getUsername());
+        Md5PasswordEncoder encoder;
+        encoder = new Md5PasswordEncoder();
+        String hash = encoder.encodePassword(u.getUserAccount().getPassword(), null);
+        res.setPassword(hash);
+        UserAccount userAccount = userAccountService.save(res);
+
+
+        u.setUserAccount(userAccount);
+
+        Auditor resu = auditorService.save(u);
+        return resu;
     }
 }

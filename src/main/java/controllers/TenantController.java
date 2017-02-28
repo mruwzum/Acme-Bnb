@@ -34,16 +34,6 @@ public class TenantController extends AbstractController {
         super();
     }
 
-    @RequestMapping(value = "/registration", method = RequestMethod.POST, params = "save")
-    public ModelAndView saveRegistrationForm(@Valid Actor actor, BindingResult bindingResult) {
-        ModelAndView result;
-        actorService.registerAsTenant(actor);
-        result = new ModelAndView("tenant/list");
-        result.addObject("user", actor);
-
-        return result;
-    }
-
 
 	@RequestMapping( value="/list", method = RequestMethod.GET)
 	public ModelAndView tenantList() {
@@ -91,17 +81,17 @@ public class TenantController extends AbstractController {
     @RequestMapping(value="/edit", method=RequestMethod.POST, params="save")
     public ModelAndView save(@Valid Tenant tenant, BindingResult binding){
         ModelAndView result;
-         
-        if(binding.hasErrors()){
-            result= createEditModelAndView(tenant);
-        }else{
-            try{
-                tenantService.save(tenant);
+//
+//        if(binding.hasErrors()){
+//            result= createEditModelAndView(tenant);
+//        }else{
+//            try{
+                actorService.registerAsTenant(tenant);
                 result= new ModelAndView("redirect:list.do");
-            }catch(Throwable oops){
-                result= createEditModelAndView(tenant, "tenant.commit.error");
-            }
-        }
+//            }catch(Throwable oops){
+//                result= createEditModelAndView(tenant, "tenant.commit.error");
+//            }
+//        }
         return result;
     }
      

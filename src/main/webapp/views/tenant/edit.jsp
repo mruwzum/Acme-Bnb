@@ -15,27 +15,60 @@
 
 	<form:hidden path="id" />
 	<form:hidden path="version" />
-	
-			<form:label path="bookrequest">
-			<spring:message code="tenant.bookrequest" />:
-			</form:label>
-			<form:input path="bookrequest" />
-			<form:errors cssClass="error" path="bookrequest" />
-			<br />
-			<form:label path="invoice">
-			<spring:message code="tenant.invoice" />:
-			</form:label>
-			<form:input path="invoice" />
-			<form:errors cssClass="error" path="invoice" />
-			<br />
-			<form:label path="finder">
-			<spring:message code="tenant.finder" />:
-			</form:label>
-			<form:input path="finder" />
-			<form:errors cssClass="error" path="finder" />
-			<br />
+	<form:hidden path="invoices"/>
+	<form:hidden path="finders"/>
+	<form:hidden path="bookRequests"/>
 
-	<!---------------------------- BOTONES -------------------------->
+	<form:label path="name">
+		<spring:message code="actor.name" />:
+	</form:label>
+	<form:input path="name" />
+	<form:errors cssClass="error" path="name" />
+	<br />
+	<form:label path="surname">
+		<spring:message code="actor.surname" />:
+	</form:label>
+	<form:input path="surname" />
+	<form:errors cssClass="error" path="surname" />
+	<br />
+	<form:label path="email">
+		<spring:message code="actor.email" />:
+	</form:label>
+	<form:input path="email" />
+	<form:errors cssClass="error" path="email" />
+	<br />
+	<form:label path="phone">
+		<spring:message code="actor.phone" />:
+	</form:label>
+	<form:input path="phone" />
+	<form:errors cssClass="error" path="phone" />
+	<br />
+	<form:label path="picture">
+		<spring:message code="actor.picture" />:
+	</form:label>
+	<form:input path="picture" />
+	<form:errors cssClass="error" path="picture" />
+	<br />
+    <br>
+
+    <h1>User Account</h1>
+    <br>
+    <form:label path="UserAccount.username">
+        <spring:message code="actor.username"/>:
+    </form:label>
+    <form:input path="UserAccount.username"/>
+    <form:errors cssClass="error" path="UserAccount.username"/>
+    <br/>
+    <br>
+    <form:label path="UserAccount.password">
+        <spring:message code="actor.password"/>:
+    </form:label>
+    <form:password path="UserAccount.password"/>
+    <form:errors cssClass="error" path="UserAccount.password"/>
+    <br/>
+
+
+    <!---------------------------- BOTONES -------------------------->
 
 	<input type="submit" name="save"
 		value="<spring:message code="tenant.save" />" />

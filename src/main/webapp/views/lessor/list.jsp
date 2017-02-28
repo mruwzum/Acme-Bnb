@@ -34,10 +34,20 @@
 			</a>
 		</display:column>
 	</security:authorize>
+
+
+	<spring:message code="actor.name" var="name" />
+	<display:column property="name" title="${name}" sortable="true" />
+	<spring:message code="actor.surname" var="surname" />
+	<display:column property="surname" title="${surname}" sortable="true" />
+	<spring:message code="actor.email" var="email" />
+	<display:column property="email" title="${email}" sortable="true" />
+	<spring:message code="actor.phone" var="phone" />
+	<display:column property="phone" title="${phone}" sortable="true" />
+	<spring:message code="actor.picture" var="picture" />
+	<display:column property="picture" title="${picture}" sortable="true" />
 	
-			<spring:message code="lessor.creditcard" var="creditcard" />
-			<display:column property="creditcard" title="\$\{creditcard\}" sortable="true" />
-			<spring:message code="lessor.property" var="property" />
-			<display:column property="property" title="\$\{property\}" sortable="true" />
+			<spring:message code="lessor.creditcard" var="creditCard" />
+			<display:column property="creditCard" title="${creditCard}" sortable="true" />
 
 </display:table>

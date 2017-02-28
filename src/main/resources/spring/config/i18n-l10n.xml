@@ -33,7 +33,7 @@
 		<!-- Auditor -->
 		<value>/views/auditor/message</value>
 		<!-- BookRequest -->
-		<value>/views/bookrequest/message</value>
+		<value>/views/bookRequest/message</value>
 		<!-- Comment -->
 		<value>/views/comment/message</value>
 		<!-- Date -->

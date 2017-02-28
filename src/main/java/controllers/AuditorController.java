@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import services.ActorService;
 import services.AuditorService;
 import controllers.AbstractController;
 import domain.Auditor;
@@ -26,6 +27,8 @@ public class AuditorController extends AbstractController {
 	
 	@Autowired
 	private AuditorService auditorService;
+	@Autowired
+    private ActorService actorService;
 	
 	//Constructors----------------------------------------------
 	
@@ -81,16 +84,16 @@ public class AuditorController extends AbstractController {
     public ModelAndView save(@Valid Auditor auditor, BindingResult binding){
         ModelAndView result;
          
-        if(binding.hasErrors()){
-            result= createEditModelAndView(auditor);
-        }else{
-            try{
-                auditorService.save(auditor);
+//        if(binding.hasErrors()){
+//            result= createEditModelAndView(auditor);
+//        }else{
+//            try{
+                actorService.registerAsAuditor(auditor);
                 result= new ModelAndView("redirect:list.do");
-            }catch(Throwable oops){
-                result= createEditModelAndView(auditor, "auditor.commit.error");
-            }
-        }
+//            }catch(Throwable oops){
+//                result= createEditModelAndView(auditor, "auditor.commit.error");
+//            }
+//        }
         return result;
     }
      
