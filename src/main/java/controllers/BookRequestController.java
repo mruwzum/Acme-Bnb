@@ -7,8 +7,6 @@ import java.util.List;
 
 import javax.validation.Valid;
 
-import domain.Property;
-import domain.Tenant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
@@ -18,9 +16,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import services.BookRequestService;
-import controllers.AbstractController;
 import domain.BookRequest;
+import domain.Property;
+import domain.Tenant;
+import services.BookRequestService;
 import services.PropertyService;
 import services.TenantService;
 
