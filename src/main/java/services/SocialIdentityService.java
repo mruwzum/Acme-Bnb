@@ -10,8 +10,6 @@ import org.springframework.util.Assert;
 
 import domain.SocialIdentity;
 import repositories.SocialIdentityRepository;
-import security.LoginService;
-import security.UserAccount;
 
 @Service
 @Transactional

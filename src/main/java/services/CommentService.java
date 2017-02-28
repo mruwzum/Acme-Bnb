@@ -10,8 +10,6 @@ import org.springframework.util.Assert;
 
 import domain.Comment;
 import repositories.CommentRepository;
-import security.LoginService;
-import security.UserAccount;
 
 @Service
 @Transactional

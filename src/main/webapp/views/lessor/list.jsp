@@ -29,7 +29,7 @@
 
 	<security:authorize access="permitAll">
 		<display:column>
-			<a href="lessor/edit.do?lessorId=${row.id}> <spring:message
+			<a href="lessor/edit.do?lessorId=${row.id}"> <spring:message
 					code="lessor.edit" />
 			</a>
 		</display:column>

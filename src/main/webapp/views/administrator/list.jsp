@@ -29,7 +29,7 @@
 
 	<security:authorize access="permitAll">
 		<display:column>
-			<a href="administrator/edit.do?administratorId=${row.id}> <spring:message
+			<a href="administrator/edit.do?administratorId=${row.id}"> <spring:message
 					code="administrator.edit" />
 			</a>
 		</display:column>

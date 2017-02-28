@@ -29,7 +29,7 @@
 
 	<security:authorize access="permitAll">
 		<display:column>
-			<a href="finder/edit.do?finderId=${row.id}> <spring:message
+			<a href="finder/edit.do?finderId=${row.id}"> <spring:message
 					code="finder.edit" />
 			</a>
 		</display:column>

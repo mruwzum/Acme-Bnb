@@ -29,7 +29,7 @@
 
 	<security:authorize access="permitAll">
 		<display:column>
-			<a href="invoice/edit.do?invoiceId=${row.id}> <spring:message
+			<a href="invoice/edit.do?invoiceId=${row.id}"> <spring:message
 					code="invoice.edit" />
 			</a>
 		</display:column>

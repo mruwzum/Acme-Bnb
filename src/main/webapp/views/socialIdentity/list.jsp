@@ -29,7 +29,7 @@
 
 	<security:authorize access="permitAll">
 		<display:column>
-			<a href="socialIdentity/edit.do?socialIdentityId=${row.id}> <spring:message
+			<a href="socialIdentity/edit.do?socialIdentityId=${row.id}"> <spring:message
 					code="socialIdentity.edit" />
 			</a>
 		</display:column>

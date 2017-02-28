@@ -10,8 +10,6 @@ import org.springframework.util.Assert;
 
 import domain.Finder;
 import repositories.FinderRepository;
-import security.LoginService;
-import security.UserAccount;
 
 @Service
 @Transactional

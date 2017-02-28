@@ -29,7 +29,7 @@
 
 	<security:authorize access="permitAll">
 		<display:column>
-			<a href="tenant/edit.do?tenantId=${row.id}> <spring:message
+			<a href="tenant/edit.do?tenantId=${row.id}"> <spring:message
 					code="tenant.edit" />
 			</a>
 		</display:column>

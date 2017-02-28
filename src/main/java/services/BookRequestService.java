@@ -10,8 +10,6 @@ import org.springframework.util.Assert;
 
 import domain.BookRequest;
 import repositories.BookRequestRepository;
-import security.LoginService;
-import security.UserAccount;
 
 @Service
 @Transactional

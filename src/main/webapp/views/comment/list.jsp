@@ -29,7 +29,7 @@
 
 	<security:authorize access="permitAll">
 		<display:column>
-			<a href="comment/edit.do?commentId=${row.id}> <spring:message
+			<a href="comment/edit.do?commentId=${row.id}"> <spring:message
 					code="comment.edit" />
 			</a>
 		</display:column>
