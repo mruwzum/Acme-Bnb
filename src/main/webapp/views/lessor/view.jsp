@@ -26,28 +26,28 @@
 <body>
 
 
-<spring:message code="actor.name" var="name"/>
-<h1><jstl:out value="${name}"/></h1>
+<spring:message code="actor.name" var="name1"/>
+<h3><jstl:out value="${name1}"/></h3>
 <jstl:out value="${name}"/>
 
 
-<spring:message code="actor.surname" var="surname"/>
-<h1><jstl:out value="${surname}"/></h1>
+<spring:message code="actor.surname" var="surname1"/>
+<h3><jstl:out value="${surname1}"/></h3>
 <jstl:out value="${surname}"/>
 
 
-<spring:message code="actor.email" var="email"/>
-<h1><jstl:out value="${email}"/></h1>
+<spring:message code="actor.email" var="email1"/>
+<h3><jstl:out value="${email1}"/></h3>
 <jstl:out value="${email}"/>
 
 
-<spring:message code="actor.phone" var="phone"/>
-<h1><jstl:out value="${phone}"/></h1>
+<spring:message code="actor.phone" var="phone1"/>
+<h3><jstl:out value="${phone1}"/></h3>
 <jstl:out value="${phone}"/>
 
 
-<spring:message code="actor.picture" var="picture"/>
-<h1><jstl:out value="${picture}"/></h1>
+<spring:message code="actor.picture" var="picture1"/>
+<h3><jstl:out value="${picture1}"/></h3>
 <jstl:out value="${picture}"/>
 
 
