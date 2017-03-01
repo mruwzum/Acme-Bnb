@@ -2,6 +2,7 @@ package controllers;
 
 
 import domain.Actor;
+import domain.BookRequest;
 import domain.Tenant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import services.ActorService;
+import services.BookRequestService;
 import services.TenantService;
 
 import javax.validation.Valid;
@@ -27,6 +29,8 @@ public class TenantController extends AbstractController {
 	private TenantService tenantService;
     @Autowired
     private ActorService actorService;
+    @Autowired
+    private BookRequestService bookRequestService;
 
     //Constructors----------------------------------------------
 
@@ -107,8 +111,30 @@ public class TenantController extends AbstractController {
          
         return result;   
     }
-	
-	// Ancillary methods ------------------------------------------------
+
+
+    //Other methods ----------------------------------------------------
+
+    @RequestMapping(value = "/invoice", method = RequestMethod.GET)
+    public ModelAndView invoice(@RequestParam int bookRequestId) {
+        ModelAndView res;
+
+        BookRequest bookRequest = bookRequestService.findOne(bookRequestId);
+        Double invoice = tenantService.getInvoiceAmmount(bookRequest);
+        Integer numberofDays = bookRequest.getCheckInDate().getDay() - bookRequest.getCheckOutDate().getDay();
+        res = new ModelAndView("bookRequest/invoice");
+        res.addObject("property1", bookRequest.getProperty());
+        res.addObject("in1", bookRequest.getCheckInDate());
+        res.addObject("out1", bookRequest.getCheckOutDate());
+        res.addObject("days1", numberofDays);
+        res.addObject("ammount1", invoice);
+
+
+        return res;
+
+    }
+
+    // Ancillary methods ------------------------------------------------
     
     protected ModelAndView createEditModelAndView(Tenant tenant){
         ModelAndView result;

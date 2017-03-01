@@ -9,7 +9,7 @@
 <%@taglib prefix="security"
 	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
-
+<%@ taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
 <form:form action="lessor/edit.do" modelAttribute="lessor">
 
@@ -17,66 +17,30 @@
 	<form:hidden path="version" />
 	<form:hidden path="propertys" />
 
-	<form:label path="name">
-		<spring:message code="actor.name" />:
-	</form:label>
-	<form:input path="name" />
-	<form:errors cssClass="error" path="name" />
+	<acme:textbox path="name" code="actor.name"/>
 	<br />
-	<form:label path="surname">
-		<spring:message code="actor.surname" />:
-	</form:label>
-	<form:input path="surname" />
-	<form:errors cssClass="error" path="surname" />
+	<acme:textbox path="surname" code="actor.surname"/>
 	<br />
-	<form:label path="email">
-		<spring:message code="actor.email" />:
-	</form:label>
-	<form:input path="email" />
-	<form:errors cssClass="error" path="email" />
+	<acme:textbox path="email" code="actor.email"/>
 	<br />
-	<form:label path="phone">
-		<spring:message code="actor.phone" />:
-	</form:label>
-	<form:input path="phone" />
-	<form:errors cssClass="error" path="phone" />
+	<acme:textbox path="phone" code="actor.phone"/>
 	<br />
-	<form:label path="picture">
-		<spring:message code="actor.picture" />:
-	</form:label>
-	<form:input path="picture" />
-	<form:errors cssClass="error" path="picture" />
+	<acme:textbox path="picture" code="actor.picture"/>
 	<br />
+	<acme:textbox path="creditCard" code="lessor.creditcard"/>
+	<br />
+
+
+	<h1>User Account</h1>
 	<br>
-
-
-			<form:label path="creditCard">
-			<spring:message code="lessor.creditcard" />:
-			</form:label>
-			<form:input path="creditCard" />
-			<form:errors cssClass="error" path="creditCard" />
-			<br />
-
-    <h1>User Account</h1>
-    <br>
-    <form:label path="UserAccount.username">
-        <spring:message code="actor.username"/>:
-    </form:label>
-    <form:input path="UserAccount.username"/>
-    <form:errors cssClass="error" path="UserAccount.username"/>
-    <br/>
-    <br>
-    <form:label path="UserAccount.password">
-        <spring:message code="actor.password"/>:
-    </form:label>
-    <form:password path="UserAccount.password"/>
-    <form:errors cssClass="error" path="UserAccount.password"/>
-    <br/>
+	<acme:textbox path="UserAccount.username" code="actor.username"/>
+	<br />
+	<acme:textbox path="UserAccount.password" code="actor.password"/>
+	<br />
 
 	<!---------------------------- BOTONES -------------------------->
 
-	<input type="submit" name="save"
-		value="<spring:message code="lessor.save" />" />
+	<acme:submit name="save" code="lessor.save"/>
 
 	<jstl:if test="\$\{lessor.id != 0}">
 		<input type="submit" name="delete"

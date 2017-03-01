@@ -9,79 +9,38 @@
 <%@taglib prefix="security"
 	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
-
+<%@ taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
 <form:form action="property/edit.do" modelAttribute="property">
 
 	<form:hidden path="id" />
 	<form:hidden path="version" />
-	
-			<form:label path="name">
-			<spring:message code="property.name" />:
-			</form:label>
-			<form:input path="name" />
-			<form:errors cssClass="error" path="name" />
-			<br />
-			<form:label path="rate">
-			<spring:message code="property.rate" />:
-			</form:label>
-			<form:input path="rate" />
-			<form:errors cssClass="error" path="rate" />
-			<br />
-			<form:label path="description">
-			<spring:message code="property.description" />:
-			</form:label>
-			<form:input path="description" />
-			<form:errors cssClass="error" path="description" />
-			<br />
-			<form:label path="address">
-			<spring:message code="property.address" />:
-			</form:label>
-			<form:input path="address" />
-			<form:errors cssClass="error" path="address" />
-			<br />
-			<form:label path="province">
-			<spring:message code="property.province" />:
-			</form:label>
-			<form:input path="province" />
-			<form:errors cssClass="error" path="province" />
-			<br />
-			<form:label path="country">
-			<spring:message code="property.country" />:
-			</form:label>
-			<form:input path="country" />
-			<form:errors cssClass="error" path="country" />
-			<br />
-			<form:label path="state">
-			<spring:message code="property.state" />:
-			</form:label>
-			<form:input path="state" />
-			<form:errors cssClass="error" path="state" />
-			<br />
-			<form:label path="capacity">
-			<spring:message code="property.capacity" />:
-			</form:label>
-			<form:input path="capacity" />
-			<form:errors cssClass="error" path="capacity" />
-			<br />
-			<form:label path="city">
-			<spring:message code="property.city" />:
-			</form:label>
-			<form:input path="city" />
-			<form:errors cssClass="error" path="city" />
-			<br />
-			<form:label path="lessor">
-			<spring:message code="property.lessor" />:
-			</form:label>
-			<form:input path="lessor" />
-			<form:errors cssClass="error" path="lessor" />
-			<br />
+
+	<acme:textbox path="name" code="property.name"/>
+	<br />
+	<acme:textbox path="rate" code="property.rate"/>
+	<br />
+	<acme:textbox path="description" code="property.description"/>
+	<br />
+	<acme:textbox path="address" code="property.address"/>
+	<br />
+	<acme:textbox path="province" code="property.province"/>
+	<br />
+	<acme:textbox path="country" code="property.country"/>
+	<br />
+	<acme:textbox path="state" code="property.state"/>
+	<br />
+	<acme:textbox path="capacity" code="property.capacity"/>
+	<br />
+	<acme:textbox path="city" code="property.city"/>
+	<br />
+	<acme:textbox path="lessor" code="property.lessor"/>
+	<br />
+
 
 
 	<!---------------------------- BOTONES -------------------------->
-
-	<input type="submit" name="save"
-		value="<spring:message code="property.save" />" />
+	<acme:submit name="save" code="property.save"/>
 
 	<jstl:if test="\$\{property.id != 0}">
 		<input type="submit" name="delete"

@@ -36,16 +36,16 @@
 	</security:authorize>
 	
 			<spring:message code="actor.name" var="name" />
-			<display:column property="name" title="\$\{name\}" sortable="true" />
+			<display:column property="name" title="${name}" sortable="true" />
 			<spring:message code="actor.surname" var="surname" />
-			<display:column property="surname" title="\$\{surname\}" sortable="true" />
+			<display:column property="surname" title="${surname}" sortable="true" />
 			<spring:message code="actor.email" var="email" />
-			<display:column property="email" title="\$\{email\}" sortable="true" />
+			<display:column property="email" title="${email}" sortable="true" />
 			<spring:message code="actor.phone" var="phone" />
-			<display:column property="phone" title="\$\{phone\}" sortable="true" />
+			<display:column property="phone" title="${phone}" sortable="true" />
 			<spring:message code="actor.picture" var="picture" />
-			<display:column property="picture" title="\$\{picture\}" sortable="true" />
-			<spring:message code="actor.socialidentity" var="socialidentity" />
-			<display:column property="socialidentity" title="\$\{socialidentity\}" sortable="true" />
+			<display:column property="picture" title="${picture}" sortable="true" />
+			<spring:message code="actor.socialidentity" var="socialIdentity" />
+			<display:column property="socialIdentity" title="${socialIdentity}" sortable="true" />
 
 </display:table>

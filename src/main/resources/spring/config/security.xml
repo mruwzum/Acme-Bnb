@@ -52,6 +52,10 @@
 		<!--  AUDIT  -->	
 		<security:intercept-url pattern="/audit/list.do" access="permitAll" />
 		<security:intercept-url pattern="/audit/edit.do" access="permitAll" />
+		<security:intercept-url pattern="/audit/create.do" access="permitAll" />
+		<security:intercept-url pattern="/audit/createFromProp.do" access="permitAll" />
+		<security:intercept-url pattern="/audit/draft.do" access="permitAll" />
+
 		<!--  AUDITOR  -->	
 		<security:intercept-url pattern="/auditor/list.do" access="permitAll" />
 		<security:intercept-url pattern="/auditor/edit.do" access="permitAll" />
@@ -92,6 +96,7 @@
 		<!--  TENANT  -->	
 		<security:intercept-url pattern="/tenant/list.do" access="permitAll" />
 		<security:intercept-url pattern="/tenant/edit.do" access="permitAll" />
+		<security:intercept-url pattern="/tenant/invoice.do" access="permitAll"/>
 		<security:intercept-url pattern="/finder/create.do" access="permitAll" />
 		<security:intercept-url pattern="/property/list.do" access="permitAll" />
 		<security:intercept-url pattern="/property/request.do" access="permitAll" />

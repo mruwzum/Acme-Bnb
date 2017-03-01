@@ -47,7 +47,7 @@
 		<!-- Property -->
         <value>/views/property/message</value>
 		<!-- SocialIdentity -->
-		<value>/views/socialidentity/message</value>
+		<value>/views/socialIdentity/message</value>
 		<!-- Tenant -->
 		<value>/views/tenant/message</value>
 	</util:list>

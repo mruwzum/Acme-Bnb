@@ -14,4 +14,9 @@
 		<put-attribute name="title" value="BookRequests: Edit" />
 		<put-attribute name="body" value="/views/bookRequest/edit.jsp" />
 	</definition>
+
+	<definition name="bookRequest/invoice" extends="master.page">
+		<put-attribute name="title" value="BookRequests: Invoice"/>
+		<put-attribute name="body" value="/views/bookRequest/invoice.jsp"/>
+	</definition>
 </tiles-definitions>
