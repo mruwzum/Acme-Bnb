@@ -18,13 +18,6 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
 
-<html>
-<head>
-    <spring:message code="actor.name" var="name"/>
-    <title>${name}</title>
-</head>
-<body>
-
 
 <spring:message code="actor.name" var="name1"/>
 <h3><jstl:out value="${name1}"/></h3>
@@ -50,7 +43,3 @@
 <h3><jstl:out value="${picture1}"/></h3>
 <jstl:out value="${picture}"/>
 
-
-
-</body>
-</html>
