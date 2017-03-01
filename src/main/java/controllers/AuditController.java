@@ -131,7 +131,17 @@ public class AuditController extends AbstractController {
          
         return result;   
     }
-	
+
+
+    @RequestMapping(value="/draft.do", method=RequestMethod.GET, params="cancel")
+    public ModelAndView cancelAndSaveDraft(Audit audit){
+        ModelAndView result;
+                auditService.save(audit);
+                result= new ModelAndView("redirect:list.do");
+
+        return result;
+
+    }
 	// Ancillary methods ------------------------------------------------
     
     protected ModelAndView createEditModelAndView(Audit audit){

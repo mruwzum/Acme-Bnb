@@ -42,6 +42,6 @@
 
 	<input type="button" name="cancel"
 		value="<spring:message code="audit.cancel" />"
-		onclick="javascript: window.location.replace('audit/list.do')" />
+		onclick="javascript: window.location.replace('audit/draft.do')" />
 
 </form:form>
