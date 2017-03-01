@@ -35,17 +35,17 @@
 		</display:column>
 	</security:authorize>
 	
-			<spring:message code="audit.writtenmoment" var="writtenmoment" />
-			<display:column property="writtenmoment" title="\$\{writtenmoment\}" sortable="true" />
+			<spring:message code="audit.writtenmoment" var="writtenMoment" />
+			<display:column property="writtenMoment" title="${writtenMoment}" sortable="true" />
 			<spring:message code="audit.text" var="text" />
-			<display:column property="text" title="\$\{text\}" sortable="true" />
+			<display:column property="text" title="${text}" sortable="true" />
 			<spring:message code="audit.attachments" var="attachments" />
-			<display:column property="attachments" title="\$\{attachments\}" sortable="true" />
+			<display:column property="attachments" title="${attachments}" sortable="true" />
 			<spring:message code="audit.property" var="property" />
-			<display:column property="property" title="\$\{property\}" sortable="true" />
+			<display:column property="property" title="${property}" sortable="true" />
 			<spring:message code="audit.auditor" var="auditor" />
-			<display:column property="auditor" title="\$\{auditor\}" sortable="true" />
-			<spring:message code="audit.comment" var="comment" />
-			<display:column property="comment" title="\$\{comment\}" sortable="true" />
+			<display:column property="auditor" title="${auditor}" sortable="true" />
+			<spring:message code="audit.comment" var="comments" />
+			<display:column property="comments" title="${comments}" sortable="true" />
 
 </display:table>

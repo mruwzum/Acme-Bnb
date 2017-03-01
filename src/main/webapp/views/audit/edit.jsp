@@ -9,54 +9,30 @@
 <%@taglib prefix="security"
 	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
-
+<%@ taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
 <form:form action="audit/edit.do" modelAttribute="audit">
 
 	<form:hidden path="id" />
 	<form:hidden path="version" />
-	
-			<form:label path="writtenmoment">
-			<spring:message code="audit.writtenmoment" />:
-			</form:label>
-			<form:input path="writtenmoment" />
-			<form:errors cssClass="error" path="writtenmoment" />
-			<br />
-			<form:label path="text">
-			<spring:message code="audit.text" />:
-			</form:label>
-			<form:input path="text" />
-			<form:errors cssClass="error" path="text" />
-			<br />
-			<form:label path="attachments">
-			<spring:message code="audit.attachments" />:
-			</form:label>
-			<form:input path="attachments" />
-			<form:errors cssClass="error" path="attachments" />
-			<br />
-			<form:label path="property">
-			<spring:message code="audit.property" />:
-			</form:label>
-			<form:input path="property" />
-			<form:errors cssClass="error" path="property" />
-			<br />
-			<form:label path="auditor">
-			<spring:message code="audit.auditor" />:
-			</form:label>
-			<form:input path="auditor" />
-			<form:errors cssClass="error" path="auditor" />
-			<br />
-			<form:label path="comment">
-			<spring:message code="audit.comment" />:
-			</form:label>
-			<form:input path="comment" />
-			<form:errors cssClass="error" path="comment" />
-			<br />
+	<form:hidden path="comments" />
+	<form:hidden path="auditor" />
+
+	<acme:textbox path="writtenMoment" code="audit.writtenMoment"/>
+	<br />
+	<acme:textbox path="text" code="audit.text"/>
+	<br />
+	<acme:textbox path="attachments" code="audit.attachments"/>
+	<br />
+	<acme:textbox path="property" code="audit.property"/>
+	<br />
+
+
 
 	<!---------------------------- BOTONES -------------------------->
 
-	<input type="submit" name="save"
-		value="<spring:message code="audit.save" />" />
+
+	<acme:submit name="save" code="audit.save"/>
 
 	<jstl:if test="\$\{audit.id != 0}">
 		<input type="submit" name="delete"

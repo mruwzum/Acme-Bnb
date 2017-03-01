@@ -53,6 +53,7 @@
 		<security:intercept-url pattern="/audit/list.do" access="permitAll" />
 		<security:intercept-url pattern="/audit/edit.do" access="permitAll" />
 		<security:intercept-url pattern="/audit/create.do" access="permitAll" />
+		<security:intercept-url pattern="/audit/createFromProp.do" access="permitAll" />
 
 		<!--  AUDITOR  -->	
 		<security:intercept-url pattern="/auditor/list.do" access="permitAll" />

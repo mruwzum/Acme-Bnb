@@ -81,6 +81,13 @@
 			</a>
 		</display:column>
 	</security:authorize>
+	<security:authorize access="hasRole('AUDITOR')">
+		<display:column>
+			<a href="audit/createFromProp.do?propertyId=${row.id}">
+				<spring:message code="property.audit"/>
+			</a>
+		</display:column>
+	</security:authorize>
 
 </display:table>
 

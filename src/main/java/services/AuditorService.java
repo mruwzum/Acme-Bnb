@@ -4,12 +4,15 @@ import java.util.Collection;
 
 import javax.transaction.Transactional;
 
+import domain.Lessor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
 import domain.Auditor;
 import repositories.AuditorRepository;
+import security.LoginService;
+import security.UserAccount;
 
 @Service
 @Transactional
@@ -59,6 +62,30 @@ public class AuditorService {
 		auditorRepository.delete(auditor);
 	}
 
-	// Other business methods -----------------------
+    public Auditor findByPrincipal() {
+		Auditor result;
+		UserAccount userAccount;
+
+		userAccount = LoginService.getPrincipal();
+		Assert.notNull(userAccount);
+		result = findByUserAccount(userAccount);
+		Assert.notNull(result);
+
+		return result;
+	}
+
+	private Auditor findByUserAccount(UserAccount userAccount) {
+		Assert.notNull(userAccount);
+
+		Auditor result;
+
+		result = auditorRepository.findByUserAccountId(userAccount.getId());
+
+		return result;
+	}
+
+
+
+    // Other business methods -----------------------
 
 }
