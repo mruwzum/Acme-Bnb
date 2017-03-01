@@ -76,6 +76,20 @@ public class AdministratorController extends AbstractController {
          
         return result;
     }
+
+    @RequestMapping(value="/changeFee")
+    public ModelAndView editFeeAmount(){
+        ModelAndView result;
+
+        Administrator u = administratorService.findByPrincipal();
+        Assert.notNull(u);
+        Double fee = u.getFee();
+
+        result= new ModelAndView("property/feeEd");
+        result.addObject("fee",fee);
+
+        return result;
+    }
      
     @RequestMapping(value="/edit", method=RequestMethod.POST, params="save")
     public ModelAndView save(@Valid Administrator administrator, BindingResult binding){

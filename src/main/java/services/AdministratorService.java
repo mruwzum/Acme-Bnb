@@ -10,6 +10,8 @@ import org.springframework.util.Assert;
 
 import domain.Administrator;
 import repositories.AdministratorRepository;
+import security.LoginService;
+import security.UserAccount;
 
 @Service
 @Transactional
@@ -61,4 +63,26 @@ public class AdministratorService {
 
 	// Other business methods -----------------------
 
+
+	public Administrator findByPrincipal() {
+		Administrator result;
+		UserAccount userAccount;
+
+		userAccount = LoginService.getPrincipal();
+		Assert.notNull(userAccount);
+		result = findByUserAccount(userAccount);
+		Assert.notNull(result);
+
+		return result;
+	}
+
+	private Administrator findByUserAccount(UserAccount userAccount) {
+		Assert.notNull(userAccount);
+
+		Administrator result;
+
+		result = administratorRepository.findByUserAccountId(userAccount.getId());
+
+		return result;
+	}
 }
