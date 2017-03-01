@@ -50,4 +50,13 @@
 			<spring:message code="bookRequest.property" var="property" />
 			<display:column property="property" title="${property}" sortable="true" />
 
+
+	<security:authorize access="permitAll">
+		<display:column>
+			<a href="tenant/invoice.do?bookRequestId=${row.id}"> <spring:message
+					code="bookRequest.invoice"/>
+			</a>
+		</display:column>
+	</security:authorize>
+
 </display:table>

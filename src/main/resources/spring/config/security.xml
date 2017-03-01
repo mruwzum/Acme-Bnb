@@ -96,6 +96,7 @@
 		<!--  TENANT  -->	
 		<security:intercept-url pattern="/tenant/list.do" access="permitAll" />
 		<security:intercept-url pattern="/tenant/edit.do" access="permitAll" />
+		<security:intercept-url pattern="/tenant/invoice.do" access="permitAll"/>
 		<security:intercept-url pattern="/finder/create.do" access="permitAll" />
 		<security:intercept-url pattern="/property/list.do" access="permitAll" />
 		<security:intercept-url pattern="/property/request.do" access="permitAll" />

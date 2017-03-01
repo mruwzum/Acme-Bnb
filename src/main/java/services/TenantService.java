@@ -4,6 +4,7 @@ import java.util.Collection;
 
 import javax.transaction.Transactional;
 
+import domain.BookRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
@@ -82,6 +83,15 @@ public class TenantService {
 		result = tenantRepository.findByUserAccountId(userAccount.getId());
 
 		return result;
+	}
+
+
+	public Double getInvoiceAmmount(BookRequest b) {
+		Double res;
+		Integer numberofDays = b.getCheckInDate().getDay() - b.getCheckOutDate().getDay();
+		res = b.getProperty().getRate() * numberofDays;
+		return res;
+
 	}
 
 }
