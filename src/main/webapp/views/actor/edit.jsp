@@ -9,48 +9,26 @@
 <%@taglib prefix="security"
 	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
-
+<%@ taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
 <form:form action="actor/edit.do" modelAttribute="actor">
 
 	<form:hidden path="id" />
 	<form:hidden path="version" />
 	<form:hidden path="socialIdentities" />
-	
-			<form:label path="name">
-			<spring:message code="actor.name" />:
-			</form:label>
-			<form:input path="name" />
-			<form:errors cssClass="error" path="name" />
-			<br />
-			<form:label path="surname">
-			<spring:message code="actor.surname" />:
-			</form:label>
-			<form:input path="surname" />
-			<form:errors cssClass="error" path="surname" />
-			<br />
-			<form:label path="email">
-			<spring:message code="actor.email" />:
-			</form:label>
-			<form:input path="email" />
-			<form:errors cssClass="error" path="email" />
-			<br />
-			<form:label path="phone">
-			<spring:message code="actor.phone" />:
-			</form:label>
-			<form:input path="phone" />
-			<form:errors cssClass="error" path="phone" />
-			<br />
-			<form:label path="picture">
-			<spring:message code="actor.picture" />:
-			</form:label>
-			<form:input path="picture" />
-			<form:errors cssClass="error" path="picture" />
-			<br />
-	<!---------------------------- BOTONES -------------------------->
 
-	<input type="submit" name="save"
-		value="<spring:message code="actor.save" />" />
+	<acme:textbox path="name" code="actor.name"/>
+	<br />
+	<acme:textbox path="surname" code="actor.surname"/>
+	<br />
+	<acme:textbox path="email" code="actor.email"/>
+	<br />
+	<acme:textbox path="phone" code="actor.phone"/>
+	<br />
+	<acme:textbox path="picture" code="actor.picture"/>
+	<br />
+	<!---------------------------- BOTONES -------------------------->
+	<acme:submit name="save" code="actor.save"/>
 
 	<input type="button" name="cancel"
 		value="<spring:message code="actor.cancel" />"
