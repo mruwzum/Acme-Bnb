@@ -18,6 +18,7 @@ import services.TenantService;
 
 import javax.validation.Valid;
 import java.util.Collection;
+import java.util.Date;
 
 @Controller
 @RequestMapping("/tenant")
@@ -122,7 +123,14 @@ public class TenantController extends AbstractController {
         BookRequest bookRequest = bookRequestService.findOne(bookRequestId);
         Double invoice = tenantService.getInvoiceAmmount(bookRequest);
         Integer numberofDays = bookRequest.getCheckInDate().getDay() - bookRequest.getCheckOutDate().getDay();
+        Date createMoment = new Date(System.currentTimeMillis() - 100);
+        Tenant tenant = tenantService.findByPrincipal();
         res = new ModelAndView("bookRequest/invoice");
+        res.addObject("email1", tenant.getEmail());
+        res.addObject("name1", tenant.getName());
+        res.addObject("surname1", tenant.getSurname());
+        res.addObject("card1", tenant.getCreditCard());
+        res.addObject("moment1", createMoment);
         res.addObject("property1", bookRequest.getProperty());
         res.addObject("in1", bookRequest.getCheckInDate());
         res.addObject("out1", bookRequest.getCheckOutDate());

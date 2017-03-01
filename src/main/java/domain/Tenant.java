@@ -1,5 +1,7 @@
 package domain;
 
+import org.hibernate.validator.constraints.CreditCardNumber;
+
 import java.util.Collection;
 
 import javax.persistence.Access;
@@ -13,7 +15,8 @@ import javax.validation.Valid;
 public class Tenant extends Actor {
 	
 	// Attributes ------------------------------------------------------------
-	
+	private String creditCard;
+
 	// Relationships ---------------------------------------------------------
 	private Collection<BookRequest> bookRequests;
 	private Collection<Invoice> invoices;
@@ -55,7 +58,15 @@ public class Tenant extends Actor {
 	}
 
 
-	
-	
-	
+	@CreditCardNumber
+	public String getCreditCard() {
+		return creditCard;
+	}
+
+	public void setCreditCard(String creditCard) {
+		this.creditCard = creditCard;
+	}
+
+
+
 }
