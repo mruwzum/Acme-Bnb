@@ -17,15 +17,15 @@
 	<form:hidden path="version" />
 	<form:hidden path="propertys" />
 
-	<acme:textbox path="name" code="lessor.name"/>
+	<acme:textbox path="name" code="actor.name"/>
 	<br />
-	<acme:textbox path="surname" code="lessor.surname"/>
+	<acme:textbox path="surname" code="actor.surname"/>
 	<br />
-	<acme:textbox path="email" code="lessor.email"/>
+	<acme:textbox path="email" code="actor.email"/>
 	<br />
-	<acme:textbox path="phone" code="lessor.phone"/>
+	<acme:textbox path="phone" code="actor.phone"/>
 	<br />
-	<acme:textbox path="picture" code="lessor.picture"/>
+	<acme:textbox path="picture" code="actor.picture"/>
 	<br />
 	<acme:textbox path="creditCard" code="lessor.creditcard"/>
 	<br />
