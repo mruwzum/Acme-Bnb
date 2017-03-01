@@ -86,7 +86,7 @@ public class ActorController extends AbstractController {
         }else{
             try{
                 actorService.save(actor);
-                result= new ModelAndView("redirect:list.do");
+                result= new ModelAndView("/profile.do");
             }catch(Throwable oops){
                 result= createEditModelAndView(actor, "actor.commit.error");
             }
