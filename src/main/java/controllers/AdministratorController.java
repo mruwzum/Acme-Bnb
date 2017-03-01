@@ -83,10 +83,10 @@ public class AdministratorController extends AbstractController {
 
         Administrator u = administratorService.findByPrincipal();
         Assert.notNull(u);
-        Double fee = u.getFee();
+       // Double fee = u.getFee();
 
         result= new ModelAndView("property/feeEd");
-        result.addObject("fee",fee);
+       // result.addObject("fee",fee);
 
         return result;
     }
