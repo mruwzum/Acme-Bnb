@@ -20,9 +20,6 @@
 <div>
 	<ul id="jMenu">
 		<!-- Do not forget the "fNiv" class for the first level links !! -->
-		
-		
-		
 		<security:authorize access="hasRole('ADMIN')">
 			<li><a class="fNiv"><spring:message	code="master.page.administrator" /></a>
 				<ul>
@@ -33,10 +30,6 @@
 			</li>
 		</security:authorize>
 		
-		
-		
-		
-		
 		<security:authorize access="hasRole('CUSTOMER')">
 			<li><a class="fNiv"><spring:message	code="master.page.customer" /></a>
 				<ul>
@@ -46,46 +39,45 @@
 				</ul>
 			</li>
 		</security:authorize>
-		
-		
-		
 
 		<security:authorize access="hasRole('LESSOR')">
 			<li><a class="fNiv"><spring:message code="master.page.lessor.properties"/></a>
 				<ul>
 					<li class="arrow"></li>
-					<li><a href="lessor/property/list.do"><spring:message code="master.page.lessor.properties.list"/></a></li>
-					<li><a href="lessor/request/list.do"><spring:message code="master.page.lessor.request.list"/></a></li>
+					<li><a href="lessor/property/list.do"><spring:message
+							code="master.page.lessor.properties.list"/></a></li>
+					<li><a href="lessor/request/list.do"><spring:message
+							code="master.page.lessor.request.list"/></a></li>
 				</ul>
 			</li>
-			<li><a href="lessor/fee.do"><spring:message code="master.page.lessor.fee"/></a></li>
-			<li><a href="lessor/socialIdentity.do"><spring:message code="master.page.lessor.socialIdentity"/></a></li>
+			<li><a href="lessor/fee.do"><spring:message
+					code="master.page.lessor.fee"/></a></li>
 
 		</security:authorize>
-		
-		
-		
 		<security:authorize access="hasRole('TENANT')">
 			<li><a class="fNiv"><spring:message code="master.page.tenant.properties"/></a>
 				<ul>
 					<li class="arrow"></li>
-					<li><a href="finder/create.do"><spring:message code="master.page.tenant.request.finder"/></a></li>
+					<li><a href="finder/create.do"><spring:message
+							code="master.page.tenant.request.finder"/></a></li>
 				</ul>
 			</li>
-            <li><a href="bookRequest/listMy.do"><spring:message code="master.page.tenant.bookRequests.list"/></a></li>
+            <li><a href="bookRequest/listMy.do"><spring:message
+                    code="master.page.tenant.bookRequests.list"/></a></li>
 		</security:authorize>
 
 		
 		<security:authorize access="isAnonymous()">
 			<li><a class="fNiv" href="security/login.do"><spring:message code="master.page.login" /></a></li>
-            <li><a href="tenant/create.do"><spring:message code="master.page.tenant.register"/></a></li>
-            <li><a href="lessor/create.do"><spring:message code="master.page.lessor.register"/></a></li>
-            <li><a href="auditor/create.do"><spring:message code="master.page.auditor.register"/></a></li>
-			<li><a href="property/list.do"><spring:message code="master.page.property.list"/></a></li>
+            <li><a href="tenant/create.do"><spring:message
+                    code="master.page.tenant.register"/></a></li>
+            <li><a href="lessor/create.do"><spring:message
+                    code="master.page.lessor.register"/></a></li>
+            <li><a href="auditor/create.do"><spring:message
+                    code="master.page.auditor.register"/></a></li>
+			<li><a href="property/list.do"><spring:message
+					code="master.page.property.list"/></a></li>
 		</security:authorize>
-		
-		
-		
 		
 		<security:authorize access="isAuthenticated()">
 			<li>
@@ -101,9 +93,10 @@
 					<li><a href="j_spring_security_logout"><spring:message code="master.page.logout" /> </a></li>
 				</ul>
 			</li>
-            <li><a href="property/list.do"><spring:message code="master.page.tenant.property.list"/></a></li>
+            <li><a href="property/list.do"><spring:message
+                    code="master.page.tenant.property.list"/></a></li>
+
 		</security:authorize>
-		
 	</ul>
 </div>
 

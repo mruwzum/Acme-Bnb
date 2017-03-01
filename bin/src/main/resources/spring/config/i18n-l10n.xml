@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 
+ * i18n-l10n.xml
+ *
+ * Copyright (C) 2014 Universidad de Sevilla
+ * Author (A) 2012 Rafael Corchuelo (corchu@us.es)
+ * 
+ * The use of this project is hereby constrained to the conditions of the 
+ * TDG Licence, a copy of which you may download from 
+ * http://www.tdg-seville.info/License.html
+ -->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd 
+	">
+
+	<util:list id="messages">
+		<value>/views/master-page/messages</value>		
+		<value>/views/misc/messages</value>		
+		<value>/views/security/messages</value>
+		<value>/views/welcome/messages</value>
+		
+				<!-- Actor -->
+		<value>/views/actor/message</value>
+		<!-- Administrator -->
+		<value>/views/administrator/message</value>
+		<!-- Audit -->
+		<value>/views/audit/message</value>
+		<!-- Auditor -->
+		<value>/views/auditor/message</value>
+		<!-- BookRequest -->
+		<value>/views/bookRequest/message</value>
+		<!-- Comment -->
+		<value>/views/comment/message</value>
+		<!-- Date -->
+        <!--<value>/views/date/messages</value>-->
+		<!-- Finder -->
+		<value>/views/finder/message</value>
+		<!-- Invoice -->
+		<value>/views/invoice/message</value>
+		<!-- Lessor -->
+		<value>/views/lessor/message</value>
+		<!-- Property -->
+        <value>/views/property/message</value>
+		<!-- SocialIdentity -->
+		<value>/views/socialidentity/message</value>
+		<!-- Tenant -->
+		<value>/views/tenant/message</value>
+	</util:list>
+
+</beans>
