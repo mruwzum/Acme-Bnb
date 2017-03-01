@@ -1,7 +1,9 @@
 package controllers;
 
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import javax.validation.Valid;
 
@@ -20,6 +22,7 @@ import services.ActorService;
 import services.LessorService;
 import controllers.AbstractController;
 import domain.Lessor;
+import services.PropertyService;
 
 @Controller
 @RequestMapping("/lessor")
@@ -31,6 +34,8 @@ public class LessorController extends AbstractController {
 	private LessorService lessorService;
 	@Autowired
     private ActorService actorService;
+	@Autowired
+    private PropertyService propertyService;
 	
 	//Constructors----------------------------------------------
 	
@@ -52,9 +57,26 @@ public class LessorController extends AbstractController {
 		
 		return result;
 	}
-	
-	
-	//Create Method -----------------------------------------------------------
+
+    @RequestMapping( value="/view", method = RequestMethod.GET)
+    public ModelAndView lessorView(@RequestParam int propertyId) {
+
+        ModelAndView result;
+        Property property =propertyService.findOne(propertyId);
+        Lessor lessor = property.getLessor();
+        result = new ModelAndView("lessor/view");
+        result.addObject("name", lessor.getName());
+        result.addObject("surname",lessor.getSurname());
+        result.addObject("email",lessor.getEmail());
+        result.addObject("phone",lessor.getPhone());
+        result.addObject("picture",lessor.getPicture());
+        result.addObject("requestURI","lessor/view.do");
+
+        return result;
+    }
+
+
+    //Create Method -----------------------------------------------------------
 	
 	@RequestMapping(value = "/create", method = RequestMethod.GET)
 	public ModelAndView create(){

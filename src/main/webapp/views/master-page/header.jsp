@@ -75,6 +75,8 @@
                     code="master.page.lessor.register"/></a></li>
             <li><a href="auditor/create.do"><spring:message
                     code="master.page.auditor.register"/></a></li>
+			<li><a href="property/list.do"><spring:message
+					code="master.page.property.list"/></a></li>
 		</security:authorize>
 		
 		<security:authorize access="isAuthenticated()">

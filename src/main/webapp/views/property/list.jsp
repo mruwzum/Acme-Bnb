@@ -43,7 +43,16 @@
 		</display:column>
 
 	</security:authorize>
-	
+
+	<security:authorize access="isAnonymous()">
+		<display:column>
+			<a href="lessor/view.do?propertyId=${row.id}">
+				<spring:message code="property.viewlessor"/>
+			</a>
+		</display:column>
+
+	</security:authorize>
+
 			<spring:message code="property.name" var="name" />
 	<display:column property="name" title="name" sortable="true"/>
 			<spring:message code="property.rate" var="rate" />
