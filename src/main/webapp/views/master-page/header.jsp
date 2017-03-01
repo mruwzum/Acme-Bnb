@@ -66,7 +66,16 @@
                     code="master.page.tenant.bookRequests.list"/></a></li>
 		</security:authorize>
 
-		
+		<security:authorize access="hasRole('AUDITOR')">
+			<li><a class="fNiv"><spring:message code="master.page.auditor.properties"/></a>
+				<ul>
+					<li class="arrow"></li>
+					<li><a href="audit/create.do"><spring:message
+							code="master.page.auditor.create.audit"/></a></li>
+				</ul>
+			</li>
+
+		</security:authorize>
 		<security:authorize access="isAnonymous()">
 
 			<li><a class="fNiv" href="security/login.do"><spring:message code="master.page.login" /></a></li>
