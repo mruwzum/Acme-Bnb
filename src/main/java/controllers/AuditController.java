@@ -80,7 +80,7 @@ public class AuditController extends AbstractController {
         Property property = propertyService.findOne(propertyId);
         Audit audit = auditService.create();
         audit.setProperty(property);
-        audit.setWrittenMoment(new Date(System.currentTimeMillis()-100));
+        audit.setWrittenMoment(new Date(System.currentTimeMillis()-10000000));
         Auditor auditor = auditorService.findByPrincipal();
         audit.setAuditor(auditor);
         result = createEditModelAndView(audit);
@@ -134,11 +134,19 @@ public class AuditController extends AbstractController {
 
 
     @RequestMapping(value="/draft.do", method=RequestMethod.GET, params="cancel")
-    public ModelAndView cancelAndSaveDraft(Audit audit){
+    public ModelAndView cancelAndSaveDraft(@RequestParam int auditId){
         ModelAndView result;
-                auditService.save(audit);
-                result= new ModelAndView("redirect:list.do");
+        Audit nau = auditService.findOne(auditId);
 
+        if(nau.getAttachments().isEmpty()){
+            nau.setAttachments("GENERIC");
+        }else if (nau.getText().isEmpty()){
+            nau.setText("GENERIC");
+        }
+        nau.setWrittenMoment(new Date(System.currentTimeMillis()-1000));
+                auditService.save(nau);
+                result= new ModelAndView("redirect:list.do");
+//TODO no funcionan bien los borradores
         return result;
 
     }

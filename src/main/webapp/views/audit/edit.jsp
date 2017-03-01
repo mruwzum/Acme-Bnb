@@ -18,6 +18,8 @@
 	<form:hidden path="comments" />
 	<form:hidden path="auditor" />
 
+
+
 	<acme:textbox path="writtenMoment" code="audit.writtenMoment"/>
 	<br />
 	<acme:textbox path="text" code="audit.text"/>
