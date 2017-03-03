@@ -11,5 +11,8 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net" %>
 
 
-${text}
+<spring:message code="fee.new" var="perri"/>
+<h3><jstl:out value="${perri}"/></h3>
+<jstl:out value="${text}"/>
+
 

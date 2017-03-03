@@ -11,13 +11,17 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
-<display:table name="admin" id="row" requestURI="/administrator/feeEd.do" pagesize="5"
-               class="displaytag">
+<form:form action="administrator/saveFee.do" modelAttribute="fee">
 
-    <acme:textbox path="fee" code="property.fee"/>
+
+    <form:hidden path="id" />
+    <form:hidden path="version" />
+
+
+    <acme:textbox path="value" code="property.fee"/>
     <br />
 
-</display:table>
+
 <br>
 <br/>
 

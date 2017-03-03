@@ -1,10 +1,13 @@
 package controllers;
 
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import javax.validation.Valid;
 
+import domain.Fee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
@@ -17,15 +20,19 @@ import org.springframework.web.servlet.ModelAndView;
 import services.AdministratorService;
 import controllers.AbstractController;
 import domain.Administrator;
+import services.FeeService;
 
 @Controller
 @RequestMapping("/administrator")
 public class AdministratorController extends AbstractController {
 	
 	//Services ----------------------------------------------------------------
-	
-	@Autowired
-	private AdministratorService administratorService;
+
+
+    @Autowired
+    private AdministratorService administratorService;
+    @Autowired
+    private FeeService feeService;
 	
 	//Constructors----------------------------------------------
 	
@@ -81,15 +88,26 @@ public class AdministratorController extends AbstractController {
     public ModelAndView editFeeAmount(){
         ModelAndView result;
 
+        List<Fee> fees = new ArrayList<>(feeService.findAll());
+        Fee original = feeService.findOne(fees.get(0).getId());
         Administrator u = administratorService.findByPrincipal();
         Assert.notNull(u);
-       // Double fee = u.getFee();
 
         result= new ModelAndView("property/feeEd");
-       // result.addObject("fee",fee);
+         result.addObject("fee",original);
 
         return result;
     }
+
+   @RequestMapping(value= "/saveFee", method = RequestMethod.POST, params = "save")
+   public ModelAndView saveFee(@RequestParam Fee fee){
+        ModelAndView res;
+        administratorService.changeFee(fee.getValue());
+        res = new ModelAndView("property/fee");
+        res.addObject("text",fee.getValue());
+        return res;
+   }
+
      
     @RequestMapping(value="/edit", method=RequestMethod.POST, params="save")
     public ModelAndView save(@Valid Administrator administrator, BindingResult binding){

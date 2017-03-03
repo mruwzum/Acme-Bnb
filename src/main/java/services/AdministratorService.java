@@ -1,15 +1,19 @@
 package services;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import javax.transaction.Transactional;
 
+import domain.Fee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
 import domain.Administrator;
 import repositories.AdministratorRepository;
+import repositories.FeeRepository;
 import security.LoginService;
 import security.UserAccount;
 
@@ -20,6 +24,8 @@ public class AdministratorService {
 	// Managed Repository ------------------------
 	@Autowired
 	private AdministratorRepository administratorRepository;
+	@Autowired
+	private FeeService feeService;
 
 	// Constructor -------------------------------
 	public AdministratorService() {
@@ -84,5 +90,12 @@ public class AdministratorService {
 		result = administratorRepository.findByUserAccountId(userAccount.getId());
 
 		return result;
+	}
+	public void changeFee(Double newFee){
+
+		List<Fee> fees = new ArrayList<>(feeService.findAll());
+		Fee original = feeService.findOne(fees.get(0).getId());
+		original.setValue(newFee);
+
 	}
 }

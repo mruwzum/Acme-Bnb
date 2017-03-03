@@ -10,6 +10,13 @@
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 	">
 
+	<!-- Fee -->
+
+	<bean id="fee1" class="domain.Fee">
+		<property name="value" value="1.0" />
+
+	</bean>
+
 	<!-- UserAccounts -->
 	
 					<bean id="userAccountadministrator1" class="security.UserAccount">

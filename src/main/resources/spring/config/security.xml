@@ -50,6 +50,7 @@
 		<security:intercept-url pattern="/administrator/list.do" access="permitAll" />
 		<security:intercept-url pattern="/administrator/edit.do" access="permitAll" />
 		<security:intercept-url pattern="/administrator/changeFee.do" access="permitAll" />
+		<security:intercept-url pattern="/administrator/saveFee.do" access="permitAll" />
 
 		<!--  AUDIT  -->	
 		<security:intercept-url pattern="/audit/list.do" access="permitAll" />
