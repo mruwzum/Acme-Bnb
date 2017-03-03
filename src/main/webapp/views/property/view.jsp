@@ -11,12 +11,12 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net" %>
 
 
-<spring:message code="property.name" var="name"/>
-<h3><jstl:out value="${name}"/></h3>
+<spring:message code="property.name" var="name1"/>
+<h3><jstl:out value="${name1}"/></h3>
 <jstl:out value="${name}"/>
 
-<spring:message code="property.address" var="address"/>
-<h3><jstl:out value="${address}"/></h3>
+<spring:message code="property.address" var="address1"/>
+<h3><jstl:out value="${address1}"/></h3>
 <jstl:out value="${address}"/>
 
 <!-- Listing grid -->

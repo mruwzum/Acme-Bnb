@@ -3,6 +3,7 @@ package controllers;
 
 import domain.Actor;
 import domain.BookRequest;
+import domain.Invoice;
 import domain.Tenant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -121,21 +122,25 @@ public class TenantController extends AbstractController {
         ModelAndView res;
 
         BookRequest bookRequest = bookRequestService.findOne(bookRequestId);
-        Double invoice = tenantService.getInvoiceAmmount(bookRequest);
-        Integer numberofDays = bookRequest.getCheckInDate().getDay() - bookRequest.getCheckOutDate().getDay();
-        Date createMoment = new Date(System.currentTimeMillis() - 100);
-        Tenant tenant = tenantService.findByPrincipal();
+        Invoice invoice = tenantService.getInvoiceAmmount(bookRequest);
         res = new ModelAndView("bookRequest/invoice");
-        res.addObject("email1", tenant.getEmail());
-        res.addObject("name1", tenant.getName());
-        res.addObject("surname1", tenant.getSurname());
-        res.addObject("card1", tenant.getCreditCard());
-        res.addObject("moment1", createMoment);
-        res.addObject("property1", bookRequest.getProperty());
-        res.addObject("in1", bookRequest.getCheckInDate());
-        res.addObject("out1", bookRequest.getCheckOutDate());
-        res.addObject("days1", numberofDays);
-        res.addObject("ammount1", invoice);
+        String cc = invoice.getCreditCard();
+        String ccfinal;
+       if(cc.equals("")){
+           ccfinal = "------------------";
+       }else{
+           String fin = cc.substring(13,17);
+           String ast = "************";
+            ccfinal = ast + fin;
+       }
+
+        res.addObject("issued", invoice.getIssuedMoment());
+        res.addObject("tenant", invoice.getTenantInfo());
+        res.addObject("details", invoice.getDetails());
+        res.addObject("card", ccfinal);
+        res.addObject("VAT", invoice.getVATNumber());
+        res.addObject("total", invoice.getTotalAmount());
+
 
 
         return res;

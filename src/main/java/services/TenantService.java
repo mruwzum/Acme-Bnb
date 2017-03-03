@@ -1,10 +1,12 @@
 package services;
 
 import java.util.Collection;
+import java.util.Date;
 
 import javax.transaction.Transactional;
 
 import domain.BookRequest;
+import domain.Invoice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
@@ -28,6 +30,9 @@ public class TenantService {
 	}
 
 	// Supporting services -----------------------
+
+	@Autowired
+	private InvoiceService invoiceService;
 
 	// Simple CRUD methods -----------------------
 	
@@ -86,11 +91,19 @@ public class TenantService {
 	}
 
 
-	public Double getInvoiceAmmount(BookRequest b) {
-		Double res;
+	public Invoice getInvoiceAmmount(BookRequest b) {
 		Integer numberofDays = b.getCheckInDate().getDay() - b.getCheckOutDate().getDay();
-		res = b.getProperty().getRate() * numberofDays;
-		return res;
+
+		Invoice res;
+		res = invoiceService.create();
+		res.setIssuedMoment(new Date(System.currentTimeMillis()-100));
+		res.setTenant(b.getTenant());
+		res.setTotalAmount(b.getProperty().getRate() * numberofDays);
+		res.setCreditCard(b.getTenant().getCreditCard());
+		res.setTenantInfo(b.getTenant().getName() +"-" +b.getTenant().getSurname() +"-"+ b.getTenant().getEmail());
+		res.setDetails(b.getProperty().toString() +"-"+ b.getCheckInDate().toString() +"-"+ b.getCheckOutDate().toString());
+		res.setVATNumber("X1234567X");
+		return invoiceService.save(res);
 
 	}
 

@@ -15,12 +15,12 @@ public class Invoice extends DomainEntity {
 	
 	// Attributes ------------------------------------------------------------
 	private Date issuedMoment;
-	private int VATNumber;
+	private String VATNumber;
 	private String tenantInfo;
 	private String details;
 	private double totalAmount;
 	private String creditCard;
-	
+
 	// Relationships ---------------------------------------------------------
 	private Tenant tenant;
 	
@@ -39,11 +39,11 @@ public class Invoice extends DomainEntity {
 	}
 	
 	
-	public int getVATNumber() {
+	public String getVATNumber() {
 		return VATNumber;
 	}
 
-	public void setVATNumber(int VATNumber) {
+	public void setVATNumber(String VATNumber) {
 		this.VATNumber = VATNumber;
 	}
 	
@@ -74,17 +74,7 @@ public class Invoice extends DomainEntity {
 	public void setTotalAmount(double totalAmount) {
 		this.totalAmount = totalAmount;
 	}
-	
-	
-	@CreditCardNumber
-	public String getCreditCard() {
-		return creditCard;
-	}
 
-	public void setCreditCard(String creditCard) {
-		this.creditCard = creditCard;
-	}
-	
 	
 	@ManyToOne
 	@Valid
@@ -94,6 +84,15 @@ public class Invoice extends DomainEntity {
 
 	public void setTenant(Tenant tenant) {
 		this.tenant = tenant;
+	}
+
+	@CreditCardNumber
+	public String getCreditCard() {
+		return creditCard;
+	}
+
+	public void setCreditCard(String creditCard) {
+		this.creditCard = creditCard;
 	}
 	
 	

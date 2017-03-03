@@ -41,8 +41,8 @@
 			<display:column property="checkOutDate" title="${checkOutDate}" sortable="true" />
 			<spring:message code="bookRequest.smoker" var="smoker" />
 			<display:column property="smoker" title="${smoker}" sortable="true" />
-			<spring:message code="bookRequest.creditcard" var="creditCard" />
-			<display:column property="creditCard" title="${creditCard}" sortable="true" />
+			<%--<spring:message code="bookRequest.creditcard" var="creditCard" />--%>
+			<%--<display:column property="creditCard" title="${creditCard}" sortable="true" />--%>
 			<spring:message code="bookRequest.status" var="status" />
 			<display:column property="status" title="${status}" sortable="true" />
 			<spring:message code="bookRequest.tenant" var="tenant" />

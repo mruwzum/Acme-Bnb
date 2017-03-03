@@ -267,7 +267,8 @@
 						<property name="surname" value="Tenant1Surname" />
                     <property name="email" value="Tenant1Email@gmail.com"/>
                     <property name="phone" value="+23-4536435655"/>
-                    <property name="picture"
+					<property name="creditCard" value="54275498043695577"/>
+					<property name="picture"
                               value="http://recetas.cuidadoinfantil.net/files/2012/08/Recetas-divertidas-sandwich-en-forma-de-coche.jpg"/>
 				<property name="userAccount" ref="userAccounttenant1" />
 				</bean>
@@ -276,7 +277,9 @@
 						<property name="surname" value="Tenant2Surname" />
                     <property name="email" value="Tenant2Email@gmail.com"/>
                     <property name="phone" value="+23-324523452345"/>
-                    <property name="picture"
+					<property name="creditCard" value="54275498043695577"/>
+
+					<property name="picture"
                               value="http://img.aws.ehowcdn.com/intl-620/ds-photo/getty/article/165/108/78159422.jpg"/>
 				<property name="userAccount" ref="userAccounttenant2" />
 				</bean>
@@ -288,6 +291,8 @@
                     <property name="picture"
                               value="http://www.creadictos.com/wp-content/uploads/2012/04/Divertidas-Creativas-fotografias-Huevos-053_thumb.jpg"/>
 				<property name="userAccount" ref="userAccounttenant3" />
+					<property name="creditCard" value="54275498043695577"/>
+
 				</bean>
 			
 			<!-- /Tenant-->
@@ -441,29 +446,26 @@
 			<!-- Invoice -->
 				<bean id="invoice1" class="domain.Invoice">
                     <property name="issuedMoment" value="2016/04/23 23:00:12"/>
-						<property name="VATNumber" value="56145" />
+						<property name="VATNumber" value="X1234567X" />
 						<property name="tenantInfo" value="tenantinfo1" />
 						<property name="details" value="details1" />
 						<property name="totalAmount" value="500.00" />
-                    <property name="creditCard" value="54275498043695577"/>
 							<property name="tenant" ref="tenant1" />
 				</bean>
 				<bean id="invoice2" class="domain.Invoice">
                     <property name="issuedMoment" value="2017/04/23 23:00:12"/>
-						<property name="VATNumber" value="654785" />
+						<property name="VATNumber" value="X1234567X" />
 						<property name="tenantInfo" value="tenantinfo2" />
 						<property name="details" value="details2" />
 						<property name="totalAmount" value="245.00" />
-                    <property name="creditCard" value="54275498043695577"/>
 							<property name="tenant" ref="tenant2" />
 				</bean>
 				<bean id="invoice3" class="domain.Invoice">
                     <property name="issuedMoment" value="2016/04/23 23:00:12"/>
-						<property name="VATNumber" value="652127" />
+						<property name="VATNumber" value="X1234567X" />
 						<property name="tenantInfo" value="tenantinfo3" />
 						<property name="details" value="details3" />
 						<property name="totalAmount" value="300.00" />
-                    <property name="creditCard" value="54275498043695577"/>
 							<property name="tenant" ref="tenant3" />
 				</bean>
 			

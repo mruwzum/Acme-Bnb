@@ -7,6 +7,7 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import domain.RequestStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
@@ -60,10 +61,11 @@ public class BookRequestController extends AbstractController {
     public ModelAndView myBookRequestList() {
 
         ModelAndView result;
-        Collection<BookRequest> bookRequests;
+
         Tenant t = tenantService.findByPrincipal();
         List<BookRequest> bookRequests1 = new ArrayList<>(t.getBookRequests());
-        bookRequests = bookRequestService.findAll();
+
+
         result = new ModelAndView("bookRequest/list");
         result.addObject("bookRequests", bookRequests1);
         result.addObject("requestURI","bookRequest/list.do");
@@ -80,6 +82,7 @@ public class BookRequestController extends AbstractController {
         Property p = propertyService.findOne(propertyId);
         bookRequest.setProperty(p);
         bookRequest.setTenant(t);
+        bookRequest.setStatus(RequestStatus.PENDING);
         result = createEditModelAndView(bookRequest);
 
         return result;
