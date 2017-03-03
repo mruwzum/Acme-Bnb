@@ -100,7 +100,7 @@ public class AdministratorController extends AbstractController {
     }
 
    @RequestMapping(value= "/saveFee", method = RequestMethod.POST, params = "save")
-   public ModelAndView saveFee(@RequestParam Fee fee){
+   public ModelAndView saveFee(@Valid Fee fee){
         ModelAndView res;
         administratorService.changeFee(fee.getValue());
         res = new ModelAndView("property/fee");

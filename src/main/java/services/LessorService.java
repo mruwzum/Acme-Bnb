@@ -32,6 +32,8 @@ public class LessorService {
 	// Supporting services -----------------------
 	@Autowired
 	private PropertyService propertyService;
+	@Autowired
+	private FeeService	feeService;
 
 
 	// Simple CRUD methods -----------------------
@@ -166,12 +168,13 @@ public class LessorService {
         return requests;
 	}
 
-	//TODO Una vez se establezca una propieda que sea fee y que solo pueda ser gestionada por el admin, se sustituye aquí
 	public Double totalFee() {
+		List<Fee> fees = new ArrayList<>(feeService.findAll());
+		Fee original = feeService.findOne(fees.get(0).getId());
 		Double res = 0.0;
 		for (BookRequest b : getAllRequest()) {
 			if (b.getStatus().equals(RequestStatus.ACEPTED)) {
-				res = res + 1.0;
+				res = res + original.getValue();
 			}
 		}
 		return res;
