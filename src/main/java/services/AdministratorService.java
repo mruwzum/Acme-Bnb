@@ -1,17 +1,14 @@
 package services;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
+import java.util.*;
 
 import javax.transaction.Transactional;
 
-import domain.Fee;
+import domain.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
-import domain.Administrator;
 import repositories.AdministratorRepository;
 import repositories.FeeRepository;
 import security.LoginService;
@@ -26,7 +23,8 @@ public class AdministratorService {
 	private AdministratorRepository administratorRepository;
 	@Autowired
 	private FeeService feeService;
-
+	@Autowired
+	private LessorService lessorService;
 	// Constructor -------------------------------
 	public AdministratorService() {
 		super();
@@ -97,5 +95,38 @@ public class AdministratorService {
 		Fee original = feeService.findOne(fees.get(0).getId());
 		original.setValue(newFee);
 
+	}
+
+	//DASHBOARDS METHODS ---------------------------------------
+
+	public Double averageAcceptedRequestPerLessor(){
+		Double res = administratorRepository.averageAcceptedRequestPerLessor();
+		return res;
+	}
+
+	public Double averageAcceptedRequestPerTenat(){
+		Double res = administratorRepository.averageAcceptedRequestPerTenat();
+		return res;
+	}
+	public Lessor bookRequestsFromProperty(){
+		//TODO sacar de todo este embrollo el lessor que haya aprobado mas requests :)
+		Lessor res;
+		Integer contador = 0;
+		Collection<BookRequest> aux = administratorRepository.bookRequestsFromProperty();
+		Collection<Lessor> lessors = lessorService.findAll();
+		Map<Lessor,Integer> resultados = new HashMap<>();
+		for(BookRequest b : aux){
+			if (b.getStatus().equals(RequestStatus.ACEPTED)){
+				for (Lessor l : lessors){
+					if(b.getProperty().getLessor().equals(l)){
+						contador++;
+						resultados.put(l,contador);
+					}
+				}
+
+			}
+		}
+		Collection<Integer> resultadosEnPunt = resultados.values();
+		return null;
 	}
 }
