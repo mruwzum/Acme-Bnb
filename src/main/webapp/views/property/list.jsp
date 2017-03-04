@@ -91,6 +91,15 @@
 			</a>
 		</display:column>
 	</security:authorize>
+
+	<security:authorize access="hasRole('LESSOR')">
+		<display:column>
+			<a href="property/delete.do?propertyId=${row.id}"> <spring:message
+					code="property.delete"/>
+			</a>
+		</display:column>
+	</security:authorize>
+
 	<security:authorize access="hasRole('AUDITOR')">
 		<display:column>
 			<a href="audit/createFromProp.do?propertyId=${row.id}">

@@ -15,6 +15,8 @@
 
 	<form:hidden path="id" />
 	<form:hidden path="version" />
+    <form:hidden path="lessor"/>
+
 
 	<acme:textbox path="name" code="property.name"/>
 	<br />
@@ -34,12 +36,9 @@
 	<br />
 	<acme:textbox path="city" code="property.city"/>
 	<br />
-	<acme:textbox path="lessor" code="property.lessor"/>
-	<br />
 
 
-
-	<!---------------------------- BOTONES -------------------------->
+    <!---------------------------- BOTONES -------------------------->
 	<acme:submit name="save" code="property.save"/>
 
 	<jstl:if test="\$\{property.id != 0}">
@@ -54,47 +53,3 @@
 
 </form:form>
 
-
-<!-- AUDITS -->
-
-
-<!-- Listing grid -->
-<display:table pagesize="5" class="displaytag" keepStatus="true"
-               name="audits" requestURI="${requestURI}" id="row">
-
-
-    <!-- Attributes -->
-
-
-	<spring:message code="audit.writtenMoment" var="writtenMoment"/>
-	<display:column property="writtenMoment" title="writtenMoment" sortable="true"/>
-    <spring:message code="audit.text" var="text"/>
-    <display:column property="text" title="text" sortable="true"/>
-    <spring:message code="audit.auditor" var="auditor"/>
-    <display:column property="auditor" title="auditor" sortable="true"/>
-
-</display:table>
-
-
-<!-- BOOKREQUEST -->
-
-<!-- Listing grid -->
-<display:table pagesize="5" class="displaytag" keepStatus="true"
-               name="bookRequests" requestURI="${requestURI}" id="row">
-
-
-    <!-- Attributes -->
-
-
-    <spring:message code="bookRequest.checkindate" var="checkindate"/>
-    <display:column property="checkindate" title="checkindate" sortable="true"/>
-    <spring:message code="bookRequest.checkoutdate" var="checkoutdate"/>
-    <display:column property="checkoutdate" title="checkoutdate" sortable="true"/>
-    <spring:message code="bookRequest.smoker" var="smoker"/>
-    <display:column property="smoker" title="smoker" sortable="true"/>
-    <spring:message code="bookRequest.status" var="status"/>
-    <display:column property="status" title="status" sortable="true"/>
-    <spring:message code="bookRequest.tenant" var="tenant"/>
-    <display:column property="tenant" title="tenant" sortable="true"/>
-
-</display:table>

@@ -93,14 +93,19 @@
 		<security:intercept-url pattern="/lessor/property/list.do" access="permitAll"/>
 		<security:intercept-url pattern="/lessor/request/list.do" access="permitAll"/>
 		<security:intercept-url pattern="/lessor/fee.do" access="permitAll"/>
+		<security:intercept-url pattern="/lessor/deny.do" access="permitAll"/>
+		<security:intercept-url pattern="/lessor/accept.do" access="permitAll"/>
 
 
 		<!--  PROPERTY  -->
 		<security:intercept-url pattern="/property/list.do" access="permitAll" />
 		<security:intercept-url pattern="/property/edit.do" access="permitAll" />
 		<security:intercept-url pattern="/property/view.do" access="permitAll"/>
+		<security:intercept-url pattern="/property/create.do" access="permitAll"/>
+		<security:intercept-url pattern="/property/delete.do" access="permitAll"/>
 
-		<!--  SOCIALIDENTITY  -->	
+
+		<!--  SOCIALIDENTITY  -->
 		<security:intercept-url pattern="/socialidentity/list.do" access="permitAll" />
 		<security:intercept-url pattern="/socialidentity/edit.do" access="permitAll" />
 		<!--  TENANT  -->	

@@ -154,18 +154,38 @@ public class LessorService {
 		bookRequest.setStatus(RequestStatus.DENIED);
 	}
 
+
+	//TODO esto hay que optimizarlo y ponerlo con queries
 	public Collection<BookRequest> getAllRequest() {
 		List<BookRequest> requests = new ArrayList<>();
 		Lessor u = findByPrincipal();
 		Assert.notNull(u, "user not identified");
-        for (Property p : getAllProperties()) {
-            if (p.getBookRequests() != null) {
-                requests.addAll(p.getBookRequests());
-            }
+		for (Property p : getAllProperties()) {
+			if (!p.getBookRequests().isEmpty()) {
+				requests.addAll(p.getBookRequests());
+			}
 
 		}
-        Assert.isTrue(requests.isEmpty(), "No book request found");
-        return requests;
+		Assert.isTrue(!requests.isEmpty(), "No book request found");
+		return requests;
+	}
+
+	//TODO esto hay que optimizarlo y ponerlo con queries
+	public Collection<BookRequest> getPendingRequest() {
+		List<BookRequest> requests = new ArrayList<>();
+		Lessor u = findByPrincipal();
+		Assert.notNull(u, "user not identified");
+		for (Property p : getAllProperties()) {
+			if (!p.getBookRequests().isEmpty()) {
+				for (BookRequest b : p.getBookRequests()) {
+					if (b.getStatus().equals(RequestStatus.PENDING)) {
+						requests.add(b);
+					}
+				}
+			}
+
+		}
+		return requests;
 	}
 
     public Double totalFee() {

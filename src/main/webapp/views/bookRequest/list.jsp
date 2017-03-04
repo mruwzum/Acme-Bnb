@@ -59,4 +59,59 @@
 		</display:column>
 	</security:authorize>
 
+	<%--TODO estas dos de abajo solo las puede hacer el propietario--%>
+
+
+</display:table>
+
+
+<spring:message code="bookRequest.pending" var="pend"/>
+<h1><jstl:out value="${pend}"/></h1>
+
+<!-- Listing grid -->
+<display:table pagesize="5" class="displaytag" keepStatus="true"
+			   name="bookRequestsP" requestURI="${requestURI}" id="row">
+
+
+	<!-- Attributes -->
+
+	<security:authorize access="permitAll">
+		<display:column>
+			<a href="bookRequest/edit.do?bookRequestId=${row.id}"> <spring:message
+					code="bookRequest.edit"/>
+			</a>
+		</display:column>
+	</security:authorize>
+
+	<spring:message code="bookRequest.checkindate" var="checkInDate"/>
+	<display:column property="checkInDate" title="${checkInDate}" sortable="true"/>
+	<spring:message code="bookRequest.checkoutdate" var="checkOutDate"/>
+	<display:column property="checkOutDate" title="${checkOutDate}" sortable="true"/>
+	<spring:message code="bookRequest.smoker" var="smoker"/>
+	<display:column property="smoker" title="${smoker}" sortable="true"/>
+	<%--<spring:message code="bookRequest.creditcard" var="creditCard" />--%>
+	<%--<display:column property="creditCard" title="${creditCard}" sortable="true" />--%>
+	<spring:message code="bookRequest.status" var="status"/>
+	<display:column property="status" title="${status}" sortable="true"/>
+	<spring:message code="bookRequest.tenant" var="tenant"/>
+	<display:column property="tenant" title="${tenant}" sortable="true"/>
+	<spring:message code="bookRequest.property" var="property"/>
+	<display:column property="property" title="${property}" sortable="true"/>
+
+
+	<security:authorize access="hasRole('LESSOR')">
+		<display:column>
+			<a href="lessor/accept.do?bookRequestId=${row.id}"> <spring:message
+					code="bookRequest.accept"/>
+			</a>
+		</display:column>
+	</security:authorize>
+
+	<security:authorize access="hasRole('LESSOR')">
+		<display:column>
+			<a href="/lessor/deny.do?bookRequestId=${row.id}"> <spring:message
+					code="bookRequest.deny"/>
+			</a>
+		</display:column>
+	</security:authorize>
 </display:table>

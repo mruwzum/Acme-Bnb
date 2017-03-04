@@ -9,6 +9,7 @@ import javax.validation.Valid;
 
 import domain.BookRequest;
 import domain.Property;
+import domain.RequestStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import services.ActorService;
+import services.BookRequestService;
 import services.LessorService;
 import controllers.AbstractController;
 import domain.Lessor;
@@ -37,8 +39,10 @@ public class LessorController extends AbstractController {
     private ActorService actorService;
 	@Autowired
     private PropertyService propertyService;
-	
-	//Constructors----------------------------------------------
+    @Autowired
+    private BookRequestService bookRequestService;
+
+    //Constructors----------------------------------------------
 	
 	public LessorController(){
 		super();
@@ -168,8 +172,10 @@ public class LessorController extends AbstractController {
         ModelAndView res;
 
         Collection<BookRequest> requests = lessorService.getAllRequest();
+        Collection<BookRequest> peding = lessorService.getPendingRequest();
         res = new ModelAndView("bookRequest/list");
         res.addObject("bookRequests", requests);
+        res.addObject("bookRequestsP", peding);
 
         return res;
     }
@@ -209,7 +215,7 @@ public class LessorController extends AbstractController {
 
     }
 
-    //Other methods ------------------------------------
+    //Total ammount of fee------------------------------------
 
     @RequestMapping(value = "/fee", method = RequestMethod.GET)
     public ModelAndView totalFee() {
@@ -220,4 +226,29 @@ public class LessorController extends AbstractController {
         return res;
     }
 
+    // Status of request -------------------------------------------------------
+
+    @RequestMapping(value = "/accept", method = RequestMethod.GET)
+    public ModelAndView acceptRequest(@RequestParam int bookRequestId) {
+
+        ModelAndView res;
+        BookRequest bookRequest = bookRequestService.findOne(bookRequestId);
+        bookRequest.setStatus(RequestStatus.ACEPTED);
+        bookRequestService.save(bookRequest);
+        res = new ModelAndView("actor/success");
+
+        return res;
+    }
+
+    @RequestMapping(value = "/deny", method = RequestMethod.GET)
+    public ModelAndView denyeRequest(@RequestParam int bookRequestId) {
+
+        ModelAndView res;
+        BookRequest bookRequest = bookRequestService.findOne(bookRequestId);
+        bookRequest.setStatus(RequestStatus.DENIED);
+        bookRequestService.save(bookRequest);
+        res = new ModelAndView("actor/success");
+
+        return res;
+    }
 }

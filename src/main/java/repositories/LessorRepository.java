@@ -1,5 +1,6 @@
 package repositories;
 
+import domain.BookRequest;
 import domain.Property;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -15,5 +16,6 @@ public interface LessorRepository extends JpaRepository<Lessor, Integer> {
 
     @Query("select u.propertys from Lessor u where u.id =?1")
     Collection<Property> getAllProperties(int id);
+
 
 }

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import domain.Property;
+import services.LessorService;
 import services.PropertyService;
 
 @Controller
@@ -25,6 +26,8 @@ public class PropertyController extends AbstractController {
 	
 	@Autowired
 	private PropertyService propertyService;
+    @Autowired
+    private LessorService lessorService;
 
 	
 	//Constructors----------------------------------------------
@@ -87,6 +90,7 @@ public class PropertyController extends AbstractController {
             result= createEditModelAndView(property);
         }else{
             try{
+                property.setLessor(lessorService.findByPrincipal());
                 propertyService.save(property);
                 result= new ModelAndView("redirect:list.do");
             }catch(Throwable oops){
@@ -95,15 +99,16 @@ public class PropertyController extends AbstractController {
         }
         return result;
     }
-     
-    @RequestMapping(value="/delete", method=RequestMethod.POST, params="delete")
-    public ModelAndView delete(Property property){
+
+    @RequestMapping(value = "/delete", method = RequestMethod.GET)
+    public ModelAndView delete(@RequestParam int propertyId) {
         ModelAndView result;
+        Property p = propertyService.findOne(propertyId);
         try{
-            propertyService.delete(property);
+            propertyService.delete(p);
             result=new ModelAndView("redirect:list.do");
         }catch(Throwable oops){
-            result= createEditModelAndView(property, "property.commit.error");
+            result = createEditModelAndView(p, "property.commit.error");
         }
          
         return result;   
