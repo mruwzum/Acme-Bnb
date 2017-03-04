@@ -53,8 +53,8 @@
 		<security:intercept-url pattern="/administrator/edit.do" access="permitAll" />
 		<security:intercept-url pattern="/administrator/changeFee.do" access="permitAll" />
 		<security:intercept-url pattern="/administrator/saveFee.do" access="permitAll" />
-		<security:intercept-url pattern="/property/delete.do" access="hasRole('ADMINISTRATOR')" />
-		<security:intercept-url pattern="/property/delete.do" access="hasRole('ADMINISTRATOR')" />
+		<security:intercept-url pattern="/property/delete.do" access="permitAll" />
+
 		<!--  AUDIT  -->	
 		<security:intercept-url pattern="/audit/list.do" access="permitAll" />
 		<security:intercept-url pattern="/audit/edit.do" access="permitAll" />
@@ -102,13 +102,16 @@
 		<security:intercept-url pattern="/property/edit.do" access="permitAll" />
 		<security:intercept-url pattern="/property/view.do" access="permitAll"/>
 		<security:intercept-url pattern="/property/create.do" access="permitAll"/>
-		<security:intercept-url pattern="/property/delete.do" access="permitAll"/>
 
 
 		<!--  SOCIALIDENTITY  -->
 		<security:intercept-url pattern="/socialidentity/list.do" access="permitAll" />
 		<security:intercept-url pattern="/socialidentity/edit.do" access="permitAll" />
-		<!--  TENANT  -->	
+		<!--  TENANT  -->
+		<security:intercept-url pattern="/creditcard/list.do" access="hasRole('TENANT')" />
+		<security:intercept-url pattern="/creditcard/view.do" access="hasRole('TENANT')" />
+		<security:intercept-url pattern="/creditcard/edit.do" access="hasRole('TENANT')" />
+		<security:intercept-url pattern="/creditcard/delete.do" access="hasRole('TENANT')" />
 		<security:intercept-url pattern="/tenant/list.do" access="permitAll" />
 		<security:intercept-url pattern="/tenant/edit.do" access="permitAll" />
 		<security:intercept-url pattern="/tenant/invoice.do" access="permitAll"/>

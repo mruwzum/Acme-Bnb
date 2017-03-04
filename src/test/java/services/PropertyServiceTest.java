@@ -7,6 +7,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
+
 import static org.junit.Assert.*;
 
 /**
@@ -43,7 +45,11 @@ public class PropertyServiceTest extends AbstractTest {
 
     @Test
     public void delete() throws Exception {
+        int mesActu = new Date(System.currentTimeMillis()).getMonth();
+       int year  = (new Date(System.currentTimeMillis()).getYear());
 
+       System.out.println(mesActu);
+        System.out.println(year);
     }
 
 }

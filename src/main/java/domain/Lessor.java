@@ -2,19 +2,19 @@ package domain;
 
 import java.util.Collection;
 
-import javax.persistence.Access;
-import javax.persistence.AccessType;
-import javax.persistence.Entity;
+import javax.persistence.*;
+
 import org.hibernate.validator.constraints.CreditCardNumber;
-import javax.persistence.OneToMany;
+
 import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Access(AccessType.PROPERTY)
 public class Lessor extends Actor {
 	
 	// Attributes ------------------------------------------------------------
-	private String creditCard;
+	private CreditCard creditCard;
 	
 	// Relationships ---------------------------------------------------------
 	private Collection<Property> propertys;
@@ -25,14 +25,22 @@ public class Lessor extends Actor {
 	}
 
 
-	@CreditCardNumber
-	public String getCreditCard() {
+
+
+
+
+	@OneToOne(targetEntity = CreditCard.class, cascade = CascadeType.ALL)
+	public CreditCard getCreditCard() {
 		return creditCard;
 	}
 
-	public void setCreditCard(String creditCard) {
+
+	public void setCreditCard(CreditCard creditCard) {
 		this.creditCard = creditCard;
 	}
+
+
+
 
 	@OneToMany(mappedBy = "lessor")
 	@Valid

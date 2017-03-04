@@ -3,6 +3,7 @@ package controllers;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -118,9 +119,16 @@ public class LessorController extends AbstractController {
             result = createEditModelAndView(lessor);
         } else {
             try {
-                lessor.setUserAccount(lessorService.findByPrincipal().getUserAccount());
-                lessorService.save(lessor);
-                result = new ModelAndView("actor/success");
+                int mesActu = new Date(System.currentTimeMillis()).getMonth();
+                if (lessor.getCreditCard().getExpirationYear().equals(2017)
+                        && lessor.getCreditCard().getExpirationMonth()<=mesActu+1){
+                    result = new ModelAndView("actor/error");
+                }else{
+                    lessor.setUserAccount(lessorService.findByPrincipal().getUserAccount());
+                    lessorService.save(lessor);
+                    result = new ModelAndView("actor/success");
+                }
+
             } catch (Throwable oops) {
                 result = createEditModelAndView(lessor, "lessor.commit.error");
             }

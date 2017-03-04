@@ -165,7 +165,65 @@
 				
 	
 	<!-- /UserAccounts -->
-	
+
+	<!-- CreditCard -->
+	<bean id="creditcard1" class="domain.CreditCard">
+		<property name="holderName" value="Auditor1Name"/>
+		<property name="brandName" value="Visa"/>
+		<property name="number" value="54275498043695577"/>
+		<property name="expirationYear" value="2018"/>
+		<property name="CVV" value="432"/>
+		<property name="expirationMonth" value="2"/>
+	</bean>
+
+
+	<!-- CreditCard2 -->
+	<bean id="creditcard2" class="domain.CreditCard">
+		<property name="holderName" value="Auditor2Name"/>
+		<property name="brandName" value="Visa"/>
+		<property name="number" value="54275498043695577"/>
+		<property name="expirationYear" value="2019"/>
+		<property name="CVV" value="112"/>
+		<property name="expirationMonth" value="6"/>
+	</bean>
+	<!-- CreditCard3 -->
+	<bean id="creditcard3" class="domain.CreditCard">
+		<property name="holderName" value="Auditor3Name"/>
+		<property name="brandName" value="Visa"/>
+		<property name="number" value="54275498043695577"/>
+		<property name="expirationYear" value="2018"/>
+		<property name="CVV" value="222"/>
+		<property name="expirationMonth" value="3"/>
+	</bean>
+	<!-- CreditCard4 -->
+	<bean id="creditcard4" class="domain.CreditCard">
+		<property name="holderName" value="Lessor1Name"/>
+		<property name="brandName" value="Visa"/>
+		<property name="number" value="54275498043695577"/>
+		<property name="expirationYear" value="2030"/>
+		<property name="CVV" value="007"/>
+		<property name="expirationMonth" value="8"/>
+	</bean>
+	<!-- CreditCard5 -->
+	<bean id="creditcard5" class="domain.CreditCard">
+		<property name="holderName" value="Lessor2Name"/>
+		<property name="brandName" value="Mastercard"/>
+		<property name="number" value="54275498043695577"/>
+		<property name="expirationYear" value="2017"/>
+		<property name="CVV" value="235"/>
+		<property name="expirationMonth" value="8"/>
+	</bean>
+	<!-- CreditCard6 -->
+	<bean id="creditcard6" class="domain.CreditCard">
+		<property name="holderName" value="Lessor3Name"/>
+		<property name="brandName" value="VISA"/>
+		<property name="number" value="54275498043695577"/>
+		<property name="expirationYear" value="2019"/>
+		<property name="CVV" value="009"/>
+		<property name="expirationMonth" value="8"/>
+	</bean>
+	<!-- /CreditCards -->
+
 	<!-- Actors -->
 	
 			<!-- Administrator -->
@@ -242,7 +300,8 @@
                     <property name="phone" value="+23-57437365756"/>
                     <property name="picture"
                               value="http://5www.ecestaticos.com/imagestatic/clipping/542/1ac/5421ac4aa59a78aad57ad43cd3eb6804/las-mascotas-mas-divertidas-y-energicas-que-has-visto-nunca.jpg?mtime=1479741232"/>
-                    <property name="creditCard" value="54275498043695577"/>
+					<!--<property name="creditCard" ref="creditcard4">-->
+					<!--</property>-->
 				<property name="userAccount" ref="userAccountlessor1" />
 				</bean>
 				<bean id="lessor2" class="domain.Lessor">
@@ -252,7 +311,8 @@
                     <property name="phone" value="+23-342562357645"/>
                     <property name="picture"
                               value="http://www.dibujosinfantiles.net/wp-content/uploads/2011/02/imagenes-divertidas-facebook-03.jpg"/>
-                    <property name="creditCard" value="54275498043695577"/>
+					<property name="creditCard" ref="creditcard5">
+					</property>
 				<property name="userAccount" ref="userAccountlessor2" />
 				</bean>
 				<bean id="lessor3" class="domain.Lessor">
@@ -262,7 +322,8 @@
                     <property name="phone" value="+23-34576345676"/>
                     <property name="picture"
                               value="http://diariocorreo.pe/media/thumbs/uploads/articles/images/whatsapp-divertidos-memes-tras-anuncio-de-nueva-ca-jpg_654x469.jpg"/>
-                    <property name="creditCard" value="54275498043695577"/>
+					<property name="creditCard" ref="creditcard6">
+					</property>
 				<property name="userAccount" ref="userAccountlessor3" />
 				</bean>
 			
@@ -274,7 +335,8 @@
 						<property name="surname" value="Tenant1Surname" />
                     <property name="email" value="Tenant1Email@gmail.com"/>
                     <property name="phone" value="+23-4536435655"/>
-					<property name="creditCard" value="54275498043695577"/>
+					<property name="creditCard" ref="creditcard1">
+					</property>
 					<property name="picture"
                               value="http://recetas.cuidadoinfantil.net/files/2012/08/Recetas-divertidas-sandwich-en-forma-de-coche.jpg"/>
 				<property name="userAccount" ref="userAccounttenant1" />
@@ -284,8 +346,8 @@
 						<property name="surname" value="Tenant2Surname" />
                     <property name="email" value="Tenant2Email@gmail.com"/>
                     <property name="phone" value="+23-324523452345"/>
-					<property name="creditCard" value="54275498043695577"/>
-
+					<property name="creditCard" ref="creditcard2">
+					</property>
 					<property name="picture"
                               value="http://img.aws.ehowcdn.com/intl-620/ds-photo/getty/article/165/108/78159422.jpg"/>
 				<property name="userAccount" ref="userAccounttenant2" />
@@ -298,7 +360,8 @@
                     <property name="picture"
                               value="http://www.creadictos.com/wp-content/uploads/2012/04/Divertidas-Creativas-fotografias-Huevos-053_thumb.jpg"/>
 				<property name="userAccount" ref="userAccounttenant3" />
-					<property name="creditCard" value="54275498043695577"/>
+					<property name="creditCard" ref="creditcard3">
+					</property>
 
 				</bean>
 			
@@ -377,7 +440,8 @@
                     <property name="checkInDate" value="2016/04/23 23:00:12"/>
                     <property name="checkOutDate" value="2016/04/27 23:00:12"/>
 						<property name="smoker" value="true" />
-                    <property name="creditCard" value="54275498043695577"/>
+					<property name="creditCard" ref="creditcard4">
+					</property>
                     <property name="status" value="ACEPTED"></property>
                     <property name="tenant" ref="tenant1" />
 					<property name="property" ref="property1"/>
@@ -386,7 +450,8 @@
                     <property name="checkInDate" value="2017/01/12 23:00:12"/>
                     <property name="checkOutDate" value="2017/01/18 23:00:12"/>
 						<property name="smoker" value="false" />
-                    <property name="creditCard" value="54275498043695577"/>
+					<property name="creditCard" ref="creditcard5">
+					</property>
                     <property name="status" value="ACEPTED"></property>
 
                     <property name="tenant" ref="tenant2" />
@@ -396,7 +461,8 @@
                     <property name="checkInDate" value="2017/02/12 23:00:12"/>
                     <property name="checkOutDate" value="2017/01/16 23:00:12"/>
 						<property name="smoker" value="true" />
-                    <property name="creditCard" value="54275498043695577"/>
+					<property name="creditCard" ref="creditcard6">
+					</property>
                     <property name="status" value="PENDING"></property>
 							<property name="tenant" ref="tenant3" />
 							<property name="property" ref="property3" />
@@ -458,6 +524,8 @@
 						<property name="details" value="details1" />
 						<property name="totalAmount" value="500.00" />
 							<property name="tenant" ref="tenant1" />
+					<property name="creditCard" ref="creditcard1">
+					</property>
 				</bean>
 				<bean id="invoice2" class="domain.Invoice">
                     <property name="issuedMoment" value="2017/04/23 23:00:12"/>
@@ -466,6 +534,8 @@
 						<property name="details" value="details2" />
 						<property name="totalAmount" value="245.00" />
 							<property name="tenant" ref="tenant2" />
+					<property name="creditCard" ref="creditcard2">
+					</property>
 				</bean>
 				<bean id="invoice3" class="domain.Invoice">
                     <property name="issuedMoment" value="2016/04/23 23:00:12"/>
@@ -474,6 +544,8 @@
 						<property name="details" value="details3" />
 						<property name="totalAmount" value="300.00" />
 							<property name="tenant" ref="tenant3" />
+					<property name="creditCard" ref="creditcard3">
+					</property>
 				</bean>
 			
 			<!-- /Invoice-->

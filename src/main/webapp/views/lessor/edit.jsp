@@ -30,7 +30,21 @@
 	<br />
 	<acme:textbox path="picture" code="actor.picture"/>
 	<br />
-	<acme:textbox path="creditCard" code="lessor.creditcard"/>
+
+	<h3><spring:message code="edit.creditcard" var="cc"/>
+	<jstl:out value="${cc}"/>
+	</h3>
+	<acme:textbox path="creditCard.holderName" code="credit-card.holderName"/>
+	<br />
+	<acme:textbox path="creditCard.brandName" code="credit-card.brandName"/>
+	<br />
+	<acme:textbox path="creditCard.number" code="credit-card.number"/>
+	<br />
+	<acme:textbox path="creditCard.expirationYear" code="credit-card.expirationYear"/>
+	<br />
+	<acme:textbox path="creditCard.expirationMonth" code="credit-card.expirationMonth"/>
+	<br />
+	<acme:textbox path="creditCard.CVV" code="credit-card.CVV"/>
 	<br />
 
 

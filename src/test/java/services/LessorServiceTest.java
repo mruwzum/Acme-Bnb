@@ -85,6 +85,8 @@ public class LessorServiceTest extends AbstractTest {
     @Test
     public void denyRequest() throws Exception {
 
+
+
     }
 
     @Test

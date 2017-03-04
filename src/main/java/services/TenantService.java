@@ -5,13 +5,11 @@ import java.util.Date;
 
 import javax.transaction.Transactional;
 
-import domain.BookRequest;
-import domain.Invoice;
+import domain.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
-import domain.Tenant;
 import repositories.TenantRepository;
 import security.LoginService;
 import security.UserAccount;
@@ -105,6 +103,27 @@ public class TenantService {
 		res.setVATNumber("X1234567X");
 		return invoiceService.save(res);
 
+	}
+	public CreditCard modifyCreditCard(String br, String cv, Integer exp, Integer expy, String num, String hol) {
+		Tenant u = findByPrincipal();
+		CreditCard aux = u.getCreditCard();
+		Assert.notNull(aux);
+		aux.setBrandName(br);
+		aux.setCVV(cv);
+		aux.setExpirationMonth(exp);
+		aux.setExpirationYear(expy);
+		aux.setNumber(num);
+		aux.setHolderName(hol);
+		u.setCreditCard(aux);
+		return aux;
+	}
+
+	public CreditCard getMyCreditCard() {
+		Tenant u = findByPrincipal();
+		Assert.notNull(u);
+		CreditCard aux = u.getCreditCard();
+		Assert.notNull(aux);
+		return aux;
 	}
 
 }

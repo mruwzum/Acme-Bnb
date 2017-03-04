@@ -19,7 +19,7 @@ public class Invoice extends DomainEntity {
 	private String tenantInfo;
 	private String details;
 	private double totalAmount;
-	private String creditCard;
+	private CreditCard creditCard;
 
 	// Relationships ---------------------------------------------------------
 	private Tenant tenant;
@@ -75,7 +75,15 @@ public class Invoice extends DomainEntity {
 		this.totalAmount = totalAmount;
 	}
 
-	
+	@ManyToOne(optional = false)
+	public CreditCard getCreditCard() {
+		return creditCard;
+	}
+
+	public void setCreditCard(CreditCard creditCard) {
+		this.creditCard = creditCard;
+	}
+
 	@ManyToOne
 	@Valid
 	public Tenant getTenant() {
@@ -86,15 +94,7 @@ public class Invoice extends DomainEntity {
 		this.tenant = tenant;
 	}
 
-	@CreditCardNumber
-	public String getCreditCard() {
-		return creditCard;
-	}
 
-	public void setCreditCard(String creditCard) {
-		this.creditCard = creditCard;
-	}
-	
 	
 	
 }

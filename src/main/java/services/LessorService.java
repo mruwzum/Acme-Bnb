@@ -206,4 +206,15 @@ public class LessorService {
 
 
     }
+
+
+
+
+	public CreditCard getMyCreditCard() {
+		Lessor u = findByPrincipal();
+		Assert.notNull(u);
+		CreditCard aux = u.getCreditCard();
+		Assert.notNull(aux);
+		return aux;
+	}
 }

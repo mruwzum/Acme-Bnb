@@ -18,7 +18,7 @@ public class BookRequest extends DomainEntity {
 	private Date checkInDate;
 	private Date checkOutDate;
 	private boolean smoker;
-	private String creditCard;
+	private CreditCard creditCard;
 	private RequestStatus status;
 	
 	// Relationships ---------------------------------------------------------
@@ -58,13 +58,14 @@ public class BookRequest extends DomainEntity {
 		this.smoker = smoker;
 	}
 	
-	@CreditCardNumber
-	@NotBlank
-	public String getCreditCard() {
+
+
+	@ManyToOne(optional = false)
+	public CreditCard getCreditCard() {
 		return creditCard;
 	}
 
-	public void setCreditCard(String creditCard) {
+	public void setCreditCard(CreditCard creditCard) {
 		this.creditCard = creditCard;
 	}
 	

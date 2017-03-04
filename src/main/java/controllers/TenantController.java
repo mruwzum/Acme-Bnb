@@ -85,7 +85,7 @@ public class TenantController extends AbstractController {
     }
 
     @RequestMapping(value = "/change", method = RequestMethod.POST, params = "save")
-    public ModelAndView change(@Valid Tenant tenant, BindingResult binding) {
+    public ModelAndView change2(@Valid Tenant tenant, BindingResult binding) {
 
         ModelAndView result;
 
@@ -93,9 +93,15 @@ public class TenantController extends AbstractController {
             result = createEditModelAndView(tenant);
         } else {
             try {
-                tenant.setUserAccount(tenantService.findByPrincipal().getUserAccount());
-                tenantService.save(tenant);
-                result = new ModelAndView("actor/success");
+                int mesActu2 = new Date(System.currentTimeMillis()).getMonth();
+                if (tenant.getCreditCard().getExpirationYear().equals(2017)
+                        && tenant.getCreditCard().getExpirationMonth()<=mesActu2+1){
+                    result = new ModelAndView("actor/error");
+                }else {
+                    tenant.setUserAccount(tenantService.findByPrincipal().getUserAccount());
+                    tenantService.save(tenant);
+                    result = new ModelAndView("actor/success");
+                }
             } catch (Throwable oops) {
                 result = createEditModelAndView(tenant, "tenant.commit.error");
             }
@@ -143,7 +149,7 @@ public class TenantController extends AbstractController {
         BookRequest bookRequest = bookRequestService.findOne(bookRequestId);
         Invoice invoice = tenantService.getInvoiceAmmount(bookRequest);
         res = new ModelAndView("bookRequest/invoice");
-        String cc = invoice.getCreditCard();
+        String cc = invoice.getCreditCard().getNumber();
         String ccfinal;
        if(cc.equals("")){
            ccfinal = "------------------";

@@ -37,6 +37,8 @@
 		<value>/views/socialIdentity/tiles.xml</value>
 		<!-- Tenant -->
 		<value>/views/tenant/tiles.xml</value>
+		<!-- CreditCard -->
+		<value>/views/credit-card/tiles.xml</value>
 	</util:list>
 
 </beans>
