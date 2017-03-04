@@ -33,7 +33,7 @@ public class Auditor extends Actor {
 		this.nameOfCompany = nameOfCompany;
 	}
 
-	@OneToMany
+	@OneToMany(mappedBy = "auditor")
 	@Valid
 	public Collection<Audit> getAudits() {
 		return audits;

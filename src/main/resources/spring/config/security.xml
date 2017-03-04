@@ -67,6 +67,8 @@
 		<security:intercept-url pattern="/auditor/edit.do" access="permitAll" />
         <security:intercept-url pattern="/auditor/edit1.do" access="permitAll"/>
         <security:intercept-url pattern="/auditor/change.do" access="permitAll"/>
+		<security:intercept-url pattern="/auditor/listMy.do" access="hasRole('AUDITOR')"/>
+
 		<!--  BOOKREQUEST  -->	
 		<security:intercept-url pattern="/bookrequest/list.do" access="permitAll" />
 		<security:intercept-url pattern="/bookrequest/edit.do" access="permitAll" />

@@ -2,6 +2,7 @@ package services;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,6 +17,10 @@ import static org.junit.Assert.*;
         "classpath:spring/config/packages.xml"})
 @Transactional
 public class AuditorServiceTest extends AbstractTest {
+
+    @Autowired
+    private AuditorService auditorService;
+
     @Test
     public void create() throws Exception {
 
@@ -38,6 +43,11 @@ public class AuditorServiceTest extends AbstractTest {
 
     @Test
     public void delete() throws Exception {
+
+        authenticate("auditor1");
+        System.out.println(auditorService.getMyAudits());
+
+        authenticate(null);
 
     }
 

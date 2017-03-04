@@ -73,7 +73,8 @@
 
             <li><a href="auditor/edit1.do"><spring:message
                     code="master.page.modify"/></a></li>
-
+			<li><a href="auditor/listMy.do"><spring:message
+					code="master.page.auditor.audits"/></a></li>
 
 		</security:authorize>
 		<security:authorize access="isAnonymous()">

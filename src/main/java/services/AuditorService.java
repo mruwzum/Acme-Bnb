@@ -4,6 +4,7 @@ import java.util.Collection;
 
 import javax.transaction.Transactional;
 
+import domain.Audit;
 import domain.Lessor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -87,5 +88,13 @@ public class AuditorService {
 
 
     // Other business methods -----------------------
+
+	public Collection<Audit> getMyAudits(){
+		Collection<Audit> res;
+		Auditor u = findByPrincipal();
+		Assert.notNull(u, "user not identified");
+		res= auditorRepository.myAudits(u.getId());
+		return res;
+	}
 
 }

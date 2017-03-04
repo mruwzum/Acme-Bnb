@@ -50,7 +50,15 @@ public class AuditorController extends AbstractController {
 		
 		return result;
 	}
-	
+
+	@RequestMapping(value = "/listMy", method = RequestMethod.GET)
+    public ModelAndView myAudits(){
+	    ModelAndView res;
+	    res = new ModelAndView("audit/list");
+	    res.addObject("audits", auditorService.getMyAudits());
+
+	    return res;
+    }
 	
 	//Create Method -----------------------------------------------------------
 	

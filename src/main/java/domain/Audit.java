@@ -41,7 +41,7 @@ public class Audit extends DomainEntity {
 	}
 	
 	
-	@NotBlank
+
 	public String getText() {
 		return text;
 	}
