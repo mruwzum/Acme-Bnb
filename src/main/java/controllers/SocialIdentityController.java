@@ -93,10 +93,11 @@ public class SocialIdentityController extends AbstractController {
         }
         return result;
     }
-     
-    @RequestMapping(value="/delete", method=RequestMethod.POST, params="delete")
-    public ModelAndView delete(SocialIdentity socialIdentity){
+
+    @RequestMapping(value = "/delete", method = RequestMethod.GET)
+    public ModelAndView delete(int socialIdentityId) {
         ModelAndView result;
+        SocialIdentity socialIdentity = socialIdentityService.findOne(socialIdentityId);
         try{
             socialIdentityService.delete(socialIdentity);
             result=new ModelAndView("redirect:list.do");
