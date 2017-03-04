@@ -26,14 +26,22 @@
 
 
 	<!-- Attributes -->
-
 	<security:authorize access="hasRole('LESSOR')">
 		<display:column>
 			<a href="property/edit.do?propertyId=${row.id}">
 				<spring:message code="property.edit"/>
 			</a>
 		</display:column>
-
+	</security:authorize>
+	<security:authorize access="hasRole('ADMINISTRATOR')">
+		<display:column>
+			<a href="property/edit.do?propertyId=${row.id}">
+				<spring:message code="property.edit"/>
+			</a>
+			<a href="property/delete.do?propertyId=${row.id}">
+				<spring:message code="property.delete"/>
+			</a>
+		</display:column>
 	</security:authorize>
 	<security:authorize access="hasRole('TENANT')">
 		<display:column>

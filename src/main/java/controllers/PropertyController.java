@@ -96,7 +96,7 @@ public class PropertyController extends AbstractController {
         return result;
     }
      
-    @RequestMapping(value="/edit", method=RequestMethod.POST, params="delete")
+    @RequestMapping(value="/delete", method=RequestMethod.POST, params="delete")
     public ModelAndView delete(Property property){
         ModelAndView result;
         try{
