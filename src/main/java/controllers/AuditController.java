@@ -143,7 +143,15 @@ public class AuditController extends AbstractController {
     public ModelAndView cancel(@Valid Audit audit, BindingResult binding){
         ModelAndView result;
 
-        if(binding.hasErrors()){
+
+        if (audit.getText().equals("")){
+            audit.setText("empty/vacio");
+        }else{
+
+        }
+
+
+        if(!binding.hasErrors()){
             result= createEditModelAndView(audit);
         }else{
             try{
@@ -160,10 +168,10 @@ public class AuditController extends AbstractController {
 
     }
 	// Ancillary methods ------------------------------------------------
-    
+
     protected ModelAndView createEditModelAndView(Audit audit){
         ModelAndView result;
-         
+
         result= createEditModelAndView(audit, null);
          
         return result;
