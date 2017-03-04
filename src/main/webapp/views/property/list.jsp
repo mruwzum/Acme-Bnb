@@ -38,6 +38,8 @@
 			<a href="property/edit.do?propertyId=${row.id}">
 				<spring:message code="property.edit"/>
 			</a>
+		</display:column>
+		<display:column>
 			<a href="property/delete.do?propertyId=${row.id}">
 				<spring:message code="property.delete"/>
 			</a>
