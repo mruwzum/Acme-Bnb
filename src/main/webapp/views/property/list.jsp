@@ -10,7 +10,7 @@
 	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
-<security:authorize access="permitAll">
+<security:authorize access="hasRole('LESSOR')">
 	<div>
 		<H5>
 			<a href="property/create.do"> <spring:message

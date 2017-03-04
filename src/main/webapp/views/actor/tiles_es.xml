@@ -19,4 +19,8 @@
         <put-attribute name="title" value="Actors: Éxito"/>
         <put-attribute name="body" value="/views/actor/success.jsp"/>
     </definition>
+	<definition name="actor/error" extends="master.page">
+		<put-attribute name="title" value="Actors: Fallo"/>
+		<put-attribute name="body" value="/views/actor/error.jsp"/>
+	</definition>
 </tiles-definitions>

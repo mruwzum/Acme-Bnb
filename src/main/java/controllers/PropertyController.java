@@ -104,12 +104,17 @@ public class PropertyController extends AbstractController {
     public ModelAndView delete(@RequestParam int propertyId) {
         ModelAndView result;
         Property p = propertyService.findOne(propertyId);
-        try{
-            propertyService.delete(p);
-            result=new ModelAndView("redirect:list.do");
-        }catch(Throwable oops){
-            result = createEditModelAndView(p, "property.commit.error");
+        if(!p.getBookRequests().isEmpty()){
+            result = new ModelAndView("actor/error");
+        }else{
+            try{
+                propertyService.delete(p);
+                result=new ModelAndView("redirect:list.do");
+            }catch(Throwable oops){
+                result = createEditModelAndView(p, "property.commit.error");
+            }
         }
+
          
         return result;   
     }
