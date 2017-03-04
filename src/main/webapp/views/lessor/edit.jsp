@@ -11,11 +11,14 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
-<form:form action="lessor/edit.do" modelAttribute="lessor">
+<form:form action="lessor/change.do" modelAttribute="lessor">
 
 	<form:hidden path="id" />
 	<form:hidden path="version" />
 	<form:hidden path="propertys" />
+    <form:hidden path="userAccount"/>
+
+
 
 	<acme:textbox path="name" code="actor.name"/>
 	<br />
@@ -30,13 +33,6 @@
 	<acme:textbox path="creditCard" code="lessor.creditcard"/>
 	<br />
 
-
-	<h1>User Account</h1>
-	<br>
-	<acme:textbox path="UserAccount.username" code="actor.username"/>
-	<br />
-	<acme:textbox path="UserAccount.password" code="actor.password"/>
-	<br />
 
 	<!---------------------------- BOTONES -------------------------->
 

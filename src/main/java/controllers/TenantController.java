@@ -71,16 +71,35 @@ public class TenantController extends AbstractController {
 		}
 	
 	 // Edition ---------------------------------------------------------
-    
-    @RequestMapping(value="/edit", method=RequestMethod.GET)
-    public ModelAndView edit(@RequestParam int tenantId){
+
+    @RequestMapping(value = "/edit1", method = RequestMethod.GET)
+    public ModelAndView edit() {
         ModelAndView result;
         Tenant tenant;
-         
-        tenant= tenantService.findOne(tenantId);
+
+        tenant = tenantService.findByPrincipal();
         Assert.notNull(tenant);
         result= createEditModelAndView(tenant);
-         
+
+        return result;
+    }
+
+    @RequestMapping(value = "/change", method = RequestMethod.POST, params = "save")
+    public ModelAndView change(@Valid Tenant tenant, BindingResult binding) {
+
+        ModelAndView result;
+
+        if (!binding.hasErrors()) {
+            result = createEditModelAndView(tenant);
+        } else {
+            try {
+                tenant.setUserAccount(tenantService.findByPrincipal().getUserAccount());
+                tenantService.save(tenant);
+                result = new ModelAndView("actor/success");
+            } catch (Throwable oops) {
+                result = createEditModelAndView(tenant, "tenant.commit.error");
+            }
+        }
         return result;
     }
      
