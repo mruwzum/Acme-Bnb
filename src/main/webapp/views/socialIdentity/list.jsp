@@ -10,16 +10,21 @@
 	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
-<security:authorize access="permitAll">
-	<div>
-		<H5>
-			<a href="socialIdentity/create.do"> <spring:message
-					code="socialIdentity.create" />
-			</a>
-		</H5>
-	</div>
-</security:authorize>
+<%--<security:authorize access="permitAll">--%>
+	<%--<div>--%>
+		<%--<H5>--%>
+			<%--<a href="socialIdentity/create.do"> <spring:message--%>
+					<%--code="socialIdentity.create" />--%>
+			<%--</a>--%>
+		<%--</H5>--%>
+	<%--</div>--%>
+<%--</security:authorize>--%>
+<security:authorize access="isAuthenticated()">
 
+		<a href="socialIdentity/create.do"> <spring:message
+				code="socialIdentity.create" /></a>
+
+</security:authorize>
 <!-- Listing grid -->
 <display:table pagesize="5" class="displaytag" keepStatus="true"
 	name="socialIdentitys" requestURI="${requestURI}" id="row">
@@ -27,19 +32,26 @@
 
 	<!-- Attributes -->
 
-	<security:authorize access="permitAll">
+	<security:authorize access="isAuthenticated()">
 		<display:column>
 			<a href="socialIdentity/edit.do?socialIdentityId=${row.id}"> <spring:message
-					code="socialIdentity.edit" />
+					code="socialIdentity.edit"/>
 			</a>
+
 		</display:column>
 	</security:authorize>
 	
 			<spring:message code="socialIdentity.nick" var="nick" />
-			<display:column property="nick" title="\$\{nick\}" sortable="true" />
-			<spring:message code="socialIdentity.socialnetwork" var="socialnetwork" />
-			<display:column property="socialnetwork" title="\$\{socialnetwork\}" sortable="true" />
-			<spring:message code="socialIdentity.url" var="url" />
-			<display:column property="url" title="\$\{url\}" sortable="true" />
-
+			<display:column property="nick" title="${nick}" sortable="true" />
+			<spring:message code="socialIdentity.socialnetwork" var="socialNetwork" />
+			<display:column property="socialNetwork" title="${socialNetwork}" sortable="true" />
+			<spring:message code="socialIdentity.url" var="URL" />
+			<display:column property="URL" title="${URL}" sortable="true" />
+	<security:authorize access="isAuthenticated()">
+		<display:column>
+			<a href="socialIdentity/delete.do?socialIdentityId=${row.id}"> <spring:message
+					code="socialIdentity.delete"/>
+			</a>
+		</display:column>
+	</security:authorize>
 </display:table>

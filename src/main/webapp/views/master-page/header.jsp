@@ -101,6 +101,8 @@
 			</li>
             <li><a href="property/list.do"><spring:message
                     code="master.page.tenant.property.list"/></a></li>
+			<li><a href="socialIdentity/list.do"><spring:message
+					code="master.page.actor.socialIdentity.list"/></a></li>
 
 		</security:authorize>
 	</ul>

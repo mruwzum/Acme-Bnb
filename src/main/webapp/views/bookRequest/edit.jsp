@@ -31,6 +31,7 @@
 		<acme:textbox path="creditCard" code="bookRequest.creditcard"/>
 			<br />
 
+
 	<!---------------------------- BOTONES -------------------------->
 
 

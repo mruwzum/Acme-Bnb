@@ -35,6 +35,13 @@
 			<form:errors cssClass="error" path="url" />
 			<br />
 
+
+	<security:authorize access="isAuthenticated()">
+		<display:column>
+
+		</display:column>
+	</security:authorize>
+
 	<!---------------------------- BOTONES -------------------------->
 
 	<input type="submit" name="save"
