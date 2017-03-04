@@ -22,13 +22,9 @@
 		<!-- Do not forget the "fNiv" class for the first level links !! -->
 		<security:authorize access="hasRole('ADMINISTRATOR')">
 			<li><a class="fNiv"><spring:message	code="master.page.administrator" /></a>
-
 				<ul>
 					<li class="arrow"></li>
 					<li><a href="administrator/changeFee.do"><spring:message code="master.page.administrator.change.fee" /></a></li>
-
-
-
 				</ul>
 			</li>
 			<li><a class="fNiv"><spring:message code="master.page.lessor.registration"/></a>
