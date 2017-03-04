@@ -94,7 +94,7 @@ public class SocialIdentityController extends AbstractController {
         return result;
     }
      
-    @RequestMapping(value="/edit", method=RequestMethod.POST, params="delete")
+    @RequestMapping(value="/delete", method=RequestMethod.POST, params="delete")
     public ModelAndView delete(SocialIdentity socialIdentity){
         ModelAndView result;
         try{
@@ -106,18 +106,7 @@ public class SocialIdentityController extends AbstractController {
          
         return result;   
     }
-    @RequestMapping(value="/delete", method=RequestMethod.POST, params="delete")
-    public ModelAndView delete2(SocialIdentity socialIdentity){
-        ModelAndView result;
-        try{
-            socialIdentityService.delete(socialIdentity);
-            result=new ModelAndView("redirect:list.do");
-        }catch(Throwable oops){
-            result= createEditModelAndView(socialIdentity, "socialIdentity.commit.error");
-        }
 
-        return result;
-    }
 	// Ancillary methods ------------------------------------------------
     
     protected ModelAndView createEditModelAndView(SocialIdentity socialIdentity){
