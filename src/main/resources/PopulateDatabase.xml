@@ -417,6 +417,7 @@
 						<property name="attachments" value="attachments1" />
 							<property name="property" ref="property1" />
 							<property name="auditor" ref="auditor1" />
+					<property name="auditStatus" value="DRAFT"/>
 				</bean>
 				<bean id="audit2" class="domain.Audit">
                     <property name="writtenMoment" value="2017/01/23 14:00:00"/>
@@ -424,6 +425,7 @@
 						<property name="attachments" value="attachments2" />
 							<property name="property" ref="property2" />
 							<property name="auditor" ref="auditor2" />
+					<property name="auditStatus" value="FINISHED"/>
 				</bean>
 				<bean id="audit3" class="domain.Audit">
                     <property name="writtenMoment" value="2017/01/12 23:00:12"/>
@@ -431,6 +433,7 @@
 						<property name="attachments" value="attachments3" />
 							<property name="property" ref="property3" />
 							<property name="auditor" ref="auditor3" />
+					<property name="auditStatus" value="DRAFT"/>
 				</bean>
 			
 			<!-- /Audit-->
@@ -442,7 +445,7 @@
 						<property name="smoker" value="true" />
 					<property name="creditCard" ref="creditcard4">
 					</property>
-                    <property name="status" value="ACEPTED"></property>
+                    <property name="status" value="ACCEPTED"/>
                     <property name="tenant" ref="tenant1" />
 					<property name="property" ref="property1"/>
 				</bean>
@@ -452,7 +455,7 @@
 						<property name="smoker" value="false" />
 					<property name="creditCard" ref="creditcard5">
 					</property>
-                    <property name="status" value="ACEPTED"></property>
+                    <property name="status" value="ACCEPTED"/>
 
                     <property name="tenant" ref="tenant2" />
 							<property name="property" ref="property2" />
@@ -463,7 +466,7 @@
 						<property name="smoker" value="true" />
 					<property name="creditCard" ref="creditcard6">
 					</property>
-                    <property name="status" value="PENDING"></property>
+                    <property name="status" value="PENDING"/>
 							<property name="tenant" ref="tenant3" />
 							<property name="property" ref="property3" />
 				</bean>

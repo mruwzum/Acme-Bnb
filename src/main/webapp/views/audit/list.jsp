@@ -10,15 +10,6 @@
 	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
-<security:authorize access="permitAll">
-	<div>
-		<H5>
-			<a href="audit/create.do"> <spring:message
-					code="audit.create" />
-			</a>
-		</H5>
-	</div>
-</security:authorize>
 
 <!-- Listing grid -->
 <display:table pagesize="5" class="displaytag" keepStatus="true"
@@ -47,5 +38,6 @@
 			<display:column property="auditor" title="${auditor}" sortable="true" />
 			<spring:message code="audit.comment" var="comments" />
 			<display:column property="comments" title="${comments}" sortable="true" />
-
+			<spring:message code="audit.auditStatus" var="auditStatus" />
+			<display:column property="auditStatus" title="${auditStatus}" sortable="true" />
 </display:table>

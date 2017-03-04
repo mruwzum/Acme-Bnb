@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
 import repositories.AdministratorRepository;
-import repositories.FeeRepository;
 import security.LoginService;
 import security.UserAccount;
 
@@ -116,7 +115,7 @@ public class AdministratorService {
 		Collection<Lessor> lessors = lessorService.findAll();
 		Map<Lessor,Integer> resultados = new HashMap<>();
 		for(BookRequest b : aux){
-			if (b.getStatus().equals(RequestStatus.ACEPTED)){
+			if (b.getStatus().equals(RequestStatus.ACCEPTED)){
 				for (Lessor l : lessors){
 					if(b.getProperty().getLessor().equals(l)){
 						contador++;

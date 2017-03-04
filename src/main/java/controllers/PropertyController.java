@@ -1,10 +1,13 @@
 package controllers;
 
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import javax.validation.Valid;
 
+import domain.Audit;
+import domain.AuditStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
@@ -15,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import domain.Property;
+import services.AuditService;
 import services.LessorService;
 import services.PropertyService;
 
@@ -29,7 +33,8 @@ public class PropertyController extends AbstractController {
     @Autowired
     private LessorService lessorService;
 
-	
+    @Autowired
+    private AuditService auditService;
 	//Constructors----------------------------------------------
 	
 	public PropertyController(){
@@ -123,10 +128,16 @@ public class PropertyController extends AbstractController {
     public ModelAndView view(@RequestParam int propertyId) {
         ModelAndView res;
         Property p = propertyService.findOne(propertyId);
+        Collection<Audit> audits = new ArrayList<>();
+        for(Audit a : p.getAudits()){
+            if(a.getAuditStatus().equals(AuditStatus.FINISHED)){
+                audits.add(a);
+            }
+        }
         res = new ModelAndView("property/view");
         res.addObject("name", p.getName());
         res.addObject("address", p.getAddress());
-        res.addObject("audits", p.getAudits());
+        res.addObject("audits", audits);
 
         return res;
     }

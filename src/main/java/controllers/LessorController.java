@@ -1,10 +1,8 @@
 package controllers;
 
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
-import java.util.List;
 
 import javax.validation.Valid;
 
@@ -13,7 +11,6 @@ import domain.Property;
 import domain.RequestStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.util.Assert;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,7 +21,6 @@ import org.springframework.web.servlet.ModelAndView;
 import services.ActorService;
 import services.BookRequestService;
 import services.LessorService;
-import controllers.AbstractController;
 import domain.Lessor;
 import services.PropertyService;
 
@@ -241,7 +237,7 @@ public class LessorController extends AbstractController {
 
         ModelAndView res;
         BookRequest bookRequest = bookRequestService.findOne(bookRequestId);
-        bookRequest.setStatus(RequestStatus.ACEPTED);
+        bookRequest.setStatus(RequestStatus.ACCEPTED);
         bookRequestService.save(bookRequest);
         res = new ModelAndView("actor/success");
 

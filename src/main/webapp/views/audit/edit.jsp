@@ -17,17 +17,18 @@
 	<form:hidden path="version" />
 	<form:hidden path="comments" />
 	<form:hidden path="auditor" />
+	<form:hidden path="writtenMoment" />
+	<form:hidden path="property" />
+	<form:hidden path="auditStatus" />
 
-
-
-	<acme:textbox path="writtenMoment" code="audit.writtenMoment"/>
-	<br />
+	<%--<acme:textbox path="writtenMoment" code="audit.writtenMoment"/>--%>
+	<%--<br />--%>
 	<acme:textbox path="text" code="audit.text"/>
 	<br />
 	<acme:textbox path="attachments" code="audit.attachments"/>
 	<br />
-	<acme:textbox path="property" code="audit.property"/>
-	<br />
+	<%--<acme:textbox path="property" code="audit.property"/>--%>
+	<%--<br />--%>
 
 
 
@@ -41,9 +42,14 @@
 			value="<spring:message code="audit.delete" />"
 			onclick="return confirm('<spring:message code="audit.confirm.delete" />')" />&nbsp;
 	</jstl:if>
+	<acme:submit name="cancel" code="audit.saveDraft"/>
 
-	<input type="button" name="cancel"
-		value="<spring:message code="audit.cancel" />"
-		onclick="javascript: window.location.replace('audit/draft.do')" />
+
+	<%--</button>--%>
+	<%----%>
+	<%----%>
+	<%--<input type="button" name="cancel"--%>
+		<%--value="<spring:message code="audit.cancel" />"--%>
+		<%--onclick="javascript: window.location.replace('audit/draft.do?text=${text}&attachments=${attachments}&propertyId=${idp}')" />--%>
 
 </form:form>

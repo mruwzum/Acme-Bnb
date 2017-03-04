@@ -6,6 +6,7 @@ import java.util.Date;
 
 import javax.validation.Valid;
 
+import domain.AuditStatus;
 import domain.Auditor;
 import domain.Property;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -80,10 +81,12 @@ public class AuditController extends AbstractController {
         Property property = propertyService.findOne(propertyId);
         Audit audit = auditService.create();
         audit.setProperty(property);
-        audit.setWrittenMoment(new Date(System.currentTimeMillis()-10000000));
+//        Date ahora = new Date(System.currentTimeMillis()-10000000);
+//        audit.setWrittenMoment(ahora);
         Auditor auditor = auditorService.findByPrincipal();
         audit.setAuditor(auditor);
         result = createEditModelAndView(audit);
+        result.addObject("idp", property.getId());
 
         return result;
 
@@ -106,10 +109,13 @@ public class AuditController extends AbstractController {
     public ModelAndView save(@Valid Audit audit, BindingResult binding){
         ModelAndView result;
          
-        if(binding.hasErrors()){
+        if(!binding.hasErrors()){
             result= createEditModelAndView(audit);
         }else{
             try{
+                audit.setAuditStatus(AuditStatus.FINISHED);
+                Date ahora = new Date(System.currentTimeMillis()-10000000);
+                audit.setWrittenMoment(ahora);
                 auditService.save(audit);
                 result= new ModelAndView("redirect:list.do");
             }catch(Throwable oops){
@@ -133,20 +139,23 @@ public class AuditController extends AbstractController {
     }
 
 
-    @RequestMapping(value="/draft.do", method=RequestMethod.GET, params="cancel")
-    public ModelAndView cancelAndSaveDraft(@RequestParam int auditId){
+    @RequestMapping(value="/edit", method=RequestMethod.POST, params = "cancel")
+    public ModelAndView cancel(@Valid Audit audit, BindingResult binding){
         ModelAndView result;
-        Audit nau = auditService.findOne(auditId);
 
-        if(nau.getAttachments().isEmpty()){
-            nau.setAttachments("GENERIC");
-        }else if (nau.getText().isEmpty()){
-            nau.setText("GENERIC");
-        }
-        nau.setWrittenMoment(new Date(System.currentTimeMillis()-1000));
-                auditService.save(nau);
+        if(binding.hasErrors()){
+            result= createEditModelAndView(audit);
+        }else{
+            try{
+                audit.setAuditStatus(AuditStatus.DRAFT);
+                Date ahora = new Date(System.currentTimeMillis()-10000000);
+                audit.setWrittenMoment(ahora);
+                auditService.save(audit);
                 result= new ModelAndView("redirect:list.do");
-//TODO no funcionan bien los borradores
+            }catch(Throwable oops){
+                result= createEditModelAndView(audit, "audit.commit.error");
+            }
+        }
         return result;
 
     }

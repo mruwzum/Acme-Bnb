@@ -145,7 +145,7 @@ public class LessorService {
 	public void approveRequest(BookRequest bookRequest) {
 
 		//TODO aquí habría que comprobar que la bookRequest pertenece a alguna propiedad del lessor, pero no se como hacerlo sin poner un for
-		bookRequest.setStatus(RequestStatus.ACEPTED);
+		bookRequest.setStatus(RequestStatus.ACCEPTED);
 
 	}
 
@@ -193,7 +193,7 @@ public class LessorService {
         Fee original = feeService.findOne(fees.get(0).getId());
         Double res = 0.0;
         for (BookRequest b : getAllRequest()) {
-            if (b.getStatus().equals(RequestStatus.ACEPTED)) {
+            if (b.getStatus().equals(RequestStatus.ACCEPTED)) {
                 res = res + original.getValue();
             }
         }
