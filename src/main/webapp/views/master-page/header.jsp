@@ -31,6 +31,15 @@
 
 				</ul>
 			</li>
+			<li><a class="fNiv"><spring:message code="master.page.lessor.registration"/></a>
+				<ul>
+					<li class="arrow"></li>
+					<li><a href="auditor/create.do"><spring:message
+							code="master.page.auditor.register"/></a></li>
+				</ul>
+			</li>
+
+
 		</security:authorize>
 
 
@@ -77,8 +86,6 @@
 							code="master.page.tenant.register"/></a></li>
 					<li><a href="lessor/create.do"><spring:message
 							code="master.page.lessor.register"/></a></li>
-					<li><a href="auditor/create.do"><spring:message
-							code="master.page.auditor.register"/></a></li>
 				</ul>
 			</li>
 
