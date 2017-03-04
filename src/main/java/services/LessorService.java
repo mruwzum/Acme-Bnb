@@ -168,16 +168,22 @@ public class LessorService {
         return requests;
 	}
 
-	public Double totalFee() {
-		List<Fee> fees = new ArrayList<>(feeService.findAll());
-		Fee original = feeService.findOne(fees.get(0).getId());
-		Double res = 0.0;
-		for (BookRequest b : getAllRequest()) {
-			if (b.getStatus().equals(RequestStatus.ACEPTED)) {
-				res = res + original.getValue();
-			}
-		}
-		return res;
+    public Double totalFee() {
+        List<Fee> fees = new ArrayList<>(feeService.findAll());
+        Fee original = feeService.findOne(fees.get(0).getId());
+        Double res = 0.0;
+        for (BookRequest b : getAllRequest()) {
+            if (b.getStatus().equals(RequestStatus.ACEPTED)) {
+                res = res + original.getValue();
+            }
+        }
+        return res;
 
-	}
+    }
+
+
+    public void commentToTenant(Comment c) {
+
+
+    }
 }
