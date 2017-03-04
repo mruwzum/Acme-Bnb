@@ -46,6 +46,8 @@
 				<!--  ACTOR  -->	
 		<security:intercept-url pattern="/actor/list.do" access="permitAll" />
 		<security:intercept-url pattern="/actor/edit.do" access="permitAll" />
+		<security:intercept-url pattern="/socialIdentity/create.do" access="permitAll" />
+		<security:intercept-url pattern="/socialIdentity/delete.do" access="permitAll" />
 		<!--  ADMINISTRATOR  -->	
 		<security:intercept-url pattern="/administrator/list.do" access="permitAll" />
 		<security:intercept-url pattern="/administrator/edit.do" access="permitAll" />
@@ -101,7 +103,7 @@
 		<security:intercept-url pattern="/tenant/edit.do" access="permitAll" />
 		<security:intercept-url pattern="/tenant/invoice.do" access="permitAll"/>
 		<security:intercept-url pattern="/finder/create.do" access="permitAll" />
-		<security:intercept-url pattern="/property/list.do" access="permitAll" />
+
 		<security:intercept-url pattern="/property/request.do" access="permitAll" />
         <security:intercept-url pattern="/bookRequest/createRequest.do" access="permitAll" />
         <security:intercept-url pattern="/bookRequest/listMy.do" access="permitAll" />

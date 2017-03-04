@@ -9,38 +9,23 @@
 <%@taglib prefix="security"
 	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
+<%@ taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
 
 <form:form action="socialIdentity/edit.do" modelAttribute="socialIdentity">
 
 	<form:hidden path="id" />
 	<form:hidden path="version" />
-	
-			<form:label path="nick">
-			<spring:message code="socialIdentity.nick" />:
-			</form:label>
-			<form:input path="nick" />
-			<form:errors cssClass="error" path="nick" />
-			<br />
-			<form:label path="socialnetwork">
-			<spring:message code="socialIdentity.socialnetwork" />:
-			</form:label>
-			<form:input path="socialnetwork" />
-			<form:errors cssClass="error" path="socialnetwork" />
-			<br />
-			<form:label path="url">
-			<spring:message code="socialIdentity.url" />:
-			</form:label>
-			<form:input path="url" />
-			<form:errors cssClass="error" path="url" />
-			<br />
 
+	<acme:textbox path="nick" code="socialIdentity.nick"/>
+	<br />
 
-	<security:authorize access="isAuthenticated()">
-		<display:column>
+	<acme:textbox path="socialNetwork" code="socialIdentity.socialnetwork"/>
+	<br />
 
-		</display:column>
-	</security:authorize>
+	<acme:textbox path="URL" code="socialIdentity.url"/>
+	<br />
+
 
 	<!---------------------------- BOTONES -------------------------->
 
