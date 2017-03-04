@@ -9,9 +9,14 @@
 		<put-attribute name="title" value="Actors: List" />
 		<put-attribute name="body" value="/views/actor/list.jsp" />
 	</definition>
-	
-	<definition name="actor/edit" extends="master.page">	
-		<put-attribute name="title" value="Actors: Edit" />
-		<put-attribute name="body" value="/views/actor/edit.jsp" />
+
+	<definition name="actor/edit" extends="master.page">
+		<put-attribute name="title" value="Actors: Edit"/>
+		<put-attribute name="body" value="/views/actor/edit.jsp"/>
+	</definition>
+
+	<definition name="actor/success" extends="master.page">
+		<put-attribute name="title" value="Actors: success"/>
+		<put-attribute name="body" value="/views/actor/success.jsp"/>
 	</definition>
 </tiles-definitions>

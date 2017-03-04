@@ -51,6 +51,8 @@
 			</li>
 			<li><a href="lessor/fee.do"><spring:message
 					code="master.page.lessor.fee"/></a></li>
+            <li><a href="lessor/edit1.do"><spring:message
+                    code="master.page.modify"/></a></li>
 
 		</security:authorize>
 		<security:authorize access="hasRole('TENANT')">
@@ -63,11 +65,14 @@
 			</li>
             <li><a href="bookRequest/listMy.do"><spring:message
                     code="master.page.tenant.bookRequests.list"/></a></li>
+            <li><a href="tenant/edit1.do"><spring:message
+                    code="master.page.modify"/></a></li>
 		</security:authorize>
 
 		<security:authorize access="hasRole('AUDITOR')">
 
-
+            <li><a href="auditor/edit1.do"><spring:message
+                    code="master.page.modify"/></a></li>
 
 
 		</security:authorize>

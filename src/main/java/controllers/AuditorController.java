@@ -67,19 +67,37 @@ public class AuditorController extends AbstractController {
 		}
 	
 	 // Edition ---------------------------------------------------------
-    
-    @RequestMapping(value="/edit", method=RequestMethod.GET)
-    public ModelAndView edit(@RequestParam int auditorId){
+     @RequestMapping(value = "/edit1", method = RequestMethod.GET)
+     public ModelAndView edit() {
+         ModelAndView result;
+         Auditor auditor;
+
+         auditor = auditorService.findByPrincipal();
+         Assert.notNull(auditor);
+         result = createEditModelAndView(auditor);
+
+         return result;
+     }
+
+    @RequestMapping(value = "/change", method = RequestMethod.POST, params = "save")
+    public ModelAndView change(@Valid Auditor auditor, BindingResult binding) {
+
         ModelAndView result;
-        Auditor auditor;
-         
-        auditor= auditorService.findOne(auditorId);
-        Assert.notNull(auditor);
-        result= createEditModelAndView(auditor);
-         
+
+        if (!binding.hasErrors()) {
+            result = createEditModelAndView(auditor);
+        } else {
+            try {
+                auditor.setUserAccount(auditorService.findByPrincipal().getUserAccount());
+                auditorService.save(auditor);
+                result = new ModelAndView("actor/success");
+            } catch (Throwable oops) {
+                result = createEditModelAndView(auditor, "auditor.commit.error");
+            }
+        }
         return result;
     }
-     
+
     @RequestMapping(value="/edit", method=RequestMethod.POST, params="save")
     public ModelAndView save(@Valid Auditor auditor, BindingResult binding){
         ModelAndView result;

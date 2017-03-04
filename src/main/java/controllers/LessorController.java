@@ -11,6 +11,7 @@ import domain.BookRequest;
 import domain.Property;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.util.Assert;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -91,18 +92,40 @@ public class LessorController extends AbstractController {
 		}
 	
 	 // Edition ---------------------------------------------------------
-    
-    @RequestMapping(value="/edit", method=RequestMethod.GET)
-    public ModelAndView edit(@RequestParam int lessorId){
+
+    @RequestMapping(value = "/edit1", method = RequestMethod.GET)
+    public ModelAndView edit() {
         ModelAndView result;
         Lessor lessor;
-         
-        lessor= lessorService.findOne(lessorId);
+
+        lessor = lessorService.findByPrincipal();
         Assert.notNull(lessor);
         result= createEditModelAndView(lessor);
          
         return result;
     }
+
+    @RequestMapping(value = "/change", method = RequestMethod.POST, params = "save")
+    public ModelAndView change(@Valid Lessor lessor, BindingResult binding) {
+
+        ModelAndView result;
+
+        if (!binding.hasErrors()) {
+            result = createEditModelAndView(lessor);
+        } else {
+            try {
+                lessor.setUserAccount(lessorService.findByPrincipal().getUserAccount());
+                lessorService.save(lessor);
+                result = new ModelAndView("actor/success");
+            } catch (Throwable oops) {
+                result = createEditModelAndView(lessor, "lessor.commit.error");
+            }
+        }
+        return result;
+    }
+
+
+    // Registering --------------------------------------------------------
      
     @RequestMapping(value="/edit", method=RequestMethod.POST, params="save")
     public ModelAndView save(@Valid Lessor lessor, BindingResult binding){
@@ -120,8 +143,10 @@ public class LessorController extends AbstractController {
 //        }
         return result;
     }
-     
-    @RequestMapping(value="/edit", method=RequestMethod.POST, params="delete")
+
+    // Delete --------------------------------------------------------
+
+    @RequestMapping(value = "/delete", method = RequestMethod.POST, params = "delete")
     public ModelAndView delete(Lessor lessor){
         ModelAndView result;
         try{

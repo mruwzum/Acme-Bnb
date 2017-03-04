@@ -11,10 +11,12 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
-<form:form action="auditor/edit.do" modelAttribute="auditor">
+<form:form action="auditor/change.do" modelAttribute="auditor">
 
 	<form:hidden path="id" />
 	<form:hidden path="version" />
+	<form:hidden path="userAccount"/>
+
 
 
 
@@ -32,12 +34,6 @@
 	<br />
 
 
-    <h1>User Account</h1>
-    <br>
-	<acme:textbox path="UserAccount.username" code="actor.username"/>
-	<br />
-	<acme:textbox path="UserAccount.password" code="actor.password"/>
-	<br />
 
 	<!---------------------------- BOTONES -------------------------->
 

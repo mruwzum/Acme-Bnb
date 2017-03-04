@@ -14,4 +14,9 @@
 		<put-attribute name="title" value="Actors: Editar" />
 		<put-attribute name="body" value="/views/actor/edit.jsp" />
 	</definition>
+
+    <definition name="actor/success" extends="master.page">
+        <put-attribute name="title" value="Actors: Éxito"/>
+        <put-attribute name="body" value="/views/actor/success.jsp"/>
+    </definition>
 </tiles-definitions>
