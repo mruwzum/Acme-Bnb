@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import services.ActorService;
 import services.BookRequestService;
+import services.CommentService;
 import services.TenantService;
 
 import javax.validation.Valid;
@@ -31,6 +32,8 @@ public class TenantController extends AbstractController {
     private ActorService actorService;
     @Autowired
     private BookRequestService bookRequestService;
+    @Autowired
+    private CommentService commentService;
 
     //Constructors----------------------------------------------
 
@@ -205,7 +208,6 @@ public class TenantController extends AbstractController {
         result.addObject("phone", tenant.getPhone());
         result.addObject("picture", tenant.getPicture());
         result.addObject("socialIdentitys", socialIdentities);
-        result.addObject("com", tenant.getComments());
         result.addObject("requestURI", "tenant/view.do");
 
         return result;

@@ -22,8 +22,6 @@ public class Tenant extends Actor {
 	private Collection<Finder> finders;
 
 
-	private List<Comment> comments;
-	
 	// Constructors -----------------------------------------------------------
 	public Tenant() {
 		super();		
@@ -72,13 +70,5 @@ public class Tenant extends Actor {
 	}
 
 
-	@OneToMany(cascade = CascadeType.ALL)
-	public List<Comment> getComments() {
-		return comments;
-	}
-
-	public void setComments(List<Comment> comments) {
-		this.comments = comments;
-	}
 
 }

@@ -20,7 +20,6 @@ public class Lessor extends Actor {
 	// Relationships ---------------------------------------------------------
 	private Collection<Property> propertys;
 
-	private List<Comment> comments;
 
 
 	// Constructors -----------------------------------------------------------
@@ -57,13 +56,5 @@ public class Lessor extends Actor {
 	}
 
 
-	@OneToMany(cascade = CascadeType.ALL)
-	public List<Comment> getComments() {
-		return comments;
-	}
-
-	public void setComments(List<Comment> comments) {
-		this.comments = comments;
-	}
 
 }

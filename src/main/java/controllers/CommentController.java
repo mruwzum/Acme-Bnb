@@ -98,21 +98,28 @@ public class CommentController extends AbstractController {
             result= createEditModelAndView(comment);
         }else{
             try{
-
-                if (actorService.findByPrincipal().getUserAccount().getAuthorities().contains(Authority.LESSOR)) {
-                    commentService.save(comment);
-                    lessorService.findByPrincipal().getComments().add(comment);
-                } else if (actorService.findByPrincipal().getUserAccount().getAuthorities().contains(Authority.TENANT)) {
-                    commentService.save(comment);
-                    tenantService.findByPrincipal().getComments().add(comment);
-                } else {
-
-                }
+                commentService.save(comment);
                 result= new ModelAndView("redirect:list.do");
             }catch(Throwable oops){
                 result= createEditModelAndView(comment, "comment.commit.error");
             }
         }
+        return result;
+    }
+
+
+    @RequestMapping(value = "/edit2")
+    public ModelAndView save(@RequestParam("ti") String title) {
+        ModelAndView result;
+
+        Comment comment = commentService.create();
+        comment.setTitle(title);
+        comment.setPostedMoment(new Date(System.currentTimeMillis() - 1000));
+        comment.setNumberOfStars(2);
+        comment.setText("GENEERIC");
+        commentService.save(comment);
+
+        result = new ModelAndView("actor/success");
         return result;
     }
      

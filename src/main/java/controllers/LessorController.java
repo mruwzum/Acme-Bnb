@@ -72,7 +72,6 @@ public class LessorController extends AbstractController {
         result.addObject("phone",lessor.getPhone());
         result.addObject("picture",lessor.getPicture());
         result.addObject("socialIdentitys",socialIdentities);
-        result.addObject("com", lessor.getComments());
         result.addObject("requestURI","lessor/view.do");
 
         return result;
