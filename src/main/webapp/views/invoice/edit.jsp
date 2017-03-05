@@ -9,60 +9,40 @@
 <%@taglib prefix="security"
 	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
+<%@ taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
 
 <form:form action="invoice/edit.do" modelAttribute="invoice">
 
 	<form:hidden path="id" />
 	<form:hidden path="version" />
-	
-			<form:label path="issuedmoment">
-			<spring:message code="invoice.issuedmoment" />:
-			</form:label>
-			<form:input path="issuedmoment" />
-			<form:errors cssClass="error" path="issuedmoment" />
-			<br />
-			<form:label path="vatnumber">
-			<spring:message code="invoice.vatnumber" />:
-			</form:label>
-			<form:input path="vatnumber" />
-			<form:errors cssClass="error" path="vatnumber" />
-			<br />
-			<form:label path="tenantinfo">
-			<spring:message code="invoice.tenantinfo" />:
-			</form:label>
-			<form:input path="tenantinfo" />
-			<form:errors cssClass="error" path="tenantinfo" />
-			<br />
-			<form:label path="details">
-			<spring:message code="invoice.details" />:
-			</form:label>
-			<form:input path="details" />
-			<form:errors cssClass="error" path="details" />
-			<br />
-			<form:label path="totalamount">
-			<spring:message code="invoice.totalamount" />:
-			</form:label>
-			<form:input path="totalamount" />
-			<form:errors cssClass="error" path="totalamount" />
-			<br />
-			<form:label path="creditcard">
-			<spring:message code="invoice.creditcard" />:
-			</form:label>
-			<form:input path="creditcard" />
-			<form:errors cssClass="error" path="creditcard" />
-			<br />
-			<form:label path="tenant">
-			<spring:message code="invoice.tenant" />:
-			</form:label>
-			<form:input path="tenant" />
-			<form:errors cssClass="error" path="tenant" />
-			<br />
+	<form:hidden path="tenant"/>
+	<form:hidden path="creditCard"/>
+
+	<acme:textbox path="issuedMoment" code="invoice.issuedmoment"/>
+	<br />
+
+	<acme:textbox path="VATNumber" code="invoice.vatnumber"/>
+	<br />
+	<acme:textbox path="tenantInfo" code="invoice.tenantinfo"/>
+	<br />
+	<acme:textbox path="details" code="invoice.details"/>
+	<br />
+	<acme:textbox path="totalAmount" code="invoice.totalamount"/>
+	<br />
+	<acme:textbox path="issuedMoment" code="invoice.issuedmoment"/>
+	<br />
+	<acme:textbox path="issuedMoment" code="invoice.issuedmoment"/>
+	<br />
+
+
+
+
+
+
 
 	<!---------------------------- BOTONES -------------------------->
-
-	<input type="submit" name="save"
-		value="<spring:message code="invoice.save" />" />
+<acme:submit name="save" code="invoice.save"/>
 
 	<jstl:if test="\$\{invoice.id != 0}">
 		<input type="submit" name="delete"
