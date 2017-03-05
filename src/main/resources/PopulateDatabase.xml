@@ -300,12 +300,22 @@
                     <property name="phone" value="+23-57437365756"/>
                     <property name="picture"
                               value="http://5www.ecestaticos.com/imagestatic/clipping/542/1ac/5421ac4aa59a78aad57ad43cd3eb6804/las-mascotas-mas-divertidas-y-energicas-que-has-visto-nunca.jpg?mtime=1479741232"/>
+					<property name="userAccount" ref="userAccountlessor1"/>
 
+					<property name="socialIdentitys">
+						<list>
+							<ref bean="socialIdentity1"/>
+							<ref bean="socialIdentity2"/>
+							<ref bean="socialIdentity3"/>
 
-					<property name="socialIdentitys" ref="socialIdentity1" />
-					<property name="socialIdentitys" ref="socialIdentity2" />
-					<property name="socialIdentitys" ref="socialIdentity3" />
+						</list>
+					</property>
 
+					<property name="comments">
+						<list>
+							<ref bean="comment3"/>
+						</list>
+					</property>
 
 
 				</bean>
@@ -345,6 +355,12 @@
 					<property name="picture"
                               value="http://recetas.cuidadoinfantil.net/files/2012/08/Recetas-divertidas-sandwich-en-forma-de-coche.jpg"/>
 				<property name="userAccount" ref="userAccounttenant1" />
+					<property name="comments">
+						<list>
+							<ref bean="comment2"/>
+							<ref bean="comment1"/>
+						</list>
+					</property>
 				</bean>
 				<bean id="tenant2" class="domain.Tenant">
 						<property name="name" value="Tenant2Name" />

@@ -1,6 +1,7 @@
 package domain;
 
 import java.util.Collection;
+import java.util.List;
 
 import javax.persistence.*;
 
@@ -18,6 +19,9 @@ public class Lessor extends Actor {
 	
 	// Relationships ---------------------------------------------------------
 	private Collection<Property> propertys;
+
+	private List<Comment> comments;
+
 
 	// Constructors -----------------------------------------------------------
 	public Lessor() {
@@ -51,4 +55,15 @@ public class Lessor extends Actor {
 	public void setPropertys(Collection<Property> propertys) {
 		this.propertys = propertys;
 	}
+
+
+	@OneToMany(cascade = CascadeType.ALL)
+	public List<Comment> getComments() {
+		return comments;
+	}
+
+	public void setComments(List<Comment> comments) {
+		this.comments = comments;
+	}
+
 }

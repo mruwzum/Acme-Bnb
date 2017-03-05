@@ -86,8 +86,8 @@ public class Actor extends DomainEntity {
 	}
 
 
-	@OneToMany
-	@Valid
+    @OneToMany(cascade = CascadeType.ALL)
+    @Valid
 	public Collection<SocialIdentity> getSocialIdentitys() {
 		return socialIdentitys;
 	}

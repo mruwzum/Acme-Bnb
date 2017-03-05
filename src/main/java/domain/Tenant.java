@@ -3,6 +3,7 @@ package domain;
 import org.hibernate.validator.constraints.CreditCardNumber;
 
 import java.util.Collection;
+import java.util.List;
 
 import javax.persistence.*;
 import javax.validation.Valid;
@@ -19,6 +20,9 @@ public class Tenant extends Actor {
 	private Collection<BookRequest> bookRequests;
 	private Collection<Invoice> invoices;
 	private Collection<Finder> finders;
+
+
+	private List<Comment> comments;
 	
 	// Constructors -----------------------------------------------------------
 	public Tenant() {
@@ -68,5 +72,13 @@ public class Tenant extends Actor {
 	}
 
 
+	@OneToMany(cascade = CascadeType.ALL)
+	public List<Comment> getComments() {
+		return comments;
+	}
+
+	public void setComments(List<Comment> comments) {
+		this.comments = comments;
+	}
 
 }
