@@ -8,6 +8,8 @@
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@taglib prefix="security"
 	uri="http://www.springframework.org/security/tags"%>
+<%@ taglib prefix="acme" tagdir="/WEB-INF/tags" %>
+
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
 
@@ -15,36 +17,22 @@
 
 	<form:hidden path="id" />
 	<form:hidden path="version" />
+
+	<acme:textbox path="title" code="comment.title"/>
+	<br />
+	<acme:textbox path="postedMoment" code="comment.checkindate"/>
+	<br />
+	<acme:textbox path="text" code="comment.checkindate"/>
+	<br />
+	<acme:textbox path="numberOfStars" code="comment.numberofstars"/>
+	<br />
 	
-			<form:label path="title">
-			<spring:message code="comment.title" />:
-			</form:label>
-			<form:input path="title" />
-			<form:errors cssClass="error" path="title" />
-			<br />
-			<form:label path="postedmoment">
-			<spring:message code="comment.postedmoment" />:
-			</form:label>
-			<form:input path="postedmoment" />
-			<form:errors cssClass="error" path="postedmoment" />
-			<br />
-			<form:label path="text">
-			<spring:message code="comment.text" />:
-			</form:label>
-			<form:input path="text" />
-			<form:errors cssClass="error" path="text" />
-			<br />
-			<form:label path="numberofstars">
-			<spring:message code="comment.numberofstars" />:
-			</form:label>
-			<form:input path="numberofstars" />
-			<form:errors cssClass="error" path="numberofstars" />
-			<br />
 
 	<!---------------------------- BOTONES -------------------------->
+<acme:submit name="save" code="comment.save"/>
 
-	<input type="submit" name="save"
-		value="<spring:message code="comment.save" />" />
+
+
 
 	<jstl:if test="\$\{comment.id != 0}">
 		<input type="submit" name="delete"
@@ -52,8 +40,11 @@
 			onclick="return confirm('<spring:message code="comment.confirm.delete" />')" />&nbsp;
 	</jstl:if>
 
-	<input type="button" name="cancel"
-		value="<spring:message code="comment.cancel" />"
-		onclick="javascript: window.location.replace('comment/list.do')" />
+	<acme:submit code="comment.cancel" name="cancel"/>
+
+
+	<%--<input type="button" name="cancel"--%>
+		<%--value="<spring:message code="comment.cancel" />"--%>
+		<%--onclick="javascript: window.location.replace('comment/list.do')" />--%>
 
 </form:form>

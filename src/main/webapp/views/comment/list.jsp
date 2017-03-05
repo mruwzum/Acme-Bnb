@@ -36,12 +36,12 @@
 	</security:authorize>
 	
 			<spring:message code="comment.title" var="title" />
-			<display:column property="title" title="\$\{title\}" sortable="true" />
-			<spring:message code="comment.postedmoment" var="postedmoment" />
-			<display:column property="postedmoment" title="\$\{postedmoment\}" sortable="true" />
+			<display:column property="title" title="${title}" sortable="true" />
+			<spring:message code="comment.postedmoment" var="postedNoment" />
+			<display:column property="postedNoment" title="${postedNoment}" sortable="true" />
 			<spring:message code="comment.text" var="text" />
-			<display:column property="text" title="\$\{text\}" sortable="true" />
-			<spring:message code="comment.numberofstars" var="numberofstars" />
-			<display:column property="numberofstars" title="\$\{numberofstars\}" sortable="true" />
+			<display:column property="text" title="${text}" sortable="true" />
+			<spring:message code="comment.numberofstars" var="numberOfStars" />
+			<display:column property="numberOfStars" title="${numberOfStars}" sortable="true" />
 
 </display:table>
