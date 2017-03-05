@@ -19,6 +19,15 @@
 		</H5>
 	</div>
 </security:authorize>
+<security:authorize access="hasRole('ADMINISTRATOR')">
+	<div>
+		<H5>
+			<a href="property/create.do"> <spring:message
+					code="property.create" />
+			</a>
+		</H5>
+	</div>
+</security:authorize>
 
 <!-- Listing grid -->
 <display:table pagesize="5" class="displaytag" keepStatus="true"
@@ -28,23 +37,33 @@
 	<!-- Attributes -->
 	<security:authorize access="hasRole('LESSOR')">
 		<display:column>
+			<jstl:if test="${mia}">
 			<a href="property/edit.do?propertyId=${row.id}">
 				<spring:message code="property.edit"/>
 			</a>
+			</jstl:if>
 		</display:column>
 	</security:authorize>
+
+
+
 	<security:authorize access="hasRole('ADMINISTRATOR')">
 		<display:column>
 			<a href="property/edit.do?propertyId=${row.id}">
 				<spring:message code="property.edit"/>
 			</a>
 		</display:column>
+
 		<display:column>
 			<a href="property/delete.do?propertyId=${row.id}">
 				<spring:message code="property.delete"/>
 			</a>
 		</display:column>
 	</security:authorize>
+
+
+
+
 	<security:authorize access="hasRole('TENANT')">
 		<display:column>
 			<a href="bookRequest/createRequest.do?propertyId=${row.id}">
@@ -54,7 +73,9 @@
 
 	</security:authorize>
 
-	<security:authorize access="isAnonymous()">
+
+
+	<security:authorize access="permitAll()">
 		<display:column>
 			<a href="lessor/view.do?propertyId=${row.id}">
 				<spring:message code="property.viewlessor"/>
@@ -83,6 +104,8 @@
 	<display:column property="city" title="city" sortable="true"/>
 			<spring:message code="property.lessor" var="lessor" />
 	<display:column property="lessor" title="lessor" sortable="true"/>
+	<spring:message code="property.numberofBooks" var="numberofBooks" />
+	<display:column property="numberofBooks" title="numberofBooks" sortable="true"/>
 
 	<security:authorize access="permitAll">
 		<display:column>
@@ -94,9 +117,12 @@
 
 	<security:authorize access="hasRole('LESSOR')">
 		<display:column>
+			<jstl:if test="${mia}">
+
 			<a href="property/delete.do?propertyId=${row.id}"> <spring:message
 					code="property.delete"/>
 			</a>
+			</jstl:if>
 		</display:column>
 	</security:authorize>
 

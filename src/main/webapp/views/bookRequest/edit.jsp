@@ -19,8 +19,10 @@
     <form:hidden path="tenant" />
     <form:hidden path="property"/>
     <form:hidden path="status"/>
+	<form:hidden path="creditCard"/>
 
-		<acme:textbox path="checkInDate" code="bookRequest.checkindate"/>
+
+	<acme:textbox path="checkInDate" code="bookRequest.checkindate"/>
 			<br />
 		<acme:textbox path="checkOutDate" code="bookRequest.checkoutdate"/>
 			<br />
@@ -28,8 +30,7 @@
         <jstl:out value="${smoker}"/>
 		<form:checkbox path="smoker" code="bookRequest.smoker"/>
 			<br />
-		<acme:textbox path="creditCard" code="bookRequest.creditcard"/>
-			<br />
+
 
 
 	<!---------------------------- BOTONES -------------------------->

@@ -300,9 +300,14 @@
                     <property name="phone" value="+23-57437365756"/>
                     <property name="picture"
                               value="http://5www.ecestaticos.com/imagestatic/clipping/542/1ac/5421ac4aa59a78aad57ad43cd3eb6804/las-mascotas-mas-divertidas-y-energicas-que-has-visto-nunca.jpg?mtime=1479741232"/>
-					<!--<property name="creditCard" ref="creditcard4">-->
-					<!--</property>-->
-				<property name="userAccount" ref="userAccountlessor1" />
+
+
+					<property name="socialIdentitys" ref="socialIdentity1" />
+					<property name="socialIdentitys" ref="socialIdentity2" />
+					<property name="socialIdentitys" ref="socialIdentity3" />
+
+
+
 				</bean>
 				<bean id="lessor2" class="domain.Lessor">
 						<property name="name" value="Lessor2Name" />
@@ -381,6 +386,8 @@
         <property name="city" value="city1"/>
         <property name="lessor" ref="lessor1"/>
 		<property name="bookRequests" ref="bookRequest1"/>
+		<property name="numberofBooks" value="4"/>
+
 
 	</bean>
     <bean id="property2" class="domain.Property">
@@ -394,6 +401,7 @@
         <property name="capacity" value="3"/>
         <property name="city" value="city2"/>
         <property name="lessor" ref="lessor2"/>
+		<property name="numberofBooks" value="5"/>
     </bean>
     <bean id="property3" class="domain.Property">
         <property name="name" value="name3"/>
@@ -406,6 +414,7 @@
         <property name="capacity" value="4"/>
         <property name="city" value="city3"/>
         <property name="lessor" ref="lessor3"/>
+		<property name="numberofBooks" value="16"/>
     </bean>
 
     <!-- /Property-->

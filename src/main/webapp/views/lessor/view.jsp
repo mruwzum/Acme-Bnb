@@ -43,3 +43,20 @@
 <h3><jstl:out value="${picture1}"/></h3>
 <jstl:out value="${picture}"/>
 
+<!-- Listing grid -->
+<display:table pagesize="5" class="displaytag" keepStatus="true"
+               name="socialIdentitys" requestURI="${requestURI}" id="row">
+
+
+    <!-- Attributes -->
+
+
+    <spring:message code="socialIdentity.nick" var="nick" />
+    <display:column property="nick" title="${nick}" sortable="true" />
+    <spring:message code="socialIdentity.socialnetwork" var="socialNetwork" />
+    <display:column property="socialNetwork" title="${socialNetwork}" sortable="true" />
+    <spring:message code="socialIdentity.url" var="URL" />
+    <display:column property="URL" title="${URL}" sortable="true" />
+
+</display:table>
+

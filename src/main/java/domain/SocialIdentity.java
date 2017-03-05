@@ -14,7 +14,7 @@ public class SocialIdentity extends DomainEntity {
 	private String nick;
 	private String socialNetwork;
 	private String URL;
-	
+
 	// Relationships ---------------------------------------------------------
 	
 	// Constructors -----------------------------------------------------------
@@ -52,7 +52,8 @@ public class SocialIdentity extends DomainEntity {
 	public void setURL(String URL) {
 		this.URL = URL;
 	}
-	
+
+
 	
 	
 }

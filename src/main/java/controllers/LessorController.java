@@ -1,14 +1,13 @@
 package controllers;
 
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 
 import javax.validation.Valid;
 
-import domain.BookRequest;
-import domain.Property;
-import domain.RequestStatus;
+import domain.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
@@ -21,7 +20,6 @@ import org.springframework.web.servlet.ModelAndView;
 import services.ActorService;
 import services.BookRequestService;
 import services.LessorService;
-import domain.Lessor;
 import services.PropertyService;
 
 @Controller
@@ -66,12 +64,14 @@ public class LessorController extends AbstractController {
         ModelAndView result;
         Property property =propertyService.findOne(propertyId);
         Lessor lessor = property.getLessor();
+        Collection<SocialIdentity> socialIdentities = new ArrayList<>(lessor.getSocialIdentitys());
         result = new ModelAndView("lessor/view");
         result.addObject("name", lessor.getName());
         result.addObject("surname",lessor.getSurname());
         result.addObject("email",lessor.getEmail());
         result.addObject("phone",lessor.getPhone());
         result.addObject("picture",lessor.getPicture());
+        result.addObject("socialIdentitys",socialIdentities);
         result.addObject("requestURI","lessor/view.do");
 
         return result;
@@ -213,8 +213,10 @@ public class LessorController extends AbstractController {
 
         result = new ModelAndView("property/list");
         Collection<Property> properties = lessorService.getAllProperties();
+        Boolean mia = Boolean.TRUE;
         result.addObject("propertys", properties);
         result.addObject("requestURI", "property/list.do");
+        result.addObject("mia", mia);
         return result;
 
     }

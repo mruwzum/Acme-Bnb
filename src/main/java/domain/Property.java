@@ -27,7 +27,9 @@ public class Property extends DomainEntity {
 	private String state;
 	private int capacity;
 	private String city;
-	
+	private int numberofBooks;
+
+
 	// Relationships ---------------------------------------------------------
 	private Lessor lessor;
 	private Collection<Audit> audits;
@@ -148,7 +150,14 @@ public class Property extends DomainEntity {
 	public void setBookRequests(Collection<BookRequest> bookRequests) {
 		this.bookRequests = bookRequests;
 	}
-	
-	
+
+
+	public int getNumberofBooks() {
+		return numberofBooks;
+	}
+
+	public void setNumberofBooks(int numberofBooks) {
+		this.numberofBooks = numberofBooks;
+	}
 	
 }

@@ -80,6 +80,7 @@ public class BookRequestController extends AbstractController {
         Tenant t = tenantService.findByPrincipal();
         BookRequest bookRequest = bookRequestService.create();
         Property p = propertyService.findOne(propertyId);
+        p.setNumberofBooks(p.getNumberofBooks()+1);
         bookRequest.setProperty(p);
         bookRequest.setTenant(t);
         bookRequest.setStatus(RequestStatus.PENDING);
@@ -121,10 +122,11 @@ public class BookRequestController extends AbstractController {
     public ModelAndView save(@Valid BookRequest bookRequest, BindingResult binding){
         ModelAndView result;
          
-        if(binding.hasErrors()){
+        if(!binding.hasErrors()){
             result= createEditModelAndView(bookRequest);
         }else{
             try{
+                bookRequest.setCreditCard(bookRequest.getTenant().getCreditCard());
                 bookRequestService.save(bookRequest);
                 result= new ModelAndView("redirect:list.do");
             }catch(Throwable oops){

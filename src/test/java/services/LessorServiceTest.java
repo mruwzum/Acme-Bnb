@@ -107,7 +107,7 @@ public class LessorServiceTest extends AbstractTest {
     public void totalFee() throws Exception {
         authenticate("lessor1");
 
-        System.out.println(lessorService.totalFee());
+        System.out.println(lessorService.findByPrincipal().getSocialIdentitys());
         authenticate(null);
 
 

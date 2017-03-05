@@ -33,16 +33,20 @@
 
 
 	<!---------------------------- BOTONES -------------------------->
+	<input type="submit" name="save"
+		   value="<spring:message code="audit.save"/>"
+		   onclick="return confirm('<spring:message code="audit.confirm.save" />')" />&nbsp;
 
-
-	<acme:submit name="save" code="audit.save"/>
+	<%--<acme:submit name="save" code="audit.save"/>--%>
 
 	<jstl:if test="\$\{audit.id != 0}">
 		<input type="submit" name="delete"
 			value="<spring:message code="audit.delete" />"
 			onclick="return confirm('<spring:message code="audit.confirm.delete" />')" />&nbsp;
 	</jstl:if>
+
 	<acme:submit name="cancel" code="audit.saveDraft"/>
+
 
 
 	<%--</button>--%>

@@ -1,7 +1,9 @@
 package controllers;
 
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import javax.validation.Valid;
 
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import services.ActorService;
 import services.SocialIdentityService;
 import controllers.AbstractController;
 import domain.SocialIdentity;
@@ -26,6 +29,8 @@ public class SocialIdentityController extends AbstractController {
 	
 	@Autowired
 	private SocialIdentityService socialIdentityService;
+	@Autowired
+    private ActorService actorService;
 	
 	//Constructors----------------------------------------------
 	
@@ -40,7 +45,7 @@ public class SocialIdentityController extends AbstractController {
 		ModelAndView result;
 		Collection<SocialIdentity> socialIdentitys;
 		
-		socialIdentitys = socialIdentityService.findAll();
+		socialIdentitys = actorService.findByPrincipal().getSocialIdentitys();
 		result = new ModelAndView("socialIdentity/list");
 		result.addObject("socialIdentitys", socialIdentitys);
 		result.addObject("requestURI","socialIdentity/list.do");
@@ -85,7 +90,11 @@ public class SocialIdentityController extends AbstractController {
             result= createEditModelAndView(socialIdentity);
         }else{
             try{
+
                 socialIdentityService.save(socialIdentity);
+                List<SocialIdentity> socialIdentities = new ArrayList<>(actorService.findByPrincipal().getSocialIdentitys());
+                socialIdentities.add(socialIdentity);
+                actorService.findByPrincipal().setSocialIdentitys(socialIdentities);
                 result= new ModelAndView("redirect:list.do");
             }catch(Throwable oops){
                 result= createEditModelAndView(socialIdentity, "socialIdentity.commit.error");

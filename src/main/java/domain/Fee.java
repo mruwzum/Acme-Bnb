@@ -15,6 +15,8 @@ public class Fee extends DomainEntity{
 
     private Double value;
 
+
+
     @NotNull
     public Double getValue() {
         return value;
