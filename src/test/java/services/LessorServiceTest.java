@@ -1,5 +1,6 @@
 package services;
 
+import domain.Comment;
 import domain.Lessor;
 import domain.Property;
 import org.junit.Test;
@@ -10,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import static org.junit.Assert.*;
@@ -26,6 +28,8 @@ public class LessorServiceTest extends AbstractTest {
 
     @Autowired
     private LessorService lessorService;
+    @Autowired
+    private CommentService commentService;
 
     @Test
     public void create() throws Exception {
@@ -111,6 +115,26 @@ public class LessorServiceTest extends AbstractTest {
         authenticate(null);
 
 
+    }
+
+    @Test
+    public void commentTest2() throws Exception {
+
+        authenticate("lessor1");
+
+        Comment comment = new Comment();
+
+        comment.setText("PRUEBA");
+        comment.setTitle("PRUEBA");
+        comment.setNumberOfStars(2);
+        comment.setPostedMoment(new Date(System.currentTimeMillis() - 1000));
+        Comment save = commentService.save(comment);
+
+        lessorService.findByPrincipal().getComments().add(save);
+
+        System.out.println(lessorService.findByPrincipal().getComments());
+
+        authenticate(null);
 
     }
 
