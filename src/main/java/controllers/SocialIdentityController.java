@@ -7,6 +7,7 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import domain.Actor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
@@ -44,8 +45,9 @@ public class SocialIdentityController extends AbstractController {
 		
 		ModelAndView result;
 		Collection<SocialIdentity> socialIdentitys;
-		
+		Actor a = actorService.findByPrincipal();
 		socialIdentitys = actorService.findByPrincipal().getSocialIdentitys();
+		a.setSocialIdentitys(socialIdentitys);
 		result = new ModelAndView("socialIdentity/list");
 		result.addObject("socialIdentitys", socialIdentitys);
 		result.addObject("requestURI","socialIdentity/list.do");
@@ -90,11 +92,10 @@ public class SocialIdentityController extends AbstractController {
             result= createEditModelAndView(socialIdentity);
         }else{
             try{
-
-                socialIdentityService.save(socialIdentity);
                 List<SocialIdentity> socialIdentities = new ArrayList<>(actorService.findByPrincipal().getSocialIdentitys());
                 socialIdentities.add(socialIdentity);
                 actorService.findByPrincipal().setSocialIdentitys(socialIdentities);
+                socialIdentityService.save(socialIdentity);
                 result= new ModelAndView("redirect:list.do");
             }catch(Throwable oops){
                 result= createEditModelAndView(socialIdentity, "socialIdentity.commit.error");
@@ -108,6 +109,9 @@ public class SocialIdentityController extends AbstractController {
         ModelAndView result;
         SocialIdentity socialIdentity = socialIdentityService.findOne(socialIdentityId);
         try{
+            List<SocialIdentity> socialIdentities = new ArrayList<>(actorService.findByPrincipal().getSocialIdentitys());
+            socialIdentities.remove(socialIdentity);
+            actorService.findByPrincipal().setSocialIdentitys(socialIdentities);
             socialIdentityService.delete(socialIdentity);
             result=new ModelAndView("redirect:list.do");
         }catch(Throwable oops){
