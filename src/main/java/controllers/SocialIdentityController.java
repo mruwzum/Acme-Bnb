@@ -76,7 +76,6 @@ public class SocialIdentityController extends AbstractController {
     public ModelAndView edit(@RequestParam int socialIdentityId){
         ModelAndView result;
         SocialIdentity socialIdentity;
-         
         socialIdentity= socialIdentityService.findOne(socialIdentityId);
         Assert.notNull(socialIdentity);
         result= createEditModelAndView(socialIdentity);

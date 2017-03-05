@@ -31,15 +31,6 @@
 
 
 	<!-- Attributes -->
-
-	<security:authorize access="isAuthenticated()">
-		<display:column>
-			<a href="socialIdentity/edit.do?socialIdentityId=${row.id}"> <spring:message
-					code="socialIdentity.edit"/>
-			</a>
-
-		</display:column>
-	</security:authorize>
 	
 			<spring:message code="socialIdentity.nick" var="nick" />
 			<display:column property="nick" title="${nick}" sortable="true" />
