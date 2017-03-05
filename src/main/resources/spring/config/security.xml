@@ -75,6 +75,8 @@
 		<!--  COMMENT  -->	
 		<security:intercept-url pattern="/comment/list.do" access="permitAll" />
 		<security:intercept-url pattern="/comment/edit.do" access="permitAll" />
+		<security:intercept-url pattern="/comment/create.do" access="permitAll"/>
+
 		<!--  DATE  -->	
 		<security:intercept-url pattern="/date/list.do" access="permitAll" />
 		<security:intercept-url pattern="/date/edit.do" access="permitAll" />
@@ -117,7 +119,9 @@
 		<security:intercept-url pattern="/tenant/list.do" access="permitAll" />
 		<security:intercept-url pattern="/tenant/edit.do" access="permitAll" />
 		<security:intercept-url pattern="/tenant/invoice.do" access="permitAll"/>
+		<security:intercept-url pattern="/tenant/view.do" access="permitAll"/>
 		<security:intercept-url pattern="/finder/create.do" access="permitAll" />
+
 
 		<security:intercept-url pattern="/property/request.do" access="permitAll" />
         <security:intercept-url pattern="/tenant/edit1.do" access="permitAll"/>

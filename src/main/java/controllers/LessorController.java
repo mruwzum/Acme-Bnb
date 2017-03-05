@@ -72,6 +72,7 @@ public class LessorController extends AbstractController {
         result.addObject("phone",lessor.getPhone());
         result.addObject("picture",lessor.getPicture());
         result.addObject("socialIdentitys",socialIdentities);
+        result.addObject("com", lessor.getComments());
         result.addObject("requestURI","lessor/view.do");
 
         return result;
@@ -177,8 +178,10 @@ public class LessorController extends AbstractController {
 
         Collection<BookRequest> requests = lessorService.getAllRequest();
         Collection<BookRequest> peding = lessorService.getPendingRequest();
+        Boolean mis = new Boolean(Boolean.TRUE);
         res = new ModelAndView("bookRequest/list");
         res.addObject("bookRequests", requests);
+        res.addObject("mis", mis);
         res.addObject("bookRequestsP", peding);
 
         return res;

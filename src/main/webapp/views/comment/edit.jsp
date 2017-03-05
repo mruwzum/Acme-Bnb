@@ -17,12 +17,12 @@
 
 	<form:hidden path="id" />
 	<form:hidden path="version" />
+	<form:hidden path="postedMoment"/>
+
 
 	<acme:textbox path="title" code="comment.title"/>
 	<br />
-	<acme:textbox path="postedMoment" code="comment.checkindate"/>
-	<br />
-	<acme:textbox path="text" code="comment.checkindate"/>
+	<acme:textbox path="text" code="comment.text"/>
 	<br />
 	<acme:textbox path="numberOfStars" code="comment.numberofstars"/>
 	<br />

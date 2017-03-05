@@ -24,6 +24,16 @@
 			</a>
 		</display:column>
 	</security:authorize>
+
+	<security:authorize access="hasRole('LESSOR')">
+		<display:column>
+			<jstl:if test="${mis}">
+				<a href="tenant/view.do?bookRequestId=${row.id}"> <spring:message
+						code="bookRequest.view.tenant"/>
+				</a>
+			</jstl:if>
+		</display:column>
+	</security:authorize>
 	
 			<spring:message code="bookRequest.checkindate" var="checkInDate" />
 			<display:column property="checkInDate" title="${checkInDate}" sortable="true" />
@@ -65,13 +75,14 @@
 
 	<!-- Attributes -->
 
-	<security:authorize access="permitAll">
+	<security:authorize access="hasRole('TENANT')">
 		<display:column>
 			<a href="bookRequest/edit.do?bookRequestId=${row.id}"> <spring:message
 					code="bookRequest.edit"/>
 			</a>
 		</display:column>
 	</security:authorize>
+
 
 	<spring:message code="bookRequest.checkindate" var="checkInDate"/>
 	<display:column property="checkInDate" title="${checkInDate}" sortable="true"/>
@@ -99,7 +110,7 @@
 
 	<security:authorize access="hasRole('LESSOR')">
 		<display:column>
-			<a href="/lessor/deny.do?bookRequestId=${row.id}"> <spring:message
+			<a href="lessor/deny.do?bookRequestId=${row.id}"> <spring:message
 					code="bookRequest.deny"/>
 			</a>
 		</display:column>

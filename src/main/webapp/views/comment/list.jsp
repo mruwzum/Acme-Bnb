@@ -37,8 +37,8 @@
 	
 			<spring:message code="comment.title" var="title" />
 			<display:column property="title" title="${title}" sortable="true" />
-			<spring:message code="comment.postedmoment" var="postedNoment" />
-			<display:column property="postedNoment" title="${postedNoment}" sortable="true" />
+	<spring:message code="comment.postedMoment" var="postedNoment"/>
+	<display:column property="postedMoment" title="${postedNoment}" sortable="true"/>
 			<spring:message code="comment.text" var="text" />
 			<display:column property="text" title="${text}" sortable="true" />
 			<spring:message code="comment.numberofstars" var="numberOfStars" />

@@ -1,10 +1,7 @@
 package controllers;
 
 
-import domain.Actor;
-import domain.BookRequest;
-import domain.Invoice;
-import domain.Tenant;
+import domain.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
@@ -18,6 +15,7 @@ import services.BookRequestService;
 import services.TenantService;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 
@@ -181,16 +179,36 @@ public class TenantController extends AbstractController {
          
         return result;
     }
-     
+
     protected ModelAndView createEditModelAndView(Tenant tenant, String message){
-    	ModelAndView result;
-    	
+        ModelAndView result;
+
         result= new ModelAndView("tenant/edit");
         result.addObject("tenant", tenant);
         result.addObject("message", message);
-         
+
         return result;
- 
+
+    }
+
+    @RequestMapping(value = "/view", method = RequestMethod.GET)
+    public ModelAndView lessorView(@RequestParam int bookRequestId) {
+
+        ModelAndView result;
+        BookRequest bookRequest = bookRequestService.findOne(bookRequestId);
+        Tenant tenant = bookRequest.getTenant();
+        Collection<SocialIdentity> socialIdentities = new ArrayList<>(tenant.getSocialIdentitys());
+        result = new ModelAndView("tenant/view");
+        result.addObject("name", tenant.getName());
+        result.addObject("surname", tenant.getSurname());
+        result.addObject("email", tenant.getEmail());
+        result.addObject("phone", tenant.getPhone());
+        result.addObject("picture", tenant.getPicture());
+        result.addObject("socialIdentitys", socialIdentities);
+        result.addObject("com", tenant.getComments());
+        result.addObject("requestURI", "tenant/view.do");
+
+        return result;
     }
 
 

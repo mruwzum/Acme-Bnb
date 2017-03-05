@@ -2,6 +2,7 @@ package controllers;
 
 
 import java.util.Collection;
+import java.util.Date;
 
 import javax.validation.Valid;
 
@@ -14,9 +15,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import security.Authority;
+import services.ActorService;
 import services.CommentService;
 import controllers.AbstractController;
 import domain.Comment;
+import services.LessorService;
+import services.TenantService;
 
 @Controller
 @RequestMapping("/comment")
@@ -26,6 +31,14 @@ public class CommentController extends AbstractController {
 	
 	@Autowired
 	private CommentService commentService;
+    @Autowired
+    private ActorService actorService;
+    @Autowired
+    private LessorService lessorService;
+    @Autowired
+    private TenantService tenantService;
+
+
 	
 	//Constructors----------------------------------------------
 	
@@ -80,12 +93,21 @@ public class CommentController extends AbstractController {
     @RequestMapping(value="/edit", method=RequestMethod.POST, params="save")
     public ModelAndView save(@Valid Comment comment, BindingResult binding){
         ModelAndView result;
-         
-        if(binding.hasErrors()){
+        comment.setPostedMoment(new Date(System.currentTimeMillis() - 10000));
+        if (!binding.hasErrors()) {
             result= createEditModelAndView(comment);
         }else{
             try{
-                commentService.save(comment);
+
+                if (actorService.findByPrincipal().getUserAccount().getAuthorities().contains(Authority.LESSOR)) {
+                    commentService.save(comment);
+                    lessorService.findByPrincipal().getComments().add(comment);
+                } else if (actorService.findByPrincipal().getUserAccount().getAuthorities().contains(Authority.TENANT)) {
+                    commentService.save(comment);
+                    tenantService.findByPrincipal().getComments().add(comment);
+                } else {
+
+                }
                 result= new ModelAndView("redirect:list.do");
             }catch(Throwable oops){
                 result= createEditModelAndView(comment, "comment.commit.error");
