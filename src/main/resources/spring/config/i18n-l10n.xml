@@ -52,6 +52,10 @@
 		<value>/views/tenant/message</value>
 		<!-- CreditCard -->
 		<value>/views/credit-card/messages</value>
+		<!-- Value -->
+		<value>/views/value/message</value>
+		<!-- CreditCard -->
+		<value>/views/attribute/message</value>
 	</util:list>
 
 </beans>

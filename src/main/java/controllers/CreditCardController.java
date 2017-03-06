@@ -25,8 +25,6 @@ public class CreditCardController extends AbstractController {
 
     @Autowired
     private CreditCardService creditCardService;
-    @Autowired
-    private LessorService lessorService;
 
 
     //Constructors----------------------------------------------
@@ -150,80 +148,6 @@ public class CreditCardController extends AbstractController {
 
 
 }
-
-
-
-
-
-
-
-
-
-
-    // ---------------------- VIEJO
-
-//
-//    @RequestMapping(value = "/edit")
-//    public ModelAndView edit() {
-//        ModelAndView result;
-//        CreditCard a = sponsorService.getMyCreditCard();
-//        result = createEditModelAndView(a);
-//        return result;
-//    }
-//
-//
-//    protected ModelAndView createEditModelAndView(CreditCard a) {
-//        ModelAndView result;
-//
-//        result = createEditModelAndView(a, null);
-//
-//        return result;
-//    }
-//
-//    @RequestMapping(value = "/save", method = RequestMethod.POST, params = "save")
-//    public ModelAndView save(@Valid CreditCard creditCard, BindingResult binding) {
-//        ModelAndView result;
-//        creditCardService.save(creditCard);
-//        result = this.edit();
-//
-//
-//        return result;
-//    }
-//
-//    @RequestMapping(value = "/delete", method = RequestMethod.GET)
-//    public ModelAndView delete(@RequestParam int creditcardID) {
-//        ModelAndView result;
-//        CreditCard creditCard = creditCardService.findOne(creditcardID);
-//        creditCardService.delete(creditCard);
-//        result = new ModelAndView("redirect:edit.do");
-//
-//        return result;
-//    }
-//
-//    protected ModelAndView createEditModelAndView(CreditCard spo, String message) {
-//        ModelAndView result;
-//        String holderName = spo.getHolderName();
-//        String brandName = spo.getBrandName();
-//        Long number = spo.getNumber();
-//        Integer expirationYear = spo.getExpirationYear();
-//        Integer expirationMonth = spo.getExpirationMonth();
-//        String CVV = spo.getCVV();
-//
-//        result = new ModelAndView("credit-card/edit");
-//        result.addObject("creditCard", spo);
-//        result.addObject("holderName", holderName);
-//        result.addObject("brandName", brandName);
-//        result.addObject("number", number);
-//        result.addObject("expirationYear", expirationYear);
-//        result.addObject("expirationMonth", expirationMonth);
-//        result.addObject("CVV", CVV);
-//        result.addObject("message", message);
-//
-//        return result;
-//
-//
-//    }
-//------------------------
 
 
 
