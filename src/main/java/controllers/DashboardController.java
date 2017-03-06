@@ -44,8 +44,8 @@ public class DashboardController extends AbstractController {
     Collection<Tenant> q8 = administratorService.getTenantWithMoreApprovedBookRequest();
     Collection<Tenant> q9 = administratorService.getTenantWithMoreDeniedBookRequest();
     Collection<Tenant> q10 = administratorService.getTenantWithMorePendingBookRequest();
-    Map<Tenant, Double> q11 = administratorService.ratioOfRequestedVSApprovedRequestedPerTenant();
-    Map<Lessor, Double> q12 = administratorService.ratioOfRequestedVSApprovedRequestedPerLessor();
+//    Map<Tenant, Double> q11 = administratorService.ratioOfRequestedVSApprovedRequestedPerTenant();
+//    Map<Lessor, Double> q12 = administratorService.ratioOfRequestedVSApprovedRequestedPerLessor();
     Double q13 = administratorService.averageResultPerFinder();
     Integer q14 = administratorService.MaximumResultPerFinder();
     Integer q15 = administratorService.MinimumResultPerFinder();
@@ -72,7 +72,7 @@ public class DashboardController extends AbstractController {
     Double q29 = administratorService.maximumNumberOfInvoicePerTenant();
     Double q30 = administratorService.minimumNumberOfInvoicePerTenant();
     Double q31 = administratorService.totalInvoiceAmmountOnTheSystem();
-    Double q32 = administratorService.averageReqProphaveAtAuditRecordVSavgOfReqForPropWithNoAudits();
+//    Double q32 = administratorService.averageReqProphaveAtAuditRecordVSavgOfReqForPropWithNoAudits();
 
     res = new ModelAndView("admin/dashboard");
         //C
@@ -86,10 +86,10 @@ public class DashboardController extends AbstractController {
         res.addObject("q8", q8);
         res.addObject("q9", q9);
         res.addObject("q10", q10);
-        res.addObject("q11Pers", q11.keySet());
-        res.addObject("q11Rat", q11.values());
-        res.addObject("q12Pers", q12.keySet());
-        res.addObject("q12Rat", q12.values());
+//        res.addObject("q11Pers", q11.keySet());
+//        res.addObject("q11Rat", q11.values());
+//        res.addObject("q12Pers", q12.keySet());
+//        res.addObject("q12Rat", q12.values());
         res.addObject("q13", q13);
         res.addObject("q14", q14);
         res.addObject("q15", q15);
@@ -112,7 +112,7 @@ public class DashboardController extends AbstractController {
         res.addObject("q29", q29);
         res.addObject("q30", q30);
         res.addObject("q31", q31);
-        res.addObject("q32", q32);
+//        res.addObject("q32", q32);
 
 
         res = new ModelAndView();
