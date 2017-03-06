@@ -34,7 +34,8 @@
 							code="master.page.auditor.register"/></a></li>
 				</ul>
 			</li>
-
+			<li><a href="admin/dashboard.do"><spring:message
+					code="master.page.dashboard.do"/></a></li>
 
 		</security:authorize>
 

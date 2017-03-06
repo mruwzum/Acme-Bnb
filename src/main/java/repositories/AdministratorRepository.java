@@ -72,8 +72,11 @@ public interface AdministratorRepository extends JpaRepository<Administrator, In
 
     //Aqui hay que sacar en el servicio el primero para hacer el max, y el ultimo para hacer el min
     @Query("select p.name from Property p order by p.audits.size asc")
-    Integer maximumNumberOfAuditsPerProperties();
+    List<String> maximumNumberOfAuditsPerProperties();
 
+
+    @Query("select l.values.size from Property l ")
+    Collection<Integer> numberOfTimesInWithAnAtributteHasBeenUserToDescribeAProperty();
 
     @Query("select l from Lessor l join l.propertys p order by p.audits.size asc")
     Collection<Lessor> lessorOrderByNumberOfAuditsHisPropertiesHaveGot();

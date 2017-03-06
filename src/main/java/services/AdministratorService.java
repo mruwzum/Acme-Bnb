@@ -2,6 +2,7 @@ package services;
 
 import java.util.*;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import javax.transaction.Transactional;
 
 import domain.*;
@@ -147,6 +148,7 @@ public class AdministratorService {
 		Map<Tenant,Double> res = new HashMap<>();
 		for(Tenant t : tenants){
 			Integer req = administratorRepository.numberOfBookRequestsPerTenant(t.getId());
+			//TODO en las approved requests no hay nada en verdad x eso da el indexOutOfBoundsExc ;s
 			List<Integer> approvedReq = administratorRepository.numberOfAprovedBookRequestsPerTenant(t.getId());
 			Integer correcto = approvedReq.get(0);
 			Double ratio = (double)req/correcto;
@@ -181,5 +183,85 @@ public class AdministratorService {
 	public Integer MinimumResultPerFinder(){
 		return administratorRepository.MinimumResultPerFinder();
 	}
+
+
+	//DASHBOARD B
+
+	public Double averageNumberOfAuditsPerProperties(){
+		return administratorRepository.averageNumberOfAuditsPerProperties();
+	}
+	public String maximumNumberOfAuditsPerProerties(){
+		return administratorRepository.maximumNumberOfAuditsPerProperties().get(0);
+	}
+
+	public String minimumNumberOfAuditsPerProerties() {
+		return administratorRepository.maximumNumberOfAuditsPerProperties().get(2);
+	}
+
+
+
+	public Collection<Integer> numberOfTimesInWithAnAtributteHasBeenUserToDescribeAProperty(){
+		return administratorRepository.numberOfTimesInWithAnAtributteHasBeenUserToDescribeAProperty();
+	}
+
+
+
+	public Collection<Lessor> lessorsOrderByNumberOfAudits(){
+		return administratorRepository.lessorOrderByNumberOfAuditsHisPropertiesHaveGot();
+	}
+	public Collection<Lessor> lessorsOrderedByNumberOfRequests(){
+		return administratorRepository.lessorOrderByNumberOfRequestHisPropertiesHaveGot();
+	}
+	public Collection<Lessor> lessorsOrderByNumberOfAprovvedRq(){
+		return administratorRepository.lessorOrderByNumberOfAprovedRequestHisPropertiesHaveGot();
+	}
+	public Collection<Lessor> lessorOrderByNumberOfDeniedRequestHisPropertiesHaveGot(){
+		return administratorRepository.lessorOrderByNumberOfDeniedRequestHisPropertiesHaveGot();
+	}
+	public Collection<Lessor> lessorOrderByNumberOfPendigRequestHisPropertiesHaveGot(){
+		return administratorRepository.lessorOrderByNumberOfPendigRequestHisPropertiesHaveGot();
+	}
+
+
+	//DASHBOARD A
+
+	public Double averageNumberOfSocialIdentitiesPerActor(){
+		return administratorRepository.averageNumberOfSocialIdentitiesPerActor();
+	}
+	public Integer maximumNumberOfSocialIdentitesPerActor(){
+		return administratorRepository.maximumNumberOfSocialIdentitesPerActor();
+	}
+	public Integer minimumNumberOfSocialIdentitesPerActor(){
+		return administratorRepository.minimumNumberOfSocialIdentitesPerActor();
+	}
+
+
+
+	public Double averageNumberOfInvoicePerTenant(){
+		return administratorRepository.averageNumberOfInvoicePerTenant();
+	}
+	public Double maximumNumberOfInvoicePerTenant(){
+		return administratorRepository.maximumNumberOfInvoicePerTenant();
+	}
+	public Double minimumNumberOfInvoicePerTenant(){
+		return administratorRepository.minimumNumberOfInvoicePerTenant();
+	}
+
+
+
+
+	public Double totalInvoiceAmmountOnTheSystem(){
+		return administratorRepository.totalInvoiceAmmountOnTheSystem();
+	}
+
+	public Double averageReqProphaveAtAuditRecordVSavgOfReqForPropWithNoAudits(){
+		Double arriba = administratorRepository.averageOfPropertiesWithAudits();
+		Double elena = administratorRepository.averageOfPropertiesWithoutAudits();
+		return arriba/elena;
+	}
+
+
+
+
 
 }
