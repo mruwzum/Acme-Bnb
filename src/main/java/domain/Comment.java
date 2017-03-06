@@ -18,8 +18,7 @@ public class Comment extends DomainEntity {
 	private Date postedMoment;
 	private String text;
 	private int numberOfStars;
-	private DomainEntity target;
-	
+
 	// Relationships ---------------------------------------------------------
 	
 	// Constructors -----------------------------------------------------------
@@ -66,16 +65,6 @@ public class Comment extends DomainEntity {
 
 	public void setNumberOfStars(int numberOfStars) {
 		this.numberOfStars = numberOfStars;
-	}
-
-
-	@OneToOne
-	public DomainEntity getTarget() {
-		return target;
-	}
-
-	public void setTarget(DomainEntity domainEntity) {
-		this.target = domainEntity;
 	}
 
 

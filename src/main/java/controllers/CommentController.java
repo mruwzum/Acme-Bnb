@@ -72,8 +72,6 @@ public class CommentController extends AbstractController {
         ModelAndView result;
 		
 		Comment comment = commentService.create();
-        DomainEntity domainEntity = tenantService.findOne(id);
-        comment.setTarget(domainEntity);
         result = createEditModelAndView(comment);
 		
 		return result;
