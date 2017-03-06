@@ -66,7 +66,7 @@
 
 <!-- Listing grid comments -->
 <display:table pagesize="5" class="displaytag" keepStatus="true"
-               name="com" requestURI="${requestURI}" id="row">
+               name="comments" requestURI="${requestURI}" id="row">
 
 
     <!-- Attributes -->

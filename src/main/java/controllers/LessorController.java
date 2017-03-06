@@ -4,6 +4,7 @@ package controllers;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 
 import javax.validation.Valid;
 
@@ -17,10 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import services.ActorService;
-import services.BookRequestService;
-import services.LessorService;
-import services.PropertyService;
+import services.*;
 
 @Controller
 @RequestMapping("/lessor")
@@ -36,6 +34,8 @@ public class LessorController extends AbstractController {
     private PropertyService propertyService;
     @Autowired
     private BookRequestService bookRequestService;
+    @Autowired
+    private CommentService commentService;
 
     //Constructors----------------------------------------------
 	
@@ -259,4 +259,30 @@ public class LessorController extends AbstractController {
 
         return res;
     }
+
+
+    //Save comments -----------------------------------------------------------
+
+    @RequestMapping(value = "/saveComment", method = RequestMethod.POST, params = "save")
+    public ModelAndView save(@Valid Comment comment, BindingResult binding) {
+        ModelAndView result;
+        comment.setPostedMoment(new Date(System.currentTimeMillis() - 10000));
+        if (!binding.hasErrors()) {
+            result = CommentController.createEditModelAndView(comment);
+        } else {
+            try {
+                commentService.save(comment);
+                Lessor p = lessorService.findOne(comment.getId());
+                List<Comment> comments = new ArrayList<>(p.getComments());
+                comments.add(comment);
+                p.setComments(comments);
+                result = new ModelAndView("redirect:list.do");
+            } catch (Throwable oops) {
+                result = CommentController.createEditModelAndView(comment, "comment.commit.error");
+            }
+        }
+        return result;
+    }
+
+
 }

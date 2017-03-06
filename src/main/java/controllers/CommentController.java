@@ -72,6 +72,7 @@ public class CommentController extends AbstractController {
         ModelAndView result;
 		
 		Comment comment = commentService.create();
+        comment.setObjectiveId(id);
         result = createEditModelAndView(comment);
 		
 		return result;
@@ -95,7 +96,6 @@ public class CommentController extends AbstractController {
     @RequestMapping(value="/edit", method=RequestMethod.POST, params="save")
     public ModelAndView save(@Valid Comment comment, BindingResult binding){
         ModelAndView result;
-        comment.setPostedMoment(new Date(System.currentTimeMillis() - 10000));
         if (!binding.hasErrors()) {
             result= createEditModelAndView(comment);
         }else{
@@ -126,17 +126,17 @@ public class CommentController extends AbstractController {
     }
 	
 	// Ancillary methods ------------------------------------------------
-    
-    protected ModelAndView createEditModelAndView(Comment comment){
+
+    protected static ModelAndView createEditModelAndView(Comment comment) {
         ModelAndView result;
          
         result= createEditModelAndView(comment, null);
          
         return result;
     }
-     
-    protected ModelAndView createEditModelAndView(Comment comment, String message){
-    	ModelAndView result;
+
+    protected static ModelAndView createEditModelAndView(Comment comment, String message) {
+        ModelAndView result;
     	
         result= new ModelAndView("comment/edit");
         result.addObject("comment", comment);

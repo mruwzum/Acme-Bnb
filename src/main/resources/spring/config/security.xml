@@ -121,9 +121,10 @@
 		<security:intercept-url pattern="/tenant/invoice.do" access="permitAll"/>
 		<security:intercept-url pattern="/tenant/view.do" access="permitAll"/>
 		<security:intercept-url pattern="/finder/create.do" access="permitAll" />
+        <security:intercept-url pattern="/tenant/saveComment.do" access="permitAll"/>
 
 
-		<security:intercept-url pattern="/property/request.do" access="permitAll" />
+        <security:intercept-url pattern="/property/request.do" access="permitAll" />
         <security:intercept-url pattern="/tenant/edit1.do" access="permitAll"/>
         <security:intercept-url pattern="/tenant/change.do" access="permitAll"/>
         <security:intercept-url pattern="/bookRequest/createRequest.do" access="permitAll" />
