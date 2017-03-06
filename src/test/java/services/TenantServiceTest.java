@@ -1,6 +1,7 @@
 package services;
 
 import domain.Comment;
+import domain.Tenant;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,6 +50,26 @@ public class TenantServiceTest extends AbstractTest {
 
     @Test
     public void delete() throws Exception {
+        Comment comment = commentService.create();
+        comment.setObjectiveId(29);
+        comment.setText("asdas");
+        comment.setNumberOfStars(2);
+        comment.setTitle("hghj");
+        comment.setPostedMoment(new Date(System.currentTimeMillis() - 10000));
+        Comment comment2 = commentService.create();
+        comment.setObjectiveId(29);
+        comment.setText("asdas");
+        comment.setNumberOfStars(2);
+        comment.setTitle("hghj");
+        comment.setPostedMoment(new Date(System.currentTimeMillis() - 10000));
+
+
+        Comment saved = commentService.save(comment);
+        Tenant target = tenantService.findOne(saved.getObjectiveId());
+        target.getComments().add(comment);
+        target.getComments().add(comment2);
+
+        System.out.println(tenantService.findOne(saved.getObjectiveId()).getComments().toString());
 
     }
 
@@ -63,6 +84,7 @@ public class TenantServiceTest extends AbstractTest {
         comment.setTitle("PRUEBA");
         comment.setNumberOfStars(2);
         comment.setPostedMoment(new Date(System.currentTimeMillis() - 1000));
+        comment.setObjectiveId(tenantService.findByPrincipal().getId());
         Comment save = commentService.save(comment);
 
         tenantService.findByPrincipal().getComments().add(save);

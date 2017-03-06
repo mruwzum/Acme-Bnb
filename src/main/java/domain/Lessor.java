@@ -53,8 +53,8 @@ public class Lessor extends Actor implements Commentable {
 	}
 
 
-    @OneToMany
-    public Collection<Comment> getComments() {
+	@OneToMany(cascade = CascadeType.ALL)
+	public Collection<Comment> getComments() {
         return null;
     }
 

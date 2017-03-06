@@ -302,6 +302,11 @@
                               value="http://5www.ecestaticos.com/imagestatic/clipping/542/1ac/5421ac4aa59a78aad57ad43cd3eb6804/las-mascotas-mas-divertidas-y-energicas-que-has-visto-nunca.jpg?mtime=1479741232"/>
 					<property name="userAccount" ref="userAccountlessor1"/>
 
+					<property name="comments">
+						<list>
+							<ref bean="comment1"/>
+						</list>
+					</property>
 
 
 				</bean>
@@ -341,6 +346,13 @@
 					<property name="picture"
                               value="http://recetas.cuidadoinfantil.net/files/2012/08/Recetas-divertidas-sandwich-en-forma-de-coche.jpg"/>
 				<property name="userAccount" ref="userAccounttenant1" />
+
+					<property name="comments">
+						<list>
+							<ref bean="comment2"/>
+						</list>
+					</property>
+
 
 				</bean>
 				<bean id="tenant2" class="domain.Tenant">
@@ -563,22 +575,18 @@
                     <property name="postedMoment" value="2016/04/23 23:00:12"/>
 						<property name="text" value="text1" />
 						<property name="numberOfStars" value="2" />
-					<property name="target" ref="tenant1"/>
+					<property name="objectiveId" value="26"/>
 				</bean>
 				<bean id="comment2" class="domain.Comment">
-						<property name="title" value="title2" />
-                    <property name="postedMoment" value="2017/04/23 23:00:12"/>
-						<property name="text" value="text2" />
-						<property name="numberOfStars" value="3" />
+					<property name="title" value="title1"/>
+					<property name="postedMoment" value="2016/04/23 23:00:12"/>
+					<property name="text" value="text1"/>
+					<property name="numberOfStars" value="2"/>
+					<property name="objectiveId" value="29"/>
 				</bean>
-				<bean id="comment3" class="domain.Comment">
-						<property name="title" value="title3" />
-                    <property name="postedMoment" value="2017/03/23 23:00:12"/>
-						<property name="text" value="text3" />
-						<property name="numberOfStars" value="1" />
-				</bean>
-			
-			<!-- /Comment-->
+
+
+	<!-- /Comment-->
 			
 
 			

@@ -19,6 +19,7 @@ import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 
 @Controller
 @RequestMapping("/tenant")
@@ -208,11 +209,32 @@ public class TenantController extends AbstractController {
         result.addObject("phone", tenant.getPhone());
         result.addObject("picture", tenant.getPicture());
         result.addObject("id", tenant.getId());
+        result.addObject("comments", tenant.getComments());
         result.addObject("socialIdentitys", socialIdentities);
         result.addObject("requestURI", "tenant/view.do");
 
         return result;
     }
 
+
+    @RequestMapping(value = "/saveComment", method = RequestMethod.POST, params = "save")
+    public ModelAndView savec(Comment comment) {
+        ModelAndView result;
+
+    /*   if (!binding.hasErrors()) {
+            result= CommentController.createEditModelAndView(comment);
+        }else{
+            try{*/
+        comment.setPostedMoment(new Date(System.currentTimeMillis() - 10000));
+        Comment saved = commentService.save(comment);
+        Tenant target = tenantService.findOne(saved.getObjectiveId());
+        target.getComments().add(comment);
+        result = new ModelAndView("actor/success");
+          /*  }catch(Throwable oops){
+                result= CommentController.createEditModelAndView(comment, "comment.commit.error");
+            }
+        }*/
+        return result;
+    }
 
 }

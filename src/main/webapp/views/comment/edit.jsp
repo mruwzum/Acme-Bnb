@@ -13,11 +13,13 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
 
-<form:form action="comment/edit.do" modelAttribute="comment">
+<form:form action="tenant/saveComment.do" modelAttribute="comment">
 
 	<form:hidden path="id" />
 	<form:hidden path="version" />
 	<form:hidden path="postedMoment"/>
+    <form:hidden path="objectiveId"/>
+
 
 
 	<acme:textbox path="title" code="comment.title"/>

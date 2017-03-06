@@ -19,6 +19,8 @@ public class Comment extends DomainEntity {
 	private String text;
 	private int numberOfStars;
 
+
+	private int objectiveId;
 	// Relationships ---------------------------------------------------------
 	
 	// Constructors -----------------------------------------------------------
@@ -67,5 +69,14 @@ public class Comment extends DomainEntity {
 		this.numberOfStars = numberOfStars;
 	}
 
+
+	@NotNull
+	public int getObjectiveId() {
+		return objectiveId;
+	}
+
+	public void setObjectiveId(int objectiveId) {
+		this.objectiveId = objectiveId;
+	}
 
 }

@@ -20,6 +20,7 @@ public class Tenant extends Actor implements Commentable {
 	private Collection<BookRequest> bookRequests;
 	private Collection<Invoice> invoices;
 	private Collection<Finder> finders;
+	private Collection<Comment> comments;
 
 
 	// Constructors -----------------------------------------------------------
@@ -70,12 +71,12 @@ public class Tenant extends Actor implements Commentable {
 	}
 
 
-    @OneToMany
-    public Collection<Comment> getComments() {
-        return null;
-    }
+	@OneToMany(cascade = CascadeType.ALL)
+	public Collection<Comment> getComments() {
+		return comments;
+	}
 
     public void setComments(Collection<Comment> comments) {
-
-    }
+		this.comments = comments;
+	}
 }
