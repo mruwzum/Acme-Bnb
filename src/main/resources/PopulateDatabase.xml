@@ -476,7 +476,16 @@
 							<property name="tenant" ref="tenant3" />
 							<property name="property" ref="property3" />
 				</bean>
-			
+	<bean id="bookRequest4" class="domain.BookRequest">
+		<property name="checkInDate" value="2017/02/12 23:00:12"/>
+		<property name="checkOutDate" value="2017/01/16 23:00:12"/>
+		<property name="smoker" value="false" />
+		<property name="creditCard" ref="creditcard6">
+		</property>
+		<property name="status" value="DENIED"/>
+		<property name="tenant" ref="tenant3" />
+		<property name="property" ref="property3" />
+	</bean>
 			<!-- /BookRequest-->
 			
 			<!-- Comment -->

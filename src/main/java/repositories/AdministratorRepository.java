@@ -1,6 +1,8 @@
 package repositories;
 
 import domain.BookRequest;
+import domain.Lessor;
+import domain.RequestStatus;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -15,7 +17,7 @@ public interface AdministratorRepository extends JpaRepository<Administrator, In
     Administrator findByUserAccountId(int userAccountId);
 
 
-    @Query("select avg (u.propertys.size) from Lessor u")
+    @Query("select avg (u.propertys) from Lessor u group by u")
     Double averageAcceptedRequestPerLessor();
 
     @Query("select avg (u.bookRequests.size) from Tenant u")
@@ -23,6 +25,14 @@ public interface AdministratorRepository extends JpaRepository<Administrator, In
 
     @Query("select u.bookRequests from Property u")
     Collection<BookRequest> bookRequestsFromProperty();
+
+    //TODO
+    @Query("select l from Lessor l join l.propertys cont join cont.bookRequests b where b.status = 1  ")
+    Collection<Lessor> lessorsWhoHasAcceptedBookRequests();
+
+    @Query("select l from Lessor l join l.propertys cont join cont.bookRequests b where b.status = 0  ")
+    Collection<Lessor> lessorsWhoHasDeniedBookRequests();
+
 
     @Query("select max(s.bookRequests) from Tenant s group by s")
     Collection<Integer> maximumNumberOfRecipesQualifiedForAContest();
