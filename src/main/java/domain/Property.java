@@ -2,11 +2,7 @@ package domain;
 
 import java.util.Collection;
 
-import javax.persistence.Access;
-import javax.persistence.AccessType;
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import javax.validation.Valid;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
@@ -28,6 +24,7 @@ public class Property extends DomainEntity {
 	private int capacity;
 	private String city;
 	private int numberofBooks;
+	private Collection<Value> values;
 
 
 	// Relationships ---------------------------------------------------------
@@ -159,5 +156,15 @@ public class Property extends DomainEntity {
 	public void setNumberofBooks(int numberofBooks) {
 		this.numberofBooks = numberofBooks;
 	}
-	
+
+
+
+	@OneToMany(cascade = CascadeType.ALL)
+	public Collection<Value> getValues() {
+		return values;
+	}
+
+	public void setValues(Collection<Value> values) {
+		this.values = values;
+	}
 }
