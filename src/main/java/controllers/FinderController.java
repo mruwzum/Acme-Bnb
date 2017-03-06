@@ -82,7 +82,10 @@ public class FinderController extends AbstractController {
             result= createEditModelAndView(finder);
         }else{
             try{
+
                 List<Property> properties = finderService.finder(finder.getDestinationCity(),finder.getMaximumPay(),finder.getMinimumPay(),finder.getKeyword());
+                finder.setNumberOfFinderResults(properties.size());
+                 finderService.save(finder);
                 result= new ModelAndView("property/list");
                 result.addObject("propertys",properties);
             }catch(Throwable oops){

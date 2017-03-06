@@ -2,6 +2,7 @@ package controllers;
 
 import domain.BookRequest;
 import domain.Lessor;
+import domain.Tenant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 import services.AdministratorService;
 
 import java.util.Collection;
+import java.util.Map;
 
 /**
  * Created by mruwzum on 19/12/16.
@@ -33,8 +35,20 @@ public class DashboardController extends AbstractController {
 
    //DASHBOARD C
     Double q1 = administratorService.averageAcceptedRequestPerLessor();
-    Double q2 = administratorService.averageAcceptedRequestPerTenat();
-    Lessor q3 = administratorService.bookRequestsFromProperty();
+    Double q2 = administratorService.averageDeniedRequestPerLessor();
+    Double q3 = administratorService.averageAcceptedRequestPerTenat();
+    Double q4 = administratorService.averageDeniedRequestPerTenat();
+    Collection<Lessor> q5 = administratorService.lessorsWhoHasAcceptedBookRequests();
+    Collection<Lessor> q6 = administratorService.lessorsWhoHasDeniedBookRequests();
+    Collection<Lessor> q7 = administratorService.lessorsWhoHasPendingBookRequests();
+    Collection<Tenant> q8 = administratorService.getTenantWithMoreApprovedBookRequest();
+    Collection<Tenant> q9 = administratorService.getTenantWithMoreDeniedBookRequest();
+    Collection<Tenant> q10 = administratorService.getTenantWithMorePendingBookRequest();
+    Map<Tenant, Double> q11 = administratorService.ratioOfRequestedVSApprovedRequestedPerTenant();
+    Map<Lessor, Double> q12 = administratorService.ratioOfRequestedVSApprovedRequestedPerLessor();
+    Double q13 = administratorService.averageResultPerFinder();
+    Integer q14 = administratorService.MaximumResultPerFinder();
+    Integer q15 = administratorService.MinimumResultPerFinder();
 //
 //    User q4 = adminService.getUserWhoAuthoredMoreRecipes();
 //
@@ -104,8 +118,11 @@ public class DashboardController extends AbstractController {
 //        res.addObject("q9", q9);
 //        res.addObject("q10", q10);
 //        res.addObject("q11", q11);
+        //TODO aqui tienes que meter un q11.keyset (Personas) y un q11.values (Ratios)
+
 //        res.addObject("q12", q12);
-//        res.addObject("q13", q13);
+// /    /TODO aqui tienes que meter un q12.keyset (Personas) y un q12.values (Ratios)
+//         res.addObject("q13", q13);
 //        res.addObject("q14", q14);
 //        //B
 //        res.addObject("q15", q15);

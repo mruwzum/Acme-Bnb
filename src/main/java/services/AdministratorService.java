@@ -24,6 +24,8 @@ public class AdministratorService {
 	private FeeService feeService;
 	@Autowired
 	private LessorService lessorService;
+	@Autowired
+	private TenantService tenantService;
 	// Constructor -------------------------------
 	public AdministratorService() {
 		super();
@@ -99,33 +101,85 @@ public class AdministratorService {
 	//DASHBOARDS METHODS ---------------------------------------
 
 	public Double averageAcceptedRequestPerLessor(){
-		Double res = administratorRepository.averageAcceptedRequestPerLessor();
-		return res;
+		return administratorRepository.averageAcceptedRequestPerLessor();
+
 	}
 
+	public Double averageDeniedRequestPerLessor(){
+		return administratorRepository.averageDeniedRequestPerLessor();
+
+	}
 	public Double averageAcceptedRequestPerTenat(){
-		Double res = administratorRepository.averageAcceptedRequestPerTenat();
+		return administratorRepository.averageAcceptedRequestPerTenat();
+
+	}
+	public Double averageDeniedRequestPerTenat(){
+		return administratorRepository.averageDeniedRequestPerTenat();
+
+	}
+	public Collection<Lessor> lessorsWhoHasAcceptedBookRequests(){
+		return administratorRepository.lessorsWhoHasAcceptedBookRequests();
+	}
+
+	public Collection<Lessor> lessorsWhoHasDeniedBookRequests(){
+		return administratorRepository.lessorsWhoHasDeniedBookRequests();
+	}
+	public Collection<Lessor> lessorsWhoHasPendingBookRequests(){
+		return administratorRepository.lessorsWhoHasPendingBookRequests();
+	}
+	public Collection<Tenant> getTenantWithMoreApprovedBookRequest(){
+		return administratorRepository.getTenantWithMoreApprovedBookRequest();
+	}
+	public Collection<Tenant> getTenantWithMoreDeniedBookRequest(){
+		return administratorRepository.getTenantWithMoreDeniedBookRequest();
+	}
+	public Collection<Tenant> getTenantWithMorePendingBookRequest(){
+		return administratorRepository.getTenantWithMorePendingBookRequest();
+	}
+
+
+
+
+
+
+	public Map<Tenant,Double> ratioOfRequestedVSApprovedRequestedPerTenant(){
+		Collection<Tenant> tenants = tenantService.findAll();
+		Map<Tenant,Double> res = new HashMap<>();
+		for(Tenant t : tenants){
+			Integer req = administratorRepository.numberOfBookRequestsPerTenant(t.getId());
+			List<Integer> approvedReq = administratorRepository.numberOfAprovedBookRequestsPerTenant(t.getId());
+			Integer correcto = approvedReq.get(0);
+			Double ratio = (double)req/correcto;
+			res.put(t,ratio);
+		}
 		return res;
 	}
-	public Lessor bookRequestsFromProperty(){
-		//TODO sacar de todo este embrollo el lessor que haya aprobado mas requests :)
-		Lessor res;
-		Integer contador = 0;
-		Collection<BookRequest> aux = administratorRepository.bookRequestsFromProperty();
-		Collection<Lessor> lessors = lessorService.findAll();
-		Map<Lessor,Integer> resultados = new HashMap<>();
-		for(BookRequest b : aux){
-			if (b.getStatus().equals(RequestStatus.ACCEPTED)){
-				for (Lessor l : lessors){
-					if(b.getProperty().getLessor().equals(l)){
-						contador++;
-						resultados.put(l,contador);
-					}
-				}
 
-			}
+
+	public Map<Lessor,Double> ratioOfRequestedVSApprovedRequestedPerLessor(){
+		Collection<Lessor> tenants = lessorService.findAll();
+		Map<Lessor,Double> res = new HashMap<>();
+		for(Lessor t : tenants){
+			Integer req = administratorRepository.numberOfBookRequestsPerLessor(t.getId());
+			List<Integer> approvedReq = administratorRepository.numberOfAprovedBookRequestsPerLessor(t.getId());
+			Integer correcto = approvedReq.get(0);
+			Double ratio = (double)req/correcto;
+			res.put(t,ratio);
 		}
-		Collection<Integer> resultadosEnPunt = resultados.values();
-		return null;
+		return res;
 	}
+
+
+
+
+	public Double averageResultPerFinder(){
+		return administratorRepository.averageResultPerFinder();
+	}
+	public Integer MaximumResultPerFinder(){
+		return administratorRepository.MaximumResultPerFinder();
+	}
+	public Integer MinimumResultPerFinder(){
+		return administratorRepository.MinimumResultPerFinder();
+	}
+
 }
