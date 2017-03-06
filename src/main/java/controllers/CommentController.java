@@ -6,6 +6,9 @@ import java.util.Date;
 
 import javax.validation.Valid;
 
+import domain.BookRequest;
+import domain.DomainEntity;
+import domain.Tenant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
@@ -16,12 +19,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import security.Authority;
-import services.ActorService;
-import services.CommentService;
+import services.*;
 import controllers.AbstractController;
 import domain.Comment;
-import services.LessorService;
-import services.TenantService;
 
 @Controller
 @RequestMapping("/comment")
@@ -37,6 +37,8 @@ public class CommentController extends AbstractController {
     private LessorService lessorService;
     @Autowired
     private TenantService tenantService;
+    @Autowired
+    private BookRequestService bookRequestService;
 
 
 	
@@ -65,12 +67,14 @@ public class CommentController extends AbstractController {
 	//Create Method -----------------------------------------------------------
 	
 	@RequestMapping(value = "/create", method = RequestMethod.GET)
-	public ModelAndView create(){
-		
-		ModelAndView result;
+    public ModelAndView create(@RequestParam int id) {
+
+        ModelAndView result;
 		
 		Comment comment = commentService.create();
-		result = createEditModelAndView(comment);
+        DomainEntity domainEntity = tenantService.findOne(id);
+        comment.setTarget(domainEntity);
+        result = createEditModelAndView(comment);
 		
 		return result;
 
@@ -98,6 +102,7 @@ public class CommentController extends AbstractController {
             result= createEditModelAndView(comment);
         }else{
             try{
+                comment.setPostedMoment(new Date(System.currentTimeMillis() - 1000));
                 commentService.save(comment);
                 result= new ModelAndView("redirect:list.do");
             }catch(Throwable oops){
@@ -108,20 +113,6 @@ public class CommentController extends AbstractController {
     }
 
 
-    @RequestMapping(value = "/edit2")
-    public ModelAndView save(@RequestParam("ti") String title) {
-        ModelAndView result;
-
-        Comment comment = commentService.create();
-        comment.setTitle(title);
-        comment.setPostedMoment(new Date(System.currentTimeMillis() - 1000));
-        comment.setNumberOfStars(2);
-        comment.setText("GENEERIC");
-        commentService.save(comment);
-
-        result = new ModelAndView("actor/success");
-        return result;
-    }
      
     @RequestMapping(value="/edit", method=RequestMethod.POST, params="delete")
     public ModelAndView delete(Comment comment){

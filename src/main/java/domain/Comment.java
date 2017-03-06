@@ -1,9 +1,9 @@
 package domain;
 
-import javax.persistence.Access;
-import javax.persistence.AccessType;
-import javax.persistence.Entity;
+import javax.persistence.*;
+
 import org.hibernate.validator.constraints.NotBlank;
+
 import javax.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.Range;
 
@@ -18,6 +18,7 @@ public class Comment extends DomainEntity {
 	private Date postedMoment;
 	private String text;
 	private int numberOfStars;
+	private DomainEntity target;
 	
 	// Relationships ---------------------------------------------------------
 	
@@ -66,7 +67,16 @@ public class Comment extends DomainEntity {
 	public void setNumberOfStars(int numberOfStars) {
 		this.numberOfStars = numberOfStars;
 	}
-	
-	
-	
+
+
+	@OneToOne
+	public DomainEntity getTarget() {
+		return target;
+	}
+
+	public void setTarget(DomainEntity domainEntity) {
+		this.target = domainEntity;
+	}
+
+
 }

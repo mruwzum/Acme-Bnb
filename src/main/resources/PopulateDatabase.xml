@@ -485,6 +485,7 @@
                     <property name="postedMoment" value="2016/04/23 23:00:12"/>
 						<property name="text" value="text1" />
 						<property name="numberOfStars" value="2" />
+					<property name="target" ref="tenant1"/>
 				</bean>
 				<bean id="comment2" class="domain.Comment">
 						<property name="title" value="title2" />

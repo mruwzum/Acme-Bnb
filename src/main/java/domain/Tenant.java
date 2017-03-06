@@ -11,7 +11,7 @@ import javax.validation.constraints.NotNull;
 
 @Entity
 @Access(AccessType.PROPERTY)
-public class Tenant extends Actor {
+public class Tenant extends Actor implements Commentable {
 
 	// Attributes ------------------------------------------------------------
 	private CreditCard creditCard;
@@ -70,5 +70,12 @@ public class Tenant extends Actor {
 	}
 
 
+    @OneToMany
+    public Collection<Comment> getComments() {
+        return null;
+    }
 
+    public void setComments(Collection<Comment> comments) {
+
+    }
 }

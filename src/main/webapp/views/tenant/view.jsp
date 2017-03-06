@@ -61,7 +61,7 @@
 </display:table>
 
 
-spring:message code="actor.comment" var="picture1"/>
+<spring:message code="actor.comment" var="picture1"/>
 <h3><jstl:out value="${picture1}"/></h3>
 
 <!-- Listing grid comments -->
@@ -82,4 +82,14 @@ spring:message code="actor.comment" var="picture1"/>
     <display:column property="numberOfStars" title="${numberOfStars}" sortable="true"/>
 
 </display:table>
+
+<security:authorize access="permitAll">
+    <div>
+        <H5>
+            <a href="comment/create.do?id=${id}"> <spring:message
+                    code="comment.create"/>
+            </a>
+        </H5>
+    </div>
+</security:authorize>
 

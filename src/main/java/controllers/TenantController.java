@@ -207,6 +207,7 @@ public class TenantController extends AbstractController {
         result.addObject("email", tenant.getEmail());
         result.addObject("phone", tenant.getPhone());
         result.addObject("picture", tenant.getPicture());
+        result.addObject("id", tenant.getId());
         result.addObject("socialIdentitys", socialIdentities);
         result.addObject("requestURI", "tenant/view.do");
 

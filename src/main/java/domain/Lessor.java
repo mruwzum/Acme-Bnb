@@ -1,20 +1,17 @@
 package domain;
 
 import java.util.Collection;
-import java.util.List;
 
 import javax.persistence.*;
 
-import org.hibernate.validator.constraints.CreditCardNumber;
 
 import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
 
 @Entity
 @Access(AccessType.PROPERTY)
-public class Lessor extends Actor {
-	
-	// Attributes ------------------------------------------------------------
+public class Lessor extends Actor implements Commentable {
+
+    // Attributes ------------------------------------------------------------
 	private CreditCard creditCard;
 	
 	// Relationships ---------------------------------------------------------
@@ -56,5 +53,13 @@ public class Lessor extends Actor {
 	}
 
 
+    @OneToMany
+    public Collection<Comment> getComments() {
+        return null;
+    }
 
+    @Override
+    public void setComments(Collection<Comment> comments) {
+
+    }
 }
