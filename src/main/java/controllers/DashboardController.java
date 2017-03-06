@@ -13,9 +13,7 @@ import services.AdministratorService;
 import java.util.Collection;
 import java.util.Map;
 
-/**
- * Created by mruwzum on 19/12/16.
- */
+
 @Controller
 @RequestMapping("/admin")
 public class DashboardController extends AbstractController {
@@ -115,7 +113,7 @@ public class DashboardController extends AbstractController {
 //        res.addObject("q32", q32);
 
 
-        res = new ModelAndView();
+
         return res;
     }
 }
