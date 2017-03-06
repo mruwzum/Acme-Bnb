@@ -17,7 +17,7 @@ import java.util.Map;
  * Created by mruwzum on 19/12/16.
  */
 @Controller
-@RequestMapping("admin")
+@RequestMapping("/admin")
 public class DashboardController extends AbstractController {
 
     public DashboardController() {
@@ -74,7 +74,7 @@ public class DashboardController extends AbstractController {
     Double q31 = administratorService.totalInvoiceAmmountOnTheSystem();
 //    Double q32 = administratorService.averageReqProphaveAtAuditRecordVSavgOfReqForPropWithNoAudits();
 
-    res = new ModelAndView("admin/dashboard");
+    res = new ModelAndView("administrator/dashboard");
         //C
         res.addObject("q1", q1);
         res.addObject("q2", q2);
