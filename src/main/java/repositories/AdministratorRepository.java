@@ -65,9 +65,60 @@ public interface AdministratorRepository extends JpaRepository<Administrator, In
     Integer MinimumResultPerFinder();
 
 
+    //LEVEL B
+
+    @Query("select avg(p.audits.size) from Property p")
+    Double averageNumberOfAuditsPerProperties();
+
+    //Aqui hay que sacar en el servicio el primero para hacer el max, y el ultimo para hacer el min
+    @Query("select p.name from Property p order by p.audits.size asc")
+    Integer maximumNumberOfAuditsPerProperties();
 
 
+    @Query("select l from Lessor l join l.propertys p order by p.audits.size asc")
+    Collection<Lessor> lessorOrderByNumberOfAuditsHisPropertiesHaveGot();
 
+    @Query("select l from Lessor l join l.propertys p order by p.bookRequests.size asc")
+    Collection<Lessor> lessorOrderByNumberOfRequestHisPropertiesHaveGot();
+
+    @Query("select l from Lessor l join l.propertys p join p.bookRequests b where b.status=1 order by p.bookRequests.size asc")
+    Collection<Lessor> lessorOrderByNumberOfAprovedRequestHisPropertiesHaveGot();
+
+    @Query("select l from Lessor l join l.propertys p join p.bookRequests b where b.status=0 order by p.bookRequests.size asc")
+    Collection<Lessor> lessorOrderByNumberOfDeniedRequestHisPropertiesHaveGot();
+
+    @Query("select l from Lessor l join l.propertys p join p.bookRequests b where b.status=2 order by p.bookRequests.size asc")
+    Collection<Lessor> lessorOrderByNumberOfPendigRequestHisPropertiesHaveGot();
+
+    //LEVEL A
+
+    @Query("select avg(p.socialIdentitys.size) from Actor p")
+    Double averageNumberOfSocialIdentitiesPerActor();
+
+    @Query("select max(p.socialIdentitys.size) from Actor p")
+    Integer maximumNumberOfSocialIdentitesPerActor();
+
+    @Query("select min(p.socialIdentitys.size) from Actor p")
+    Integer minimumNumberOfSocialIdentitesPerActor();
+
+    @Query("select avg(p.invoices.size) from Tenant p")
+    Double averageNumberOfInvoicePerTenant();
+
+    @Query("select max(p.invoices.size) from Tenant p")
+    Double maximumNumberOfInvoicePerTenant();
+
+    @Query("select min(p.invoices.size) from Tenant p")
+    Double minimumNumberOfInvoicePerTenant();
+
+    @Query("select sum(i.totalAmount) from Invoice i")
+    Double totalInvoiceAmmountOnTheSystem();
+
+
+    //Estas dos queries hay que dividirlas en el servicio
+    @Query("select avg(p) from Property p where p.audits.size is not null ")
+    Double averageOfPropertiesWithAudits();
+    @Query("select avg(p) from Property p where p.audits.size is null")
+    Double averageOfPropertiesWithoutAudits();
 
 
 }
