@@ -118,14 +118,18 @@
         <security:intercept-url pattern="/attribute/list.do" access="hasRole('ADMINISTRATOR')"/>
         <security:intercept-url pattern="/attribute/edit.do" access="hasRole('ADMINISTRATOR')"/>
         <security:intercept-url pattern="/attribute/create.do" access="hasRole('ADMINISTRATOR')"/>
+		<security:intercept-url pattern="/attribute/delete.do" access="hasRole('ADMINISTRATOR')"/>
 
-        <!--  VIEW  -->
+
+		<!--  VIEW  -->
         <security:intercept-url pattern="/value/list.do" access="isAuthenticated()"/>
         <security:intercept-url pattern="/value/edit.do" access="hasAnyRole('LESSOR','ADMINISTRATOR')"/>
         <security:intercept-url pattern="/value/create.do" access="hasAnyRole('LESSOR','ADMINISTRATOR')"/>
+		<security:intercept-url pattern="/value/delete.do" access="hasAnyRole('LESSOR','ADMINISTRATOR')"/>
 
 
-        <!--  SOCIALIDENTITY  -->
+
+		<!--  SOCIALIDENTITY  -->
 		<security:intercept-url pattern="/socialidentity/list.do" access="isAuthenticated()" />
 		<security:intercept-url pattern="/socialidentity/edit.do" access="isAuthenticated()" />
 
