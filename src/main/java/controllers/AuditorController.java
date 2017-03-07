@@ -134,6 +134,7 @@ public class AuditorController extends AbstractController {
         return result;
     }
 
+
     @RequestMapping(value="/edit", method=RequestMethod.POST, params="delete")
     public ModelAndView delete(Auditor auditor){
         ModelAndView result;

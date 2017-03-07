@@ -119,31 +119,7 @@ public class TenantController extends AbstractController {
         }
         return result;
     }
-    @RequestMapping(value = "/changeR", method = RequestMethod.POST, params = "save")
-    public ModelAndView changeR(@Valid Tenant tenant, BindingResult binding) {
 
-        ModelAndView result;
-
-        if (!binding.hasErrors()) {
-            result = createEditModelAndView2(tenant);
-        } else {
-            try {
-                int mesActu2 = new Date(System.currentTimeMillis()).getMonth();
-                if (tenant.getCreditCard().getExpirationYear().equals(2017)
-                        && tenant.getCreditCard().getExpirationMonth()<=mesActu2+1){
-                    result = new ModelAndView("actor/error");
-                }else {
-                    creditCardService.save(tenant.getCreditCard());
-                    tenant.setUserAccount(tenantService.findByPrincipal().getUserAccount());
-                    tenantService.save(tenant);
-                    result = new ModelAndView("actor/success");
-                }
-            } catch (Throwable oops) {
-                result = createEditModelAndView2(tenant, "tenant.commit.error");
-            }
-        }
-        return result;
-    }
     @RequestMapping(value="/edit2", method=RequestMethod.POST, params="save")
     public ModelAndView save(@Valid Tenant tenant, BindingResult binding){
         ModelAndView result;
@@ -276,10 +252,12 @@ public class TenantController extends AbstractController {
             result= CommentController.createEditModelAndView(comment);
         }else{
             try{*/
+
         comment.setPostedMoment(new Date(System.currentTimeMillis() - 10000));
-        Comment saved = commentService.save(comment);
-        Tenant target = tenantService.findOne(saved.getObjectiveId());
+
+        Tenant target = tenantService.findOne(comment.getObjectiveId());
         target.getComments().add(comment);
+        Comment saved = commentService.save(comment);
         result = new ModelAndView("actor/success");
           /*  }catch(Throwable oops){
                 result= CommentController.createEditModelAndView(comment, "comment.commit.error");
