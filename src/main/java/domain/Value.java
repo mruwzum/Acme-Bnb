@@ -49,6 +49,8 @@ public class Value extends DomainEntity {
 		this.attribute = attribute;
 	}
 
+
+
 	@ManyToOne(cascade = CascadeType.PERSIST)
 	public Property getProperty() {
 		return property;
@@ -56,5 +58,14 @@ public class Value extends DomainEntity {
 
 	public void setProperty(Property property) {
 		this.property = property;
+	}
+
+
+
+	@Override
+	public String toString() {
+		return "Value{" +
+				"valueName='" + valueName + '\'' +
+				'}';
 	}
 }

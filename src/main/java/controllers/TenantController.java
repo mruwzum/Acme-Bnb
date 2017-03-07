@@ -245,13 +245,13 @@ public class TenantController extends AbstractController {
 
 
     @RequestMapping(value = "/saveComment", method = RequestMethod.POST, params = "save")
-    public ModelAndView savec(Comment comment) {
+    public ModelAndView savec(Comment comment, BindingResult binding) {
         ModelAndView result;
 
-    /*   if (!binding.hasErrors()) {
+      if (binding.hasErrors()) {
             result= CommentController.createEditModelAndView(comment);
         }else{
-            try{*/
+            try{
 
         comment.setPostedMoment(new Date(System.currentTimeMillis() - 10000));
 
@@ -259,10 +259,10 @@ public class TenantController extends AbstractController {
         target.getComments().add(comment);
         Comment saved = commentService.save(comment);
         result = new ModelAndView("actor/success");
-          /*  }catch(Throwable oops){
+            }catch(Throwable oops){
                 result= CommentController.createEditModelAndView(comment, "comment.commit.error");
             }
-        }*/
+        }
         return result;
     }
 

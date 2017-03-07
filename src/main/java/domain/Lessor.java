@@ -61,4 +61,6 @@ public class Lessor extends Actor implements Commentable {
 	public void setComments(Collection<Comment> comments) {
 		this.comments = comments;
 	}
+
+
 }

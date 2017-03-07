@@ -41,4 +41,10 @@ public class Attribute extends DomainEntity {
 		this.value = value;
 	}
 
+	@Override
+	public String toString() {
+		return "Attribute{" +
+				"attributeName='" + attributeName + '\'' +
+				'}';
+	}
 }
