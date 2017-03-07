@@ -18,4 +18,8 @@
 		<put-attribute name="title" value="Arrendador: Perfil" />
 		<put-attribute name="body" value="/views/lessor/view.jsp" />
 	</definition>
+	<definition name="lessor/register" extends="master.page">
+		<put-attribute name="title" value="Arrendador: Registro" />
+		<put-attribute name="body" value="/views/lessor/register.jsp" />
+	</definition>
 </tiles-definitions>

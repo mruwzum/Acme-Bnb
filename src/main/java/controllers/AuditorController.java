@@ -73,6 +73,17 @@ public class AuditorController extends AbstractController {
 		return result;
 
 		}
+    @RequestMapping(value = "/register", method = RequestMethod.GET)
+    public ModelAndView register(){
+
+        ModelAndView result;
+
+        Auditor auditor = auditorService.create();
+        result = createEditModelAndView(auditor);
+
+        return result;
+
+    }
 	
 	 // Edition ---------------------------------------------------------
      @RequestMapping(value = "/edit1", method = RequestMethod.GET)

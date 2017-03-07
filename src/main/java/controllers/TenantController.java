@@ -56,7 +56,17 @@ public class TenantController extends AbstractController {
 		
 		return result;
 	}
-	
+    @RequestMapping(value = "/register", method = RequestMethod.GET)
+    public ModelAndView register(){
+
+        ModelAndView result;
+
+        Tenant tenant = tenantService.create();
+        result = createEditModelAndView(tenant);
+
+        return result;
+
+    }
 	
 	//Create Method -----------------------------------------------------------
 	

@@ -77,7 +77,17 @@ public class LessorController extends AbstractController {
         return result;
     }
 
+    @RequestMapping(value = "/register", method = RequestMethod.GET)
+    public ModelAndView register(){
 
+        ModelAndView result;
+
+        Lessor lessor = lessorService.create();
+        result = createEditModelAndView(lessor);
+
+        return result;
+
+    }
     //Create Method -----------------------------------------------------------
 	
 	@RequestMapping(value = "/create", method = RequestMethod.GET)

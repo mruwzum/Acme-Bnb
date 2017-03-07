@@ -18,4 +18,8 @@
 		<put-attribute name="title" value="Tenants: View" />
 		<put-attribute name="body" value="/views/tenant/view.jsp" />
 	</definition>
+	<definition name="tenant/register" extends="master.page">
+	<put-attribute name="title" value="Tenants: Register" />
+	<put-attribute name="body" value="/views/tenant/register.jsp" />
+</definition>
 </tiles-definitions>

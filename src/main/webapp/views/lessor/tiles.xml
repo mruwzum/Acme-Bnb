@@ -18,4 +18,8 @@
 		<put-attribute name="title" value="Lessors: Profile" />
 		<put-attribute name="body" value="/views/lessor/view.jsp" />
 	</definition>
+	<definition name="lessor/register" extends="master.page">
+		<put-attribute name="title" value="Lessors: Register" />
+		<put-attribute name="body" value="/views/lessor/register.jsp" />
+	</definition>
 </tiles-definitions>
