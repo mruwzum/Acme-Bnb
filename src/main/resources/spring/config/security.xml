@@ -109,8 +109,20 @@
 		<security:intercept-url pattern="/property/view.do" access="permitAll"/>
 		<security:intercept-url pattern="/property/create.do" access="permitAll"/>
 
+        <!--  ATTRIBUTE  -->
+        <security:intercept-url pattern="/attribute/list.do" access="permitAll"/>
+        <security:intercept-url pattern="/attribute/edit.do" access="permitAll"/>
+        <security:intercept-url pattern="/attribute/view.do" access="permitAll"/>
+        <security:intercept-url pattern="/attribute/create.do" access="permitAll"/>
 
-		<!--  SOCIALIDENTITY  -->
+        <!--  VIEW  -->
+        <security:intercept-url pattern="/value/list.do" access="permitAll"/>
+        <security:intercept-url pattern="/value/edit.do" access="permitAll"/>
+        <security:intercept-url pattern="/value/view.do" access="permitAll"/>
+        <security:intercept-url pattern="/value/create.do" access="permitAll"/>
+
+
+        <!--  SOCIALIDENTITY  -->
 		<security:intercept-url pattern="/socialidentity/list.do" access="permitAll" />
 		<security:intercept-url pattern="/socialidentity/edit.do" access="permitAll" />
 		<!--  TENANT  -->

@@ -3,11 +3,9 @@ package domain;
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.Range;
 
-import javax.persistence.Access;
-import javax.persistence.AccessType;
-import javax.persistence.Entity;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.Collection;
 import java.util.Date;
 
 @Entity
@@ -18,7 +16,7 @@ public class Attribute extends DomainEntity {
 
 	// Attributes ------------------------------------------------------------
 	private String attributeName;
-	private Value value;
+	private Collection<Value> value;
 
 	// Relationships ---------------------------------------------------------
 
@@ -33,12 +31,13 @@ public class Attribute extends DomainEntity {
 	public void setAttributeName(String attributeName) {
 		this.attributeName = attributeName;
 	}
-	@OneToOne
-	public Value getValue() {
+
+	@OneToMany(cascade = CascadeType.ALL)
+	public Collection<Value> getValue() {
 		return value;
 	}
 
-	public void setValue(Value value) {
+	public void setValue(Collection<Value> value) {
 		this.value = value;
 	}
 

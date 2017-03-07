@@ -19,7 +19,7 @@
     <form:hidden path="value"/>
 
 
-    <acme:textbox path="attributeName" code="attribute.nick"/>
+    <acme:textbox path="attributeName" code="attribute.name"/>
     <br/>
 
 

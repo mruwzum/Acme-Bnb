@@ -20,6 +20,7 @@
     <acme:textbox path="valueName" code="value.valueName"/>
     <br/>
 
+    <acme:select path="attribute" code="value.attributes" items="${attributes}" itemLabel="attributeName"/>
 
     <!---------------------------- BOTONES -------------------------->
 

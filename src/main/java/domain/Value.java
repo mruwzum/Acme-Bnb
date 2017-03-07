@@ -3,10 +3,7 @@ package domain;
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.Range;
 
-import javax.persistence.Access;
-import javax.persistence.AccessType;
-import javax.persistence.Entity;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
 
@@ -18,6 +15,8 @@ public class Value extends DomainEntity {
 
 	// Attributes ------------------------------------------------------------
 	private String valueName;
+
+	private Attribute attribute;
 
 
 	// Relationships ---------------------------------------------------------
@@ -36,4 +35,13 @@ public class Value extends DomainEntity {
 		this.valueName = valueName;
 	}
 
+
+	@OneToOne(cascade = CascadeType.PERSIST)
+	public Attribute getAttribute() {
+		return attribute;
+	}
+
+	public void setAttribute(Attribute attribute) {
+		this.attribute = attribute;
+	}
 }

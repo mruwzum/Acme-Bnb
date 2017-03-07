@@ -37,6 +37,8 @@
 
     <spring:message code="value.valueName" var="valueName"/>
     <display:column property="valueName" title="${valueName}" sortable="true"/>
+    <spring:message code="value.attributte" var="attributte"/>
+    <display:column property="attributte" title="${attributte}" sortable="true"/>
 
     <security:authorize access="isAuthenticated()">
         <display:column>

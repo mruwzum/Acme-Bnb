@@ -36,6 +36,8 @@
 			</li>
 			<li><a href="admin/dashboard.do"><spring:message
 					code="master.page.dashboard.do"/></a></li>
+			<li><a href="attribute/list.do"><spring:message
+					code="master.page.attribute"/></a></li>
 
 		</security:authorize>
 
