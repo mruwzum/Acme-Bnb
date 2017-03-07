@@ -80,7 +80,7 @@ public class AttributeController extends AbstractController {
     public ModelAndView save(@Valid Attribute attribute, BindingResult binding) {
         ModelAndView result;
 
-        if (!binding.hasErrors()) {
+        if (binding.hasErrors()) {
             result = createEditModelAndView(attribute);
         } else {
             try {

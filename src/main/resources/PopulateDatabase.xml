@@ -387,10 +387,12 @@
 	<bean id="value1" class="domain.Value">
 		<property name="valueName" value="valueeeee1" />
 		<property name="attribute" ref="attribute1"/>
+		<property name="property" ref="property1"/>
 	</bean>
 	<bean id="value2" class="domain.Value">
 		<property name="valueName" value="valueeeee2" />
 		<property name="attribute" ref="attribute2"/>
+		<property name="property" ref="property2"/>
 	</bean>
 
 	<!-- /Value -->

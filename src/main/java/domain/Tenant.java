@@ -71,7 +71,7 @@ public class Tenant extends Actor implements Commentable {
 	}
 
 
-	@OneToMany(cascade = CascadeType.ALL)
+	@OneToMany(cascade = CascadeType.PERSIST)
 	public Collection<Comment> getComments() {
 		return comments;
 	}

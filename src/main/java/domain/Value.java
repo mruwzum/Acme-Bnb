@@ -19,6 +19,10 @@ public class Value extends DomainEntity {
 	private Attribute attribute;
 
 
+
+	private Property property;
+
+
 	// Relationships ---------------------------------------------------------
 
 	// Constructors -----------------------------------------------------------
@@ -43,5 +47,14 @@ public class Value extends DomainEntity {
 
 	public void setAttribute(Attribute attribute) {
 		this.attribute = attribute;
+	}
+
+	@ManyToOne(cascade = CascadeType.PERSIST)
+	public Property getProperty() {
+		return property;
+	}
+
+	public void setProperty(Property property) {
+		this.property = property;
 	}
 }

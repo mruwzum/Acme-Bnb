@@ -19,6 +19,10 @@
 <h3><jstl:out value="${address1}"/></h3>
 <jstl:out value="${address}"/>
 
+
+
+<spring:message code="property.audit" var="audit"/>
+<h3><jstl:out value="${audit}"/></h3>
 <!-- Listing grid -->
 <display:table pagesize="5" class="displaytag" keepStatus="true"
                name="audits" requestURI="${requestURI}" id="row">
@@ -36,8 +40,11 @@
 </display:table>
 
 
+
+<spring:message code="value.attributes" var="attribute"/>
+<h3><jstl:out value="${attribute}"/></h3>
 <security:authorize access="hasRole('LESSOR')">
-    <a href="value/create.do"> <spring:message
+    <a href="value/create.do?propertyId=${idp}"> <spring:message
             code="value.create"/>
     </a>
 </security:authorize>
@@ -48,8 +55,8 @@
 
 
     <!-- Attributes -->
-    <spring:message code="value.attributte" var="attributte"/>
-    <display:column property="attribute" title="${attributte}" sortable="true"/>
+    <spring:message code="value.attributte" var="attribute"/>
+    <display:column property="attribute" title="${attribute}" sortable="true"/>
     <spring:message code="value.valueName" var="valueName"/>
     <display:column property="valueName" title="${valueName}" sortable="true"/>
 

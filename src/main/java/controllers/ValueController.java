@@ -1,6 +1,7 @@
 package controllers;
 
 import domain.Attribute;
+import domain.Property;
 import domain.Value;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import services.AttributeService;
+import services.PropertyService;
 import services.ValueService;
 
 import javax.validation.Valid;
@@ -27,6 +29,8 @@ public class ValueController extends AbstractController {
     private ValueService valueService;
     @Autowired
     private AttributeService attributeService;
+    @Autowired
+    private PropertyService propertyService;
 
     //Constructors----------------------------------------------
 
@@ -52,14 +56,18 @@ public class ValueController extends AbstractController {
     //Create Method -----------------------------------------------------------
 
     @RequestMapping(value = "/create", method = RequestMethod.GET)
-    public ModelAndView create() {
+    public ModelAndView create(@RequestParam int propertyId) {
 
         ModelAndView result;
-
         Collection<Attribute> attributes = attributeService.findAll();
         Value value = valueService.create();
+        propertyService.findOne(propertyId).getValues().add(value);
+
+
+        valueService.save(value);
         result = createEditModelAndView(value);
         result.addObject("attributes", attributes);
+        result.addObject("propertyId",propertyId);
 
         return result;
 
@@ -82,14 +90,15 @@ public class ValueController extends AbstractController {
     }
 
     @RequestMapping(value = "/edit", method = RequestMethod.POST, params = "save")
-    public ModelAndView save(@Valid Value value, BindingResult binding) {
+    public ModelAndView save(@Valid Value value,  BindingResult binding) {
         ModelAndView result;
 
         if (binding.hasErrors()) {
             result = createEditModelAndView(value);
         } else {
             try {
-                valueService.save(value);
+//                value.setProperty(propertyService.findOne(39));
+              valueService.save(value);
                 result = new ModelAndView("redirect:list.do");
             } catch (Throwable oops) {
                 result = createEditModelAndView(value, "property.commit.error");
