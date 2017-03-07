@@ -94,7 +94,7 @@
 		<security:intercept-url pattern="/lessor/edit.do" access="permitAll" />
         <security:intercept-url pattern="/lessor/edit1.do" access="permitAll"/>
         <security:intercept-url pattern="/lessor/change.do" access="permitAll"/>
-		<security:intercept-url pattern="/lessor/changeR.do" access="permitAll"/>
+		<security:intercept-url pattern="/lessor/edit2.do" access="permitAll"/>
 		<security:intercept-url pattern="/lessor/view.do" access="permitAll" />
 		<security:intercept-url pattern="/lessor/property/list.do" access="permitAll"/>
 		<security:intercept-url pattern="/lessor/request/list.do" access="permitAll"/>
@@ -129,7 +129,8 @@
         <security:intercept-url pattern="/property/request.do" access="permitAll" />
         <security:intercept-url pattern="/tenant/edit1.do" access="permitAll"/>
         <security:intercept-url pattern="/tenant/change.do" access="permitAll"/>
-		<security:intercept-url pattern="/tenant/changeR.do" access="permitAll"/>
+		<security:intercept-url pattern="/tenant/edit2.do" access="permitAll"/>
+
         <security:intercept-url pattern="/bookRequest/createRequest.do" access="permitAll" />
         <security:intercept-url pattern="/bookRequest/listMy.do" access="permitAll" />
 		<security:intercept-url pattern="/**" access="hasRole('NONE')" />

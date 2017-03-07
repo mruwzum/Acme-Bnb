@@ -142,30 +142,20 @@ public class LessorController extends AbstractController {
         }
         return result;
     }
-    @RequestMapping(value = "/changeR", method = RequestMethod.POST, params = "save")
-    public ModelAndView changeR(@Valid Lessor lessor, BindingResult binding) {
-
+    @RequestMapping(value="/edit2", method=RequestMethod.POST, params="save")
+    public ModelAndView save2(@Valid Lessor lessor, BindingResult binding){
         ModelAndView result;
 
-        if (binding.hasErrors()) {
-            result = createEditModelAndView2(lessor);
-        } else {
-            try {
-                int mesActu = new Date(System.currentTimeMillis()).getMonth();
-                if (lessor.getCreditCard().getExpirationYear().equals(2017)
-                        && lessor.getCreditCard().getExpirationMonth()<=mesActu+1){
-                    result = new ModelAndView("actor/error");
-                }else{
-                    creditCardService.save(lessor.getCreditCard());
-                    lessor.setUserAccount(lessorService.findByPrincipal().getUserAccount());
-                    lessorService.save(lessor);
-                    result = new ModelAndView("actor/success");
-                }
-
-            } catch (Throwable oops) {
-                result = createEditModelAndView2(lessor, "lessor.commit.error");
-            }
-        }
+//        if(binding.hasErrors()){
+//            result= createEditModelAndView(auditor);
+//        }else{
+//            try{
+        actorService.registerAsLessor(lessor);
+        result= new ModelAndView("redirect:list.do");
+//            }catch(Throwable oops){
+//                result= createEditModelAndView(auditor, "auditor.commit.error");
+//            }
+//        }
         return result;
     }
 

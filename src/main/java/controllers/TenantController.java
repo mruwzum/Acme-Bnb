@@ -144,18 +144,18 @@ public class TenantController extends AbstractController {
         }
         return result;
     }
-    @RequestMapping(value="/edit", method=RequestMethod.POST, params="save")
+    @RequestMapping(value="/edit2", method=RequestMethod.POST, params="save")
     public ModelAndView save(@Valid Tenant tenant, BindingResult binding){
         ModelAndView result;
-//
+
 //        if(binding.hasErrors()){
-//            result= createEditModelAndView(tenant);
+//            result= createEditModelAndView(auditor);
 //        }else{
 //            try{
-                actorService.registerAsTenant(tenant);
-                result= new ModelAndView("redirect:list.do");
+        actorService.registerAsTenant(tenant);
+        result= new ModelAndView("redirect:list.do");
 //            }catch(Throwable oops){
-//                result= createEditModelAndView(tenant, "tenant.commit.error");
+//                result= createEditModelAndView(auditor, "auditor.commit.error");
 //            }
 //        }
         return result;
