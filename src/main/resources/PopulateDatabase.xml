@@ -447,6 +447,7 @@
 			</list>
 		</property>
 
+
 	</bean>
     <bean id="property2" class="domain.Property">
         <property name="name" value="name2"/>

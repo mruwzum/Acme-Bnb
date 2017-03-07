@@ -11,8 +11,8 @@
  * http://www.tdg-seville.info/License.html
  -->
 
-<beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:security="http://www.springframework.org/schema/security"	
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:security="http://www.springframework.org/schema/security" xmlns="http://www.springframework.org/schema/beans"
 	xsi:schemaLocation="
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd		
         http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.2.xsd
@@ -77,7 +77,7 @@
 		<security:intercept-url pattern="/comment/list.do" access="permitAll" />
 		<security:intercept-url pattern="/comment/edit.do" access="permitAll" />
 		<security:intercept-url pattern="/comment/create.do" access="permitAll"/>
-
+		<security:intercept-url pattern="/comment/createLess.do" access="permitAll"/>
 		<!--  DATE  -->	
 		<security:intercept-url pattern="/date/list.do" access="permitAll" />
 		<security:intercept-url pattern="/date/edit.do" access="permitAll" />
@@ -103,6 +103,7 @@
 		<security:intercept-url pattern="/lessor/accept.do" access="permitAll"/>
 		<security:intercept-url pattern="/lessor/register.do" access="permitAll"/>
 
+		<security:intercept-url pattern="/lessor/saveComment.do" access="permitAll"/>
 		<!--  PROPERTY  -->
 		<security:intercept-url pattern="/property/list.do" access="permitAll" />
 		<security:intercept-url pattern="/property/edit.do" access="permitAll" />

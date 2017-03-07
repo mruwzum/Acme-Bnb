@@ -60,12 +60,13 @@
 
 </display:table>
 
-
 <spring:message code="actor.comment" var="picture1"/>
 <h3><jstl:out value="${picture1}"/></h3>
+
+
 <!-- Listing grid comments -->
 <display:table pagesize="5" class="displaytag" keepStatus="true"
-               name="com" requestURI="${requestURI}" id="row">
+               name="comments" requestURI="${requestURI}" id="row">
 
 
     <!-- Attributes -->
@@ -73,8 +74,8 @@
 
     <spring:message code="comment.title" var="title"/>
     <display:column property="title" title="${title}" sortable="true"/>
-    <spring:message code="comment.postedMoment" var="postedNoment"/>
-    <display:column property="postedNoment" title="${postedNoment}" sortable="true"/>
+    <spring:message code="comment.postedMoment" var="postedMoment"/>
+    <display:column property="postedMoment" title="${postedMoment}" sortable="true"/>
     <spring:message code="comment.text" var="text"/>
     <display:column property="text" title="${text}" sortable="true"/>
     <spring:message code="comment.numberofstars" var="numberOfStars"/>
@@ -84,10 +85,10 @@
 
 <security:authorize access="permitAll">
     <div>
-        <H4>
-            <a href="comment/create.do"> <spring:message
-                    code="tenant.create.comment"/>
+        <H5>
+            <a href="comment/createLess.do?id=${id}"> <spring:message
+                    code="comment.create"/>
             </a>
-        </H4>
+        </H5>
     </div>
 </security:authorize>

@@ -16,7 +16,7 @@ public class Lessor extends Actor implements Commentable {
 	
 	// Relationships ---------------------------------------------------------
 	private Collection<Property> propertys;
-
+	private Collection<Comment> comments;
 
 
 	// Constructors -----------------------------------------------------------
@@ -55,11 +55,10 @@ public class Lessor extends Actor implements Commentable {
 
 	@OneToMany(cascade = CascadeType.ALL)
 	public Collection<Comment> getComments() {
-        return null;
-    }
+		return comments;
+	}
 
-    @Override
-    public void setComments(Collection<Comment> comments) {
-
-    }
+	public void setComments(Collection<Comment> comments) {
+		this.comments = comments;
+	}
 }

@@ -3,6 +3,7 @@ package services;
 import domain.Comment;
 import domain.Lessor;
 import domain.Property;
+import domain.Tenant;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
@@ -10,6 +11,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.awt.event.ComponentEvent;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -120,22 +122,29 @@ public class LessorServiceTest extends AbstractTest {
     @Test
     public void commentTest2() throws Exception {
 
-        authenticate("lessor1");
+        Comment comment = commentService.create();
+        comment.setObjectiveId(26);
+        comment.setText("asd22as");
+        comment.setNumberOfStars(1);
+        comment.setTitle("22hghj");
+        comment.setPostedMoment(new Date(System.currentTimeMillis() - 10000));
+        Comment comment2 = commentService.create();
+        comment2.setObjectiveId(26);
+        comment2.setText("asda2222s");
+        comment2.setNumberOfStars(2);
+        comment2.setTitle("111111hghj");
+        comment2.setPostedMoment(new Date(System.currentTimeMillis() - 10000));
 
-        Comment comment = new Comment();
 
-        comment.setText("PRUEBA");
-        comment.setTitle("PRUEBA");
-        comment.setNumberOfStars(2);
-        comment.setPostedMoment(new Date(System.currentTimeMillis() - 1000));
-        Comment save = commentService.save(comment);
+        Lessor target = lessorService.findOne(comment.getObjectiveId());
+        target.getComments().add(comment);
+        target.getComments().add(comment2);
 
-        lessorService.findByPrincipal().getComments().add(save);
+       Comment s1 = commentService.save(comment);
 
-        System.out.println(lessorService.findByPrincipal().getComments());
+        Comment s2 = commentService.save(comment2);
 
-        authenticate(null);
+        System.out.println(lessorService.findOne(comment.getObjectiveId()).getComments().toString());
 
     }
-
-}
+    }

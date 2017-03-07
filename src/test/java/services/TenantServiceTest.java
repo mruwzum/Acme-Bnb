@@ -95,6 +95,26 @@ public class TenantServiceTest extends AbstractTest {
 
     }
 
+    @Test
+    public void commentTest2() throws Exception {
+
+        authenticate("tenant1");
+
+        Comment comment = new Comment();
+
+        comment.setText("PRUEBA");
+        comment.setTitle("PRUEBA");
+        comment.setNumberOfStars(2);
+        comment.setPostedMoment(new Date(System.currentTimeMillis() - 1000));
+        Comment save = commentService.save(comment);
+
+        tenantService.findByPrincipal().getComments().add(save);
+
+        System.out.println(tenantService.findByPrincipal().getComments());
+
+        authenticate(null);
+
+    }
 
 
 }

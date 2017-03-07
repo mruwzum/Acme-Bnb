@@ -72,6 +72,8 @@ public class LessorController extends AbstractController {
         result.addObject("email",lessor.getEmail());
         result.addObject("phone",lessor.getPhone());
         result.addObject("picture",lessor.getPicture());
+        result.addObject("comments", lessor.getComments());
+        result.addObject("id", lessor.getId());
         result.addObject("socialIdentitys",socialIdentities);
         result.addObject("requestURI","lessor/view.do");
 
@@ -307,25 +309,25 @@ public class LessorController extends AbstractController {
     //Save comments -----------------------------------------------------------
 
     @RequestMapping(value = "/saveComment", method = RequestMethod.POST, params = "save")
-    public ModelAndView save(@Valid Comment comment, BindingResult binding) {
+    public ModelAndView savec(Comment comment) {
         ModelAndView result;
+
+    /*   if (!binding.hasErrors()) {
+            result= CommentController.createEditModelAndView(comment);
+        }else{
+            try{*/
+
         comment.setPostedMoment(new Date(System.currentTimeMillis() - 10000));
-        if (!binding.hasErrors()) {
-            result = CommentController.createEditModelAndView(comment);
-        } else {
-            try {
-                commentService.save(comment);
-                Lessor p = lessorService.findOne(comment.getId());
-                List<Comment> comments = new ArrayList<>(p.getComments());
-                comments.add(comment);
-                p.setComments(comments);
-                result = new ModelAndView("redirect:list.do");
-            } catch (Throwable oops) {
-                result = CommentController.createEditModelAndView(comment, "comment.commit.error");
+
+        Lessor target = lessorService.findOne(comment.getObjectiveId());
+        target.getComments().add(comment);
+        Comment saved = commentService.save(comment);
+        result = new ModelAndView("actor/success");
+          /*  }catch(Throwable oops){
+                result= CommentController.createEditModelAndView(comment, "comment.commit.error");
             }
-        }
+        }*/
         return result;
     }
-
 
 }
