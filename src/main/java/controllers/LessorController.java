@@ -36,7 +36,8 @@ public class LessorController extends AbstractController {
     private BookRequestService bookRequestService;
     @Autowired
     private CommentService commentService;
-
+    @Autowired
+    private CreditCardService creditCardService;
     //Constructors----------------------------------------------
 	
 	public LessorController(){
@@ -141,7 +142,32 @@ public class LessorController extends AbstractController {
         }
         return result;
     }
+    @RequestMapping(value = "/changeR", method = RequestMethod.POST, params = "save")
+    public ModelAndView changeR(@Valid Lessor lessor, BindingResult binding) {
 
+        ModelAndView result;
+
+        if (binding.hasErrors()) {
+            result = createEditModelAndView2(lessor);
+        } else {
+            try {
+                int mesActu = new Date(System.currentTimeMillis()).getMonth();
+                if (lessor.getCreditCard().getExpirationYear().equals(2017)
+                        && lessor.getCreditCard().getExpirationMonth()<=mesActu+1){
+                    result = new ModelAndView("actor/error");
+                }else{
+                    creditCardService.save(lessor.getCreditCard());
+                    lessor.setUserAccount(lessorService.findByPrincipal().getUserAccount());
+                    lessorService.save(lessor);
+                    result = new ModelAndView("actor/success");
+                }
+
+            } catch (Throwable oops) {
+                result = createEditModelAndView2(lessor, "lessor.commit.error");
+            }
+        }
+        return result;
+    }
 
     // Registering --------------------------------------------------------
      

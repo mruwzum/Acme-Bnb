@@ -10,10 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-import services.ActorService;
-import services.BookRequestService;
-import services.CommentService;
-import services.TenantService;
+import services.*;
 
 import javax.validation.Valid;
 import java.util.ArrayList;
@@ -35,6 +32,8 @@ public class TenantController extends AbstractController {
     private BookRequestService bookRequestService;
     @Autowired
     private CommentService commentService;
+    @Autowired
+    private CreditCardService creditCardService;
 
     //Constructors----------------------------------------------
 
@@ -120,7 +119,31 @@ public class TenantController extends AbstractController {
         }
         return result;
     }
-     
+    @RequestMapping(value = "/changeR", method = RequestMethod.POST, params = "save")
+    public ModelAndView changeR(@Valid Tenant tenant, BindingResult binding) {
+
+        ModelAndView result;
+
+        if (!binding.hasErrors()) {
+            result = createEditModelAndView2(tenant);
+        } else {
+            try {
+                int mesActu2 = new Date(System.currentTimeMillis()).getMonth();
+                if (tenant.getCreditCard().getExpirationYear().equals(2017)
+                        && tenant.getCreditCard().getExpirationMonth()<=mesActu2+1){
+                    result = new ModelAndView("actor/error");
+                }else {
+                    creditCardService.save(tenant.getCreditCard());
+                    tenant.setUserAccount(tenantService.findByPrincipal().getUserAccount());
+                    tenantService.save(tenant);
+                    result = new ModelAndView("actor/success");
+                }
+            } catch (Throwable oops) {
+                result = createEditModelAndView2(tenant, "tenant.commit.error");
+            }
+        }
+        return result;
+    }
     @RequestMapping(value="/edit", method=RequestMethod.POST, params="save")
     public ModelAndView save(@Valid Tenant tenant, BindingResult binding){
         ModelAndView result;

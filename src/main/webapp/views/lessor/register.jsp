@@ -11,7 +11,7 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
-<form:form action="lessor/change.do" modelAttribute="lessor">
+<form:form action="lessor/changeR.do" modelAttribute="lessor">
 
 	<form:hidden path="id" />
 	<form:hidden path="version" />
