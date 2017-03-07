@@ -34,3 +34,32 @@
     <display:column property="auditor" title="auditor" sortable="true"/>
 
 </display:table>
+
+
+<security:authorize access="hasRole('LESSOR')">
+    <a href="value/create.do"> <spring:message
+            code="value.create"/>
+    </a>
+</security:authorize>
+
+<!-- Listing grid -->
+<display:table pagesize="5" class="displaytag" keepStatus="true"
+               name="values" requestURI="${requestURI}" id="row">
+
+
+    <!-- Attributes -->
+    <spring:message code="value.attributte" var="attributte"/>
+    <display:column property="attribute" title="${attributte}" sortable="true"/>
+    <spring:message code="value.valueName" var="valueName"/>
+    <display:column property="valueName" title="${valueName}" sortable="true"/>
+
+    <security:authorize access="hasRole('LESSOR')">
+        <display:column>
+            <a href="value/delete.do?valueId=${row.id}"> <spring:message
+                    code="value.delete"/>
+            </a>
+        </display:column>
+    </security:authorize>
+
+
+</display:table>

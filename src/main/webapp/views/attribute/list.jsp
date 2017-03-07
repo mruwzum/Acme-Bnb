@@ -19,16 +19,17 @@
         </H5>
     </div>
 </security:authorize>
-<security:authorize access="isAuthenticated()">
 
-    <a href="attribute/create.do"> <spring:message
-            code="attribute.create"/></a>
-
-</security:authorize>
 <!-- Listing grid -->
 <display:table pagesize="5" class="displaytag" keepStatus="true"
                name="attributes" requestURI="${requestURI}" id="row">
 
+    <security:authorize access="hasRole('ADMINISTRATOR')">
+        <display:column>
+            <a href="attribute/edit.do?attributeId=${row.id}"> <spring:message
+                    code="attribute.edit"/></a>
+        </display:column>
+    </security:authorize>
 
     <!-- Attributes -->
 

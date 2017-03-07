@@ -138,6 +138,7 @@ public class PropertyController extends AbstractController {
         res.addObject("name", p.getName());
         res.addObject("address", p.getAddress());
         res.addObject("audits", audits);
+        res.addObject("values", p.getValues());
 
         return res;
     }

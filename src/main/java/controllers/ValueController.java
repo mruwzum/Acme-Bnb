@@ -1,5 +1,6 @@
 package controllers;
 
+import domain.Attribute;
 import domain.Value;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import services.AttributeService;
 import services.ValueService;
 
 import javax.validation.Valid;
@@ -23,7 +25,8 @@ public class ValueController extends AbstractController {
 
     @Autowired
     private ValueService valueService;
-
+    @Autowired
+    private AttributeService attributeService;
 
     //Constructors----------------------------------------------
 
@@ -53,8 +56,10 @@ public class ValueController extends AbstractController {
 
         ModelAndView result;
 
+        Collection<Attribute> attributes = attributeService.findAll();
         Value value = valueService.create();
         result = createEditModelAndView(value);
+        result.addObject("attributes", attributes);
 
         return result;
 
