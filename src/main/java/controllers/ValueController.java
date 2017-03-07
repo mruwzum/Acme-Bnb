@@ -123,16 +123,6 @@ public class ValueController extends AbstractController {
         return result;
     }
 
-    @RequestMapping(value = "/view", method = RequestMethod.GET)
-    public ModelAndView view(@RequestParam int valueId) {
-        ModelAndView res;
-        Value p = valueService.findOne(valueId);
-        res = new ModelAndView("value/view");
-        res.addObject("value", p);
-
-        return res;
-    }
-
     // Ancillary methods ------------------------------------------------
 
     protected ModelAndView createEditModelAndView(Value value) {

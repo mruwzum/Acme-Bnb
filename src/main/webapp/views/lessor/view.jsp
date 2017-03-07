@@ -83,7 +83,7 @@
 
 </display:table>
 
-<security:authorize access="permitAll">
+<security:authorize access="isAuthenticated()">
     <div>
         <H5>
             <a href="comment/createLess.do?id=${id}"> <spring:message

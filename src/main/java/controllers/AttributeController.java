@@ -109,15 +109,6 @@ public class AttributeController extends AbstractController {
         return result;
     }
 
-    @RequestMapping(value = "/view", method = RequestMethod.GET)
-    public ModelAndView view(@RequestParam int attributeId) {
-        ModelAndView res;
-        Attribute p = attributeService.findOne(attributeId);
-        res = new ModelAndView("attribute/view");
-        res.addObject("attribute", p);
-
-        return res;
-    }
 
     // Ancillary methods ------------------------------------------------
 
