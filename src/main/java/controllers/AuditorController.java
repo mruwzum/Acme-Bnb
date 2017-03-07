@@ -79,7 +79,7 @@ public class AuditorController extends AbstractController {
         ModelAndView result;
 
         Auditor auditor = auditorService.create();
-        result = createEditModelAndView(auditor);
+        result = createEditModelAndView2(auditor);
 
         return result;
 
@@ -167,6 +167,23 @@ public class AuditorController extends AbstractController {
         return result;
  
     }
+    protected ModelAndView createEditModelAndView2(Auditor auditor){
+        ModelAndView result;
 
+        result= createEditModelAndView2(auditor, null);
+
+        return result;
+    }
+
+    protected ModelAndView createEditModelAndView2(Auditor auditor, String message){
+        ModelAndView result;
+
+        result= new ModelAndView("auditor/register");
+        result.addObject("auditor", auditor);
+        result.addObject("message", message);
+
+        return result;
+
+    }
 
 }

@@ -11,7 +11,7 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
-<form:form action="tenant/change.do" modelAttribute="tenant">
+<form:form action="tenant/save.do" modelAttribute="tenant">
 
 	<form:hidden path="id" />
 	<form:hidden path="version" />

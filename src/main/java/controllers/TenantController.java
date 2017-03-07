@@ -62,7 +62,7 @@ public class TenantController extends AbstractController {
         ModelAndView result;
 
         Tenant tenant = tenantService.create();
-        result = createEditModelAndView(tenant);
+        result = createEditModelAndView2(tenant);
 
         return result;
 
@@ -198,6 +198,24 @@ public class TenantController extends AbstractController {
         ModelAndView result;
 
         result= new ModelAndView("tenant/edit");
+        result.addObject("tenant", tenant);
+        result.addObject("message", message);
+
+        return result;
+
+    }
+    protected ModelAndView createEditModelAndView2(Tenant tenant){
+        ModelAndView result;
+
+        result= createEditModelAndView2(tenant, null);
+
+        return result;
+    }
+
+    protected ModelAndView createEditModelAndView2(Tenant tenant, String message){
+        ModelAndView result;
+
+        result= new ModelAndView("tenant/register");
         result.addObject("tenant", tenant);
         result.addObject("message", message);
 

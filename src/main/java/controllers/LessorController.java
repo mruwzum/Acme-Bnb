@@ -83,7 +83,7 @@ public class LessorController extends AbstractController {
         ModelAndView result;
 
         Lessor lessor = lessorService.create();
-        result = createEditModelAndView(lessor);
+        result = createEditModelAndView2(lessor);
 
         return result;
 
@@ -205,7 +205,14 @@ public class LessorController extends AbstractController {
          
         return result;
     }
-     
+
+    protected ModelAndView createEditModelAndView2(Lessor lessor){
+        ModelAndView result;
+
+        result= createEditModelAndView2(lessor, null);
+
+        return result;
+    }
     protected ModelAndView createEditModelAndView(Lessor lessor, String message){
     	ModelAndView result;
     	
@@ -215,6 +222,16 @@ public class LessorController extends AbstractController {
          
         return result;
  
+    }
+    protected ModelAndView createEditModelAndView2(Lessor lessor, String message){
+        ModelAndView result;
+
+        result= new ModelAndView("lessor/register");
+        result.addObject("lessor", lessor);
+        result.addObject("message", message);
+
+        return result;
+
     }
 
     // Properties -------------------------------------------------------

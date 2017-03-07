@@ -69,7 +69,7 @@
         <security:intercept-url pattern="/auditor/edit1.do" access="permitAll"/>
         <security:intercept-url pattern="/auditor/change.do" access="permitAll"/>
 		<security:intercept-url pattern="/auditor/listMy.do" access="hasRole('AUDITOR')"/>
-
+		<security:intercept-url pattern="/auditor/register.do" access="permitAll"/>
 		<!--  BOOKREQUEST  -->	
 		<security:intercept-url pattern="/bookrequest/list.do" access="permitAll" />
 		<security:intercept-url pattern="/bookrequest/edit.do" access="permitAll" />
@@ -100,7 +100,7 @@
 		<security:intercept-url pattern="/lessor/fee.do" access="permitAll"/>
 		<security:intercept-url pattern="/lessor/deny.do" access="permitAll"/>
 		<security:intercept-url pattern="/lessor/accept.do" access="permitAll"/>
-
+		<security:intercept-url pattern="/lessor/register.do" access="permitAll"/>
 
 		<!--  PROPERTY  -->
 		<security:intercept-url pattern="/property/list.do" access="permitAll" />
@@ -123,7 +123,7 @@
 		<security:intercept-url pattern="/tenant/view.do" access="permitAll"/>
 		<security:intercept-url pattern="/finder/create.do" access="permitAll" />
         <security:intercept-url pattern="/tenant/saveComment.do" access="permitAll"/>
-
+		<security:intercept-url pattern="/tenant/register.do" access="permitAll"/>
 
         <security:intercept-url pattern="/property/request.do" access="permitAll" />
         <security:intercept-url pattern="/tenant/edit1.do" access="permitAll"/>

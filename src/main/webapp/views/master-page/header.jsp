@@ -30,7 +30,7 @@
 			<li><a class="fNiv"><spring:message code="master.page.lessor.registration"/></a>
 				<ul>
 					<li class="arrow"></li>
-					<li><a href="auditor/create.do"><spring:message
+					<li><a href="auditor/register.do"><spring:message
 							code="master.page.auditor.register"/></a></li>
 				</ul>
 			</li>
@@ -85,9 +85,9 @@
 			<li><a class="fNiv"><spring:message code="master.page.lessor.registration"/></a>
 				<ul>
 					<li class="arrow"></li>
-					<li><a href="tenant/create.do"><spring:message
+					<li><a href="tenant/register.do"><spring:message
 							code="master.page.tenant.register"/></a></li>
-					<li><a href="lessor/create.do"><spring:message
+					<li><a href="lessor/register.do"><spring:message
 							code="master.page.lessor.register"/></a></li>
 				</ul>
 			</li>
