@@ -157,22 +157,22 @@
 
 
 
-<%--<spring:message code="dashboard.q11" var="q11Persb"/>--%>
-<%--<jstl:out value="${q11Persb}"/>:--%>
-<%--<jstl:out value="${q11Pers}"/>--%>
-<%--<spring:message code="dashboard.q11" var="q11Ratb"/>--%>
-<%--<jstl:out value="${q11Ratb}"/>:--%>
-<%--<jstl:out value="${q11Rat}"/>--%>
-<%--<br>--%>
-<%--<br/>--%>
-<%--<spring:message code="dashboard.q12" var="q12Persb"/>--%>
-<%--<jstl:out value="${q12Persb}"/>:--%>
-<%--<jstl:out value="${q12Pers}"/>--%>
-<%--<spring:message code="dashboard.q12" var="q12Ratb"/>--%>
-<%--<jstl:out value="${q12Ratb}"/>:--%>
-<%--<jstl:out value="${q12Rat}"/>--%>
-<%--<br>--%>
-<%--<br/>--%>
+<spring:message code="dashboard.q11" var="q11Persb"/>
+<jstl:out value="${q11Persb}"/>:
+<jstl:out value="${q11Pers}"/>
+<spring:message code="dashboard.q11" var="q11Ratb"/>
+<jstl:out value="${q11Ratb}"/>:
+<jstl:out value="${q11Rat}"/>
+<br>
+<br/>
+<spring:message code="dashboard.q12" var="q12Persb"/>
+<jstl:out value="${q12Persb}"/>:
+<jstl:out value="${q12Pers}"/>
+<spring:message code="dashboard.q12" var="q12Ratb"/>
+<jstl:out value="${q12Ratb}"/>:
+<jstl:out value="${q12Rat}"/>
+<br>
+<br/>
 
 
 
@@ -354,8 +354,8 @@
 <jstl:out value="${q31}"/>
 <br>
 <br/>
-<%--<spring:message code="dashboard.q32" var="q32b"/>--%>
-<%--<jstl:out value="${q32b}"/>:--%>
-<%--<jstl:out value="${q32}"/>--%>
-<%--<br>--%>
-<%--<br/>--%>
+<spring:message code="dashboard.q32" var="q32b"/>
+<jstl:out value="${q32b}"/>:
+<jstl:out value="${q32}"/>
+<br>
+<br/>

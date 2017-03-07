@@ -45,14 +45,14 @@ public interface AdministratorRepository extends JpaRepository<Administrator, In
     Integer numberOfBookRequestsPerLessor(int id);
 
     @Query("select a.bookRequests.size from Lessor l join l.propertys a join a.bookRequests b where l.id =?1 and b.status=1")
-    List<Integer> numberOfAprovedBookRequestsPerLessor(int id);
+    Integer numberOfAprovedBookRequestsPerLessor(int id);
 
 
     @Query("select l.bookRequests.size from Tenant l  where l.id =?1")
     Integer numberOfBookRequestsPerTenant(int id);
 
     @Query("select l.bookRequests.size from Tenant l  join l.bookRequests b where l.id =?1 and b.status=1")
-    List<Integer> numberOfAprovedBookRequestsPerTenant(int id);
+    Integer numberOfAprovedBookRequestsPerTenant(int id);
 
 
     @Query("select avg(f.numberOfFinderResults)from Finder f")

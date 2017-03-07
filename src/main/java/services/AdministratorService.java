@@ -143,33 +143,42 @@ public class AdministratorService {
 
 
 
-//	public Map<Tenant,Double> ratioOfRequestedVSApprovedRequestedPerTenant(){
-//		Collection<Tenant> tenants = tenantService.findAll();
-//		Map<Tenant,Double> res = new HashMap<>();
-//		for(Tenant t : tenants){
-//			Integer req = administratorRepository.numberOfBookRequestsPerTenant(t.getId());
-//			//TODO en las approved requests no hay nada en verdad x eso da el indexOutOfBoundsExc ;s
-//			List<Integer> approvedReq = administratorRepository.numberOfAprovedBookRequestsPerTenant(t.getId());
-//			Integer correcto = approvedReq.get(0);
-//			Double ratio = (double)req/correcto;
-//			res.put(t,ratio);
-//		}
-//		return res;
-//	}
-//
-//
-//	public Map<Lessor,Double> ratioOfRequestedVSApprovedRequestedPerLessor(){
-//		Collection<Lessor> tenants = lessorService.findAll();
-//		Map<Lessor,Double> res = new HashMap<>();
-//		for(Lessor t : tenants){
-//			Integer req = administratorRepository.numberOfBookRequestsPerLessor(t.getId());
-//			List<Integer> approvedReq = administratorRepository.numberOfAprovedBookRequestsPerLessor(t.getId());
-//			Integer correcto = approvedReq.get(0);
-//			Double ratio = (double)req/correcto;
-//			res.put(t,ratio);
-//		}
-//		return res;
-//	}
+	public Map<Tenant,Double> ratioOfRequestedVSApprovedRequestedPerTenant(){
+		Collection<Tenant> tenants = tenantService.findAll();
+		Map<Tenant,Double> res = new HashMap<>();
+		for(Tenant t : tenants){
+			Integer req = administratorRepository.numberOfBookRequestsPerTenant(t.getId());
+			Integer approvedReq = administratorRepository.numberOfAprovedBookRequestsPerTenant(t.getId());
+			Double ratio= 0.0;
+			if(req==null || approvedReq==null ){
+				res.put(t,ratio);
+			}else{
+				ratio = (double)req/approvedReq;
+			}
+
+			res.put(t,ratio);
+		}
+		return res;
+	}
+
+
+	public Map<Lessor,Double> ratioOfRequestedVSApprovedRequestedPerLessor(){
+		Collection<Lessor> tenants = lessorService.findAll();
+		Map<Lessor,Double> res = new HashMap<>();
+		for(Lessor t : tenants){
+			Integer req = administratorRepository.numberOfBookRequestsPerLessor(t.getId());
+			Integer approvedReq = administratorRepository.numberOfAprovedBookRequestsPerLessor(t.getId());
+			Double ratio= 0.0;
+			if(req==null || approvedReq==null ){
+				res.put(t,ratio);
+			}else{
+				ratio = (double)req/approvedReq;
+			}
+
+			res.put(t,ratio);
+		}
+		return res;
+	}
 
 
 
@@ -254,11 +263,18 @@ public class AdministratorService {
 		return administratorRepository.totalInvoiceAmmountOnTheSystem();
 	}
 
-//	public Double averageReqProphaveAtAuditRecordVSavgOfReqForPropWithNoAudits(){
-//		Double arriba = administratorRepository.averageOfPropertiesWithAudits();
-//		Double elena = administratorRepository.averageOfPropertiesWithoutAudits();
-//		return arriba/elena;
-//	}
+	public Double averageReqProphaveAtAuditRecordVSavgOfReqForPropWithNoAudits(){
+		Double arriba = administratorRepository.averageOfPropertiesWithAudits();
+		Double elena = administratorRepository.averageOfPropertiesWithoutAudits();
+		Double ratio= 0.0;
+		if(arriba==null || elena==null ){
+			ratio = 0.0;
+		}else{
+			ratio = arriba/elena;
+		}
+
+		return ratio;
+	}
 
 
 
