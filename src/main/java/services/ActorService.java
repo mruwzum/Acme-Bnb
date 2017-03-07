@@ -22,22 +22,22 @@ public class ActorService {
 	// Managed Repository ------------------------
 	@Autowired
 	private ActorRepository actorRepository;
-	@Autowired
+
+
+    // Constructor -------------------------------
+    public ActorService() {
+        super();
+    }
+
+    // Supporting services -----------------------
+    @Autowired
     private LessorService lessorService;
-	@Autowired
+    @Autowired
     private UserAccountService userAccountService;
-	@Autowired
+    @Autowired
     private TenantService tenantService;
-	@Autowired
+    @Autowired
     private AuditorService auditorService;
-
-	// Constructor -------------------------------
-	public ActorService() {
-		super();
-	}
-
-	// Supporting services -----------------------
-
 	// Simple CRUD methods -----------------------
 	
 	public Actor create() {

@@ -39,6 +39,10 @@
 		<value>/views/tenant/tiles.xml</value>
 		<!-- CreditCard -->
 		<value>/views/credit-card/tiles.xml</value>
+		<!-- Value -->
+		<value>/views/value/tiles.xml</value>
+		<!-- Attribute -->
+		<value>/views/attribute/tiles.xml</value>
 	</util:list>
 
 </beans>
