@@ -44,40 +44,40 @@
         <security:intercept-url pattern="/lessor/create.do" access="permitAll" />
         <security:intercept-url pattern="/auditor/create.do" access="hasRole('ADMINISTRATOR')" />
 				<!--  ACTOR  -->	
-		<security:intercept-url pattern="/actor/list.do" access="isAuthenticated" />
-		<security:intercept-url pattern="/actor/edit.do" access="isAuthenticated" />
-		<security:intercept-url pattern="/socialIdentity/create.do" access="isAuthenticated" />
-		<security:intercept-url pattern="/socialIdentity/delete.do" access="isAuthenticated" />
+		<security:intercept-url pattern="/actor/list.do" access="isAuthenticated()" />
+		<security:intercept-url pattern="/actor/edit.do" access="isAuthenticated()" />
+		<security:intercept-url pattern="/socialIdentity/create.do" access="isAuthenticated()" />
+		<security:intercept-url pattern="/socialIdentity/delete.do" access="isAuthenticated()" />
 		<!--  ADMINISTRATOR  -->	
 		<security:intercept-url pattern="/administrator/list.do" access="hasRole('ADMINISTRATOR')" />
 		<security:intercept-url pattern="/administrator/edit.do" access="hasRole('ADMINISTRATOR')" />
 		<security:intercept-url pattern="/administrator/changeFee.do" access="hasRole('ADMINISTRATOR')" />
 		<security:intercept-url pattern="/administrator/saveFee.do" access="hasRole('ADMINISTRATOR')" />
-		<security:intercept-url pattern="/property/delete.do" access="hasRole('ADMINISTRATOR','LESSOR')" />
+		<security:intercept-url pattern="/property/delete.do" access="hasAnyRole('ADMINISTRATOR','LESSOR')" />
 		<security:intercept-url pattern="/admin/dashboard.do" access="hasRole('ADMINISTRATOR')" />
 
 		<!--  AUDIT  -->	
-		<security:intercept-url pattern="/audit/list.do" access="isAuthenticated" />
-		<security:intercept-url pattern="/audit/edit.do" access="hasRole('ADMINISTRATOR','AUDITOR')" />
+		<security:intercept-url pattern="/audit/list.do" access="isAuthenticated()" />
+		<security:intercept-url pattern="/audit/edit.do" access="hasAnyRole('ADMINISTRATOR','AUDITOR')" />
 		<security:intercept-url pattern="/audit/create.do" access="hasRole('AUDITOR')" />
 		<security:intercept-url pattern="/audit/createFromProp.do" access="hasRole('AUDITOR')" />
 		<security:intercept-url pattern="/audit/draft.do" access="hasRole('AUDITOR')" />
 
 		<!--  AUDITOR  -->	
 		<security:intercept-url pattern="/auditor/list.do" access="hasRole('ADMINISTRATOR')" />
-		<security:intercept-url pattern="/auditor/edit.do" access="hasRole('ADMINISTRATOR','AUDITOR')" />
-        <security:intercept-url pattern="/auditor/edit1.do" access="hasRole('ADMINISTRATOR','AUDITOR')"/>
-        <security:intercept-url pattern="/auditor/change.do" access="hasRole('ADMINISTRATOR','AUDITOR')"/>
+		<security:intercept-url pattern="/auditor/edit.do" access="hasAnyRole('ADMINISTRATOR','AUDITOR')" />
+        <security:intercept-url pattern="/auditor/edit1.do" access="hasAnyRole('ADMINISTRATOR','AUDITOR')"/>
+        <security:intercept-url pattern="/auditor/change.do" access="hasAnyRole('ADMINISTRATOR','AUDITOR')"/>
 		<security:intercept-url pattern="/auditor/listMy.do" access="hasRole('AUDITOR')"/>
 		<security:intercept-url pattern="/auditor/register.do" access="hasRole('ADMINISTRATOR')"/>
 		<!--  BOOKREQUEST  -->	
-		<security:intercept-url pattern="/bookrequest/list.do" access="hasRole('ADMINISTRATOR','LESSOR','TENANT')" />
-		<security:intercept-url pattern="/bookrequest/edit.do" access="hasRole('ADMINISTRATOR','LESSOR','TENANT')" />
+		<security:intercept-url pattern="/bookrequest/list.do" access="hasAnyRole('ADMINISTRATOR','LESSOR','TENANT')" />
+		<security:intercept-url pattern="/bookrequest/edit.do" access="hasAnyRole('ADMINISTRATOR','LESSOR','TENANT')" />
 		<!--  COMMENT  -->	
-		<security:intercept-url pattern="/comment/list.do" access="isAuthenticated" />
-		<security:intercept-url pattern="/comment/edit.do" access="hasRole('LESSOR','TENANT')" />
-		<security:intercept-url pattern="/comment/create.do" access="hasRole('TENANT')"/>
-		<security:intercept-url pattern="/comment/createLess.do" access="hasRole('LESSOR')"/>
+		<security:intercept-url pattern="/comment/list.do" access="isAuthenticated()" />
+		<security:intercept-url pattern="/comment/edit.do" access="hasAnyRole('LESSOR','TENANT')" />
+		<security:intercept-url pattern="/comment/create.do" access="hasAnyRole('TENANT','LESSOR')"/>
+		<security:intercept-url pattern="/comment/createLess.do" access="hasAnyRole('TENANT','LESSOR')"/>
 		<!--  DATE  -->	
 		<!--<security:intercept-url pattern="/date/list.do" access="permitAll" />-->
 		<!--<security:intercept-url pattern="/date/edit.do" access="permitAll" />-->
@@ -87,32 +87,32 @@
         <security:intercept-url pattern="/finder/find.do" access="hasRole('TENANT')" />
 
         <!--  INVOICE  -->
-		<security:intercept-url pattern="/invoice/list.do" access="hasRole('TENANT','LESSOR','ADMINISTRATOR')" />
-		<security:intercept-url pattern="/invoice/edit.do" access="hasRole('TENANT','LESSOR','ADMINISTRATOR')" />
+		<security:intercept-url pattern="/invoice/list.do" access="hasAnyRole('TENANT','LESSOR','ADMINISTRATOR')" />
+		<security:intercept-url pattern="/invoice/edit.do" access="hasAnyRole('TENANT','LESSOR','ADMINISTRATOR')" />
 
 
 
 		<!--  LESSOR  -->
 		<security:intercept-url pattern="/lessor/list.do" access="permitAll" />
-		<security:intercept-url pattern="/lessor/edit.do" access="hasRole('LESSOR','ADMINISTRATOR')" />
+		<security:intercept-url pattern="/lessor/edit.do" access="hasAnyRole('LESSOR','ADMINISTRATOR')" />
         <security:intercept-url pattern="/lessor/edit1.do" access="permitAll"/>
-        <security:intercept-url pattern="/lessor/change.do" access="hasRole('LESSOR','ADMINISTRATOR')"/>
+        <security:intercept-url pattern="/lessor/change.do" access="hasAnyRole('LESSOR','ADMINISTRATOR')"/>
 		<security:intercept-url pattern="/lessor/edit2.do" access="permitAll"/>
 		<security:intercept-url pattern="/lessor/view.do" access="permitAll" />
-		<security:intercept-url pattern="/lessor/property/list.do" access="hasRole('LESSOR','ADMINISTRATOR')"/>
-		<security:intercept-url pattern="/lessor/request/list.do" access="hasRole('LESSOR','ADMINISTRATOR')"/>
-		<security:intercept-url pattern="/lessor/fee.do" access="hasRole('LESSOR','ADMINISTRATOR')"/>
-		<security:intercept-url pattern="/lessor/deny.do" access="hasRole('LESSOR','ADMINISTRATOR')"/>
-		<security:intercept-url pattern="/lessor/accept.do" access="hasRole('LESSOR','ADMINISTRATOR')"/>
+		<security:intercept-url pattern="/lessor/property/list.do" access="hasAnyRole('LESSOR','ADMINISTRATOR')"/>
+		<security:intercept-url pattern="/lessor/request/list.do" access="hasAnyRole('LESSOR','ADMINISTRATOR')"/>
+		<security:intercept-url pattern="/lessor/fee.do" access="hasAnyRole('LESSOR','ADMINISTRATOR')"/>
+		<security:intercept-url pattern="/lessor/deny.do" access="hasAnyRole('LESSOR','ADMINISTRATOR')"/>
+		<security:intercept-url pattern="/lessor/accept.do" access="hasAnyRole('LESSOR','ADMINISTRATOR')"/>
 		<security:intercept-url pattern="/lessor/register.do" access="permitAll"/>
-		<security:intercept-url pattern="/lessor/saveComment.do" access="hasRole('TENANT','LESSOR')"/>
+		<security:intercept-url pattern="/lessor/saveComment.do" access="hasAnyRole('TENANT','LESSOR')"/>
 
 
 		<!--  PROPERTY  -->
 		<security:intercept-url pattern="/property/list.do" access="permitAll" />
-		<security:intercept-url pattern="/property/edit.do" access="hasRole('LESSOR','ADMINISTRATOR')" />
+		<security:intercept-url pattern="/property/edit.do" access="hasAnyRole('LESSOR','ADMINISTRATOR')" />
 		<security:intercept-url pattern="/property/view.do" access="permitAll"/>
-		<security:intercept-url pattern="/property/create.do" access="hasRole('LESSOR','ADMINISTRATOR')"/>
+		<security:intercept-url pattern="/property/create.do" access="hasAnyRole('LESSOR','ADMINISTRATOR')"/>
 
         <!--  ATTRIBUTE  -->
         <security:intercept-url pattern="/attribute/list.do" access="hasRole('ADMINISTRATOR')"/>
@@ -120,14 +120,14 @@
         <security:intercept-url pattern="/attribute/create.do" access="hasRole('ADMINISTRATOR')"/>
 
         <!--  VIEW  -->
-        <security:intercept-url pattern="/value/list.do" access="isAuthenticated"/>
-        <security:intercept-url pattern="/value/edit.do" access="hasRole('LESSOR','ADMINISTRATOR')"/>
-        <security:intercept-url pattern="/value/create.do" access="hasRole('LESSOR','ADMINISTRATOR')"/>
+        <security:intercept-url pattern="/value/list.do" access="isAuthenticated()"/>
+        <security:intercept-url pattern="/value/edit.do" access="hasAnyRole('LESSOR','ADMINISTRATOR')"/>
+        <security:intercept-url pattern="/value/create.do" access="hasAnyRole('LESSOR','ADMINISTRATOR')"/>
 
 
         <!--  SOCIALIDENTITY  -->
-		<security:intercept-url pattern="/socialidentity/list.do" access="isAuthenticated" />
-		<security:intercept-url pattern="/socialidentity/edit.do" access="isAuthenticated" />
+		<security:intercept-url pattern="/socialidentity/list.do" access="isAuthenticated()" />
+		<security:intercept-url pattern="/socialidentity/edit.do" access="isAuthenticated()" />
 
 
 		<!--  TENANT  -->
@@ -136,17 +136,17 @@
 		<security:intercept-url pattern="/creditcard/edit.do" access="hasRole('ADMINISTRATOR')" />
 		<security:intercept-url pattern="/creditcard/delete.do" access="hasRole('ADMINISTRATOR')" />
 		<security:intercept-url pattern="/tenant/list.do" access="permitAll" />
-		<security:intercept-url pattern="/tenant/edit.do" access="hasRole('TENANT','ADMINISTRATOR')" />
-		<security:intercept-url pattern="/tenant/invoice.do" access="hasRole('TENANT','ADMINISTRATOR','LESSOR')"/>
-		<security:intercept-url pattern="/tenant/view.do" access="isAuthenticated"/>
+		<security:intercept-url pattern="/tenant/edit.do" access="hasAnyRole('TENANT','ADMINISTRATOR')" />
+		<security:intercept-url pattern="/tenant/invoice.do" access="hasAnyRole('TENANT','ADMINISTRATOR','LESSOR')"/>
+		<security:intercept-url pattern="/tenant/view.do" access="isAuthenticated()"/>
 		<security:intercept-url pattern="/finder/create.do" access="hasRole('TENANT')" />
-        <security:intercept-url pattern="/tenant/saveComment.do" access="hasRole('TENANT','LESSOR')"/>
+        <security:intercept-url pattern="/tenant/saveComment.do" access="hasAnyRole('TENANT','LESSOR')"/>
 		<security:intercept-url pattern="/tenant/register.do" access="permitAll"/>
 
         <security:intercept-url pattern="/property/request.do" access="hasRole('TENANT')" />
-        <security:intercept-url pattern="/tenant/edit1.do" access="hasRole('TENANT','ADMINISTRATOR')"/>
-        <security:intercept-url pattern="/tenant/change.do" access="hasRole('TENANT','ADMINISTRATOR')"/>
-		<security:intercept-url pattern="/tenant/edit2.do" access="hasRole('TENANT','ADMINISTRATOR')"/>
+        <security:intercept-url pattern="/tenant/edit1.do" access="hasAnyRole('TENANT','ADMINISTRATOR')"/>
+        <security:intercept-url pattern="/tenant/change.do" access="hasAnyRole('TENANT','ADMINISTRATOR')"/>
+		<security:intercept-url pattern="/tenant/edit2.do" access="permitAll"/>
 
         <security:intercept-url pattern="/bookRequest/createRequest.do" access="hasRole('TENANT')" />
         <security:intercept-url pattern="/bookRequest/listMy.do" access="hasRole('TENANT')" />
